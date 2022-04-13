@@ -1,0 +1,26 @@
+{
+  "name": "@quokka/adk",
+  "version": "1.0.0",
+  "description": "ADK CLI",
+  "author": "Nitin Gujral <nggujral@amazon.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://nggujral@git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
