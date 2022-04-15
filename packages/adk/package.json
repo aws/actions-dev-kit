@@ -4,9 +4,9 @@
   "description": "ADK CLI",
   "homepage": "",
   "license": "ISC",
-  "main": "dist/bin/adk.js",
+  "main": "lib/index.js",
   "bin": {
-    "adk": "dist/bin/adk"
+    "adk": "bin/adk"
   },
   "scripts": {
     "build": "tsc && eslint **/*.ts",
@@ -14,7 +14,8 @@
   },
   "files": [
     "lib",
-    "dist"
+    "dist",
+    "bin"
   ],
   "dependencies": {
     "yargs": "^16.2.0"
