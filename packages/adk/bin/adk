@@ -1,4 +1,2 @@
 #!/usr/bin/env node
 require('./adk.js');
-
-console.log("Hello World");
