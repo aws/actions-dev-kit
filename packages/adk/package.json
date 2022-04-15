@@ -28,6 +28,9 @@
     "@typescript-eslint/parser": "^5.17.0",
     "eslint": "^8.12.0",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.3"
+    "typescript": "^4.6.3",
+    "fs-extra": "^9.1.0",
+    "graceful-fs": "^4.2.9",
+    "chalk": "^4"
   }
 }
