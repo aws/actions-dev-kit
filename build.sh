@@ -1,1 +1,1 @@
-yarn run build-all
+yarn run all

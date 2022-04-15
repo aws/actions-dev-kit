@@ -10,7 +10,8 @@
   },
   "scripts": {
     "build": "tsc && eslint **/*.ts",
-    "lint": "eslint **/*.ts"
+    "lint": "eslint **/*.ts",
+    "test": "jest"
   },
   "files": [
     "lib",
@@ -22,13 +23,6 @@
   },
   "devDependencies": {
     "@types/yargs": "^15.0.14",
-    "@tsconfig/node12": "^1.0.2",
-    "@types/node": "^17.0.22",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
-    "eslint": "^8.12.0",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.3",
     "fs-extra": "^9.1.0",
     "graceful-fs": "^4.2.9",
     "chalk": "^4"

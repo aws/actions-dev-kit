@@ -4,25 +4,19 @@
   "description": "ADK Core",
   "homepage": "",
   "license": "",
-  "main": "dist/core.js",
+  "main": "lib/toolkit/sdk/core/core.js",
   "files": [
-    "dist"
+    "lib"
   ],
   "scripts": {
-    "build": "tsc && eslint lib/**/*.ts",
-    "lint": "eslint lib/**/*.ts"
+    "build": "tsc && eslint **/*.ts",
+    "lint": "eslint **/*.ts",
+    "test": "jest"
   },
   "dependencies": {
     "@types/shelljs": "^0.8.11",
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "@tsconfig/node12": "^1.0.2",
-    "@types/node": "^17.0.22",
-    "@typescript-eslint/eslint-plugin": "^5.17.0",
-    "@typescript-eslint/parser": "^5.17.0",
-    "eslint": "^8.12.0",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.3"
   }
 }
