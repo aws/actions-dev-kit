@@ -42,7 +42,7 @@ export function adkCli() {
         }
       })
       .catch(err => {
-        console.log("Error ${err}");
+        console.log(`Error ${err}`);
         process.exitCode = 1;
       });
 }
