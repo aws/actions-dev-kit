@@ -2,25 +2,32 @@
   "name": "@quokka/adk",
   "version": "1.0.0",
   "description": "ADK CLI",
-  "author": "Nitin Gujral <nggujral@amazon.com>",
   "homepage": "",
   "license": "ISC",
-  "main": "lib/index.ts",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://nggujral@git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit"
+  "main": "lib/index.js",
+  "bin": {
+    "adk": "bin/adk"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "tsc && eslint **/*.ts",
+    "lint": "eslint **/*.ts"
+  },
+  "files": [
+    "lib",
+    "dist",
+    "bin"
+  ],
+  "dependencies": {
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "@types/yargs": "^15.0.14",
+    "@tsconfig/node12": "^1.0.2",
+    "@types/node": "^17.0.22",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "eslint": "^8.12.0",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
   }
 }
