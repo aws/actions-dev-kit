@@ -129,23 +129,23 @@ $ yarn run test-all
 
 ### Contributing
 
-* Create branch from main and call it `feature-*` branch. E.g. `feature-add-init-command`.
-* Creating feature branch creates CI validation workflow against the `feature-*` branch.
-* Update code in your new branch `feature-*`
-* Once you're done with feature development, create `Pull Request` from source `feature-*` branch to destination `main` branch
-* This triggers a CI workflow in your feature-* branch. Please update the pull request with the workflow run in the description section of the PR.
-* Add atleast 2 reviewers from the reviewer section. Reviewers can be anyone within the organization, but at least one developer from AEF team.
-* Once your have all the approvals in your pull request, merge the pull request from UI by choosing `squash` (not fast forward merge) and reducing the number of commits to just one from feature-branch. 
+- Create branch from main and call it `feature-*` branch. E.g. `feature-add-init-command`.
+- Creating feature branch creates CI validation workflow against the `feature-*` branch.
+- Update code in your new branch `feature-*`
+- Once you're done with feature development, create `Pull Request` from source `feature-*` branch to destination `main` branch
+- This triggers a CI workflow in your feature-* branch. Please update the pull request with the workflow run in the description section of the PR.
+- Add atleast 2 reviewers from the reviewer section. Reviewers can be anyone within the organization, but at least one developer from AEF team.
+- Once your have all the approvals in your pull request, merge the pull request from UI by choosing `squash` (not fast forward merge) and reducing the number of commits to just one from feature-branch. 
 This makes rollbacks easy if you have one commit per feature branch. If you have large amount of changes in your PR, I suggest re-think your development strategy to iteratively develop and push code.
-* On merge, release workflows within ADK repository will kick-off which should automatically bump the version of the ADK package for consumption.
+- On merge, release workflows within ADK repository will kick-off which should automatically bump the version of the ADK package for consumption.
 
 ### Coverage Expectations
 
 #### Goal
-* branches: 90
-* statements: 90
-* functions: 90
-* lines: 90
+- branches: 90
+- statements: 90
+- functions: 90
+- lines: 90
 
 Actual coverages should be covered in the reports section
 - [COVERAGES](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/tests)
