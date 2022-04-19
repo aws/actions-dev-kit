@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-import { execute } from '../util/command-wrapper'
+import { execute } from '../util/command-wrapper';
 import { ProductInfo } from '../types/types';
 
 export async function handleCommand(productInfo: ProductInfo, disconnected: boolean): Promise<number> {
