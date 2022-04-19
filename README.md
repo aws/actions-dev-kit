@@ -46,6 +46,7 @@ if (cmdOutput.code != 0) {
 ### ADK CLI
 
 #### Sample Usage
+
 ```
 >> adk init --action-name MyAction --caws-org ORG --caws-project PROJ
 ...
@@ -100,10 +101,13 @@ This operation will publish Action <Org>/MyAction:1.0.0 to "Public catalog". Are
 ### Prerequisites
 
 * Lerna
+
 ```
 npm install --global lerna 
 ```
+
 * yarn
+
 ```
 npm install --global yarn
 ```
@@ -111,6 +115,7 @@ npm install --global yarn
 ### Install
 
 * TODO - Add npmrc commands and how-to generate tokens
+
 ```
 npm install --global adk
 ```
@@ -118,8 +123,10 @@ npm install --global adk
 ## Development
 
 ### Build
+
 ```
 $ ./build.sh
+```
 
 ### Testing
 
