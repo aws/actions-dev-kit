@@ -148,11 +148,11 @@ This makes rollbacks easy if you have one commit per feature branch. If you have
 * lines: 90
 
 Actual coverages should be covered in the reports section
-[`COVERAGES`](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/tests)
+- [COVERAGES](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/tests)
 
 ## Sample Actions Using ADK
 
-* [`S3 Publish Action`](https://quokka.codes/organizations/AEF-Team/projects/S3-Publish-Action/view)
+- [S3 Publish Action](https://quokka.codes/organizations/AEF-Team/projects/S3-Publish-Action/view)
 
 ## Contact
 
@@ -160,9 +160,9 @@ Please contact [AEF Team](mailto: caws-aef-team@amazon.com)
 
 ## ChangeLog
 
-[`Changelog`](./CHANGELOG.md)
+- [Changelog](./CHANGELOG.md)
 
 ## License
 
-[`License`](./LICENSE)
+- [License](./LICENSE)
 
