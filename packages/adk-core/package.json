@@ -1,6 +1,6 @@
 {
   "name": "@quokka/adk-core",
-  "version": "1.0.4",
+  "version": "0.1.0",
   "description": "ADK Core",
   "homepage": "",
   "license": "",
@@ -16,7 +16,5 @@
   "dependencies": {
     "@types/shelljs": "^0.8.11",
     "shelljs": "^0.8.5"
-  },
-  "devDependencies": {
   }
 }
