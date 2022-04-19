@@ -167,9 +167,9 @@ Please contact [AEF Team](mailto: caws-aef-team@amazon.com)
 
 ## ChangeLog
 
-- [Changelog](./CHANGELOG.md)
+- [Changelog](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/CHANGELOG.md/browse)
 
 ## License
 
-- [License](./LICENSE)
+- [License](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/LICENSE/browse)
 
