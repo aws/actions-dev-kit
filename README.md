@@ -1,4 +1,4 @@
-# ActionsDevKit
+# ActionsDevKit (ADK)
 
 ## Purpose
 
