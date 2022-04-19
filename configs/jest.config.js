@@ -19,9 +19,10 @@ module.exports = {
     },
     collectCoverage: true,
     coverageReporters: [
+        "clover",
         "lcov",
         "html",
-        "text-summary",
+        "text-summary"
     ],
     coveragePathIgnorePatterns: [
         "<rootDir>/lib/.*\\.generated\\.[jt]s",
