@@ -3,7 +3,7 @@ import { handleCommand as init } from '../lib/commands/init';
 import { product_name } from '../lib/util/product';
 import { version as adk_version } from '../lib/util/version';
 import { ProductInfo } from '../lib/types/types';
-import chalk from 'chalk';
+import chalk from 'chalk';   
 
 
 import yargs = require("yargs");
