@@ -5,10 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # 0.10.0 (2022-04-20)
 
-**Note:** Version bump only for package root
-
-
-
-
-
-#  (2022-04-20)
+**Note:** Version bump only for package @quokka/adk-core
