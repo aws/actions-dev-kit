@@ -1,0 +1,9 @@
+{
+  "extends": "@tsconfig/node12/tsconfig.json",
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs"
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}
