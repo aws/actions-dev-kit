@@ -6,7 +6,7 @@ module.exports = {
         "ts"
     ],
     testMatch: [
-        "<rootDir>/__tests__/**/?(*.)+(test).js",
+        "<rootDir>/test/**/?(*.)+(test).js",
     ],
     testEnvironment: "node",
     coverageThreshold: {

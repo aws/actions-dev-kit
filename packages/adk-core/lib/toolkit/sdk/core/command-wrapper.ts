@@ -1,5 +1,5 @@
 import { exec } from 'shelljs';
-import os from "os";
+import os from 'os';
 
 export interface CommandOutput {
   code: number;
@@ -9,7 +9,7 @@ export interface CommandOutput {
 
 export function runCommand(cmd: string) {
   const command_output = <CommandOutput>{};
-  const shell_command = exec(cmd, {async: false});
+  const shell_command = exec(cmd, { async: false });
   command_output.code = shell_command.code;
   command_output.stdout = shell_command.stdout;
   command_output.stderr = shell_command.stderr;
@@ -17,7 +17,7 @@ export function runCommand(cmd: string) {
 }
 
 export function getInputParam(inputVar: string) {
-  return runCommand("printenv " + inputVar).stdout;
+  return runCommand('printenv ' + inputVar).stdout;
 }
 
 export function setOutputParam(varName: string, varValue: string) {
@@ -25,7 +25,7 @@ export function setOutputParam(varName: string, varValue: string) {
 }
 
 export function allEnv() {
-  return runCommand("env | xargs").stdout;
+  return runCommand('env | xargs').stdout;
 }
 
 export function validateInput(inputVar: string) {
@@ -34,6 +34,6 @@ export function validateInput(inputVar: string) {
 
 export function setFailure(message: any, exitCode: number) {
   process.exitCode = exitCode;
-  const errorText = message instanceof Error ? message.toString() : message
+  const errorText = message instanceof Error ? message.toString() : message;
   process.stdout.write(errorText + os.EOL);
 }

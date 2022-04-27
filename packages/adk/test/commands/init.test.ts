@@ -1,14 +1,14 @@
 'use strict';
 
 import { handleCommand } from '../../lib/commands/init';
-import { ProductInfo } from '../../lib/types/types'
+import { ProductInfo } from '../../lib/types/types';
 
 describe('Init Command Tests', () => {
   it('run basic test as disconnected false', async () => {
     const productInfo : ProductInfo = {
       organization: 'test',
       project: 'test',
-      repository: 'test'
+      repository: 'test',
     };
 
     const resp = await handleCommand(productInfo, false);
@@ -20,7 +20,7 @@ describe('Init Command Tests', () => {
     const productInfo : ProductInfo = {
       organization: 'test',
       project: 'test',
-      repository: 'test'
+      repository: 'test',
     };
 
     const resp = await handleCommand(productInfo, true);

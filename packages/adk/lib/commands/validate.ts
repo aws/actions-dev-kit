@@ -1,12 +1,12 @@
 import chalk from 'chalk';
 
-const fs = require('fs');
+import fs from 'fs';
 
 export async function handleCommand(): Promise<number> {
-  let validationStatus: number = 0;
+  let validationStatus = 0;
   for (const validation of validations) {
     if (!await validation()) {
-      console.log(chalk.red("Validation Failed"));
+      console.log(chalk.red('Validation Failed'));
       validationStatus = 1;
     }
   }
@@ -15,10 +15,10 @@ export async function handleCommand(): Promise<number> {
 
 const validations: Array<() => boolean | Promise<boolean>> = [
   validateReadMeFile,
-  validateActionDefinition
+  validateActionDefinition,
 ];
 
-const fileName = "README.md";
+const fileName = 'README.md';
 
 function validateReadMeFile() {
   if (!fs.existsSync(fileName)) {

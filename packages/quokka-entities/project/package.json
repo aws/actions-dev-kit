@@ -1,0 +1,19 @@
+{
+  "name": "@quokka/project",
+  "version": "0.0.0",
+  "description": "Quokka project entity",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc && eslint **/*.ts",
+    "lint": "eslint **/*.ts",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@quokka/adk-core": "^0.11.0"
+  }
+}
