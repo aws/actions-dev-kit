@@ -2,7 +2,8 @@
   "npmClient": "yarn",
   "useWorkspaces": true,
   "packages": [
-    "packages/*"
+    "packages/*",
+    "packages/quokka-entities/*"
   ],
   "version": "0.11.0",
   "command": {

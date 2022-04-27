@@ -11,7 +11,8 @@
   },
   "workspaces": {
     "packages": [
-      "packages/*"
+      "packages/*",
+      "packages/quokka-entities/*"
     ]
   },
   "devDependencies": {
