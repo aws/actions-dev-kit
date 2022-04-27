@@ -9,9 +9,7 @@ export function getOrganization(): Organization {
 }
 
 function getOrganizationName() {
-  const varName = "CAWS_SOURCE_REPO_OWNER";
-  const name = core.getInput(varName);
-  // const name = "test1-test2-test3";
+  const name = getEnv("CAWS_SOURCE_REPO_OWNER");
   const regex = /(.*)-(.*)/;
   return name.match(regex)![1];
 }

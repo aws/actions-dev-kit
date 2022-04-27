@@ -10,7 +10,6 @@ export function getProject(): Project {
 
 function getProjectName() {
   const name = getEnv("CAWS_SOURCE_REPO_OWNER");
-  // const name = "test1-test2-test3";
   const regex = /(.*)-(.*)/;
   return name.match(regex)![2];
 }

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Quokka organization entity",
   "homepage": "",
-  "license": "ISC",
+  "license": "",
   "main": "lib/index.js",
   "files": [
     "lib"
