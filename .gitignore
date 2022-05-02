@@ -1,6 +1,8 @@
 node_modules/
 .idea/
+.vscode/
 lerna-debug.log
 dist/
 **/coverage/
 .DS_Store
+yarn-error.log

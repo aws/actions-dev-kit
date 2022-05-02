@@ -1,7 +1,7 @@
 import * as childProcess from 'child_process';
 
 export async function execute(cmd: string, args: string[]): Promise<string> {
-  const child = childProcess.spawn(cmd, args, {shell: true, stdio: ['ignore', 'pipe', 'inherit'] });
+  const child = childProcess.spawn(cmd, args, { shell: true, stdio: ['ignore', 'pipe', 'inherit'] });
   let stdout = '';
   child.stdout.on('data', chunk => stdout += chunk.toString());
   return new Promise<string>((success, failure) => {
