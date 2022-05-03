@@ -9,15 +9,11 @@ export function getProject(): Project {
 }
 
 function getProjectName() {
-  const name = getEnv('CAWS_SOURCE_REPO_OWNER');
+  const name = core.getInput("CAWS_SOURCE_REPO_OWNER");
   const regex = /(.*)-(.*)/;
   return name.match(regex)![2];
 }
 
 function getProjectId() {
-  return getEnv('CAWS_WORKFLOW_REPO_PROJECT_ID');
-}
-
-function getEnv(varName: string) {
-  return core.getInput(varName);
+  return core.getInput("CAWS_WORKFLOW_REPO_PROJECT_ID");
 }
