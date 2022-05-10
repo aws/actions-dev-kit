@@ -1,10 +1,14 @@
 import { getInputParam, setOutputParam, runCommand, allEnv, setFailure, validateInput } from './command-wrapper';
 
 export function getInput(inputVar: string) {
-  return validateInput(getInputParam(inputVar));
+  return validateInput(getEnvironmentVariable('INPUT_' + inputVar.toUpperCase()));
 }
 
 export function getMultiLineInput(inputVar: string) {
+  return getEnvironmentVariable('INPUT_' + inputVar.toUpperCase());
+}
+
+export function getEnvironmentVariable(inputVar: string) {
   return getInputParam(inputVar);
 }
 

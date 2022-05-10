@@ -8,7 +8,7 @@ describe('organization', () => {
     const orgName = 'test1-test2';
     const orgId = 'ORG-ID';
     const organization: Organization = getOrganization();
-    expect(organization.name).toBe(orgName);
-    expect(organization.id).toBe(orgId);
+    expect(organization.name).toMatch(orgName);
+    expect(organization.id).toMatch(orgId);
   });
 });

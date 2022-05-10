@@ -9,11 +9,11 @@ export function getProject(): Project {
 }
 
 function getProjectName() {
-  const name = core.getInput('CAWS_SOURCE_REPO_OWNER');
+  const name = core.getEnvironmentVariable('CAWS_SOURCE_REPO_OWNER');
   const regex = /(.*)-(.*)/;
   return name.match(regex)![2];
 }
 
 function getProjectId() {
-  return core.getInput('CAWS_WORKFLOW_REPO_PROJECT_ID');
+  return core.getEnvironmentVariable('CAWS_WORKFLOW_REPO_PROJECT_ID');
 }

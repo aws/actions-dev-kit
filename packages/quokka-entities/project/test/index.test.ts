@@ -8,7 +8,7 @@ describe('project', () => {
     const projName = 'test3';
     const projId = 'PROJ-ID';
     const project: Project = getProject();
-    expect(project.name).toBe(projName);
-    expect(project.id).toBe(projId);
+    expect(project.name).toMatch(projName);
+    expect(project.id).toMatch(projId);
   });
 });

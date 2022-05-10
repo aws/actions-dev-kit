@@ -9,11 +9,11 @@ export function getOrganization(): Organization {
 }
 
 function getOrganizationName() {
-  const name = core.getInput('CAWS_SOURCE_REPO_OWNER');
+  const name = core.getEnvironmentVariable('CAWS_SOURCE_REPO_OWNER');
   const regex = /(.*)-(.*)/;
   return name.match(regex)![1];
 }
 
 function getOrganizationId() {
-  return core.getInput('CAWS_WORKFLOW_ORGANIZATION_ID');
+  return core.getEnvironmentVariable('CAWS_WORKFLOW_ORGANIZATION_ID');
 }
