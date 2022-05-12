@@ -1,3 +1,3 @@
 #!/bin/bash
 
-find . -name "*.js" -print | grep '/lib/\|/__tests__/\|/bin/' | grep -v 'node_modules' | xargs -I{} rm {}
+find . -name "*.js" -print | grep '/lib/\|/test/\|/bin/' | grep -v 'node_modules' | xargs -I{} rm {}

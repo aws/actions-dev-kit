@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "on": {
+      "type": "string"
+    },
+    "jobs": {
+      "type": "object",
+      "properties": {
+        "test": {
+          "type": "object",
+          "properties": {
+            "runs-on": {
+              "type": "string"
+            },
+            "steps": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "uses": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "uses"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "uses": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "uses"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "run": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "run"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "run": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "run"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": [
+            "runs-on",
+            "steps"
+          ]
+        }
+      },
+      "required": [
+        "test"
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "on",
+    "jobs"
+  ]
+}
