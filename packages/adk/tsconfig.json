@@ -2,7 +2,12 @@
   "extends": "@tsconfig/node12/tsconfig.json",
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs"
+    "module": "commonjs",
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "noImplicitThis": true,
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]
