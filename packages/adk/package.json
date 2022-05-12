@@ -19,10 +19,12 @@
     "bin"
   ],
   "dependencies": {
-    "yargs": "^16.2.0"
+    "yargs": "^16.2.0",
+    "js-yaml": "^4.1.0"
   },
   "devDependencies": {
     "@types/yargs": "^15.0.14",
+    "@types/js-yaml": "^4.0.5",
     "chalk": "^4",
     "fs-extra": "^9.1.0",
     "graceful-fs": "^4.2.9"

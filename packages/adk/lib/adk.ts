@@ -16,6 +16,8 @@ async function cliArgs() {
     .option(product_name() + '-org', { type: 'string', alias: 'org', desc: product_name() + ' Organization to work against', requiresArg: true })
     .option(product_name() + '-project', { type: 'string', alias: 'proj', desc: product_name() + ' Project to work against', requiresArg: true })
     .option(product_name() + '-repository', { type: 'string', alias: 'repo', desc: product_name() + ' source repository to work against', requiresArg: true })
+    .option('action', { type: 'string', alias: 'action', desc: 'name of the action to be initialized', requiresArg: true })
+    .option('language', { type: 'string', alias: 'lang', desc: 'language to write the action in (only typescript is supported currently)', requiresArg: true })
     .option('disconnected', { type: 'boolean', default: false, desc: 'If true, only generates ADK project files locally, without syncing with ' + product_name() })
     .version(adk_version())
     .recommendCommands()
@@ -38,7 +40,7 @@ async function parseCLIArgs() {
         repository: argv.repo,
       };
       console.log(chalk.green('Intializing ADK project...'));
-      return init(productInfo, argv.disconnected);
+      return init(productInfo, argv.action, argv.language, argv.disconnected);
     default:
       console.log('Invalid command');
       return;

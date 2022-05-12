@@ -1,0 +1,31 @@
+SchemaVersion: 1.0
+Name: '%%action_name%% Action'
+Id: '%%caws_organization%%/%%action_name%%-action'
+Version: '0.0.0'
+Description: 'This Action greets someone and records the time'
+Author: '%%caws_organization%%/%%caws_project%%'
+Configuration:
+  WhoToGreet:
+    Description: 'Who are we greeting here'
+    Required: true
+    DisplayName: 'Who to greet'
+    Type: string
+  HowToGreet:
+    Description: 'How to greet the person'
+    Required: false
+    DisplayName: 'How to greet'
+    Type: string
+    Default: 'Hello there,'
+  WhenToGreet:
+    Description: 'How long to wait before greet the person in seconds'
+    Required: false
+    DisplayName: 'When to greet'
+    Type: number
+    Default: 1
+Environment:
+  Required: true
+Sources:
+  Required: true
+Runs:
+  Using: '%%node_version%%'
+  Main: 'lib/index.js'
