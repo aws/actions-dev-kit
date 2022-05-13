@@ -19,5 +19,5 @@ import { FileStructureValidator, STRUCTURE_VALIDATOR } from './validator/structu
     ],
 })
 export class ValidationModule {
-  
+
 }

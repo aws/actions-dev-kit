@@ -4,7 +4,8 @@ import { ValidationProps } from './model';
 
 @Controller()
 export class ValidationController {
-    constructor(private actionValidationRules: ActionValidationRules) {}
+    constructor(private actionValidationRules: ActionValidationRules) {
+    }
 
     validateAction(props: ValidationProps) {
         if (this.actionValidationRules.apply(props)) {

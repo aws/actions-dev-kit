@@ -9,4 +9,5 @@ import { Module } from '@nestjs/common';
         LoggerModule,
     ],
 })
-export class AppModule {}
+export class AppModule {
+}

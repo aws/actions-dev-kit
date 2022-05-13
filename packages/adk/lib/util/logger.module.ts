@@ -5,4 +5,5 @@ import { ConsoleLogger } from './logger';
     providers: [ConsoleLogger],
     exports: [ConsoleLogger],
 })
-export class LoggerModule {}
+export class LoggerModule {
+}

@@ -1,15 +1,15 @@
 import { Inject, Injectable, Logger, Scope } from '@nestjs/common';
 import yaml from 'js-yaml';
 import fs from 'fs';
-import { JsonSchemaValidator, SCHEMA_VALIDATOR } from './validator/schema';
-import { FileStructureValidator, STRUCTURE_VALIDATOR } from './validator/structure';
+import { SCHEMA_VALIDATOR, SchemaValidator } from './validator/schema';
+import { STRUCTURE_VALIDATOR, StructureValidator } from './validator/structure';
 import { AndValidator, ValidationContext, ValidationProps } from './model';
 
 @Injectable({ scope: Scope.DEFAULT })
 export class ActionValidationRules {
 
-    constructor(@Inject(SCHEMA_VALIDATOR) private schemaValidator: JsonSchemaValidator,
-        @Inject(STRUCTURE_VALIDATOR) private structureValidator: FileStructureValidator) {
+    constructor(@Inject(SCHEMA_VALIDATOR) private schemaValidator: SchemaValidator,
+        @Inject(STRUCTURE_VALIDATOR) private structureValidator: StructureValidator) {
 
     }
 

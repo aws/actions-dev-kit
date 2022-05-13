@@ -1,5 +1,4 @@
 import chalk from 'chalk';
-import { execute } from '../util/command-wrapper';
 import { ProductInfo } from '../types/types';
 import { applyTemplate } from '../util/template';
 import fs from 'fs';
@@ -55,7 +54,7 @@ function writeActionConfiguration(productInfo: ProductInfo, action: any, languag
 }
 
 function writeActionDefinitionYaml(productInfo: ProductInfo, action: any, language: any) {
-    let templateKeys: {[key: string]: string} = {
+    let templateKeys: { [key: string]: string } = {
         node_version: `${NODE_VERSION}`,
         action_name: `${action}`,
         caws_organization: `${productInfo.organization}`,
@@ -101,9 +100,9 @@ function validateNoExistingADKConfigFile(productInfo: ProductInfo, action: any, 
 
 function validateQuokkaInputs(productInfo: ProductInfo, action: any, language: any, disconnected: boolean) {
     return (isDefined(productInfo.organization, 'organization') &&
-         isDefined(productInfo.project, 'project') &&
-         isDefined(productInfo.repository, 'repository') &&
-         isDefined(action, 'action name'));
+        isDefined(productInfo.project, 'project') &&
+        isDefined(productInfo.repository, 'repository') &&
+        isDefined(action, 'action name'));
 }
 
 function isDefined(varName: any, errorVar: any) {

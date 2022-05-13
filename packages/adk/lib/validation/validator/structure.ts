@@ -1,10 +1,10 @@
 import { Injectable, Logger, Scope } from '@nestjs/common';
-import { ValidationContext, Validator, ValidationResult } from '../model';
+import { ValidationContext, ValidationResult, Validator } from '../model';
 import fs from 'fs';
 
 export const STRUCTURE_VALIDATOR = 'structure_validator';
 
-export interface StructureValidator extends Validator{
+export interface StructureValidator extends Validator {
 
 }
 

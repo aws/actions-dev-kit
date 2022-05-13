@@ -10,9 +10,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './adk.module';
 import { ConsoleLogger } from './util/logger';
 import { SchemaType } from './validation/model';
-import { JsonSchemaValidator } from './validation/validator/schema';
-import { FileStructureValidator } from './validation/validator/structure';
-import { ActionValidationRules } from './validation/rule';
 import { INestApplicationContext, Logger } from '@nestjs/common';
 import { ValidationController } from './validation/controller';
 
@@ -20,7 +17,7 @@ let APP_CONTEXT: INestApplicationContext;
 const bootstrap = async (): Promise<INestApplicationContext> => {
     // ensure the app context
     if (!APP_CONTEXT) {
-        APP_CONTEXT = await NestFactory.createApplicationContext(AppModule, { logger:false });
+        APP_CONTEXT = await NestFactory.createApplicationContext(AppModule, { logger: false });
     }
     return APP_CONTEXT;
 };
@@ -28,20 +25,44 @@ const bootstrap = async (): Promise<INestApplicationContext> => {
 async function cliArgs() {
     return yargs
         .usage('Usage: adk COMMAND')
-        .command('validate', 'Validate the current workspace for Action definition', (yargs) =>{
+        .command('validate', 'Validate the current workspace for Action definition', (yargs) => {
             return yargs.option('file', {
                 alias: 'f',
                 description: 'the action file to be validated',
                 demandOption: true,
             });
         })
-        .command('init', 'Initializes the current workspace with default Action definition', (yargs) =>{
-            return yargs.option(product_name() + '-org', { type: 'string', alias: 'org', desc: product_name() + ' Organization to work against', requiresArg: true })
-                .option(product_name() + '-project', { type: 'string', alias: 'proj', desc: product_name() + ' Project to work against', requiresArg: true })
-                .option(product_name() + '-repository', { type: 'string', alias: 'repo', desc: product_name() + ' source repository to work against', requiresArg: true })
+        .command('init', 'Initializes the current workspace with default Action definition', (yargs) => {
+            return yargs.option(product_name() + '-org', {
+                type: 'string',
+                alias: 'org',
+                desc: product_name() + ' Organization to work against',
+                requiresArg: true,
+            })
+                .option(product_name() + '-project', {
+                    type: 'string',
+                    alias: 'proj',
+                    desc: product_name() + ' Project to work against',
+                    requiresArg: true,
+                })
+                .option(product_name() + '-repository', {
+                    type: 'string',
+                    alias: 'repo',
+                    desc: product_name() + ' source repository to work against',
+                    requiresArg: true,
+                })
                 .option('action', { type: 'string', alias: 'action', desc: 'name of the action to be initialized', requiresArg: true })
-                .option('language', { type: 'string', alias: 'lang', desc: 'language to write the action in (only typescript is supported currently)', requiresArg: true })
-                .option('disconnected', { type: 'boolean', default: false, desc: 'If true, only generates ADK project files locally, without syncing with ' + product_name() });
+                .option('language', {
+                    type: 'string',
+                    alias: 'lang',
+                    desc: 'language to write the action in (only typescript is supported currently)',
+                    requiresArg: true,
+                })
+                .option('disconnected', {
+                    type: 'boolean',
+                    default: false,
+                    desc: 'If true, only generates ADK project files locally, without syncing with ' + product_name(),
+                });
         })
         .version(adk_version())
         .recommendCommands()
@@ -57,11 +78,11 @@ async function parseCLIArgs() {
         case 'validate':
             const appContext = await bootstrap();
             appContext.useLogger(appContext.get(ConsoleLogger));
-            Logger.log ('Starting action validation');
-            return appContext.get(ValidationController).validateAction({ file: argv.file, schemaType: SchemaType.Caws } );
+            Logger.log('Starting action validation');
+            return appContext.get(ValidationController).validateAction({ file: argv.file, schemaType: SchemaType.Caws });
 
         case 'init':
-            const productInfo : ProductInfo = {
+            const productInfo: ProductInfo = {
                 organization: argv.org,
                 project: argv.proj,
                 repository: argv.repo,
@@ -75,7 +96,7 @@ async function parseCLIArgs() {
 }
 
 export function adkCli() {
-  
+
     parseCLIArgs()
         .then(async (value) => {
             if (typeof value === 'number') {

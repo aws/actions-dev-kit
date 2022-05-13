@@ -4,7 +4,7 @@ import { ActionSchemas, SchemaType, ValidationContext, ValidationError, Validati
 
 export const SCHEMA_VALIDATOR = 'schema_validator';
 
-export interface SchemaValidator extends Validator{
+export interface SchemaValidator extends Validator {
 
 }
 
