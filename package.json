@@ -16,6 +16,8 @@
     "typescript": "^4.6.4"
   },
   "scripts": {
+    "prebuild": "./cleanup.sh",
+    "prebuild-all": "./cleanup.sh",
     "build": "./build.sh",
     "build-all": "lerna run build",
     "test-all": "lerna run test",

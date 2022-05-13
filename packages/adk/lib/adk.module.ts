@@ -4,9 +4,9 @@ import { Module } from '@nestjs/common';
 
 
 @Module({
-  imports: [
-    ValidationModule,
-    LoggerModule,
-  ],
+    imports: [
+        ValidationModule,
+        LoggerModule,
+    ],
 })
 export class AppModule {}

@@ -5,6 +5,8 @@
     "module": "commonjs",
     "experimentalDecorators": true,
     "noImplicitReturns": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
     "noImplicitThis": true,
   },
   "include": ["**/*.ts"],

@@ -1,30 +1,31 @@
-import { Injectable, Logger, Scope } from '@nestjs/common';
+import { Inject, Injectable, Logger, Scope } from '@nestjs/common';
 import yaml from 'js-yaml';
 import fs from 'fs';
-import { SchemaValidator } from './validator/schema';
-import { StructureValidator } from './validator/structure';
+import { JsonSchemaValidator, SCHEMA_VALIDATOR } from './validator/schema';
+import { FileStructureValidator, STRUCTURE_VALIDATOR } from './validator/structure';
 import { AndValidator, ValidationContext, ValidationProps } from './model';
 
 @Injectable({ scope: Scope.DEFAULT })
 export class ActionValidationRules {
 
-  constructor(private schemaValidator: SchemaValidator, private structureValidator: StructureValidator) {
+    constructor(@Inject(SCHEMA_VALIDATOR) private schemaValidator: JsonSchemaValidator,
+        @Inject(STRUCTURE_VALIDATOR) private structureValidator: FileStructureValidator) {
 
-  }
-
-  apply(props: ValidationProps) {
-    const encoding = 'utf-8';
-    if (props.file != undefined) {
-      const input = yaml.load(fs.readFileSync(props.file, { encoding: encoding }));
-      const validationResult = new AndValidator(this.schemaValidator, this.structureValidator).validate(new ValidationContext(props, input));
-      if (!validationResult.pass()) {
-        Logger.error(validationResult.errors());
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return true;
     }
-  }
+
+    apply(props: ValidationProps) {
+        const encoding = 'utf-8';
+        if (props.file != undefined) {
+            const input = yaml.load(fs.readFileSync(props.file, { encoding: encoding }));
+            const validationResult = new AndValidator(this.schemaValidator, this.structureValidator).validate(new ValidationContext(props, input));
+            if (!validationResult.pass()) {
+                Logger.error(validationResult.errors());
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
 }
