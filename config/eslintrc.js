@@ -29,7 +29,7 @@ module.exports = {
   ignorePatterns: ['*.js', '*.d.ts', 'node_modules/', '*.generated.ts'],
   rules: {
     '@typescript-eslint/no-require-imports': ['error'],
-    '@typescript-eslint/indent': ['error', 4],
+    '@typescript-eslint/indent': ['error', 2],
 
     // Style
     'quotes': ['error', 'single', { avoidEscape: true }],

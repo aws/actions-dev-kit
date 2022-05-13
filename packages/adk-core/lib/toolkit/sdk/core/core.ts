@@ -1,27 +1,27 @@
 import { getInputParam, setOutputParam, runCommand, allEnv, setFailure, validateInput } from './command-wrapper';
 
 export function getInput(inputVar: string) {
-    return validateInput(getEnvironmentVariable('INPUT_' + inputVar.toUpperCase()));
+  return validateInput(getEnvironmentVariable('INPUT_' + inputVar.toUpperCase()));
 }
 
 export function getMultiLineInput(inputVar: string) {
-    return getEnvironmentVariable('INPUT_' + inputVar.toUpperCase());
+  return getEnvironmentVariable('INPUT_' + inputVar.toUpperCase());
 }
 
 export function getEnvironmentVariable(inputVar: string) {
-    return getInputParam(inputVar);
+  return getInputParam(inputVar);
 }
 
 export function getIt() {
-    return 'my-input-working';
+  return 'my-input-working';
 }
 
 export function setOutput(varName: string, varValue: string) {
-    return setOutputParam(varName, varValue);
+  return setOutputParam(varName, varValue);
 }
 
 export function command(cmd: string) {
-    return runCommand(cmd);
+  return runCommand(cmd);
 }
 
 /*
@@ -34,9 +34,9 @@ export function setOutputReports(outputReports) {
  */
 
 export function allEnvs() {
-    return allEnv();
+  return allEnv();
 }
 
 export function setFailed(message: any) {
-    setFailure(message, 1);
+  setFailure(message, 1);
 }
