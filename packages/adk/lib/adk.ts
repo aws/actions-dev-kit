@@ -79,7 +79,7 @@ async function parseCLIArgs() {
             const appContext = await bootstrap();
             appContext.useLogger(appContext.get(ConsoleLogger));
             Logger.log('Starting action validation');
-            return appContext.get(ValidationController).validateAction({ file: argv.file, schemaType: SchemaType.Caws });
+            return appContext.get(ValidationController).validateAction({ file: argv.file, schemaType: SchemaType.Quokka });
 
         case 'init':
             const productInfo: ProductInfo = {

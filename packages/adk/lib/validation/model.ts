@@ -4,16 +4,16 @@ export interface ValidationProps {
 }
 
 export enum SchemaType {
-    Caws = 'CAWS',
+    Quokka = 'Quokka',
     GitHub = 'GitHub',
 }
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const CAWS_MODEL_SCHEMA = require('../../templates/caws_model_schema.json');
+const QUOKKA_MODEL_SCHEMA = require('../../templates/quokka_model_schema.json');
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const GITHUB_MODEL_SCHEMA = require('../../templates/github_model_schema.json');
 export const ActionSchemas = new Map<string, any>([
-    [SchemaType.Caws, CAWS_MODEL_SCHEMA],
+    [SchemaType.Quokka, QUOKKA_MODEL_SCHEMA],
     [SchemaType.GitHub, GITHUB_MODEL_SCHEMA],
 ]);
 
