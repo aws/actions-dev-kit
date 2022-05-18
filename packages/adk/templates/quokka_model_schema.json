@@ -15,7 +15,7 @@
     "Name": {
       "description": "Action name",
       "type": "string",
-      "maxLength": 64,
+      "maxLength": 32,
       "examples": [
         "My action"
       ]
