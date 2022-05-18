@@ -1,86 +1,574 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Action manifest schema",
+  "description": "Document describing data associated with a Compute Action execution.",
   "type": "object",
+  "additionalProperties": false,
   "properties": {
-    "name": {
-      "type": "string"
+    "SchemaVersion": {
+      "description": "A number corresponding to the version of the manifest format. should be 1.0",
+      "type": "string",
+      "enum": [
+        "1.0"
+      ]
     },
-    "on": {
-      "type": "string"
+    "Name": {
+      "description": "Action name",
+      "type": "string",
+      "maxLength": 128,
+      "examples": [
+        "My action"
+      ]
     },
-    "jobs": {
+    "Id": {
+      "description": "Action Id",
+      "type": "string",
+      "maxLength": 128,
+      "examples": [
+        "ecs-deploy"
+      ]
+    },
+    "Version": {
+      "description": "action version",
+      "type": "string",
+      "examples": [
+        "0.1.0"
+      ]
+    },
+    "Description": {
+      "description": "Action discription",
+      "maxLength": 128,
+      "type": "string",
+      "examples": [
+        "Awesome tools to help you and your team do great things everyday."
+      ]
+    },
+    "Author": {
+      "description": "Action  owner org name",
+      "maxLength": 128,
+      "type": "string",
+      "examples": [
+        "myorg"
+      ]
+    },
+    "Categories": {
+      "description": "Action categories, TBD",
+      "type": "array",
+      "minItems": 0,
+      "items": {
+        "description": "List of categories",
+        "type": "string",
+        "enum": [
+          "DEPLOY",
+          "BUILD",
+          "TEST",
+          "CODE_REVIEW"
+        ]
+      }
+    },
+    "Configuration": {
+      "description": "Action inputs, will be convert to workflow yaml Configuration section",
       "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "$ref": "#/definitions/ParameterConfig"
+      }
+    },
+    "Environment": {
+      "description": "Environment Connection indicator",
+      "$ref": "#/definitions/EnvironmentConfig"
+    },
+    "Sources": {
+      "description": "Sources indicator",
+      "$ref": "#/definitions/SourcesConfig"
+    },
+    "Outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
       "properties": {
-        "test": {
+        "Variables": {
+          "description": "Action output variables",
           "type": "object",
-          "properties": {
-            "runs-on": {
-              "type": "string"
-            },
-            "steps": {
-              "type": "array",
-              "items": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "uses": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "uses"
-                  ]
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "uses": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "uses"
-                  ]
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "run": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "run"
-                  ]
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "run": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "run"
-                  ]
-                }
-              ]
-            }
-          },
-          "required": [
-            "runs-on",
-            "steps"
+          "maxProperties": 10,
+          "additionalProperties": {
+            "type": "object",
+            "$ref": "#/definitions/OutputVariableConfig"
+          }
+        },
+        "Reports": {
+          "description": "Action output reports",
+          "type": "object",
+          "maxProperties": 50,
+          "additionalProperties": {
+            "type": "object",
+            "$ref": "#/definitions/OutputReportConfig"
+          }
+        },
+        "Artifacts": {
+          "description": "Action output artifacts",
+          "type": "object",
+          "maxProperties": 10,
+          "additionalProperties": {
+            "type": "object",
+            "$ref": "#/definitions/OutputArtifactConfig"
+          }
+        }
+      }
+    },
+    "Runs": {
+      "description": "Specifies whether this is a JavaScript action, a composite action, or a Docker container action and how the action is executed.",
+      "$ref": "#/definitions/RunsConfig"
+    }
+  },
+  "definitions": {
+    "ParameterConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Description",
+        "Required"
+      ],
+      "properties": {
+        "Description": {
+          "description": "Input parameter description",
+          "type": "string",
+          "maxLength": 128
+        },
+        "Required": {
+          "description": "A boolean to indicate whether the action requires the input parameter. Set to true when the parameter is required.",
+          "type": "boolean"
+        },
+        "DisplayName": {
+          "description": "Input parameter name to display on UI",
+          "type": "string",
+          "maxLength": 128
+        },
+        "Type": {
+          "description": "Input parameter type",
+          "type": "string",
+          "enum": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        },
+        "Default": {
+          "description": "The default value of input parameter",
+          "type": [
+            "number",
+            "string",
+            "boolean"
+          ],
+          "examples": [
+            "bar"
+          ]
+        }
+      }
+    },
+    "EnvironmentConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Required": {
+          "description": "A boolean to indicate whether the action requires Environment Connection Set to true when the parameter is required.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Required"
+      ]
+    },
+    "SourcesConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Required": {
+          "description": "A boolean to indicate whether the action requires Sources. Set to true when the parameter is required.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Required"
+      ]
+    },
+    "OutputVariableConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Description"
+      ],
+      "properties": {
+        "Description": {
+          "description": "Output variable description",
+          "type": "string",
+          "maxLength": 128
+        },
+        "Value": {
+          "description": "The value of output variable",
+          "type": "string"
+        }
+      }
+    },
+    "OutputReportConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Description": {
+          "description": "Artifact description",
+          "type": "string",
+          "maxLength": 128
+        },
+        "IncludePaths": {
+          "description": "The include file path for report.",
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "description": "File path",
+            "type": "string"
+          }
+        },
+        "ExcludePaths": {
+          "description": "The exclude file path for report.",
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "description": "File path",
+            "type": "string"
+          }
+        },
+        "Format": {
+          "description": "Report format type",
+          "type": "string",
+          "enum": [
+            "CUCUMBERJSON",
+            "JUNITXML",
+            "NUNITXML",
+            "NUNIT3XML",
+            "VISUALSTUDIOTRX",
+            "TESTNGXML",
+            "CLOVERXML",
+            "COBERTURAXML",
+            "JACOCOXML",
+            "SIMPLECOV",
+            "SARIFSCA"
           ]
         }
       },
       "required": [
-        "test"
+        "IncludePaths",
+        "Format",
+        "Description"
+      ]
+    },
+    "OutputArtifactConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Description": {
+          "description": "Artifact description",
+          "type": "string",
+          "maxLength": 128
+        },
+        "Files": {
+          "description": "The value of output variable",
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "description": "File path",
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "Files",
+        "Description"
+      ]
+    },
+    "DockerConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Using",
+        "Image"
+      ],
+      "properties": {
+        "Using": {
+          "const": "docker"
+        },
+        "Image": {
+          "description": "The Docker image to use as the container to run the action.",
+          "type": "string",
+          "examples": [
+            "Dockerfile"
+          ]
+        },
+        "Env": {
+          "description": "Specifies a key/value map of environment variables to set in the container environment.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "Entrypoint": {
+          "description": "Overrides the Docker ENTRYPOINT in the Dockerfile.",
+          "type": "string",
+          "examples": [
+            "main.sh"
+          ]
+        },
+        "PreEntrypoint": {
+          "description": "Allows you to run a script before the entrypoint action begins.",
+          "type": "string",
+          "examples": [
+            "setup.sh"
+          ]
+        },
+        "PostEntrypoint": {
+          "description": " Allows you to run a cleanup script once the runs.entrypoint action has completed. ",
+          "type": "string",
+          "examples": [
+            "cleanup.sh"
+          ]
+        },
+        "Args": {
+          "description": "An array of strings that define the inputs for a Docker container. Inputs can include hardcoded strings.",
+          "type": "array",
+          "items": {
+            "description": "args",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "NodeConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Using",
+        "Main"
+      ],
+      "properties": {
+        "Using": {
+          "enum": [
+            "node12",
+            "node16"
+          ]
+        },
+        "Main": {
+          "description": "The file that contains your action code.",
+          "type": "string",
+          "examples": [
+            "index.js"
+          ]
+        },
+        "Pre": {
+          "description": "Allows you to run a script at the start of a job.",
+          "type": "string",
+          "examples": [
+            "setup.js"
+          ]
+        },
+        "Post": {
+          "description": "Allows you to run a script at the end of a job.",
+          "type": "string",
+          "examples": [
+            "cleanup.js"
+          ]
+        },
+        "PreIf": {
+          "description": "Allows you to define conditions for the pre: action execution.",
+          "type": "string",
+          "examples": [
+            "runner.os == 'linux'"
+          ]
+        },
+        "PostIf": {
+          "description": "Allows you to define conditions for the post: action execution.",
+          "type": "string",
+          "examples": [
+            "runner.os == 'linux'"
+          ]
+        }
+      }
+    },
+    "CompositeConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Using",
+        "Steps"
+      ],
+      "properties": {
+        "Using": {
+          "const": "composite"
+        },
+        "Steps": {
+          "description": "The steps that you plan to run in this action. These can be either run steps or uses steps.",
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/StepConfig"
+          }
+        }
+      }
+    },
+    "RunsConfig": {
+      "type": "object",
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "Using": {
+                "const": "composite"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/CompositeConfig"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "Using": {
+                "const": "node12"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/NodeConfig"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "Using": {
+                "const": "node16"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/NodeConfig"
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "Using": {
+                "const": "docker"
+              }
+            }
+          },
+          "then": {
+            "$ref": "#/definitions/DockerConfig"
+          }
+        }
+      ],
+      "properties": {
+        "Using": {
+          "description": "The runtime used to execute the code",
+          "type": "string",
+          "enum": [
+            "node12",
+            "node16",
+            "docker",
+            "composite"
+          ]
+        }
+      },
+      "required": [
+        "Using"
+      ]
+    },
+    "RunStepConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "if": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "env": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "run": {
+          "type": "string"
+        },
+        "working-directory": {
+          "type": "string"
+        },
+        "shell": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "run",
+        "shell"
+      ]
+    },
+    "UsesStepConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "if": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "env": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "uses": {
+          "type": "string"
+        },
+        "with": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "uses"
+      ]
+    },
+    "StepConfig": {
+      "type": "object",
+      "additionalProperties": true,
+      "oneOf": [
+        {
+          "$ref": "#/definitions/UsesStepConfig"
+        },
+        {
+          "$ref": "#/definitions/RunStepConfig"
+        }
       ]
     }
   },
   "required": [
-    "name",
-    "on",
-    "jobs"
+    "SchemaVersion",
+    "Name",
+    "Id",
+    "Version",
+    "Configuration",
+    "Description",
+    "Runs"
   ]
 }
