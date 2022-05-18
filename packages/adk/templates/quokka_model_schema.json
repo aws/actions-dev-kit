@@ -15,7 +15,7 @@
     "Name": {
       "description": "Action name",
       "type": "string",
-      "maxLength": 128,
+      "maxLength": 64,
       "examples": [
         "My action"
       ]
@@ -23,7 +23,7 @@
     "Id": {
       "description": "Action Id",
       "type": "string",
-      "maxLength": 128,
+      "maxLength": 32,
       "examples": [
         "ecs-deploy"
       ]
@@ -31,13 +31,14 @@
     "Version": {
       "description": "action version",
       "type": "string",
+      "maxLength": 32,
       "examples": [
         "0.1.0"
       ]
     },
     "Description": {
-      "description": "Action discription",
-      "maxLength": 128,
+      "description": "Action description",
+      "maxLength": 256,
       "type": "string",
       "examples": [
         "Awesome tools to help you and your team do great things everyday."
@@ -55,6 +56,7 @@
       "description": "Action categories, TBD",
       "type": "array",
       "minItems": 0,
+      "uniqueItems": true,
       "items": {
         "description": "List of categories",
         "type": "string",
@@ -77,10 +79,6 @@
     "Environment": {
       "description": "Environment Connection indicator",
       "$ref": "#/definitions/EnvironmentConfig"
-    },
-    "Sources": {
-      "description": "Sources indicator",
-      "$ref": "#/definitions/SourcesConfig"
     },
     "Outputs": {
       "type": "object",
@@ -127,7 +125,8 @@
       "additionalProperties": false,
       "required": [
         "Description",
-        "Required"
+        "Required",
+        "Type"
       ],
       "properties": {
         "Description": {
@@ -179,19 +178,6 @@
         "Required"
       ]
     },
-    "SourcesConfig": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "Required": {
-          "description": "A boolean to indicate whether the action requires Sources. Set to true when the parameter is required.",
-          "type": "boolean"
-        }
-      },
-      "required": [
-        "Required"
-      ]
-    },
     "OutputVariableConfig": {
       "type": "object",
       "additionalProperties": false,
@@ -206,7 +192,8 @@
         },
         "Value": {
           "description": "The value of output variable",
-          "type": "string"
+          "type": "string",
+          "maxLength": 128
         }
       }
     },
