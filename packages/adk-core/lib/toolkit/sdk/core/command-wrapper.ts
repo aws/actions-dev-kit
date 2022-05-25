@@ -1,14 +1,10 @@
 import { exec } from 'shelljs';
+// @ts-ignore
 import os from 'os';
-
-export interface CommandOutput {
-    code: number;
-    stdout: any;
-    stderr: any;
-}
+import { ICommandOutput } from './core';
 
 export function runCommand(cmd: string) {
-    const command_output = <CommandOutput>{};
+    const command_output = <ICommandOutput>{};
     const shell_command = exec(cmd, { async: false });
     command_output.code = shell_command.code;
     command_output.stdout = shell_command.stdout;
@@ -34,6 +30,6 @@ export function validateInput(inputVar: string) {
 
 export function setFailure(message: any, exitCode: number) {
     process.exitCode = exitCode;
-    const errorText = message instanceof Error ? message.toString() : message;
+    const errorText = message.toString();
     process.stdout.write(errorText + os.EOL);
 }

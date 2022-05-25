@@ -1,0 +1,289 @@
+{
+  "author": {
+    "email": "cawsactionextensions@amazon.com",
+    "name": "AEF-Team",
+    "organization": true,
+    "roles": [
+      "author"
+    ]
+  },
+  "bundled": {
+    "@types/shelljs": "^0.8.11",
+    "shelljs": "^0.8.5"
+  },
+  "description": "ADK Core",
+  "docs": {
+    "stability": "experimental"
+  },
+  "homepage": "",
+  "jsiiVersion": "1.59.0 (build eb02c92)",
+  "license": "ISC",
+  "metadata": {
+    "jsii": {
+      "pacmak": {
+        "hasDefaultInterfaces": true
+      },
+      "rosetta": {
+        "strict": true
+      }
+    }
+  },
+  "name": "@quokka/adk-core",
+  "readme": {
+    "markdown": "# `@quokka/adk-core`\n\n> TODO: description\n\n## Usage\n\n```\nconst adkCore = require('@quokka/adk-core');\n\n// TODO: DEMONSTRATE API\n```\n"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit"
+  },
+  "schema": "jsii/0.10.0",
+  "targets": {
+    "dotnet": {
+      "namespace": "Amazon.adk",
+      "packageId": "Amazon.adk"
+    },
+    "java": {
+      "maven": {
+        "artifactId": "core",
+        "groupId": "software.amazon.awsadk"
+      },
+      "package": "software.amazon.awsadk.core"
+    },
+    "js": {
+      "npm": "@quokka/adk-core"
+    },
+    "python": {
+      "classifiers": [
+        "Framework :: AWS ADK",
+        "Framework :: AWS ADK :: 1"
+      ],
+      "distName": "aws-adk.core",
+      "module": "aws_adk.core"
+    }
+  },
+  "types": {
+    "@quokka/adk-core.ICommandOutput": {
+      "assembly": "@quokka/adk-core",
+      "docs": {
+        "stability": "experimental"
+      },
+      "fqn": "@quokka/adk-core.ICommandOutput",
+      "kind": "interface",
+      "locationInModule": {
+        "filename": "lib/toolkit/sdk/core/core.ts",
+        "line": 35
+      },
+      "name": "ICommandOutput",
+      "properties": [
+        {
+          "abstract": true,
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 36
+          },
+          "name": "code",
+          "type": {
+            "primitive": "number"
+          }
+        },
+        {
+          "abstract": true,
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 38
+          },
+          "name": "stderr",
+          "type": {
+            "primitive": "any"
+          }
+        },
+        {
+          "abstract": true,
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 37
+          },
+          "name": "stdout",
+          "type": {
+            "primitive": "any"
+          }
+        }
+      ],
+      "symbolId": "lib/toolkit/sdk/core/core:ICommandOutput"
+    },
+    "@quokka/adk-core.Utils": {
+      "assembly": "@quokka/adk-core",
+      "docs": {
+        "stability": "experimental"
+      },
+      "fqn": "@quokka/adk-core.Utils",
+      "initializer": {
+        "docs": {
+          "stability": "experimental"
+        }
+      },
+      "kind": "class",
+      "locationInModule": {
+        "filename": "lib/toolkit/sdk/core/core.ts",
+        "line": 41
+      },
+      "methods": [
+        {
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 63
+          },
+          "name": "allEnvs",
+          "returns": {
+            "type": {
+              "primitive": "any"
+            }
+          },
+          "static": true
+        },
+        {
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 59
+          },
+          "name": "command",
+          "parameters": [
+            {
+              "name": "cmd",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "returns": {
+            "type": {
+              "fqn": "@quokka/adk-core.ICommandOutput"
+            }
+          },
+          "static": true
+        },
+        {
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 51
+          },
+          "name": "getEnvironmentVariable",
+          "parameters": [
+            {
+              "name": "inputVar",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "returns": {
+            "type": {
+              "primitive": "any"
+            }
+          },
+          "static": true
+        },
+        {
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 43
+          },
+          "name": "getInput",
+          "parameters": [
+            {
+              "name": "inputVar",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "returns": {
+            "type": {
+              "primitive": "string"
+            }
+          },
+          "static": true
+        },
+        {
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 47
+          },
+          "name": "getMultiLineInput",
+          "parameters": [
+            {
+              "name": "inputVar",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "returns": {
+            "type": {
+              "primitive": "any"
+            }
+          },
+          "static": true
+        },
+        {
+          "docs": {
+            "stability": "experimental"
+          },
+          "locationInModule": {
+            "filename": "lib/toolkit/sdk/core/core.ts",
+            "line": 55
+          },
+          "name": "setOutput",
+          "parameters": [
+            {
+              "name": "varName",
+              "type": {
+                "primitive": "string"
+              }
+            },
+            {
+              "name": "varValue",
+              "type": {
+                "primitive": "string"
+              }
+            }
+          ],
+          "returns": {
+            "type": {
+              "primitive": "any"
+            }
+          },
+          "static": true
+        }
+      ],
+      "name": "Utils",
+      "symbolId": "lib/toolkit/sdk/core/core:Utils"
+    }
+  },
+  "version": "0.15.0",
+  "fingerprint": "auaCwmrw0scVdsgNEpLiq7rh/hlxlV7d6yLMmsgD9cY="
+}

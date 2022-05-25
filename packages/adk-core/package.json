@@ -3,19 +3,71 @@
   "version": "0.15.0",
   "description": "ADK Core",
   "homepage": "",
-  "license": "",
   "main": "lib/toolkit/sdk/core/core.js",
-  "files": [
-    "lib"
-  ],
+  "types": "lib/toolkit/sdk/core/core.d.ts",
+  "jsii": {
+    "outdir": "dist",
+    "targets": {
+      "java": {
+        "package": "software.amazon.awsadk.core",
+        "maven": {
+          "groupId": "software.amazon.awsadk",
+          "artifactId": "core"
+        }
+      },
+      "dotnet": {
+        "namespace": "Amazon.adk",
+        "packageId": "Amazon.adk"
+      },
+      "python": {
+        "distName": "aws-adk.core",
+        "module": "aws_adk.core",
+        "classifiers": [
+          "Framework :: AWS ADK",
+          "Framework :: AWS ADK :: 1"
+        ]
+      }
+    },
+    "projectReferences": true,
+    "metadata": {
+      "jsii": {
+        "rosetta": {
+          "strict": true
+        }
+      }
+    }
+  },
+  "author": {
+    "name": "AEF-Team",
+    "email": "cawsactionextensions@amazon.com",
+    "organization": true
+  },
+  "repository": {
+    "url": "https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit",
+    "type": "git"
+  },
+  "license": "ISC",
+  "stability": "experimental",
   "scripts": {
-    "build": "tsc && eslint **/*.ts",
+    "build": "tsc && eslint **/*.ts && jsii",
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix '**/*.ts'",
-    "test": "jest"
+    "package": "jsii-pacmak",
+    "test": "jest --collectCoverage"
   },
   "dependencies": {
     "@types/shelljs": "^0.8.11",
     "shelljs": "^0.8.5"
-  }
+  },
+  "devDependencies": {
+    "jsii": "^1.59.0",
+    "jsii-diff": "^1.59.0",
+    "jsii-rosetta": "^1.59.0",
+    "jsii-docgen": "^7.0.18",
+    "jsii-pacmak": "^1.59.0"
+  },
+  "bundledDependencies": [
+    "@types/shelljs",
+    "shelljs"
+  ]
 }
