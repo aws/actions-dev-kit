@@ -29,6 +29,9 @@
     "packages": [
       "packages/*",
       "packages/quokka-entities/*"
+    ],
+    "nohoist": [
+      "**/adk-core/**"
     ]
   },
   "dependencies": {
