@@ -3,8 +3,6 @@ import { product_name } from '../lib/util/product';
 import { version as adk_version } from '../lib/util/version';
 import { ProductInfo } from '../lib/types/types';
 import chalk from 'chalk';
-
-
 import * as yargs from 'yargs';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './adk.module';
@@ -12,6 +10,7 @@ import { ConsoleLogger } from './util/logger';
 import { SchemaType } from './validation/model';
 import { INestApplicationContext, Logger } from '@nestjs/common';
 import { ValidationController } from './validation/controller';
+import { BootstrapController } from './bootstrap/controller';
 
 let APP_CONTEXT: INestApplicationContext;
 const bootstrap = async (): Promise<INestApplicationContext> => {
@@ -25,6 +24,14 @@ const bootstrap = async (): Promise<INestApplicationContext> => {
 async function cliArgs() {
     return yargs
         .usage('Usage: adk COMMAND')
+        .command('bootstrap', 'Bootstraps the current workspace with provided action definition', (yargs) => {
+            return yargs.option('file', {
+                alias: 'f',
+                description: 'the action definition file to be used for bootstrapping workspace',
+                demandOption: true,
+                default: 'action.yml',
+            });
+        })
         .command('validate', 'Validate the current workspace for Action definition', (yargs) => {
             return yargs.option('file', {
                 alias: 'f',
@@ -33,12 +40,13 @@ async function cliArgs() {
             });
         })
         .command('init', 'Initializes the current workspace with default Action definition', (yargs) => {
-            return yargs.option(product_name() + '-org', {
-                type: 'string',
-                alias: 'org',
-                desc: product_name() + ' Organization to work against',
-                requiresArg: true,
-            })
+            return yargs
+                .option(product_name() + '-org', {
+                    type: 'string',
+                    alias: 'org',
+                    desc: product_name() + ' Organization to work against',
+                    requiresArg: true,
+                })
                 .option(product_name() + '-project', {
                     type: 'string',
                     alias: 'proj',
@@ -51,7 +59,12 @@ async function cliArgs() {
                     desc: product_name() + ' source repository to work against',
                     requiresArg: true,
                 })
-                .option('action', { type: 'string', alias: 'action', desc: 'name of the action to be initialized', requiresArg: true })
+                .option('action', {
+                    type: 'string',
+                    alias: 'action',
+                    desc: 'name of the action to be initialized',
+                    requiresArg: true,
+                })
                 .option('language', {
                     type: 'string',
                     alias: 'lang',
@@ -74,13 +87,29 @@ async function cliArgs() {
 async function parseCLIArgs() {
     const argv = await cliArgs();
     const cmd = argv._[0];
+    console.log('Loading appcontext');
+    const appContext = await bootstrap();
+    console.log('Loaded appcontext');
+    appContext.useLogger(appContext.get(ConsoleLogger));
     switch (cmd) {
         case 'validate':
-            const appContext = await bootstrap();
-            appContext.useLogger(appContext.get(ConsoleLogger));
             Logger.log('Starting action validation');
-            return appContext.get(ValidationController).validateAction({ file: argv.file, schemaType: SchemaType.Quokka });
-
+            return appContext.get(ValidationController).validateAction(
+                {
+                    file: argv.file,
+                    schemaType: SchemaType.Quokka,
+                },
+            );
+        case 'bootstrap':
+            Logger.log(`Starting action bootstrap based on definition file ${argv.file}`);
+            return appContext.get(BootstrapController).bootstrapAction(
+                {
+                    file: argv.file,
+                    schemaType: SchemaType.Quokka,
+                    templateBasePath: `${__dirname}/..`,
+                    language: 'typescript',
+                },
+            );
         case 'init':
             const productInfo: ProductInfo = {
                 organization: argv.org,

@@ -1,14 +1,14 @@
 export interface Model {
-    schemaVersion: string;
-    name?: string;
-    id?: string;
-    version?: string;
-    description?: string;
-    author?: string;
-    configuration?: Configuration;
-    environment?: boolean;
-    sources?: boolean;
-    runs?: RunConfig;
+    SchemaVersion: string;
+    Name?: string;
+    Id?: string;
+    Version?: string;
+    Description?: string;
+    Author?: string;
+    Configuration?: Configuration;
+    Environment?: boolean;
+    Sources?: boolean;
+    Runs?: RunConfig;
 }
 
 export interface Configuration {
@@ -16,14 +16,14 @@ export interface Configuration {
 }
 
 export interface Input {
-    description: string;
-    required: boolean;
-    displayName: string;
-    type: string;
-    default: boolean;
+    Description: string;
+    Required: boolean;
+    DisplayName: string;
+    Type: string;
+    Default: boolean;
 }
 
 export interface RunConfig {
-    using: string;
-    main: string;
+    Using: string;
+    Main: string;
 }
