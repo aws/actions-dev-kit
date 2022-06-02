@@ -21,7 +21,7 @@
     "build": "./build.sh",
     "build-all": "lerna run build",
     "test-all": "lerna run test",
-    "all": "lerna run build && lerna run test",
+    "all": "lerna run build --stream && lerna run test --stream",
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix '**/*.ts'"
   },

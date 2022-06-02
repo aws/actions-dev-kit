@@ -84,25 +84,33 @@ async function cliArgs() {
         .argv;
 }
 
+async function initAppContext(): Promise<INestApplicationContext> {
+    console.log('Loading appcontext');
+    const context = await bootstrap();
+    console.log('Loaded appcontext');
+    context.useLogger(context.get(ConsoleLogger));
+    return context;
+}
+
+
 async function parseCLIArgs() {
     const argv = await cliArgs();
     const cmd = argv._[0];
-    console.log('Loading appcontext');
-    const appContext = await bootstrap();
-    console.log('Loaded appcontext');
-    appContext.useLogger(appContext.get(ConsoleLogger));
+
     switch (cmd) {
         case 'validate':
+            const validateAppContext = await initAppContext();
             Logger.log('Starting action validation');
-            return appContext.get(ValidationController).validateAction(
+            return validateAppContext.get(ValidationController).validateAction(
                 {
                     file: argv.file,
                     schemaType: SchemaType.Quokka,
                 },
             );
         case 'bootstrap':
+            const bootstrapAppContext = await initAppContext();
             Logger.log(`Starting action bootstrap based on definition file ${argv.file}`);
-            return appContext.get(BootstrapController).bootstrapAction(
+            return bootstrapAppContext.get(BootstrapController).bootstrapAction(
                 {
                     file: argv.file,
                     schemaType: SchemaType.Quokka,
