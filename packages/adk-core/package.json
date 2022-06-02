@@ -1,6 +1,6 @@
 {
   "name": "@quokka/adk-core",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "ADK Core",
   "homepage": "",
   "main": "lib/toolkit/sdk/core/core.js",
@@ -62,9 +62,9 @@
   "devDependencies": {
     "jsii": "^1.59.0",
     "jsii-diff": "^1.59.0",
-    "jsii-rosetta": "^1.59.0",
     "jsii-docgen": "^7.0.18",
-    "jsii-pacmak": "^1.59.0"
+    "jsii-pacmak": "^1.59.0",
+    "jsii-rosetta": "^1.59.0"
   },
   "bundledDependencies": [
     "@types/shelljs",

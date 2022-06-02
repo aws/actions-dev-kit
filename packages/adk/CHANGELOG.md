@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.16.0 (2022-06-02)
+
+
+### Bug Fixes
+
+* **cli:** Enable jest verbose for easier debug and specifically initialize appcontext ([768158a](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/768158a6e6a30e44e982a73b867e85d8dc1b778f))
+
+
+### Features
+
+* Add basic methods for project and org entities within adk lib ([14d2534](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/14d2534f906bb75d35ead3fc0ba6d137eaeffe71))
+* **cli:** Add bootstrap command to ADK CLI ([02faeb1](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/02faeb1dc73232c6aad5580cb19f35b4d08b4c6a))
+* **cli:** Add validation support ([0489222](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/048922200afffa6e877b7ff2c08ed5368de6ac21))
+* **cli:** Apply CAWS action schema ([9d7ed9e](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/9d7ed9e62625aee41d6398716eec5a7f356a7b0a))
+* Initialize command with action yaml and configuration ([4d08a6f](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/4d08a6f91fe377929d215c18aa77e8d21ccf9ea6))
+
+
+
+
+
 # 0.15.0 (2022-05-16)
 
 

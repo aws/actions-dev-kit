@@ -1,6 +1,6 @@
 {
   "name": "@quokka/adk-model-parser",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Model parser for Code.AWS action model",
   "homepage": "",
   "license": "",
@@ -17,9 +17,9 @@
     "js-yaml": "^4.1.0"
   },
   "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
     "chalk": "^4",
     "fs-extra": "^9.1.0",
-    "graceful-fs": "^4.2.9",
-    "@types/js-yaml": "^4.0.5"
+    "graceful-fs": "^4.2.9"
   }
 }
