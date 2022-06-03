@@ -16,7 +16,8 @@
   "files": [
     "lib",
     "dist",
-    "bin"
+    "bin",
+    "templates"
   ],
   "dependencies": {
     "@nestjs/common": "^7.6.15",
