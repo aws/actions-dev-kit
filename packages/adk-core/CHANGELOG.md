@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.17.0 (2022-06-03)
+
+
+### Bug Fixes
+
+* Add tsbuildinfo to gitignore ([a727e96](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/a727e96d6ae31253198e5998ce34571941b9a3d2))
+* **cli:** commit updated jsii file ([56a26d9](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/56a26d958788b93f8ffa33c34daf1384795b0f45))
+* **cli:** Enable jest verbose for easier debug and specifically initialize appcontext ([768158a](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/768158a6e6a30e44e982a73b867e85d8dc1b778f))
+
+
+### Features
+
+* Add basic methods for project and org entities within adk lib ([14d2534](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/14d2534f906bb75d35ead3fc0ba6d137eaeffe71))
+* **cli:** Add validation support ([0489222](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/048922200afffa6e877b7ff2c08ed5368de6ac21))
+* **core:** Add jsii support ([e27c74d](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/e27c74d831407677c7d30395686aea346722ab19))
+
+
+
+
+
 # 0.16.0 (2022-06-02)
 
 
