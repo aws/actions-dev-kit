@@ -13,14 +13,15 @@ export class FileCopyGenerator implements BoootstrapGenerator {
   generate(model: Model, props: GeneratorProps): BootstrapGeneratorResult {
       try {
           Logger.log('Copying files from template..');
-          const files = ['tsconfig.json', '.eslintrc.js', '.prettierrc.json', 'jest.config.js'];
+          const files = ['tsconfig.json', '.prettierrc.json'];
           files.forEach ( (fl) => {
             // fs.copyFileSync(`${__dirname}/../../../templates/action/typescript/${fl}`, `${fl}`, fs.constants.COPYFILE_EXCL);
             fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/${fl}`, `${fl}`, fs.constants.COPYFILE_EXCL);
           });
 
-          const gtignoreSrc = 'gitignore', gtignoreDest = '.gitignore';
-          fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/${gtignoreSrc}`, `${gtignoreDest}`, fs.constants.COPYFILE_EXCL);
+          fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/gitignore`, '.gitignore', fs.constants.COPYFILE_EXCL);
+          fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/eslintrc`, '.eslintrc.js', fs.constants.COPYFILE_EXCL);
+          fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/jest.conf`, 'jest.config.js', fs.constants.COPYFILE_EXCL);
           return new BootstrapGeneratorResult();
       } catch (e) {
           Logger.error(e);
