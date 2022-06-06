@@ -1,0 +1,11 @@
+query listExtensionIssueScopes($input: ListExtensionIssueScopesRequestInput!){
+    listExtensionIssueScopes(input: $input){
+        nextToken
+        items{
+            id
+            name
+            providerCanonicalId
+            providerCanonicalUrl
+        }
+    }
+}

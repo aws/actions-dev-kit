@@ -1,0 +1,13 @@
+query getArtifactPackage($input: GetArtifactPackageInput!){
+    getArtifactPackage(input: $input){
+        name
+        format
+        namespace
+        originConfiguration{
+            restrictions{
+                publish
+                upstream
+            }
+        }
+    }
+}

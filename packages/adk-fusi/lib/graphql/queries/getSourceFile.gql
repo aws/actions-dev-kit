@@ -1,0 +1,12 @@
+query getSourceFile($input: GetSourceFileInput!){
+    getSourceFile(input: $input){
+        title
+        commitSha1
+        blobSha1
+        filePath
+        lastUpdatedTime
+        fileSizeInBytes
+        fileMode
+        fileContent
+    }
+}

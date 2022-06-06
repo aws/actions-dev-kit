@@ -1,0 +1,5 @@
+mutation deployBlueprint($input: DeployBlueprintRequestInput!){
+    deployBlueprint(input: $input){
+        status
+    }
+}

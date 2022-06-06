@@ -1,0 +1,5 @@
+mutation deleteDevelopmentWorkspace($input: DeleteDevelopmentWorkspaceRequestInput!){
+    deleteDevelopmentWorkspace(input: $input){
+        developmentWorkspaceId
+    }
+}

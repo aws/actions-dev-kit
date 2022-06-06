@@ -1,0 +1,11 @@
+query listIssues($input: ListIssuesInput!){
+    listIssues(input: $input){
+        issues{
+            id
+            version
+            lastUpdatedTime
+            shortId
+        }
+        nextToken
+    }
+}

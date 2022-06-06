@@ -1,0 +1,11 @@
+query listTestCaseRunResultsStatistics($input: ListTestCaseRunResultsInput!){
+    listTestCaseRunResultsStatistics(input: $input){
+        totalTestCases
+        totalPages
+        totalDurationInNanoseconds
+        testCaseResultCounts{
+            result
+            count
+        }
+    }
+}

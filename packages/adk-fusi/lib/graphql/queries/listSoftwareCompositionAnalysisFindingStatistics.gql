@@ -1,0 +1,18 @@
+query listSoftwareCompositionAnalysisFindingStatistics($input: ListSoftwareCompositionAnalysisFindingsInput!){
+    listSoftwareCompositionAnalysisFindingStatistics(input: $input){
+        totalFindings
+        totalPages
+        mappedSeverityCounts{
+            name
+            count
+        }
+        originalSeverityCounts{
+            name
+            count
+        }
+        categoryCounts{
+            name
+            count
+        }
+    }
+}

@@ -1,0 +1,22 @@
+query getBlueprint($input: GetBlueprintRequestInput!){
+    getBlueprint(input: $input){
+        name
+        versionId
+        packageUri
+        publishDate
+        declarationAst
+        author
+        displayName
+        defaults
+        referenceAsts{
+            key
+            value
+        }
+        license
+        homepage
+        description
+        readme
+        keywords
+        mediaUrls
+    }
+}

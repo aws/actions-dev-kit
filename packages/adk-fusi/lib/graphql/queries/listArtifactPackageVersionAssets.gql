@@ -1,0 +1,17 @@
+query listArtifactPackageVersionAssets($input: ListArtifactPackageVersionAssetsInput!){
+    listArtifactPackageVersionAssets(input: $input){
+        nextToken
+        items{
+            name
+            size
+            hashes{
+                key
+                value
+            }
+        }
+        format
+        namespace
+        name
+        version
+    }
+}

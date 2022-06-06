@@ -1,0 +1,18 @@
+mutation updateArtifactPackageVersionsStatus($input: UpdateArtifactPackageVersionsStatusInput!){
+    updateArtifactPackageVersionsStatus(input: $input){
+        successfulVersions{
+            key
+            value{
+                revision
+                status
+            }
+        }
+        failedVersions{
+            key
+            value{
+                errorCode
+                errorMessage
+            }
+        }
+    }
+}

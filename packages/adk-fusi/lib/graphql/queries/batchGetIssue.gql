@@ -1,0 +1,40 @@
+query batchGetIssue($input: BatchGetIssueInput!){
+    batchGetIssue(input: $input){
+        items{
+            id
+            title
+            lastUpdatedTime
+            version
+            status
+            description
+            storeId
+            archived
+            blocked
+            assigneeIds
+            createdTime
+            creator
+            lastUpdatedBy
+            priority
+            references{
+                referenceType
+                referenceId
+            }
+            comments{
+                id
+                lastUpdatedTime
+                authorId
+                createdTime
+                message
+            }
+            labelIds
+            position
+            estimate
+            shortId
+            customFields{
+                name
+                type
+                value
+            }
+        }
+    }
+}

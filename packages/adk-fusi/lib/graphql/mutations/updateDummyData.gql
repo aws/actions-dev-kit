@@ -1,0 +1,6 @@
+mutation updateDummyData($input: UpdateDummyDataInput!){
+    updateDummyData(input: $input){
+        name
+        version
+    }
+}

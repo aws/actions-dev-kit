@@ -1,0 +1,5 @@
+mutation updateComputeFleet($input: UpdateComputeFleetInput!){
+    updateComputeFleet(input: $input){
+        version
+    }
+}

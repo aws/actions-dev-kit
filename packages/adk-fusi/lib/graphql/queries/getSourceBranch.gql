@@ -1,0 +1,12 @@
+query getSourceBranch($input: GetSourceBranchInput!){
+    getSourceBranch(input: $input){
+        id
+        sourceRepositoryName
+        branchName
+        lastUpdatedTime
+        headCommitId
+        beforeCommitId
+        beforeDocumentCommitId
+        ordinal
+    }
+}

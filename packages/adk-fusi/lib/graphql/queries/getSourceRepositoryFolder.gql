@@ -1,0 +1,29 @@
+query getSourceRepositoryFolder($input: GetSourceRepositoryFolderInput){
+    getSourceRepositoryFolder(input: $input){
+        commitId
+        folderPath
+        treeId
+        subFolders{
+            treeId
+            absolutePath
+            relativePath
+        }
+        files{
+            blobId
+            absolutePath
+            relativePath
+            fileMode
+        }
+        symbolicLinks{
+            blobId
+            absolutePath
+            relativePath
+            fileMode
+        }
+        subModules{
+            commitId
+            absolutePath
+            relativePath
+        }
+    }
+}

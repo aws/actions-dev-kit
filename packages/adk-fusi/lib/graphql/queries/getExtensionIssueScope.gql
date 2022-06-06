@@ -1,0 +1,8 @@
+query getExtensionIssueScope($input: GetExtensionIssueScopeInput!){
+    getExtensionIssueScope(input: $input){
+        id
+        name
+        providerCanonicalId
+        providerCanonicalUrl
+    }
+}

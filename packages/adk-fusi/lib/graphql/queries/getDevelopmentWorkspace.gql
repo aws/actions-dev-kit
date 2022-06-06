@@ -1,0 +1,26 @@
+query getDevelopmentWorkspace($input: GetDevelopmentWorkspaceRequestInput!){
+    getDevelopmentWorkspace(input: $input){
+        lastUpdatedTime
+        creatorId
+        ide
+        labels
+        status
+        repositories{
+            projectName
+            repositoryName
+            branchName
+            sourceBranchName
+            pullRequestNumber
+        }
+        alias
+        ides{
+            runtime
+            name
+        }
+        instanceType
+        inactivityTimeoutMinutes
+        persistentStorage{
+            sizeInGiB
+        }
+    }
+}

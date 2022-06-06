@@ -1,0 +1,16 @@
+query listNotificationChannels($input: ListNotificationChannelsRequestInput!){
+    listNotificationChannels(input: $input){
+        nextToken
+        items{
+            id
+            alias
+            type
+            details{
+                slack{
+                    channelId
+                    workspaceId
+                }
+            }
+        }
+    }
+}

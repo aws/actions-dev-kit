@@ -1,0 +1,6 @@
+mutation updatePullRequestCommentContent($input: UpdatePullRequestCommentContentInput!){
+    updatePullRequestCommentContent(input: $input){
+        id
+        version
+    }
+}

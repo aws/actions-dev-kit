@@ -1,0 +1,12 @@
+query listEnvironments($input: ListEnvironmentsInput!){
+    listEnvironments(input: $input){
+        nextToken
+        totalCount
+        items{
+            name
+            updateTime
+            description
+            environmentType
+        }
+    }
+}

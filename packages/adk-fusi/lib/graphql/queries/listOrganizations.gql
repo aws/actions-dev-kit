@@ -1,0 +1,12 @@
+query listOrganizations($input: ListOrganizationsInput!){
+    listOrganizations(input: $input){
+        nextToken
+        items{
+            name
+            regionName
+            displayName
+            description
+            id
+        }
+    }
+}

@@ -1,0 +1,19 @@
+query getProjectMetrics($input: GetProjectMetricsInput!){
+    getProjectMetrics(input: $input){
+        histogram{
+            data{
+                x
+                y
+            }
+        }
+        buckets{
+            data{
+                title
+                value
+            }
+        }
+        value{
+            data
+        }
+    }
+}

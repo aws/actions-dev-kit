@@ -1,0 +1,12 @@
+query describeOrganizationMembersMigration($input: DescribeOrganizationMembersMigrationInput!){
+    describeOrganizationMembersMigration(input: $input){
+        nextToken
+        items{
+            userId
+            username
+            displayName
+            emailAddress
+            roleId
+        }
+    }
+}

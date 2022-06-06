@@ -1,0 +1,5 @@
+mutation updateSourcePullRequestReviewers($input: UpdateSourcePullRequestReviewersInput!){
+    updateSourcePullRequestReviewers(input: $input){
+        success
+    }
+}

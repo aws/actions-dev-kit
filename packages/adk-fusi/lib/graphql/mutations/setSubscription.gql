@@ -1,0 +1,6 @@
+mutation setSubscription($input: SetSubscriptionRequestInput!){
+    setSubscription(input: $input){
+        awsAccountName
+        subscriptionType
+    }
+}

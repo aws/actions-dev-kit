@@ -1,0 +1,6 @@
+mutation updateSourceRepository($input: UpdateSourceRepositoryInput!){
+    updateSourceRepository(input: $input){
+        version
+        id
+    }
+}

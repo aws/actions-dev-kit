@@ -1,0 +1,20 @@
+mutation validateWorkflowDefinitionDraft($input: ValidateWorkflowDefinitionDraftInput!){
+    validateWorkflowDefinitionDraft(input: $input){
+        reasons{
+            statusCode
+            statusMessage
+            templateVariables{
+                key
+                value
+            }
+            startMark{
+                lineNumber
+                columnNumber
+            }
+            endMark{
+                lineNumber
+                columnNumber
+            }
+        }
+    }
+}

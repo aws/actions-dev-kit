@@ -1,0 +1,18 @@
+query listTeams($input: ListTeamInput!){
+    listTeams(input: $input){
+        nextToken
+        items{
+            id
+            title
+            description
+            createdTime
+            lastUpdatedTime
+            members{
+                member
+                role
+            }
+            management
+            visibility
+        }
+    }
+}

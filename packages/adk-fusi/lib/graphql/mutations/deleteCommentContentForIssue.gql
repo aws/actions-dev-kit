@@ -1,0 +1,6 @@
+mutation deleteCommentContentForIssue($input: DeleteCommentContentForIssueInput!){
+    deleteCommentContentForIssue(input: $input){
+        id
+        version
+    }
+}

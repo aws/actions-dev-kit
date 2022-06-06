@@ -1,0 +1,18 @@
+mutation disposeArtifactPackageVersions($input: DisposeArtifactPackageVersionsInput!){
+    disposeArtifactPackageVersions(input: $input){
+        successfulVersions{
+            key
+            value{
+                revision
+                status
+            }
+        }
+        failedVersions{
+            key
+            value{
+                errorCode
+                errorMessage
+            }
+        }
+    }
+}

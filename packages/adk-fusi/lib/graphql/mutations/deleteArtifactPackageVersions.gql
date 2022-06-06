@@ -1,0 +1,18 @@
+mutation deleteArtifactPackageVersions($input: DeleteArtifactPackageVersionsInput!){
+    deleteArtifactPackageVersions(input: $input){
+        successfulVersions{
+            key
+            value{
+                revision
+                status
+            }
+        }
+        failedVersions{
+            key
+            value{
+                errorCode
+                errorMessage
+            }
+        }
+    }
+}

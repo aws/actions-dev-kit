@@ -1,0 +1,10 @@
+schema: ./schema.json
+generates:
+  ./lib/fusi.ts:
+    plugins:
+      - add:
+          content: '/* DO NOT EDIT FILE MANUALLY. USE generate:types:gql COMMAN TO UPDATE TYPES*/'
+      - typescript
+    config:
+      withHooks: false
+      maybeValue: T

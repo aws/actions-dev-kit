@@ -1,0 +1,16 @@
+query listCodeCoverageRunResultsStatistics($input: ListCodeCoverageRunResultsInput!){
+    listCodeCoverageRunResultsStatistics(input: $input){
+        totalItems
+        totalPages
+        lineCoverage{
+            percentageCovered
+            coveredCount
+            missedCount
+        }
+        branchCoverage{
+            percentageCovered
+            coveredCount
+            missedCount
+        }
+    }
+}

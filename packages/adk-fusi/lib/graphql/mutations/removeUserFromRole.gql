@@ -1,0 +1,5 @@
+mutation removeUserFromRole($input: RemoveUserFromRoleInput!){
+    removeUserFromRole(input: $input){
+        friendlyArn
+    }
+}

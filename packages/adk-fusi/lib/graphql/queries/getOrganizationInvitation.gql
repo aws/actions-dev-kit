@@ -1,0 +1,13 @@
+query getOrganizationInvitation($input: GetOrganizationInvitationRequestInput!){
+    getOrganizationInvitation(input: $input){
+        lastUpdatedTime
+        timestamp
+        inviterUserName
+        inviteeEmailAddress
+        inviteeDisplayName
+        signupEmailAddress
+        organizationName
+        status
+        inviteeRole
+    }
+}

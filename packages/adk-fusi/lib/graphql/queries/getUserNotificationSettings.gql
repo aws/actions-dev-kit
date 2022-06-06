@@ -1,0 +1,8 @@
+query getUserNotificationSettings($input: GetUserNotificationSettingsRequestInput!){
+    getUserNotificationSettings(input: $input){
+        settings{
+            status
+            resourceType
+        }
+    }
+}

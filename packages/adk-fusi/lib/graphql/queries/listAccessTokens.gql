@@ -1,0 +1,10 @@
+query listAccessTokens($input: ListAccessTokensRequestInput!){
+    listAccessTokens(input: $input){
+        items{
+            accessTokenId
+            name
+            expires
+        }
+        nextToken
+    }
+}

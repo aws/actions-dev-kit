@@ -1,0 +1,11 @@
+query listArtifactPackages($input: ListArtifactPackagesInput!){
+    listArtifactPackages(input: $input){
+        nextToken
+        items{
+            name
+            lastUpdatedTime
+            namespace
+            format
+        }
+    }
+}

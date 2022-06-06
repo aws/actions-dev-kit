@@ -1,0 +1,6 @@
+mutation createSourceRepository($input: CreateSourceRepositoryInput!){
+    createSourceRepository(input: $input){
+        version
+        id
+    }
+}

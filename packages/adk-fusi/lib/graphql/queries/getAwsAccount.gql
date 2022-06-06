@@ -1,0 +1,28 @@
+query getAwsAccount($input: GetAwsAccountRequestInput!){
+    getAwsAccount(input: $input){
+        organizationName
+        awsAccountName
+        name
+        awsAccountId
+        status
+        description
+        createdTime
+        lastUpdatedTime
+        requesterId{
+            userId
+            userName
+            displayName
+            primaryEmail{
+                email
+                verified
+            }
+            version
+        }
+        accountConnectionToken
+        connectionRequestedFeatures{
+            type
+            details
+        }
+        connectionId
+    }
+}

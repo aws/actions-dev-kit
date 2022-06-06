@@ -1,0 +1,6 @@
+mutation createEnvironment($input: CreateEnvironmentInput!){
+    createEnvironment(input: $input){
+        version
+        id
+    }
+}

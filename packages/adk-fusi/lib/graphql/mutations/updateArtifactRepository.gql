@@ -1,0 +1,5 @@
+mutation updateArtifactRepository($input: UpdateArtifactRepositoryInput!){
+    updateArtifactRepository(input: $input){
+        version
+    }
+}

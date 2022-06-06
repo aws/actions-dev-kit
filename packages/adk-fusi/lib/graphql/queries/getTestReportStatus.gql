@@ -1,0 +1,14 @@
+query getTestReportStatus($input: GetTestReportStatusInput!){
+    getTestReportStatus(input: $input){
+        id
+        name
+        lastUpdatedTime
+        actionRunId
+        phaseHistory{
+            name
+            state
+            startTime
+            errorMessage
+        }
+    }
+}

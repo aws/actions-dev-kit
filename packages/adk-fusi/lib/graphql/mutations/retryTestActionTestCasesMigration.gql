@@ -1,0 +1,6 @@
+mutation retryTestActionTestCasesMigration($input: RetryTestActionTestCasesMigrationInput!){
+    retryTestActionTestCasesMigration(input: $input){
+        id
+        status
+    }
+}

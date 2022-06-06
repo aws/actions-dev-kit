@@ -1,0 +1,21 @@
+query listCommentsForIssue($input: ListCommentsForIssueInput!){
+    listCommentsForIssue(input: $input){
+        nextToken
+        items{
+            issueId
+            threadId
+            commentRepliedToId
+            creatorId
+            commentId
+            creationTime
+            lastUpdatedTime
+            content
+            contentType
+            deleted
+            reactions{
+                key
+                value
+            }
+        }
+    }
+}

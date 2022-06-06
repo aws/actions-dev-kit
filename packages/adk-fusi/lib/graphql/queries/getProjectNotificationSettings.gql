@@ -1,0 +1,11 @@
+query getProjectNotificationSettings($input: GetProjectNotificationSettingsRequestInput!){
+    getProjectNotificationSettings(input: $input){
+        locale
+        settings{
+            resourceId
+            status
+            eventType
+            channelIds
+        }
+    }
+}

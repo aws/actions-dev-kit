@@ -1,0 +1,12 @@
+query getRoleMapping($input: GetRoleMappingInput!){
+    getRoleMapping(input: $input){
+        id
+        title
+        resourceId
+        lastUpdatedTime
+        roleMappings{
+            roleId
+            associatedIdentities
+        }
+    }
+}

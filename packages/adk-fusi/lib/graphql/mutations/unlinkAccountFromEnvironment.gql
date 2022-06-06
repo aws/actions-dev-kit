@@ -1,0 +1,8 @@
+mutation unlinkAccountFromEnvironment($input: UnlinkAccountFromEnvironmentRequestInput!){
+    unlinkAccountFromEnvironment(input: $input){
+        organizationName
+        projectName
+        environmentName
+        name
+    }
+}
