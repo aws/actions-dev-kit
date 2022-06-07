@@ -1,0 +1,17 @@
+mutation acceptProjectInvitation($input: AcceptProjectInvitationRequestInput!){
+    acceptProjectInvitation(input: $input){
+        projectInvitation{
+            id
+            title
+            lastUpdatedTime
+            timestamp
+            inviterUserName
+            inviteeEmailAddress
+            inviteeDisplayName
+            signupEmailAddress
+            projectName
+            status
+            inviteeRole
+        }
+    }
+}

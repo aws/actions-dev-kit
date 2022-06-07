@@ -1,0 +1,19 @@
+query getSourceRepositoryCommit($input: GetSourceRepositoryCommitInput){
+    getSourceRepositoryCommit(input: $input){
+        additionalData
+        author{
+            date
+            email
+            name
+        }
+        commitId
+        committer{
+            date
+            email
+            name
+        }
+        message
+        parents
+        treeId
+    }
+}

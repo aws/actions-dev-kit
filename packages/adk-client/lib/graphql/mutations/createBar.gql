@@ -1,0 +1,5 @@
+mutation createBar($input: CreateBarInput!){
+    createBar(input: $input){
+        versionId
+    }
+}

@@ -1,0 +1,23 @@
+query getConnection($input: GetConnectionInput!){
+    getConnection(input: $input){
+        organizationName
+        name
+        creatorId{
+            userId
+            userName
+            displayName
+            primaryEmail{
+                email
+                verified
+            }
+            version
+        }
+        providerId
+        providerData{
+            account
+        }
+        status
+        statusMessage
+        lastUpdatedTime
+    }
+}

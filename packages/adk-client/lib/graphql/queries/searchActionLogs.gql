@@ -1,0 +1,10 @@
+query searchActionLogs($input: SearchActionLogsInput!){
+    searchActionLogs(input: $input){
+        events{
+            timestamp
+            message
+            eventId
+        }
+        nextToken
+    }
+}

@@ -1,0 +1,14 @@
+query listSourceRevisions($input: ListSourceRevisionsInput!){
+    listSourceRevisions(input: $input){
+        items{
+            number
+            sourceCommitId
+            mergeBaseCommitId
+            pullRequestId
+            approvals
+            revokedApprovals
+            lastUpdatedTime
+        }
+        nextToken
+    }
+}

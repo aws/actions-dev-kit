@@ -1,0 +1,12 @@
+query listEnvironmentDeployments($input: ListEnvironmentDeploymentsInput!){
+    listEnvironmentDeployments(input: $input){
+        nextToken
+        items{
+            deploymentPlatform
+            region
+            status
+            lastUpdatedTime
+            deploymentMessage
+        }
+    }
+}

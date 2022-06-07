@@ -1,0 +1,16 @@
+mutation updateDevelopmentWorkspace($input: UpdateDevelopmentWorkspaceRequestInput!){
+    updateDevelopmentWorkspace(input: $input){
+        id
+        organizationName
+        projectName
+        updateBehavior
+        alias
+        ides{
+            runtime
+            name
+        }
+        instanceType
+        inactivityTimeoutMinutes
+        clientToken
+    }
+}

@@ -1,0 +1,8 @@
+query getEnvironment($input: GetEnvironmentInput!){
+    getEnvironment(input: $input){
+        name
+        updateTime
+        description
+        environmentType
+    }
+}

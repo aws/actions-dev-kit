@@ -1,0 +1,18 @@
+query listStaticAnalysisFindingStatistics($input: ListStaticAnalysisFindingsStatisticsRequestInput!){
+    listStaticAnalysisFindingStatistics(input: $input){
+        totalFindings
+        totalPages
+        mappedSeverityCounts{
+            name
+            count
+        }
+        originalSeverityCounts{
+            name
+            count
+        }
+        categoryCounts{
+            name
+            count
+        }
+    }
+}

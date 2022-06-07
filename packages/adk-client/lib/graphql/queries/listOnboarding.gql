@@ -1,0 +1,19 @@
+query listOnboarding($input: ListOnboardingInput!){
+    listOnboarding(input: $input){
+        nextToken
+        items{
+            onboardingId
+            submitted
+            dismissed
+            nextQuestion
+            sections{
+                questionType
+                questionId
+                answers{
+                    answerId
+                    userInput
+                }
+            }
+        }
+    }
+}

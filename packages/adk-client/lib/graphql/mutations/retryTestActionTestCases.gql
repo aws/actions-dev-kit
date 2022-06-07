@@ -1,0 +1,6 @@
+mutation retryTestActionTestCases($input: RetryTestActionTestCasesRequestInput!){
+    retryTestActionTestCases(input: $input){
+        id
+        status
+    }
+}

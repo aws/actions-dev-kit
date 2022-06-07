@@ -1,0 +1,11 @@
+query listLinkableSourceRepositories($input: ListLinkableSourceRepositoriesInput!){
+    listLinkableSourceRepositories(input: $input){
+        nextToken
+        items{
+            name
+            linkStatus
+            providerCanonicalId
+            providerCanonicalUrl
+        }
+    }
+}

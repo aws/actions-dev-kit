@@ -1,0 +1,5 @@
+mutation createIssueStoreLabel($input: CreateIssueStoreLabelRequestInput!){
+    createIssueStoreLabel(input: $input){
+        id
+    }
+}

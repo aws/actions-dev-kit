@@ -1,0 +1,5 @@
+mutation mergeSourcePullRequestByFastForward($input: MergeSourcePullRequestByFastForwardInput!){
+    mergeSourcePullRequestByFastForward(input: $input){
+        number
+    }
+}

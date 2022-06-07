@@ -49,7 +49,7 @@
   "license": "ISC",
   "stability": "experimental",
   "scripts": {
-    "build": "tsc && eslint **/*.ts && jsii",
+    "build": "tsc && jsii",
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix '**/*.ts'",
     "package": "jsii-pacmak",

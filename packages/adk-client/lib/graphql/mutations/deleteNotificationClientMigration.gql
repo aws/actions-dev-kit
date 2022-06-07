@@ -1,0 +1,7 @@
+mutation deleteNotificationClientMigration($input: DeleteNotificationClientMigrationInput!){
+    deleteNotificationClientMigration(input: $input){
+        organizatioName
+        projectName
+        id
+    }
+}

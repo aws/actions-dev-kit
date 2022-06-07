@@ -1,0 +1,15 @@
+query getPullRequestRequirementStatus($input: GetPullRequestRequirementStatusInput!){
+    getPullRequestRequirementStatus(input: $input){
+        sourceCommitSha1
+        mergeBaseCommitSha1
+        destinationCommitSha1
+        mergeOptions
+        mergeRequirementsMet
+        mergeRequirements{
+            requiredReviewersApprovalRule{
+                reviewersApproved
+                reviewersRequired
+            }
+        }
+    }
+}

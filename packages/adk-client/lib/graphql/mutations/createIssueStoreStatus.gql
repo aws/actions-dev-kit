@@ -1,0 +1,5 @@
+mutation createIssueStoreStatus($input: CreateIssueStoreStatusRequestInput!){
+    createIssueStoreStatus(input: $input){
+        id
+    }
+}

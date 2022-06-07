@@ -1,0 +1,23 @@
+query listSourcePullRequestToJiraIssueLinks($input: ListSourcePullRequestToJiraIssueLinkInput!){
+    listSourcePullRequestToJiraIssueLinks(input: $input){
+        nextToken
+        items{
+            issue{
+                id
+                title
+                creator
+                description
+                createdTime
+                lastUpdatedTime
+                status
+                shortId
+                assignees
+                priority
+                issueType
+                providerCanonicalId
+                providerCanonicalUrl
+            }
+            linkId
+        }
+    }
+}

@@ -1,0 +1,27 @@
+query getIssueMigration($input: GetIssueRequestMigrationInput!){
+    getIssueMigration(input: $input){
+        item{
+            id
+            title
+            updatedAt
+            versionId
+            statusId
+            description
+            issueStoreId
+            archived
+            blocked
+            assigneeIds
+            createdAt
+            createdBy
+            updatedBy
+            priority
+            labelIds
+            estimate
+            customFields{
+                name
+                type
+                value
+            }
+        }
+    }
+}

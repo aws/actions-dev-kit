@@ -1,0 +1,8 @@
+mutation linkAccountToEnvironment($input: LinkAccountToEnvironmentRequestInput!){
+    linkAccountToEnvironment(input: $input){
+        organizationName
+        projectName
+        environmentName
+        name
+    }
+}

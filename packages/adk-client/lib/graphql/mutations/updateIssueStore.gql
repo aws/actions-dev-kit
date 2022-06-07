@@ -1,0 +1,5 @@
+mutation updateIssueStore($input: UpdateIssueStoreInput!){
+    updateIssueStore(input: $input){
+        identifier
+    }
+}

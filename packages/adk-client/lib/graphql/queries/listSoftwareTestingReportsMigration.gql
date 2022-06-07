@@ -1,0 +1,51 @@
+query listSoftwareTestingReportsMigration($nextToken: String, $pageSize: Int, $input: ListSoftwareTestingReportsInputMigrationInput!){
+    listSoftwareTestingReportsMigration(input: $input){
+        nextToken
+        items{
+            reportId
+            workflowId
+            actionName
+            repositoryName
+            sourceRepository{
+                id
+                name
+                projectName
+                description
+                defaultBranch
+                lastUpdatedTime
+                creationDate
+                autoInitialize{
+                    repositoryTemplateType
+                    readmeType
+                    gitIgnoreType
+                }
+                metadata{
+                    providerCanonicalId
+                    providerCanonicalUrl
+                }
+                branches(nextToken: $nextToken, pageSize: $pageSize){
+                    nextToken
+                    items{
+                        id
+                        sourceRepositoryName
+                        branchName
+                        lastUpdatedTime
+                        headCommitId
+                        beforeCommitId
+                        beforeDocumentCommitId
+                        ordinal
+                    }
+                }
+            }
+            branchName
+            reportName
+            reportType
+            latestReportRun{
+                reportRunId
+                actionRunId
+                lastRunAt
+                passingStatus
+            }
+        }
+    }
+}

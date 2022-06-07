@@ -1,0 +1,5 @@
+mutation deleteExtensionInstallation($input: DeleteExtensionInstallationInput!){
+    deleteExtensionInstallation(input: $input){
+        version
+    }
+}

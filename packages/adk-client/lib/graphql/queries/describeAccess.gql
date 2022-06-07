@@ -1,0 +1,6 @@
+query describeAccess{
+    describeAccess{
+        organizations
+        projects
+    }
+}

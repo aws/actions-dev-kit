@@ -1,0 +1,10 @@
+query getSourceRepositoryFile($input: GetSourceRepositoryFileInput){
+    getSourceRepositoryFile(input: $input){
+        blobId
+        commitId
+        fileContent
+        fileMode
+        filePath
+        fileSize
+    }
+}

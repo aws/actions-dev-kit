@@ -1,0 +1,16 @@
+query listCodeCoverageRunResultsStatisticsMigration($input: ListCodeCoverageRunResultsInputMigrationInput!){
+    listCodeCoverageRunResultsStatisticsMigration(input: $input){
+        totalItems
+        totalPages
+        lineCoverage{
+            percentageCovered
+            coveredCount
+            missedCount
+        }
+        branchCoverage{
+            percentageCovered
+            coveredCount
+            missedCount
+        }
+    }
+}

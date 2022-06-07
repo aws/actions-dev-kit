@@ -1,0 +1,21 @@
+query getProjectActivityFeed($input: GetProjectActivityFeedInput!){
+    getProjectActivityFeed(input: $input){
+        items{
+            type
+            organizationName
+            projectName
+            primaryActor{
+                type
+                name
+            }
+            primaryResource{
+                type
+                name
+            }
+            status
+            timestamp
+            title
+            content
+        }
+    }
+}

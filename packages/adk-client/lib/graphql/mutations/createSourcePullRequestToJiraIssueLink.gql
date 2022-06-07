@@ -1,0 +1,5 @@
+mutation createSourcePullRequestToJiraIssueLink($input: CreateSourcePullRequestToJiraIssueLinkInput!){
+    createSourcePullRequestToJiraIssueLink(input: $input){
+        id
+    }
+}

@@ -1,0 +1,27 @@
+query getIssueStore($input: GetIssueStoreInput!){
+    getIssueStore(input: $input){
+        item{
+            id
+            lastUpdatedTime
+            statuses{
+                id
+                name
+                highLevelStatus
+                order
+                active
+            }
+            estimationType
+            labels{
+                id
+                name
+                color
+            }
+            savedViews{
+                viewId
+                viewName
+                viewData
+            }
+            maxAssigneesPerIssue
+        }
+    }
+}

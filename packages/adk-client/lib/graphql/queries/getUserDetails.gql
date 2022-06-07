@@ -1,0 +1,12 @@
+query getUserDetails($input: GetUserDetailsRequestInput!){
+    getUserDetails(input: $input){
+        userId
+        userName
+        displayName
+        primaryEmail{
+            email
+            verified
+        }
+        version
+    }
+}

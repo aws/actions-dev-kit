@@ -1,0 +1,7 @@
+mutation deleteNotificationChannel($input: DeleteNotificationChannelRequestInput!){
+    deleteNotificationChannel(input: $input){
+        organizationName
+        projectName
+        id
+    }
+}

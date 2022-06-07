@@ -1,0 +1,5 @@
+mutation createExternalArtifactRepository($input: CreateExternalArtifactRepositoryInput!){
+    createExternalArtifactRepository(input: $input){
+        version
+    }
+}

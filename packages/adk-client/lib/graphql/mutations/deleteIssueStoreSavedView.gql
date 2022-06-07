@@ -1,0 +1,5 @@
+mutation deleteIssueStoreSavedView($input: DeleteIssueStoreSavedViewInput!){
+    deleteIssueStoreSavedView(input: $input){
+        id
+    }
+}

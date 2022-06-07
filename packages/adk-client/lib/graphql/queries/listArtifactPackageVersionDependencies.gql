@@ -1,0 +1,15 @@
+query listArtifactPackageVersionDependencies($input: ListArtifactPackageVersionDependenciesInput!){
+    listArtifactPackageVersionDependencies(input: $input){
+        nextToken
+        items{
+            type
+            namespace
+            name
+            versionRequirement
+        }
+        format
+        namespace
+        name
+        version
+    }
+}

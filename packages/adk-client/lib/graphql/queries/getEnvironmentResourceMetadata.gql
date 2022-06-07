@@ -1,0 +1,5 @@
+query getEnvironmentResourceMetadata($input: GetEnvironmentResourceMetadataRequestInput!){
+    getEnvironmentResourceMetadata(input: $input){
+        data
+    }
+}

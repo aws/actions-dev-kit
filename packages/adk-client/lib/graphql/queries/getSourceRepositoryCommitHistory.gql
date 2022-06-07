@@ -1,0 +1,22 @@
+query getSourceRepositoryCommitHistory($input: GetSourceRepositoryCommitHistoryInput){
+    getSourceRepositoryCommitHistory(input: $input){
+        entries{
+            additionalData
+            author{
+                date
+                email
+                name
+            }
+            commitId
+            committer{
+                date
+                email
+                name
+            }
+            message
+            parents
+            treeId
+        }
+        nextToken
+    }
+}

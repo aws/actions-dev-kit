@@ -1,0 +1,10 @@
+query getBuildLogs($input: GetBuildLogsInput!){
+    getBuildLogs(input: $input){
+        nextToken
+        previousToken
+        events{
+            timestamp
+            message
+        }
+    }
+}

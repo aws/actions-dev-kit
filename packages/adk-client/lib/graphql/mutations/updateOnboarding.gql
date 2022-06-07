@@ -1,0 +1,16 @@
+mutation updateOnboarding($input: UpdateOnboardingInput!){
+    updateOnboarding(input: $input){
+        onboardingId
+        submitted
+        dismissed
+        nextQuestion
+        sections{
+            questionType
+            questionId
+            answers{
+                answerId
+                userInput
+            }
+        }
+    }
+}

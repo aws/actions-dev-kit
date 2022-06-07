@@ -1,0 +1,12 @@
+query getPerson($input: GetPersonRequestInput!){
+    getPerson(input: $input){
+        userId
+        userName
+        displayName
+        primaryEmail{
+            email
+            verified
+        }
+        version
+    }
+}

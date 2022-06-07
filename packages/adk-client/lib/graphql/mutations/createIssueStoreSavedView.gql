@@ -1,0 +1,5 @@
+mutation createIssueStoreSavedView($input: CreateIssueStoreSavedViewRequestInput!){
+    createIssueStoreSavedView(input: $input){
+        id
+    }
+}

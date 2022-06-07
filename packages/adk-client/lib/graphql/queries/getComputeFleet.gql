@@ -1,0 +1,24 @@
+query getComputeFleet($input: GetComputeFleetInput!){
+    getComputeFleet(input: $input){
+        name
+        creationTime
+        lastUpdatedTime
+        computeSettings{
+            architecture
+            os
+            executionModel
+            vcpu
+            memory
+            disk
+        }
+        resolvedInstanceType
+        desiredCapacity
+        overflowBehavior
+        status
+        statusContext{
+            code
+            message
+        }
+        id
+    }
+}

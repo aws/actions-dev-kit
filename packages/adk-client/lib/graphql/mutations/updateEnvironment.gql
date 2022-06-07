@@ -1,0 +1,5 @@
+mutation updateEnvironment($input: UpdateEnvironmentInput!){
+    updateEnvironment(input: $input){
+        version
+    }
+}

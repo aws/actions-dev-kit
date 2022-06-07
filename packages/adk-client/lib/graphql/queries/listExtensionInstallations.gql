@@ -1,0 +1,10 @@
+query listExtensionInstallations($input: ListExtensionInstallationsInput!){
+    listExtensionInstallations(input: $input){
+        nextToken
+        items{
+            organizationName
+            extensionId
+            extensionVersion
+        }
+    }
+}

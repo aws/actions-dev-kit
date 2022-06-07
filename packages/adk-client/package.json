@@ -1,0 +1,36 @@
+{
+  "name": "@quokka/adk-client",
+  "version": "1.0.0",
+  "main": "dist/lib/fusi.js",
+  "types": "dist/lib/fusi.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepare": "npm run build",
+    "clean": "rm -rf ./dist/lib/graphql",
+    "build": "npm run clean && tsc && mkdir ./dist/lib/graphql && cp -r ./lib/graphql/* ./dist/lib/graphql/",
+    "codegen": "graphql-codegen && gqlg --schemaFilePath ./schema.graphql --destDirPath lib/graphql",
+    "lint": "eslint **/*.ts",
+    "lint:fix": "eslint --fix '**/*.ts'"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^2.0.2",
+    "@graphql-codegen/cli": "^1.20.1",
+    "@graphql-codegen/typescript": "^1.21.0",
+    "@graphql-codegen/typescript-operations": "^1.17.14",
+    "@types/jest": "^28.1.1",
+    "@types/node": "^12.6.9",
+    "@types/node-fetch": "^2.5.11",
+    "apollo": "^2.32.5",
+    "gql-generator": "~1.0.13",
+    "graphql": "^15.5.0",
+    "typescript-json-schema": "^0.50.0"
+  },
+  "npm-pretty-much": {
+    "runTest": "never"
+  }
+}

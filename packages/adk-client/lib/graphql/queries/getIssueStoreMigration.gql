@@ -1,0 +1,11 @@
+query getIssueStoreMigration($input: GetIssueStoreRequestMigrationInput!){
+    getIssueStoreMigration(input: $input){
+        item{
+            id
+            updatedAt
+            estimationType
+            maxAssigneesPerIssue
+            versionId
+        }
+    }
+}

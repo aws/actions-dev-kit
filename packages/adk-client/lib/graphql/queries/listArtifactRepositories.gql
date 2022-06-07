@@ -1,0 +1,16 @@
+query listArtifactRepositories($input: ListArtifactRepositoriesInput!){
+    listArtifactRepositories(input: $input){
+        nextToken
+        items{
+            id
+            name
+            description
+            lastUpdatedTime
+            upstreams{
+                name
+            }
+            externalConnection
+            repositoryType
+        }
+    }
+}

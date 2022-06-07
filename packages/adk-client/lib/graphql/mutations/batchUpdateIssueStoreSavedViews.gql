@@ -1,0 +1,14 @@
+mutation batchUpdateIssueStoreSavedViews($input: BatchUpdateIssueStoreSavedViewsRequestInput!){
+    batchUpdateIssueStoreSavedViews(input: $input){
+        errors{
+            id
+            code
+            message
+        }
+        items{
+            id
+            name
+            query
+        }
+    }
+}

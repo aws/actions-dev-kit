@@ -1,0 +1,5 @@
+mutation createExtensionInstallation($input: CreateExtensionInstallationInput!){
+    createExtensionInstallation(input: $input){
+        id
+    }
+}
