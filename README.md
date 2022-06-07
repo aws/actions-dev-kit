@@ -96,7 +96,17 @@ This operation will publish Action <Org>/MyAction:1.0.0 to "Public catalog". Are
 * 11. help - shows the current set of commands
 
 
-## Getting Started
+## Getting Started Guides
+
+### Installation Guide
+
+- [Install Guide](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/guides/install.md/browse)
+
+### ADK CLI Guide
+- [ADK CLI Guide](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/guides/adk-cli.md/browse)
+
+### ADK SDK Guide
+- [ADK CLI Guide](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/guides/adk-lib.md/browse)
 
 ### Prerequisites
 
