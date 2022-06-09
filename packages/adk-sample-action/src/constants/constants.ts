@@ -1,0 +1,13 @@
+export const INCORRECT_BOOLEAN_FLAG_VALUE = 'Boolean should either be true or false.';
+export const INCORRECT_LOG_TYPE_VALUE = 'Log type can be either None or Tail.';
+export const EMPTY_AWS_REGION = 'Aws Region cannot be empty.';
+export const EMPTY_LAMBDA_FUNCTION = 'Lambda function name cannot be empty.';
+export const LAMBDA_FUNCTION_ERROR = 'Lambda function name is incorrect or Lambda function does not exist in the provided region.';
+export const INVALID_JSON_FORMAT = 'Payload has invalid json format.';
+export const LAMBDA_INVOKE_FAILURE = 'Lambda invocation failed! Check the logs for more information.';
+export const INVALID_JQ_EXPRESSION = 'Jq Expression is invalid';
+export const REQUEST_PAYLOAD_CONFIGURATION_ERROR = 'Both request payload and file cannot be provided.';
+export const INVALID_FILE_PATH = 'Request payload file path is invalid.';
+export const LAMBDA_RESPONSE_FILE = 'lambda-response.json';
+export const INVALID_JSON_OBJECT_TO_FILE = 'An error occured while writing lambda response JSON object to file.';
+export const LAMBDA_RESPONSE_FILE_SAVED = 'Lambda response JSON file has been saved';

@@ -1,0 +1,36 @@
+{
+  "name": "lambdainvokeaction",
+  "version": "1.0.0",
+  "description": "Lambda Invoke Action",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write '**/*.ts'",
+    "format-check": "prettier --check '**/*.ts'",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint --fix '**/*.ts'",
+    "package": "ncc build -o dist",
+    "all": "npm run build && npm run package"
+  },
+  "dependencies": {
+    "@quokka/adk-core": "^0.22.0",
+    "@quokka/issue": "^0.22.0",
+    "@types/jest": "^27.5.0",
+    "@vercel/ncc": "^0.31.1",
+    "aws-sdk": "^2.1125.0",
+    "node-jq": "^2.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.27",
+    "@typescript-eslint/parser": "^5.8.1",
+    "eslint": "^8.0.1",
+    "eslint-plugin-github": "^4.3.6",
+    "eslint-plugin-jest": "^25.3.2",
+    "jest": "^27.2.5",
+    "js-yaml": "^4.1.0",
+    "npx": "^10.2.2",
+    "prettier": "2.5.1",
+    "ts-jest": "^27.1.2",
+    "typescript": "^4.4.4"
+  }
+}

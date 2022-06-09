@@ -1,0 +1,22 @@
+name: 'AWS Create Issue Action'
+description: 'This Action creates the issue in the backlog'
+inputs:
+  endpoint:
+    description: 'Caws endpoint'
+    required: true
+  cookie:
+    description: 'Caws cookie'
+    required: true
+  csrf_token:
+      description: 'Caws csrf token'
+      required: true
+  title:
+    description: 'Issue title'
+    required: true
+  description:
+    description: 'Issue description'
+    required: false
+    default: ''
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
