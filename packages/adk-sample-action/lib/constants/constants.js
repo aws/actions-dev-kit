@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.LAMBDA_RESPONSE_FILE_SAVED = exports.INVALID_JSON_OBJECT_TO_FILE = exports.LAMBDA_RESPONSE_FILE = exports.INVALID_FILE_PATH = exports.REQUEST_PAYLOAD_CONFIGURATION_ERROR = exports.INVALID_JQ_EXPRESSION = exports.LAMBDA_INVOKE_FAILURE = exports.INVALID_JSON_FORMAT = exports.LAMBDA_FUNCTION_ERROR = exports.EMPTY_LAMBDA_FUNCTION = exports.EMPTY_AWS_REGION = exports.INCORRECT_LOG_TYPE_VALUE = exports.INCORRECT_BOOLEAN_FLAG_VALUE = void 0;
+exports.INCORRECT_BOOLEAN_FLAG_VALUE = 'Boolean should either be true or false.';
+exports.INCORRECT_LOG_TYPE_VALUE = 'Log type can be either None or Tail.';
+exports.EMPTY_AWS_REGION = 'Aws Region cannot be empty.';
+exports.EMPTY_LAMBDA_FUNCTION = 'Lambda function name cannot be empty.';
+exports.LAMBDA_FUNCTION_ERROR = 'Lambda function name is incorrect or Lambda function does not exist in the provided region.';
+exports.INVALID_JSON_FORMAT = 'Payload has invalid json format.';
+exports.LAMBDA_INVOKE_FAILURE = 'Lambda invocation failed! Check the logs for more information.';
+exports.INVALID_JQ_EXPRESSION = 'Jq Expression is invalid';
+exports.REQUEST_PAYLOAD_CONFIGURATION_ERROR = 'Both request payload and file cannot be provided.';
+exports.INVALID_FILE_PATH = 'Request payload file path is invalid.';
+exports.LAMBDA_RESPONSE_FILE = 'lambda-response.json';
+exports.INVALID_JSON_OBJECT_TO_FILE = 'An error occured while writing lambda response JSON object to file.';
+exports.LAMBDA_RESPONSE_FILE_SAVED = 'Lambda response JSON file has been saved';

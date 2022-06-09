@@ -2,7 +2,7 @@
   "name": "@quokka/adk-sample-action",
   "version": "1.0.0",
   "description": "Sample create issue action",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
