@@ -9,13 +9,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **construct:** Add issue construct ([aec7a7a](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/aec7a7a9c1c1dd3e01407fe3aea449978f28c758))
-
-
-
-
-
-# 0.22.0 (2022-06-03)
-
-### Features
-
-feat(construct): Add issue construct
+* **fusi:** Add fusi client ([b2c85e4](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/b2c85e47e84b99ec2a91378203d1d3bc457f769e))
