@@ -1,0 +1,22 @@
+{
+  "name": "@quokka/issue",
+  "version": "0.22.0",
+  "description": "Quokka issue entity",
+  "homepage": "",
+  "license": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc && eslint **/*.ts",
+    "lint": "eslint **/*.ts",
+    "test": "jest --verbose"
+  },
+  "devDependencies": {
+    "@quokka/adk-core": "0.22.0",
+    "@quokka/organization": "0.22.0",
+    "@quokka/project": "0.22.0",
+    "@quokka/adk-client": "1.0.0"
+  }
+}

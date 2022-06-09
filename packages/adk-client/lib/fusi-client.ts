@@ -12,7 +12,7 @@ export interface GraphQLQuery<T> {
     query: string;
     endpoint: string;
     variables: Record<string, any>;
-    cookie: string;
+    cred: Credential;
     responseDeserializer: (data: any) => T;
 }
 
@@ -20,7 +20,7 @@ export class GraphQLQueryBuilder {
     constructor(private operation: string, private input: object) {
     }
 
-    public build(endpoint: string, cookie: string): GraphQLQuery<any> {
+    public build(endpoint: string, cred: Credential): GraphQLQuery<any> {
         return {
             query: queries[this.operation] ?? mutations[this.operation],
             endpoint: endpoint,
@@ -29,20 +29,21 @@ export class GraphQLQueryBuilder {
                     ...this.input,
                 },
             },
-            cookie: cookie,
+            cred: cred,
             responseDeserializer: data => ClientUtils.parseJson(data, this.operation),
         };
     }
 }
 
 export class ClientUtils {
-    public static async executeQuery<T>({ query, endpoint, variables, cookie, responseDeserializer }: GraphQLQuery<T>): Promise<T> {
+    public static async executeQuery<T>({ query, endpoint, variables, cred, responseDeserializer }: GraphQLQuery<T>): Promise<T> {
         const response = await fetch(endpoint, {
             headers: {
                 'content-type': 'application/json',
                 'x-api-key': X_API_KEY,
                 [UsingApiFetchHeaderName]: '1',
-                'Cookie': `${cookie}`,
+                'Cookie': `${cred.cookie}`,
+                'anti-csrftoken-a2z': `${cred.csrfToken}`,
             },
             body: JSON.stringify({ variables, query }),
             method: 'POST',
@@ -53,16 +54,17 @@ export class ClientUtils {
     }
 
     public static parseJson<T>(json: string, prop: string): T {
-        const obj = ClientUtils.parse(json);
-        if (obj == undefined) {
-            throw new Error('An internal server error has occurred');
+        const result = ClientUtils.parse(json);
+        const data = result.data;
+        if (data == undefined) {
+            throw new Error(`An internal server error has occurred ${result.message}`);
         }
 
-        if (obj.error) {
-            throw new Error(JSON.stringify(obj.error));
+        if (data.error) {
+            throw new Error(JSON.stringify(data.error));
         }
 
-        return obj[prop];
+        return data[prop];
     }
 
     public static parse(json: string): any {
@@ -72,20 +74,25 @@ export class ClientUtils {
             throw new Error(result.errors[0].message);
         }
 
-        return result.data;
+        return result;
     }
+}
+
+export interface Credential {
+    cookie: string,
+    csrfToken: string
 }
 
 export class FusiClientBase {
 
-    constructor(protected endpoint: string, protected cookie: string) {
+    constructor(protected endpoint: string, protected cred: Credential) {
     }
 
     public async getOrganization(input: GetOrganizationInput): Promise<GetOrganizationOutput> {
-        return await ClientUtils.executeQuery(new GraphQLQueryBuilder('getOrganization', input).build(this.endpoint, this.cookie));
+        return await ClientUtils.executeQuery(new GraphQLQueryBuilder('getOrganization', input).build(this.endpoint, this.cred));
     }
 
     public async getProject(input: GetProjectInput): Promise<GetProjectOutput> {
-        return await ClientUtils.executeQuery(new GraphQLQueryBuilder('getProject', input).build(this.endpoint, this.cookie));
+        return await ClientUtils.executeQuery(new GraphQLQueryBuilder('getProject', input).build(this.endpoint, this.cred));
     }
 }

@@ -8,8 +8,8 @@
   ],
   "scripts": {
     "prepare": "npm run build",
-    "clean": "rm -rf ./dist/lib/graphql",
-    "build": "npm run clean && tsc && mkdir ./dist/lib/graphql && cp -r ./lib/graphql/* ./dist/lib/graphql/",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc && cp -r lib/graphql dist/graphql/",
     "codegen": "graphql-codegen && gqlg --schemaFilePath ./schema.graphql --destDirPath lib/graphql",
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix '**/*.ts'"
