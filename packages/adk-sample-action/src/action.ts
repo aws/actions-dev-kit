@@ -7,6 +7,7 @@ import { CreateIssueOutput } from '@quokka/adk-client';
 export async function runAction(endpoint: string, cred: Credential, title: string, description: string): Promise<CreateIssueOutput> {
     const fusiClient = new QuokkaIssueProvider(endpoint, cred);
     const issue = new Issue(fusiClient);
+    console.log(`creating issue for endpoint: ${endpoint}, title: ${title}`);
     return issue.createIssueInBacklog(
         { name: 'TestOrganizationFranchen', id: 'test' },
         {

@@ -1,6 +1,5 @@
 import { runAction } from './action';
 import { getActionInput, info, setFailed } from './utils/adkcore-util';
-import { ValidationError } from './errors/validation-error';
 
 export function main() {
     try {
@@ -12,13 +11,14 @@ export function main() {
 
         runAction(endpoint, { cookie: cookie, csrfToken: token }, title, description)
             .then(function (data) {
+                console.log(data);
                 info(JSON.stringify(data));
             })
             .catch(function (error) {
-                setFailed(new ValidationError('error occurs when running the action'));
+                console.log(error);
             });
     } catch (error) {
-        setFailed(error);
+        console.log(error);
     }
 }
 

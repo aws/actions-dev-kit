@@ -64,6 +64,7 @@ export class Issue {
         if (backlogStatus == undefined) {
             throw new Error("can't find the backlog status");
         }
+        console.log(backlogStatus.id);
         return this.provider.createIssue({
             organizationName: organizationName,
             projectName: projectName,

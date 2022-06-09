@@ -15,6 +15,7 @@ function runAction(endpoint, cred, title, description) {
     return __awaiter(this, void 0, void 0, function* () {
         const fusiClient = new issue_1.QuokkaIssueProvider(endpoint, cred);
         const issue = new issue_1.Issue(fusiClient);
+        console.log(`creating issue for endpoint: ${endpoint}, title: ${title}`);
         return issue.createIssueInBacklog({ name: 'TestOrganizationFranchen', id: 'test' }, {
             id: 'test',
             name: 'TestProject',
