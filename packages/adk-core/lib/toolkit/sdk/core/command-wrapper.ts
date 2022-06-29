@@ -42,11 +42,13 @@ enum Level {
     FAULT = "Fault"
 }
 
+const summaryMessages: any[] = []
 function setRunSummary(text: any, level: Level) {
     const summaryMessage = {
         text: "\"" + text.toString() + "\"",
         label: "\"COMPUTE_ACTION\"",
         level: "\"" + level + "\""
     }
-    setOutputParam("CAWS_ACTION_RUN_SUMMARY", JSON.stringify(summaryMessage))
+    summaryMessages.push(summaryMessage)
+    setOutputParam("CAWS_ACTION_RUN_SUMMARY", JSON.stringify(summaryMessages))
 }
