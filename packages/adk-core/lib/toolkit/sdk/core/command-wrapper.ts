@@ -31,5 +31,22 @@ export function validateInput(inputVar: string) {
 export function setFailure(message: any, exitCode: number) {
     process.exitCode = exitCode;
     const errorText = message.toString();
+    setRunSummary(errorText, Level.ERROR);
     process.stdout.write(errorText + os.EOL);
+}
+
+enum Level {
+    ERROR = "Error",
+    WARNING = "Warning",
+    INFO = "Info",
+    FAULT = "Fault"
+}
+
+function setRunSummary(text: any, level: Level) {
+    const summaryMessage = {
+        text: "\"" + text.toString() + "\"",
+        label: "\"COMPUTE_ACTION\"",
+        level: "\"" + level + "\""
+    }
+    setOutputParam("CAWS_ACTION_RUN_SUMMARY", JSON.stringify(summaryMessage))
 }
