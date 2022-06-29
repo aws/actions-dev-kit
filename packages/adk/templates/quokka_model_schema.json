@@ -460,8 +460,7 @@
           "enum": [
             "node12",
             "node16",
-            "docker",
-            "composite"
+            "docker"
           ]
         }
       },
