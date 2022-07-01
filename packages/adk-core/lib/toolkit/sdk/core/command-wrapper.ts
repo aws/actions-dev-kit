@@ -31,24 +31,31 @@ export function validateInput(inputVar: string) {
 export function setFailure(message: any, exitCode: number) {
     process.exitCode = exitCode;
     const errorText = message.toString();
-    setRunSummary(errorText, Level.ERROR);
+    addRunSummary(errorText, Level.ERROR);
     process.stdout.write(errorText + os.EOL);
 }
 
 enum Level {
-    ERROR = "Error",
-    WARNING = "Warning",
-    INFO = "Info",
-    FAULT = "Fault"
+    ERROR = "Error"
 }
 
 const summaryMessages: any[] = []
-function setRunSummary(text: any, level: Level) {
+
+function addRunSummary(text: string | Error, level: Level) {
     const summaryMessage = {
-        text: "\"" + text.toString() + "\"",
-        label: "\"COMPUTE_ACTION\"",
-        level: "\"" + level + "\""
+        text: JSON.stringify(escapeData(text)),
+        label: JSON.stringify("COMPUTE_ACTION"),
+        level: JSON.stringify(escapeData(level))
     }
     summaryMessages.push(summaryMessage)
     setOutputParam("CAWS_ACTION_RUN_SUMMARY", JSON.stringify(summaryMessages))
+}
+
+function escapeData(s: string | Error): string {
+    return s.toString().replace(/%/g, '%25')
+        .replace(/\n/g, '%0A')
+        .replace(/\r/g, '%0D')
+        .replace(/\"/g, '')
+        .replace(/\\/g, '')
+        .replace(/#/g, '')
 }
