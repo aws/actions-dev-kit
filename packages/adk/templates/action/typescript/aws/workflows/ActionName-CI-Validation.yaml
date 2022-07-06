@@ -1,0 +1,22 @@
+Name: %%action_name%%-CI-Validation
+SchemaVersion: "1.0"
+Triggers:
+  - Type: PullRequest
+    Events: [ open, revision ]
+    Branches:
+      - main
+      - feature-.*
+Actions:
+  Validate%%action_name%%:
+    Identifier: aws/github-runner@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Configuration:
+      Steps:
+        - run: npm install
+        - run: npm run all
+        - name: %%action_name%%-Test
+          uses: .
+          with:
+            %%action_inputs%%

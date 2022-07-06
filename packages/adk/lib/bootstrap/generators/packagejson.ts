@@ -15,6 +15,7 @@ export class PackageJsonGenerator implements BoootstrapGenerator {
           Logger.log('Generating package.json');
           Logger.log(`${Object.keys(model)}`);
           Logger.log(`${Object.values(model)}`);
+          console.log(`${props.templateBasePath}/templates/action/${props.language}/package.json`);
           const templateContents = fs.readFileSync(`${props.templateBasePath}/templates/action/${props.language}/package.json`, 'utf-8');
           let templateKeys: { [key: string]: string } = {
               action_name: `${model.Name}`,
@@ -28,6 +29,7 @@ export class PackageJsonGenerator implements BoootstrapGenerator {
           return new BootstrapGeneratorResult();
       } catch (e) {
           Logger.error(e);
+          console.log(e);
           throw new BootstrapError(`${e}`);
       }
   }

@@ -6,9 +6,17 @@ export interface Model {
     Description?: string;
     Author?: string;
     Configuration?: Configuration;
-    Environment?: boolean;
-    Sources?: boolean;
+    Environment?: Environment;
+    Sources?: Sources;
     Runs?: RunConfig;
+}
+
+export interface Environment {
+  Required: boolean;
+}
+
+export interface Sources {
+  Required: boolean;
 }
 
 export interface Configuration {

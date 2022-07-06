@@ -9,6 +9,7 @@ import { PackageJsonGenerator, PACKAGE_JSON_GENERATOR } from './generators/packa
 import { FileCopyGenerator, FILE_COPY_GENERATOR } from './generators/fscopy';
 import { ReadmeGenerator, README_GENERATOR } from './generators/readme';
 import { RuntimeCodeGenerator, RUNTIME_CODE_GENERATOR } from './generators/runtime';
+import { WorkflowGenerator, WORKFLOW_GENERATOR } from './generators/workflow';
 
 @Module({
     controllers: [BootstrapController],
@@ -39,6 +40,10 @@ import { RuntimeCodeGenerator, RUNTIME_CODE_GENERATOR } from './generators/runti
         {
             provide: README_GENERATOR,
             useClass: ReadmeGenerator,
+        },
+        {
+            provide: WORKFLOW_GENERATOR,
+            useClass: WorkflowGenerator,          
         },
         ActionBootstrapGenerators,
         {

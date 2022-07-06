@@ -18,7 +18,7 @@ export class BootstrapController {
 
         // validation complete, now apply generators
         Logger.log('Validation succeeded for bootstrap');
-
+        console.log(`Properties file: ${props.file}`);
         if (this.boootstrapGenerator.bootstrap(parseModelFile(props.file), props)) {
           return 0;
         } else {

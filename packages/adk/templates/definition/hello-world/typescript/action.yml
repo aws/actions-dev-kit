@@ -23,7 +23,7 @@ Configuration:
     Type: number
     Default: 1
 Environment:
-  Required: true
+  Required: false
 Sources:
   Required: true
 Runs:
