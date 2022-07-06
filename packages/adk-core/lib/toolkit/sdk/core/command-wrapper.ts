@@ -48,7 +48,7 @@ function addRunSummary(text: string | Error, level: Level) {
         level: JSON.stringify(escapeData(level))
     }
     summaryMessages.push(summaryMessage)
-    setOutputParam("CAWS_ACTION_RUN_SUMMARY", JSON.stringify(summaryMessages))
+    setOutputParam("ACTION_RUN_SUMMARY", JSON.stringify(summaryMessages))
 }
 
 function escapeData(s: string | Error): string {
