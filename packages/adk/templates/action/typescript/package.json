@@ -7,7 +7,7 @@
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
     "format-check": "prettier --check '**/*.ts'",
-    "lint": "eslint **/*.ts",
+    "lint": "eslint **/*.ts --fix",
     "package": "tsc && jest && ncc build -o lib",
     "test": "jest",
     "all": "npm run build && npm run format && npm run lint && npm run package"
@@ -25,6 +25,8 @@
     "@typescript-eslint/parser": "^5.8.1",
     "eslint": "^7.32.0",
     "eslint-plugin-jest": "^25.3.2",
+    "eslint-plugin-import": "^2.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
     "jest": "^27.2.5",
     "npx": "^10.2.2",
     "prettier": "2.5.1",
