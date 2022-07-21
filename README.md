@@ -8,10 +8,10 @@ ADK (actions.dev kit) provides action authors right tooling and development supp
 
 ## Components
 
-ADK largely comprises of 2 parts, ADK CLI and SDK. 
-CLI provides the right interface to either start writing new actions, publish new actions/action versions or unpublish their existing published actions from Code.AWS catalog. 
-SDK on the other hand, allows Action developers to write their actions with highest quality using libraries interfaces which make action development easier and conforming to quality standards. Action authors can use ADK SDK to interact with metadata information about the action, workflows, compute, secrets, logs, events, output variables, artifacts, reports etc, 
-making it easier for the action author to fully model the input and output of the action code. 
+ADK largely comprises of 2 parts, ADK CLI and SDK.
+CLI provides the right interface to either start writing new actions, publish new actions/action versions or unpublish their existing published actions from Code.AWS catalog.
+SDK on the other hand, allows Action developers to write their actions with highest quality using libraries interfaces which make action development easier and conforming to quality standards. Action authors can use ADK SDK to interact with metadata information about the action, workflows, compute, secrets, logs, events, output variables, artifacts, reports etc,
+making it easier for the action author to fully model the input and output of the action code.
 
 ### ADK SDK (ADK Lib)
 
@@ -21,7 +21,7 @@ Using ADK SDK, customers can interact with Code.AWS concepts and resources. Lets
 
 ```
 const core = require('@quokka/adk-core')
-const destinationBucket = core.getInput('DestinationBucketName') 
+const destinationBucket = core.getInput('DestinationBucketName')
     # => Maps to the destination bucket configuration in Code.AWS workflow definition
 const srcDir = core.getInput('SourcePath')
     # => Maps to the src dir configuration in Code.AWS workflow definition
@@ -78,7 +78,7 @@ Action schema published:
         Default: '.'
    Outputs:
      ....
-     
+
 This operation will publish Action <Org>/MyAction:1.0.0 to "Public catalog". Are you sure?
 ```
 
@@ -100,20 +100,20 @@ This operation will publish Action <Org>/MyAction:1.0.0 to "Public catalog". Are
 
 ### Installation Guide
 
-- [Install Guide](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/guides/install.md/browse)
+- [Install Guide](guides/install.md)
 
 ### ADK CLI Guide
-- [ADK CLI Guide](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/guides/adk-cli.md/browse)
+- [ADK CLI Guide](guides/adk-cli.md)
 
 ### ADK SDK Guide
-- [ADK CLI Guide](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/guides/adk-lib.md/browse)
+- [ADK CLI Guide](guides/adk-lib.md)
 
 ### Prerequisites
 
 * Lerna
 
 ```
-npm install --global lerna 
+npm install --global lerna
 ```
 
 * yarn
@@ -152,7 +152,7 @@ $ yarn run test-all
 - Once you're done with feature development, create `Pull Request` from source `feature-*` branch to destination `main` branch
 - This triggers a CI workflow in your feature-* branch. Please update the pull request with the workflow run in the description section of the PR.
 - Add atleast 2 reviewers from the reviewer section. Reviewers can be anyone within the organization, but at least one developer from AEF team.
-- Once your have all the approvals in your pull request, merge the pull request from UI by choosing `squash` (not fast forward merge) and reducing the number of commits to just one from feature-branch. 
+- Once your have all the approvals in your pull request, merge the pull request from UI by choosing `squash` (not fast forward merge) and reducing the number of commits to just one from feature-branch.
 This makes rollbacks easy if you have one commit per feature branch. If you have large amount of changes in your PR, I suggest re-think your development strategy to iteratively develop and push code.
 - On merge, release workflows within ADK repository will kick-off which should automatically bump the version of the ADK package for consumption.
 
@@ -165,11 +165,11 @@ This makes rollbacks easy if you have one commit per feature branch. If you have
 - lines: 90
 
 Actual coverages should be covered in the reports section
-- [COVERAGES](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/tests)
+- [COVERAGES](.)
 
 ## Sample Actions Using ADK
 
-- [S3 Publish Action](https://quokka.codes/organizations/AEF-Team/projects/S3-Publish-Action/view)
+- [S3 Publish Action](.)
 
 ## Contact
 
@@ -177,9 +177,10 @@ Please contact [AEF Team](mailto: caws-aef-team@amazon.com)
 
 ## ChangeLog
 
-- [Changelog](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/CHANGELOG.md/browse)
+[Changelog](CHANGELOG.md)
+
+## Security
+See CONTRIBUTING for more information.
 
 ## License
-
-- [License](https://quokka.codes/organizations/AEF-Team/projects/ActionsDevKit/source-repositories/ActionsDevKit/commits/refs/heads/main/paths/LICENSE/browse)
-
+This project is licensed under the Apache-2.0 License.
