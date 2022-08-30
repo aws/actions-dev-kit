@@ -1,6 +1,6 @@
 {
   "name": "@quokka/organization",
-  "version": "0.28.0",
+  "version": "0.29.0",
   "description": "Quokka organization entity",
   "homepage": "",
   "license": "",
@@ -14,6 +14,6 @@
     "test": "jest --verbose"
   },
   "devDependencies": {
-    "@quokka/adk-core": "0.28.0"
+    "@quokka/adk-core": "0.29.0"
   }
 }
