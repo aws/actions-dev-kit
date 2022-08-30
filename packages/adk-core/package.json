@@ -1,6 +1,6 @@
 {
   "name": "@quokka/adk-core",
-  "version": "0.31.0",
+  "version": "0.31.1",
   "description": "ADK Core",
   "homepage": "",
   "main": "lib/toolkit/sdk/core/core.js",
