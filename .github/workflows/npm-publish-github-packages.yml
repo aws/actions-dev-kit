@@ -1,0 +1,41 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - configs/.*\.ts
+      - packages/.*/.*\.ts
+
+jobs:
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npm set registry=https://npm.pkg.github.com --userconfig .npmrc    
+      - run: npm set //npm.pkg.github.com/:always-auth=true --userconfig .npmrc
+      - run: npm install --global lerna@5.0.0 yarn@1.22.18
+      - run: lerna --version
+      - run: yarn --version
+      - run: npm --version
+      - run: npm ping -d
+      - run: lerna bootstrap
+      - run: yarn run all
+      - run: lerna version minor --no-push --yes
+      - run: git status && git add CHANGELOG.md && git commit --amend --no-edit
+      - run: git push origin HEAD:main
+      - run: lerna publish from-git --yes
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
