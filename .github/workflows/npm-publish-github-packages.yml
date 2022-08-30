@@ -30,7 +30,6 @@ jobs:
       - run: lerna --version
       - run: yarn --version
       - run: npm --version
-      - run: npm ping -d
       - run: lerna bootstrap
       - run: yarn run all
       - run: lerna version minor --no-push --yes
