@@ -24,7 +24,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm set registry=https://npm.pkg.github.com --userconfig .npmrc    
       - run: npm set //npm.pkg.github.com/:always-auth=true --userconfig .npmrc
-      - run: npm set //npm.pkg.github.com/:_authToken=awsnitin:${{ secrets.GITHUB_TOKEN }}
+      - run: npm set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
       - run: npm install --global lerna@5.0.0 yarn@1.22.18
       - run: lerna --version
       - run: yarn --version
