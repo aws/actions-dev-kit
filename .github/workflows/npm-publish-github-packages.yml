@@ -35,7 +35,9 @@ jobs:
       - run: git config user.name "ActionsDevKitRelease"      
       - run: git stash
       - run: lerna version minor --no-push --yes
+      - run: git tag -n
       - run: git status && git add CHANGELOG.md && git commit --amend --no-edit
       - run: git stash apply && git status && git add . && git commit --amend --no-edit
       - run: git push origin HEAD:main
+      - run: git tag -n      
       - run: lerna publish from-git --yes
