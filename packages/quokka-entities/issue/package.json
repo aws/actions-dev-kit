@@ -1,6 +1,6 @@
 {
   "name": "@quokka/issue",
-  "version": "0.25.0",
+  "version": "0.26.0",
   "description": "Quokka issue entity",
   "homepage": "",
   "license": "",
@@ -14,9 +14,9 @@
     "test": "jest --verbose"
   },
   "devDependencies": {
-    "@quokka/adk-client": "0.25.0",
-    "@quokka/adk-core": "0.25.0",
-    "@quokka/organization": "0.25.0",
-    "@quokka/project": "0.25.0"
+    "@quokka/adk-client": "0.26.0",
+    "@quokka/adk-core": "0.26.0",
+    "@quokka/organization": "0.26.0",
+    "@quokka/project": "0.26.0"
   }
 }
