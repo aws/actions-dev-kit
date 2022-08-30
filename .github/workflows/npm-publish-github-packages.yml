@@ -15,7 +15,9 @@ on:
 jobs:
   publish-gpr:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      packages: write
+      contents: read
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -24,7 +26,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm set registry=https://npm.pkg.github.com --userconfig .npmrc    
       - run: npm set //npm.pkg.github.com/:always-auth=true --userconfig .npmrc
-      - run: npm set //npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}
+      - run: npm set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
       - run: npm install --global lerna@5.0.0 yarn@1.22.18
       - run: lerna --version
       - run: yarn --version
@@ -39,5 +41,5 @@ jobs:
       - run: git status && git add CHANGELOG.md && git commit --amend --no-edit
       - run: git stash apply && git status && git add . && git commit --amend --no-edit
       - run: git push origin HEAD:main
-      - run: git tag -n      
-      - run: lerna publish --yes
+      - run: git tag -n   
+#      - run: lerna publish --yes
