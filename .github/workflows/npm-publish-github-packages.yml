@@ -39,5 +39,3 @@ jobs:
       - run: git stash apply && git status && git add . && git commit --amend --no-edit
       - run: git push origin HEAD:main
       - run: lerna publish from-git --yes
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
