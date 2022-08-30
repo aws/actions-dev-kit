@@ -40,4 +40,4 @@ jobs:
       - run: git stash apply && git status && git add . && git commit --amend --no-edit
       - run: git push origin HEAD:main
       - run: git tag -n      
-      - run: lerna publish from-git --yes
+      - run: lerna publish --yes
