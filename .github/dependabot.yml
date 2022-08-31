@@ -8,32 +8,32 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "npm"
     directory: "packages/adk-client"
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "npm"
     directory: "packages/adk-core"
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "npm"
     directory: "packages/adk-model-parser"
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "npm"
     directory: "packages/adk"
     schedule:
-      interval: "weekly"
+      interval: "daily"
   - package-ecosystem: "npm"
     directory: "packages/quokka-entities/issue"
     schedule:
-      interval: "weekly"      
+      interval: "daily"      
   - package-ecosystem: "npm"
     directory: "packages/quokka-entities/organization"
     schedule:
-      interval: "weekly"      
+      interval: "daily"      
   - package-ecosystem: "npm"
     directory: "packages/quokka-entities/project"
     schedule:
-      interval: "weekly"            
+      interval: "daily"            
