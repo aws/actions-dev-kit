@@ -13,7 +13,8 @@
     "jest": "^27.5.1",
     "jest-junit": "^13.0.0",
     "ts-node": "^10.7.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.6.4",
+    "typedoc": "^0.23.13"
   },
   "scripts": {
     "prebuild": "./cleanup.sh",
@@ -23,7 +24,8 @@
     "test-all": "lerna run test",
     "all": "lerna run build --stream && lerna run test --stream",
     "lint": "eslint **/*.ts",
-    "lint:fix": "eslint --fix '**/*.ts'"
+    "lint:fix": "eslint --fix '**/*.ts'",
+    "api-ref": "lerna run api-ref"
   },
   "workspaces": {
     "packages": [

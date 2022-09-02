@@ -8,7 +8,8 @@
   "scripts": {
     "build": "tsc && eslint **/*.ts",
     "lint": "eslint **/*.ts",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "api-ref": "typedoc"
   },
   "files": [
     "lib"
