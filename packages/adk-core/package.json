@@ -53,7 +53,8 @@
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix '**/*.ts'",
     "package": "jsii-pacmak",
-    "test": "jest --collectCoverage --verbose"
+    "test": "jest --collectCoverage --verbose",
+    "api-ref": "typedoc"
   },
   "dependencies": {
     "@types/shelljs": "^0.8.11",
