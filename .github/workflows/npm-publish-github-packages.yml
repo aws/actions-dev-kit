@@ -31,6 +31,7 @@ jobs:
       - run: npm --version
       - run: lerna bootstrap
       - run: yarn run all
+      - run: yarn run api-ref
       - run: git config user.email "caws-aef-team-workflow@amazon.com"
       - run: git config user.name "ActionsDevKitRelease"      
       - run: lerna version minor --no-push --yes
