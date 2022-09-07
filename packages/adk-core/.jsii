@@ -30,7 +30,7 @@
   },
   "name": "@quokka/adk-core",
   "readme": {
-    "markdown": "# `@quokka/adk-core`\n\n> TODO: description\n\n## Usage\n\n```\nconst adkCore = require('@quokka/adk-core');\n\n// TODO: DEMONSTRATE API\n```\n"
+    "markdown": "# `@quokka/adk-core`\n\n\"ADK Core\" offers action developers library interfaces which make action development easier. Action authors can interact with core metadata information about the action, workflows, output variables, artifacts, reports etc, making it easier for the action author to fully model the input and output of the action code.\n\n## Usage\n\n```\nconst adkCore = require('@quokka/adk-core');\n\nconst destinationBucket = core.getInput('DestinationBucketName')\n    # => Maps to the destination bucket configuration in Code.AWS workflow definition\nconst srcDir = core.getInput('SourcePath')\n    # => Maps to the src dir configuration in Code.AWS workflow definition\nconst cawsOrg = core.getCawsOrg()\n    # => Metadata information about CAWS org\nconst cawsProject = core.getProject()\n    # => Metadata information about CAWS project\nconst actionName = core.getActionName()\nconsole.log(\"Running action ${actionName}\")\nlet cmd = `aws s3 sync ${srcDir} s3://${destinationBucket}/${cawsOrg}/${cawsProject}/`\nconst cmdOutput = core.command(cmd)\nconsole.log(cmdOutput.stdout)\n\nif (cmdOutput.code != 0) {\n  core.setFailed(cmdOutput.stderr)\n} else {\n  core.setOutputVariable(\"Files\", cmdOutput.stdOut)\n}\n\n```\n"
   },
   "repository": {
     "type": "git",
@@ -65,24 +65,26 @@
     "@quokka/adk-core.ICommandOutput": {
       "assembly": "@quokka/adk-core",
       "docs": {
-        "stability": "experimental"
+        "stability": "experimental",
+        "summary": "Command output interface providing modeled command output parameters."
       },
       "fqn": "@quokka/adk-core.ICommandOutput",
       "kind": "interface",
       "locationInModule": {
         "filename": "lib/toolkit/sdk/core/core.ts",
-        "line": 35
+        "line": 84
       },
       "name": "ICommandOutput",
       "properties": [
         {
           "abstract": true,
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "The command output exit code."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 36
+            "line": 86
           },
           "name": "code",
           "type": {
@@ -92,11 +94,12 @@
         {
           "abstract": true,
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "standard error captured output."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 38
+            "line": 90
           },
           "name": "stderr",
           "type": {
@@ -106,11 +109,12 @@
         {
           "abstract": true,
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "standard output captured buffer."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 37
+            "line": 88
           },
           "name": "stdout",
           "type": {
@@ -123,7 +127,8 @@
     "@quokka/adk-core.Utils": {
       "assembly": "@quokka/adk-core",
       "docs": {
-        "stability": "experimental"
+        "stability": "experimental",
+        "summary": "Utility class wrapping core methods."
       },
       "fqn": "@quokka/adk-core.Utils",
       "initializer": {
@@ -134,16 +139,17 @@
       "kind": "class",
       "locationInModule": {
         "filename": "lib/toolkit/sdk/core/core.ts",
-        "line": 41
+        "line": 96
       },
       "methods": [
         {
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "View documentation at {@link allEnvs | `allEnvs`}."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 63
+            "line": 123
           },
           "name": "allEnvs",
           "returns": {
@@ -155,11 +161,12 @@
         },
         {
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "View documentation at {@link command | `command`}."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 59
+            "line": 118
           },
           "name": "command",
           "parameters": [
@@ -179,11 +186,12 @@
         },
         {
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "View documentation at {@link getEnvironmentVariable | `getEnvironmentVariable`}."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 51
+            "line": 108
           },
           "name": "getEnvironmentVariable",
           "parameters": [
@@ -203,11 +211,12 @@
         },
         {
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "View documentation at {@link getInput | `getInput`}."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 43
+            "line": 98
           },
           "name": "getInput",
           "parameters": [
@@ -227,11 +236,12 @@
         },
         {
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "View documentation at {@link getMultiLineInput | `getMultiLineInput`}."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 47
+            "line": 103
           },
           "name": "getMultiLineInput",
           "parameters": [
@@ -251,11 +261,12 @@
         },
         {
           "docs": {
-            "stability": "experimental"
+            "stability": "experimental",
+            "summary": "View documentation at {@link setOutput | `setOutput`}."
           },
           "locationInModule": {
             "filename": "lib/toolkit/sdk/core/core.ts",
-            "line": 55
+            "line": 113
           },
           "name": "setOutput",
           "parameters": [
@@ -284,6 +295,6 @@
       "symbolId": "lib/toolkit/sdk/core/core:Utils"
     }
   },
-  "version": "0.33.0",
-  "fingerprint": "rjg/Jd3emxjtvOkKxo1L4GBT+KlDfPYQEDkkUMSg9QQ="
+  "version": "0.34.0",
+  "fingerprint": "gF9QEN4/YsISf6yH0wC8tW9hf2TAX6Tpy1HfJxpoq9I="
 }
