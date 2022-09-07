@@ -13,7 +13,7 @@ on:
       - packages/.*/.*\.ts
 
 jobs:
-  publish-gpr:
+  publish-update:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
@@ -40,3 +40,25 @@ jobs:
       - run: git push origin HEAD:main
       - run: git tag -n   
 #      - run: lerna publish --yes
+
+  deploy:
+    # Add a dependency to the build job
+    # needs: publish-update
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: 'packages/adk-core/docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
+
