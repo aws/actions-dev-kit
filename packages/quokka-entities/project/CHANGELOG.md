@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.37.0 (2022-09-30)
+
+
+### Bug Fixes
+
+* Fix template to add CAWS yaml syntax ([23cbb2b](https://github.com/aws/actions-dev-kit/commit/23cbb2b3c2910c3f82c5bc850a791bacbaf2778b))
+
+
+
+
+
 # 0.36.0 (2022-09-30)
 
 **Note:** Version bump only for package @quokka/project
