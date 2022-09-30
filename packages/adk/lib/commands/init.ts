@@ -14,7 +14,7 @@ const validations: Array<(productInfo: ProductInfo, action: any, language: any, 
 
 const GIT_DIR_NAME = '.git';
 const ADK_ACTION_CONFIG_FILE_NAME = '.actionconfig';
-const ADK_ACTION_DEFINITION_FILE_NAME = 'action.yml';
+const ADK_ACTION_DEFINITION_FILE_NAME = 'caws_action.yml';
 const SUPPORTED_LANGUAGES = new Set(['typescript']);
 const NODE_VERSION = 'node12';
 
@@ -60,7 +60,7 @@ function writeActionDefinitionYaml(productInfo: ProductInfo, action: any, langua
         caws_organization: `${productInfo.organization}`,
         caws_project: `${productInfo.project}`,
     };
-    const templateContents = fs.readFileSync(`${__dirname}/../../templates/definition/hello-world/${language}/action.yml`, 'utf-8');
+    const templateContents = fs.readFileSync(`${__dirname}/../../templates/definition/hello-world/${language}/caws_action.yml`, 'utf-8');
     const finalContents = applyTemplate(templateContents, templateKeys);
     fs.writeFileSync(ADK_ACTION_DEFINITION_FILE_NAME, finalContents, 'utf8');
 }
