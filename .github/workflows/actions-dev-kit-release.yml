@@ -22,9 +22,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-      - run: npm set registry=https://npm.pkg.github.com --userconfig .npmrc    
-      - run: npm set //npm.pkg.github.com/:always-auth=true --userconfig .npmrc
-      - run: npm set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
       - run: npm install --global lerna@5.0.0 yarn@1.22.18
       - run: lerna --version
       - run: yarn --version
@@ -39,7 +36,13 @@ jobs:
       - run: git status && git add . && git commit --amend --no-edit
       - run: git push origin HEAD:main
       - run: git tag -n   
-#      - run: lerna publish --yes
+      - run: npm set registry=https://npm.artifacts.service.quokka.codes/AEF-Team/ActionsDevKit/ActionsDevKitPackage/ --userconfig .npmrc
+      - run: npm set //npm.artifacts.service.quokka.codes/AEF-Team/ActionsDevKit/ActionsDevKitPackage/:always-auth=true --userconfig .npmrc
+      - run: npm set //npm.artifacts.service.quokka.codes/AEF-Team/ActionsDevKit/ActionsDevKitPackage/:_authToken=nggujral:${{ secrets.NPM_REGISTRY_PAT }}
+#      - run: npm set registry=https://npm.pkg.github.com --userconfig .npmrc    
+#      - run: npm set //npm.pkg.github.com/:always-auth=true --userconfig .npmrc
+#      - run: npm set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
+      - run: lerna publish --yes
 
   deploy:
     # Add a dependency to the build job
