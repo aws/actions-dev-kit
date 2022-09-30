@@ -42,6 +42,7 @@ jobs:
 #      - run: npm set registry=https://npm.pkg.github.com --userconfig .npmrc    
 #      - run: npm set //npm.pkg.github.com/:always-auth=true --userconfig .npmrc
 #      - run: npm set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
+      - run: git status
       - run: lerna publish --yes
 
   deploy:
