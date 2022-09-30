@@ -1,6 +1,6 @@
 {
   "name": "@quokka/organization",
-  "version": "0.37.0",
+  "version": "0.38.0",
   "description": "Quokka organization entity",
   "homepage": "",
   "license": "",
@@ -15,6 +15,6 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@quokka/adk-core": "0.37.0"
+    "@quokka/adk-core": "0.38.0"
   }
 }
