@@ -8,7 +8,7 @@ Triggers:
       - feature-.*
 Actions:
   Validate%%action_name%%:
-    Identifier: aws/github-runner@v1
+    Identifier: aws/github-actions-runner@v1
     Inputs:
       Sources:
         - WorkflowSource
@@ -17,7 +17,7 @@ Actions:
         - run: npm install
         - run: npm run all
         - name: %%action_name%%-Test
-          uses: .
+          uses: ./
           with:
             %%action_inputs%%
     Environment:

@@ -29,7 +29,7 @@ export class WorkflowGenerator implements BoootstrapGenerator {
               if(!first) {
                 action_input = action_input.concat(" ".repeat(12));
               }
-              action_input = action_input.concat(`${configKey} : TEST\n`);
+              action_input = action_input.concat(`${configKey} : 'TEST'\n`);
               first = false;
           });
           let templateKeys: { [key: string]: string } = {
