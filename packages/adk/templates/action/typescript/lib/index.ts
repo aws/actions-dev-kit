@@ -8,7 +8,6 @@ try {
 
   // Interact with quokka entities
   console.log(`Current quokka org ${quokkaOrg.getOrganization().name}`);
-  console.log(`Current quokka project ${quokkaOrg.getProject().name}`);
 
   // Action Code start
 
