@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.39.0 (2022-10-03)
+
+
+### Bug Fixes
+
+* Change template sample code ([8961ed1](https://github.com/aws/actions-dev-kit/commit/8961ed1ea830c360e12bcd613087cbad2496b21c))
+
+
+
+
+
 ## 0.38.1 (2022-09-30)
 
 **Note:** Version bump only for package @quokka/project
