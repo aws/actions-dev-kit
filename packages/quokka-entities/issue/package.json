@@ -1,6 +1,6 @@
 {
   "name": "@quokka/issue",
-  "version": "0.39.0",
+  "version": "0.39.1",
   "description": "Quokka issue entity",
   "homepage": "",
   "license": "",
@@ -15,9 +15,9 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@quokka/adk-client": "0.39.0",
-    "@quokka/adk-core": "0.39.0",
-    "@quokka/organization": "0.39.0",
-    "@quokka/project": "0.39.0"
+    "@quokka/adk-client": "0.39.1",
+    "@quokka/adk-core": "0.39.1",
+    "@quokka/organization": "0.39.1",
+    "@quokka/project": "0.39.1"
   }
 }

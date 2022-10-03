@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.39.1 (2022-10-03)
+
+
+### Bug Fixes
+
+* Change template sample code ([8961ed1](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/8961ed1ea830c360e12bcd613087cbad2496b21c))
+
+
+
+
+
 # 0.39.0 (2022-10-03)
 
 
