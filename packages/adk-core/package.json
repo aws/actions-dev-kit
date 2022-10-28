@@ -61,11 +61,11 @@
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "jsii": "^1.59.0",
-    "jsii-diff": "^1.59.0",
-    "jsii-docgen": "^7.0.18",
-    "jsii-pacmak": "^1.59.0",
-    "jsii-rosetta": "^1.59.0"
+    "jsii": "^1.70.0",
+    "jsii-diff": "^1.70.0",
+    "jsii-docgen": "^7.0.131",
+    "jsii-pacmak": "^1.70.0",
+    "jsii-rosetta": "^1.70.0"
   },
   "bundledDependencies": [
     "@types/shelljs",
