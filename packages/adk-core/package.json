@@ -5,38 +5,6 @@
   "homepage": "",
   "main": "lib/toolkit/sdk/core/core.js",
   "types": "lib/toolkit/sdk/core/core.d.ts",
-  "jsii": {
-    "outdir": "dist",
-    "targets": {
-      "java": {
-        "package": "software.amazon.awsadk.core",
-        "maven": {
-          "groupId": "software.amazon.awsadk",
-          "artifactId": "core"
-        }
-      },
-      "dotnet": {
-        "namespace": "Amazon.adk",
-        "packageId": "Amazon.adk"
-      },
-      "python": {
-        "distName": "aws-adk.core",
-        "module": "aws_adk.core",
-        "classifiers": [
-          "Framework :: AWS ADK",
-          "Framework :: AWS ADK :: 1"
-        ]
-      }
-    },
-    "projectReferences": true,
-    "metadata": {
-      "jsii": {
-        "rosetta": {
-          "strict": true
-        }
-      }
-    }
-  },
   "author": {
     "name": "AEF-Team",
     "email": "cawsactionextensions@amazon.com",
@@ -49,7 +17,7 @@
   "license": "ISC",
   "stability": "experimental",
   "scripts": {
-    "build": "tsc && jsii",
+    "build": "tsc && eslint **/*.ts",
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix '**/*.ts'",
     "package": "jsii-pacmak",
