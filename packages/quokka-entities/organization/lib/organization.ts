@@ -1,3 +1,4 @@
+// @ts-ignore
 import * as core from '@quokka/adk-core';
 import { Organization } from './types/types';
 
