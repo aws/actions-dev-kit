@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.42.1](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/compare/v0.41.1...v0.42.1) (2022-11-09)
+
+**Note:** Version bump only for package @quokka/adk-core
+
+
+
+
+
 # 0.42.0 (2022-11-09)
 
 **Note:** Version bump only for package @quokka/adk-core
