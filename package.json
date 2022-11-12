@@ -1,4 +1,4 @@
-{ 
+{
   "name": "root",
   "private": true,
   "devDependencies": {
@@ -36,7 +36,15 @@
       "**/adk-core/**"
     ]
   },
+  "repository": {
+    "url": "git+https://github.com/aws/actions-dev-kit",
+    "type": "git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "dependencies": {
+    "lerna": "^6.0.3",
     "tsconfig-paths": "^4.0.0"
   }
 }
