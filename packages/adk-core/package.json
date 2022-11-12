@@ -1,6 +1,6 @@
 {
   "name": "@quokka/adk-core",
-  "version": "0.42.5",
+  "version": "0.42.6",
   "description": "ADK Core",
   "homepage": "",
   "main": "lib/toolkit/sdk/core/core.js",
@@ -39,5 +39,5 @@
     "@types/shelljs",
     "shelljs"
   ],
-  "gitHead": "9de477e622773b483559a0297ef46d9dddb43426"
+  "gitHead": "53eac4e49b1acefc56f3fa5bae19ff894c5e8cc6"
 }

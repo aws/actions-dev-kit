@@ -1,6 +1,6 @@
 {
   "name": "@quokka/adk-client",
-  "version": "0.42.5",
+  "version": "0.42.6",
   "main": "dist/lib/fusi.js",
   "types": "dist/lib/fusi.d.ts",
   "files": [
@@ -32,5 +32,5 @@
   "npm-pretty-much": {
     "runTest": "never"
   },
-  "gitHead": "9de477e622773b483559a0297ef46d9dddb43426"
+  "gitHead": "53eac4e49b1acefc56f3fa5bae19ff894c5e8cc6"
 }

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.42.6](https://github.com/aws/actions-dev-kit/compare/v0.42.5...v0.42.6) (2022-11-12)
+
+**Note:** Version bump only for package @quokka/adk-model-parser
+
+
+
+
+
 ## [0.42.5](https://github.com/aws/actions-dev-kit/compare/v0.42.4...v0.42.5) (2022-11-12)
 
 **Note:** Version bump only for package @quokka/adk-model-parser
