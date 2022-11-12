@@ -1,6 +1,6 @@
 {
   "name": "@quokka/adk-core",
-  "version": "0.42.3",
+  "version": "0.42.4",
   "description": "ADK Core",
   "homepage": "",
   "main": "lib/toolkit/sdk/core/core.js",
@@ -38,5 +38,6 @@
   "bundledDependencies": [
     "@types/shelljs",
     "shelljs"
-  ]
+  ],
+  "gitHead": "a042692aee48558cb84524821dc3f6c21a1b6976"
 }

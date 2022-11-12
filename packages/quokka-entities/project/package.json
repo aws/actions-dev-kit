@@ -1,6 +1,6 @@
 {
   "name": "@quokka/project",
-  "version": "0.42.3",
+  "version": "0.42.4",
   "description": "Quokka project entity",
   "homepage": "",
   "license": "ISC",
@@ -15,6 +15,7 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@quokka/adk-core": "0.42.3"
-  }
+    "@quokka/adk-core": "0.42.4"
+  },
+  "gitHead": "a042692aee48558cb84524821dc3f6c21a1b6976"
 }
