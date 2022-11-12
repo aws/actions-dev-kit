@@ -33,7 +33,7 @@
     "@types/js-yaml": "^4.0.5",
     "@types/yargs": "^15.0.14",
     "chalk": "^4",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^10.1.0",
     "graceful-fs": "^4.2.9"
   },
   "gitHead": "a042692aee48558cb84524821dc3f6c21a1b6976"
