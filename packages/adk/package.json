@@ -21,7 +21,7 @@
     "templates/**/*"
   ],
   "dependencies": {
-    "@nestjs/common": "^7.6.15",
+    "@nestjs/common": "^9.2.0",
     "@nestjs/core": "^7.6.15",
     "js-yaml": "^4.1.0",
     "jsonschema": "^1.4.0",
