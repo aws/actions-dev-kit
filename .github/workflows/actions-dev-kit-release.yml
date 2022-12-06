@@ -35,13 +35,17 @@ jobs:
       - run: yarn run api-ref
       - run: git status && git add . && git commit --amend --no-edit
       - run: git push origin HEAD:main
-      - run: git tag -n   
-      - run: npm set registry=https://npm.artifacts.service.quokka.codes/AEF-Team/ActionsDevKit/ActionsDevKitPackage/ --userconfig .npmrc
-      - run: npm set //npm.artifacts.service.quokka.codes/AEF-Team/ActionsDevKit/ActionsDevKitPackage/:always-auth=true --userconfig .npmrc
-      - run: npm set //npm.artifacts.service.quokka.codes/AEF-Team/ActionsDevKit/ActionsDevKitPackage/:_authToken=nggujral:${{ secrets.NPM_REGISTRY_PAT }}
-#      - run: npm set registry=https://npm.pkg.github.com --userconfig .npmrc    
-#      - run: npm set //npm.pkg.github.com/:always-auth=true --userconfig .npmrc
-#      - run: npm set //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}
+      - run: git tag -n
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.PUBLISH_ROLE_TO_ASSUME }}
+          aws-region: us-west-2
+          role-session-name: adk-githubworkflow
+      - run: aws sts get-caller-identity
+      - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackage
+      - run: npm config list
+      - run: npm set registry=${{ secrets.CODEARTIFACT_NPM_REGISTRY }} --userconfig .npmrc
       - run: git status
       - run: lerna publish --yes
 
