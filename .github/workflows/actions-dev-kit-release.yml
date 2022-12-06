@@ -39,7 +39,7 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
-          role-to-assume: arn:aws:iam::198147706056:role/ADKCodeArtifactPublishRole
+          role-to-assume: ${{ secrets.PUBLISH_ROLE_TO_ASSUME }}
           aws-region: us-west-2
           role-session-name: adk-githubworkflow
       - run: aws sts get-caller-identity
