@@ -43,9 +43,9 @@ jobs:
           aws-region: us-west-2
           role-session-name: adk-githubworkflow
       - run: aws sts get-caller-identity
-      - run: aws codeartifact login --region us-west-2 --tool npm --domain aef-team --domain-owner 198147706056 --repository ActionsDevKitPackage
+      - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackage
       - run: npm config list
-      - run: npm set registry=https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com/npm/ActionsDevKitPackage/ --userconfig .npmrc
+      - run: npm set registry=${{ secrets.CODEARTIFACT_NPM_REGISTRY }} --userconfig .npmrc
       - run: git status
       - run: lerna publish --yes
 
