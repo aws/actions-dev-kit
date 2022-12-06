@@ -6,7 +6,7 @@
     "packages/*",
     "packages/quokka-entities/*"
   ],
-  "version": "0.44.0",
+  "version": "0.44.1",
   "command": {
     "version": {
       "allowBranch": "main",
