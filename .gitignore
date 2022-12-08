@@ -4,6 +4,7 @@ node_modules/
 lerna-debug.log
 dist/
 **/coverage/
+**/docs/
 .DS_Store
 yarn-error.log
 *.tsbuildinfo
