@@ -1,6 +1,6 @@
 {
   "name": "@quokka/adk-client",
-  "version": "0.45.1",
+  "version": "0.46.0",
   "main": "dist/lib/fusi.js",
   "types": "dist/lib/fusi.d.ts",
   "files": [
