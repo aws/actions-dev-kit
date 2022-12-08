@@ -1,6 +1,6 @@
 // @ts-ignore
 import { setOutput } from '@quokka/adk-core';
-import { RunSummaryLevel, RunSummary } from './types/types';
+import { RunSummaryLevel, RunSummary, TemplateVariable } from './types/types';
 
 const ACTION_RUN_SUMMARY: string = 'ACTION_RUN_SUMMARY';
 const MAX_RUN_SUMMARY_TEXT_LENGTH: number = 200;
@@ -8,10 +8,11 @@ const MAX_RUN_SUMMARY_TEXT_LENGTH: number = 200;
 export class RunSummaries {
     static runSummaries: RunSummary[] = [];
 
-    public static addRunSummary(text: string | Error, type: RunSummaryLevel): void {
+    public static addRunSummary(text: string | Error, type: RunSummaryLevel, templateVariables?: TemplateVariable[]): void {
         const runSummary: RunSummary = {
             text: JSON.stringify(this.truncate(text.toString(), MAX_RUN_SUMMARY_TEXT_LENGTH)),
             level: type,
+            templateVariables: templateVariables,
         };
         this.runSummaries.push(runSummary);
         setOutput(ACTION_RUN_SUMMARY, JSON.stringify(this.runSummaries));

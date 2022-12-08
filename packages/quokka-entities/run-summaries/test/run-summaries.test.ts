@@ -5,6 +5,7 @@ import {
     RunSummaryLevel, 
     RunSummaries,
 } from '../lib';
+import { TemplateVariable } from '../lib/types/types';
 
 jest.mock('@quokka/adk-core/lib/toolkit/sdk/core/command-wrapper');
 const ACTION_RUN_SUMMARY: string = 'ACTION_RUN_SUMMARY';
@@ -133,6 +134,27 @@ describe('runSummaries', () => {
 
         RunSummaries.addRunSummary(longText, RunSummaryLevel.ERROR);
         
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
+    });
+
+    it('addRunSummary sets the expected output variable to an array with 1 run summary with string type text and template variables', () => {
+        const runSummaryText: string = 'Single runSummary';
+        const expectedTemplateVariables: TemplateVariable[] = [
+            {
+                name: 'parameter1',
+                value: 'value1',
+            },
+        ];
+        const expectedRunSummaries: RunSummary[] = [
+            {
+                text: JSON.stringify(runSummaryText),
+                level: RunSummaryLevel.ERROR,
+                templateVariables: expectedTemplateVariables,
+            },
+        ];
+
+        RunSummaries.addRunSummary(runSummaryText, RunSummaryLevel.ERROR, expectedTemplateVariables);
+
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 });
