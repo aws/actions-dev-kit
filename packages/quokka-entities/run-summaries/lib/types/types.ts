@@ -3,7 +3,7 @@
  * Currently, we only support error messages being surfaced.
  */
 export enum RunSummaryLevel {
-    ERROR = "Error"
+    ERROR = 'Error'
 }
 
 /**
@@ -13,4 +13,10 @@ export enum RunSummaryLevel {
 export interface RunSummary {
     text: string,
     level: RunSummaryLevel,
+    templateVariables?: TemplateVariable[]
+}
+
+export interface TemplateVariable {
+    name: string,
+    value: string
 }
