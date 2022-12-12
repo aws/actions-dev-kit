@@ -44,7 +44,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
-    "lerna": "^6.0.3",
+    "lerna": "^6.1.0",
     "tsconfig-paths": "^4.0.0"
   }
 }
