@@ -49,7 +49,7 @@ jobs:
       - run: git status
       - run: lerna publish --yes
 
-  deploy:
+  generate-docs:
     # Add a dependency to the build job
     needs: publish-update
     environment:
