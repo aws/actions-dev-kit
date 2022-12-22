@@ -1,11 +1,12 @@
-import chalk from 'chalk';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { Model } from '../types/types';
+import { sanitizeFile } from '../sanitizer/sanitizer';
 
-export function parseModelFile(fileName: any): Model {
-    console.log(chalk.green('Starting parsing file ' + fileName));
-    return parseModelFileContents(fs.readFileSync(fileName, 'utf8'));
+export function sanitizeAndParseModelFile(fileName: any): Model {
+    let modelFile = fs.readFileSync(fileName, 'utf8');
+    let sanitizedModelFile = sanitizeFile(modelFile);
+    return parseModelFileContents(sanitizedModelFile);
 }
 
 function parseModelFileContents(fileContents: any): Model {

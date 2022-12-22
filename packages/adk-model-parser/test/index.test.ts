@@ -5,7 +5,7 @@ import { Model } from '../lib/types/types';
 
 describe('@quokka/adk-model-parser parse file', () => {
     it('parse model file contents', async () => {
-        parser.parseModelFile(`${__dirname}/action.yml`);
+        parser.sanitizeAndParseModelFile(`${__dirname}/action.yml`);
     });
 });
 

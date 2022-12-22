@@ -11,3 +11,7 @@ outputs:
 runs:
   using: 'node12'
   main: 'index.js'
+jobs:
+  job1:
+    steps:
+      - run: ls; pwd;
