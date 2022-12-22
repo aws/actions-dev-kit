@@ -1,4 +1,4 @@
-SchemaVersion: 1.0
+SchemaVersion: '1.0'
 Name: '%%action_name%% Action'
 Id: '%%caws_organization%%/%%action_name%%-action'
 Version: '0.0.0'
@@ -24,8 +24,6 @@ Configuration:
     Default: 1
 Environment:
   Required: false
-Sources:
-  Required: true
 Runs:
   Using: '%%node_version%%'
   Main: 'lib/index.js'

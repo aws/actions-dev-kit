@@ -1,7 +1,6 @@
 import { BootstrapController } from '../../lib/bootstrap/controller';
 import { ActionPreValidationRules } from '../../lib/bootstrap/rule';
 import { GeneratorProps } from '../../lib/bootstrap/model';
-import { Model, sanitizeAndParseModelFile } from '@quokka/adk-model-parser';
 import { ActionBootstrapGenerators } from '../../lib/bootstrap/generators';
 import { TemplateGenerator } from '../../lib/bootstrap/generators/template';
 import { BootstrapCodeGenerator } from '../../lib/bootstrap/generators/code';
@@ -40,7 +39,6 @@ describe('Bootstrap Command Tests', () => {
 
     it('should succeed when bootstrapping with environment required set to true', async () => {
         const file = `${__dirname}/valid_input.yml`;
-        let model: Model = sanitizeAndParseModelFile(file);
         const props: GeneratorProps = {
             file: file,
             schemaType: SchemaType.Quokka,
@@ -53,7 +51,6 @@ describe('Bootstrap Command Tests', () => {
 
     it('should succeed when bootstrapping with environment required set to false', async () => {
         const file = `${__dirname}/valid_input_noenv.yml`;
-        let model: Model = sanitizeAndParseModelFile(file);
         const props: GeneratorProps = {
             file: file,
             schemaType: SchemaType.Quokka,
@@ -64,9 +61,8 @@ describe('Bootstrap Command Tests', () => {
         expect(controller.bootstrapAction(props)).toBeDefined();
     });
 
-    it('should succeed when bootstrapping with code injection', async () => {
-        const file = `${__dirname}/code_injection.yml`;
-        let model: Model = sanitizeAndParseModelFile(file);
+    it('should escape all strings in action.yml', async () => {
+        const file = `${__dirname}/valid_input_code_injection.yml`;
         const props: GeneratorProps = {
             file: file,
             schemaType: SchemaType.Quokka,
@@ -80,6 +76,6 @@ describe('Bootstrap Command Tests', () => {
             .filter((arrayOfCallsWithArguments) => arrayOfCallsWithArguments[0] =='lib/index.ts')
             .map(callArguments => callArguments[1]);
 
-        expect(generatedSourceCode.toString().includes(" // console.log('!!! INJECTED CODE !!!')")).toBeTruthy();
+        expect(generatedSourceCode.toString().includes("// %0Aconsole.log('INJECTED_CODE')%25%0A%0D%3A%2C")).toBeTruthy();
     });
 });

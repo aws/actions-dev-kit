@@ -14,7 +14,7 @@ export class BootstrapController {
     bootstrapAction(props: GeneratorProps) {
         if (!this.preValidationRules.apply(props)) {
             Logger.error('Bootstrap pre-validation Failed');
-            // return 1;
+            return 1;
         }
 
         // validation complete, now apply generators

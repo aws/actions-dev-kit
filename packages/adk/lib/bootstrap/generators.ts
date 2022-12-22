@@ -1,6 +1,4 @@
 import { Inject, Injectable, Logger, Scope } from '@nestjs/common';
-import yaml from 'js-yaml';
-import fs from 'fs';
 import { Model } from '@quokka/adk-model-parser';
 import { TEMPLATE_GENERATOR, TemplateGenerator } from './generators/template';
 import { GeneratorProps } from './model';

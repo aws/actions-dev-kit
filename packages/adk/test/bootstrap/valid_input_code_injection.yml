@@ -1,0 +1,16 @@
+SchemaVersion: '1.0'
+Name: 'Action Action%\n\r:,'
+Id: 'Org/Action-action%\n\r:,'
+Version: '1.0.0%\n\r:,'
+Description: 'This Action tries to inject malicious code%\n\r:,'
+Author: 'Org/Proj%\n\r:,'
+Configuration:
+  ResponseFilters:
+    Description: "\nconsole.log('INJECTED_CODE')%\n\r:,"
+    Required: false
+    DisplayName: 'Response Filters with injection\nnew line\rnew windows line%\n\r:,'
+    Type: string
+    Default: '%\n\r:,'
+Runs:
+  Using: 'node16'
+  Main: 'dist/index.js'

@@ -1,16 +1,16 @@
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { Model } from '../types/types';
-import { sanitizeFile } from '../sanitizer/sanitizer';
+import { sanitizeModel } from '../sanitizer/sanitizer';
 
 export function sanitizeAndParseModelFile(fileName: any): Model {
     let modelFile = fs.readFileSync(fileName, 'utf8');
-    let sanitizedModelFile = sanitizeFile(modelFile);
-    return parseModelFileContents(sanitizedModelFile);
+    return parseModelFileContents(modelFile);
 }
 
 function parseModelFileContents(fileContents: any): Model {
     const definition = yaml.load(fileContents) as Model;
-    console.log('Final Definition: ' + Object.values(definition));
+    const sanitizedDefinition = sanitizeModel(definition);
+    console.log('Final Definition: ' + Object.values(sanitizedDefinition));
     return definition;
 }
