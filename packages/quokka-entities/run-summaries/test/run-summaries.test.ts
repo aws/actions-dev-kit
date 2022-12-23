@@ -1,11 +1,10 @@
 // @ts-ignore
 import * as core from '@quokka/adk-core';
 import {
-    RunSummary, 
-    RunSummaryLevel, 
+    RunSummaryLevel,
     RunSummaries,
+    MessageCode, RunSummaryMessage,
 } from '../lib';
-import { TemplateVariable } from '../lib/types/types';
 
 jest.mock('@quokka/adk-core/lib/toolkit/sdk/core/command-wrapper');
 const ACTION_RUN_SUMMARY: string = 'ACTION_RUN_SUMMARY';
@@ -18,142 +17,168 @@ describe('runSummaries', () => {
     });
 
     it('clearRunSummaries sets the expected output variable to an empty runSummaries array', () => {
-        const runSummaryText: string = 'Populate runSummaries with one run summary';
-        const expectedRunSummaries: RunSummary[] = [];
-        RunSummaries.addRunSummary(runSummaryText, RunSummaryLevel.ERROR);
+        const expectedMessageCode: MessageCode = {
+            messageCode: 'INVALID_BUCKET',
+        };
+        const expectedRunSummaries: RunSummaryMessage[] = [];
+        RunSummaries.setRunSummary(expectedMessageCode, RunSummaryLevel.ERROR);
 
         RunSummaries.clearRunSummaries();
 
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
-    it('addRunSummary sets the expected output variable to an array with 1 run summary with string type text', () => {
-        const runSummaryText: string = 'Single runSummary';
-        const expectedRunSummaries: RunSummary[] = [
+    it('setRunSummary sets the expected output variable to an array with 1 run summary with only status code', () => {
+        const expectedMessageCode: MessageCode = {
+            messageCode: 'INVALID_BUCKET',
+        };
+        const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                text: JSON.stringify(runSummaryText),
+                statusCode: expectedMessageCode.messageCode,
                 level: RunSummaryLevel.ERROR,
             },
         ];
 
-        RunSummaries.addRunSummary(runSummaryText, RunSummaryLevel.ERROR);
+        RunSummaries.setRunSummary(expectedMessageCode, RunSummaryLevel.ERROR);
 
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
-    it('addRunSummary sets the expected output variable to an array with 1 run summary with error type text', () => {
-        const runSummaryText: Error = new Error('Single runSummary');
-        const expectedRunSummaries: RunSummary[] = [
+    it('setRunSummary sets the expected output variable to an array with 1 run summary with error type message', () => {
+        const expectedMessageCode: MessageCode = {
+            messageCode: 'INVALID_BUCKET',
+        };
+        const expectedRunSummaryMessage: Error = new Error('Single runSummary');
+        const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                text: JSON.stringify(runSummaryText.toString()),
+                statusCode: expectedMessageCode.messageCode,
                 level: RunSummaryLevel.ERROR,
+                message: JSON.stringify(expectedRunSummaryMessage.toString()),
             },
         ];
 
-        RunSummaries.addRunSummary(runSummaryText, RunSummaryLevel.ERROR);
+        RunSummaries.setRunSummary(expectedMessageCode, RunSummaryLevel.ERROR, expectedRunSummaryMessage);
 
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
-    it('addRunSummary sets the expected output variable to an array with multiple run summaries with string type texts', () => {
-        const runSummaryText1: string = 'runSummary 1';
-        const runSummaryText2: string = 'runSummary 2';
-        const runSummaryText3: string = 'runSummary 3';
-        const expectedRunSummaries: RunSummary[] = [
+    it('setRunSummary sets the expected output variable to an array with multiple run summaries with string type messages', () => {
+        const expectedMessageCode1: MessageCode = {
+            messageCode: 'INVALID_BUCKET',
+        };
+        const expectedMessageCode2: MessageCode = {
+            messageCode: 'INVALID_STACK',
+        };
+        const expectedRunSummaryMessage1: string = 'runSummary 1';
+        const expectedRunSummaryMessage2: string = 'runSummary 2';
+
+        const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                text: JSON.stringify(runSummaryText1),
+                statusCode: expectedMessageCode1.messageCode,
                 level: RunSummaryLevel.ERROR,
+                message: JSON.stringify(expectedRunSummaryMessage1),
             },
             {
-                text: JSON.stringify(runSummaryText2),
+                statusCode: expectedMessageCode2.messageCode,
                 level: RunSummaryLevel.ERROR,
-            },
-            {
-                text: JSON.stringify(runSummaryText3),
-                level: RunSummaryLevel.ERROR,
+                message: JSON.stringify(expectedRunSummaryMessage2),
             },
         ];
 
-        RunSummaries.addRunSummary(runSummaryText1, RunSummaryLevel.ERROR);
-        RunSummaries.addRunSummary(runSummaryText2, RunSummaryLevel.ERROR);
-        RunSummaries.addRunSummary(runSummaryText3, RunSummaryLevel.ERROR);
+        RunSummaries.setRunSummary(expectedMessageCode1, RunSummaryLevel.ERROR, expectedRunSummaryMessage1);
+        RunSummaries.setRunSummary(expectedMessageCode2, RunSummaryLevel.ERROR, expectedRunSummaryMessage2);
         
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
-    it('addRunSummary sets the expected output variable to an array with multiple run summaries with error type texts', () => {
-        const runSummaryText1: Error = new Error('runSummary 1');
-        const runSummaryText2: Error = new Error('runSummary 2');
-        const runSummaryText3: Error = new Error('runSummary 3');
-        const expectedRunSummaries: RunSummary[] = [
+    it('setRunSummary sets the expected output variable to an array with multiple run summaries with error type messages', () => {
+        const expectedMessageCode1: MessageCode = {
+            messageCode: 'INVALID_BUCKET',
+        };
+        const expectedMessageCode2: MessageCode = {
+            messageCode: 'INVALID_STACK',
+        };
+
+        const expectedRunSummaryMessage1: Error = new Error('runSummary 1');
+        const expectedRunSummaryMessage2: Error = new Error('runSummary 2');
+
+        const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                text: JSON.stringify(runSummaryText1.toString()),
+                statusCode: expectedMessageCode1.messageCode,
                 level: RunSummaryLevel.ERROR,
+                message: JSON.stringify(expectedRunSummaryMessage1.toString()),
             },
             {
-                text: JSON.stringify(runSummaryText2.toString()),
+                statusCode: expectedMessageCode2.messageCode,
                 level: RunSummaryLevel.ERROR,
-            },
-            {
-                text: JSON.stringify(runSummaryText3.toString()),
-                level: RunSummaryLevel.ERROR,
+                message: JSON.stringify(expectedRunSummaryMessage2.toString()),
             },
         ];
 
-        RunSummaries.addRunSummary(runSummaryText1, RunSummaryLevel.ERROR);
-        RunSummaries.addRunSummary(runSummaryText2, RunSummaryLevel.ERROR);
-        RunSummaries.addRunSummary(runSummaryText3, RunSummaryLevel.ERROR);
+        RunSummaries.setRunSummary(expectedMessageCode1, RunSummaryLevel.ERROR, expectedRunSummaryMessage1);
+        RunSummaries.setRunSummary(expectedMessageCode2, RunSummaryLevel.ERROR, expectedRunSummaryMessage2);
 
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
-    it('addRunSummary with a long text sets the expected output variable with a truncated string type text attribute', () => {
+    it('setRunSummary with a long message sets the expected output variable with a truncated string type text attribute', () => {
+        const expectedMessageCode: MessageCode = {
+            messageCode: 'INVALID_BUCKET',
+        };
         const longText: string = 'a'.repeat(MAX_RUN_SUMMARY_TEXT_LENGTH + 1);
         const expectedTruncatedText: string = longText.substring(0, MAX_RUN_SUMMARY_TEXT_LENGTH) + '...';
-        const expectedRunSummaries: RunSummary[] = [
+        const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                text: JSON.stringify(expectedTruncatedText),
+                statusCode: expectedMessageCode.messageCode,
                 level: RunSummaryLevel.ERROR,
+                message: JSON.stringify(expectedTruncatedText),
             },
         ];
 
-        RunSummaries.addRunSummary(longText, RunSummaryLevel.ERROR);
+        RunSummaries.setRunSummary(expectedMessageCode, RunSummaryLevel.ERROR, longText);
 
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
-    it('addRunSummary with a long text sets the expected output variable with a truncated error type text attribute', () => {
+    it('setRunSummary with a long message sets the expected output variable with a truncated error type text attribute', () => {
+        const expectedMessageCode: MessageCode = {
+            messageCode: 'INVALID_BUCKET',
+        };
         const longText: Error = new Error('a'.repeat(MAX_RUN_SUMMARY_TEXT_LENGTH + 1));
         const expectedTruncatedText: string = longText.toString().substring(0, MAX_RUN_SUMMARY_TEXT_LENGTH) + '...';
-        const expectedRunSummaries: RunSummary[] = [
+
+        const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                text: JSON.stringify(expectedTruncatedText),
+                statusCode: expectedMessageCode.messageCode,
                 level: RunSummaryLevel.ERROR,
+                message: JSON.stringify(expectedTruncatedText),
             },
         ];
 
-        RunSummaries.addRunSummary(longText, RunSummaryLevel.ERROR);
+        RunSummaries.setRunSummary(expectedMessageCode, RunSummaryLevel.ERROR, longText);
         
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
-    it('addRunSummary sets the expected output variable to an array with 1 run summary with string type text and template variables', () => {
-        const runSummaryText: string = 'Single runSummary';
-        const expectedTemplateVariables: TemplateVariable[] = [
+    it('setRunSummary sets the expected output variable to an array with 1 run summary with status code and template variables', () => {
+        const expectedMessageCode: MessageCode = {
+            messageCode: 'INVALID_BUCKET',
+            templateVariables: [
+                {
+                    name: 'BUCKET_NAME',
+                    value: 'InvalidBucket',
+                },
+            ],
+        };
+        const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                name: 'parameter1',
-                value: 'value1',
-            },
-        ];
-        const expectedRunSummaries: RunSummary[] = [
-            {
-                text: JSON.stringify(runSummaryText),
+                statusCode: expectedMessageCode.messageCode,
                 level: RunSummaryLevel.ERROR,
-                templateVariables: expectedTemplateVariables,
+                templateVariables: expectedMessageCode.templateVariables,
             },
         ];
 
-        RunSummaries.addRunSummary(runSummaryText, RunSummaryLevel.ERROR, expectedTemplateVariables);
+        RunSummaries.setRunSummary(expectedMessageCode, RunSummaryLevel.ERROR);
 
         expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });

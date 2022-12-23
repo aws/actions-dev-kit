@@ -1,24 +1,23 @@
 // @ts-ignore
 import { setOutput } from '@quokka/adk-core';
-import { RunSummaryLevel, RunSummary, TemplateVariable } from './types/types';
+import { RunSummaryLevel, RunSummaryMessage, MessageCode } from './types/types';
 
 const ACTION_RUN_SUMMARY: string = 'ACTION_RUN_SUMMARY';
 const MAX_RUN_SUMMARY_TEXT_LENGTH: number = 200;
 
 export class RunSummaries {
-    static runSummaries: RunSummary[] = [];
+    static runSummaries: RunSummaryMessage[] = [];
 
-    /*
-    This api as of now is suboptimal. The 'text' parameter for now accepts both status code and error message to avoid
-    any breaking changes. We will be changing the api behaviour later.
-    */
-    public static addRunSummary(text: string | Error, type: RunSummaryLevel, templateVariables?: TemplateVariable[]): void {
-        const runSummary: RunSummary = {
-            text: JSON.stringify(this.truncate(text.toString(), MAX_RUN_SUMMARY_TEXT_LENGTH)),
-            level: type,
-            templateVariables: templateVariables,
+    public static setRunSummary(statusCode: MessageCode, summaryLevel: RunSummaryLevel, message?: string | Error): void {
+        const runSummaryMessage: RunSummaryMessage = {
+            statusCode: statusCode.messageCode,
+            level: summaryLevel,
+            message: message !== undefined ?
+                JSON.stringify(this.truncate(message.toString(), MAX_RUN_SUMMARY_TEXT_LENGTH)) :
+                message,
+            templateVariables: statusCode.templateVariables,
         };
-        this.runSummaries.push(runSummary);
+        this.runSummaries.push(runSummaryMessage);
         setOutput(ACTION_RUN_SUMMARY, JSON.stringify(this.runSummaries));
     }
     
