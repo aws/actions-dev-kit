@@ -6,17 +6,21 @@ export enum RunSummaryLevel {
     ERROR = 'Error'
 }
 
-/**
- * An interface which represents a summary message which includes the text attribute, 
- * (the actual message to be surfaced) and the level attribute, (the type of message being surfaced).
- */
-export interface RunSummary {
-    text: string,
+export interface RunSummaryMessage {
+    statusCode: string,
     level: RunSummaryLevel,
+    text?: string,
     templateVariables?: TemplateVariable[]
 }
 
 export interface TemplateVariable {
     name: string,
     value: string
+}
+
+export interface Message {
+    statusCode: string,
+    level: RunSummaryLevel,
+    text?: string | Error
+    templateVariables?: TemplateVariable[]
 }

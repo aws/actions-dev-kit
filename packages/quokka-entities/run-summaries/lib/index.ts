@@ -1,2 +1,2 @@
 export { RunSummaries } from './run-summaries';
-export { RunSummaryLevel, RunSummary } from './types/types';
+export { RunSummaryLevel, RunSummaryMessage, Message, TemplateVariable } from './types/types';
