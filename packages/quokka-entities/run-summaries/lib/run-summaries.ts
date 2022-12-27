@@ -9,10 +9,10 @@ const MAX_RUN_SUMMARY_TEXT_LENGTH: number = 200;
 export class RunSummaries {
     static runSummaries: RunSummaryMessage[] = [];
 
-    public static addRunSummary(text: string | Error, summaryLevel: RunSummaryLevel): void {
+    public static addRunSummary(customMessage: string | Error, summaryLevel: RunSummaryLevel): void {
         const runSummaryMessage: RunSummaryMessage = {
-            statusCode: CUSTOM_STATUS_CODE,
-            text: JSON.stringify(this.truncate(text.toString(), MAX_RUN_SUMMARY_TEXT_LENGTH)),
+            text: CUSTOM_STATUS_CODE,
+            message: JSON.stringify(this.truncate(customMessage.toString(), MAX_RUN_SUMMARY_TEXT_LENGTH)),
             level: summaryLevel,
         };
         this.runSummaries.push(runSummaryMessage);
@@ -21,9 +21,9 @@ export class RunSummaries {
 
     public static addRunSummaryMessage(message: Message): void {
         const runSummaryMessage: RunSummaryMessage = {
-            statusCode: message.statusCode,
+            text: message.statusCode,
             level: message.level,
-            text: message.text !== undefined ?
+            message: message.text !== undefined ?
                 JSON.stringify(this.truncate(message.text.toString(), MAX_RUN_SUMMARY_TEXT_LENGTH)) :
                 message.text,
             templateVariables: message.templateVariables,
