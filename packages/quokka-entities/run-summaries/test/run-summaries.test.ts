@@ -27,8 +27,8 @@ describe('runSummaries', () => {
         const runSummaryText: string = 'Single runSummary';
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(runSummaryText),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(runSummaryText),
                 level: RunSummaryLevel.ERROR,
             },
         ];
@@ -42,8 +42,8 @@ describe('runSummaries', () => {
         const runSummaryText: Error = new Error('Single runSummary');
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(runSummaryText.toString()),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(runSummaryText.toString()),
                 level: RunSummaryLevel.ERROR,
             },
         ];
@@ -59,18 +59,18 @@ describe('runSummaries', () => {
         const runSummaryText3: string = 'runSummary 3';
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(runSummaryText1),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(runSummaryText1),
                 level: RunSummaryLevel.ERROR,
             },
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(runSummaryText2),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(runSummaryText2),
                 level: RunSummaryLevel.ERROR,
             },
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(runSummaryText3),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(runSummaryText3),
                 level: RunSummaryLevel.ERROR,
             },
         ];
@@ -88,18 +88,18 @@ describe('runSummaries', () => {
         const runSummaryText3: Error = new Error('runSummary 3');
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(runSummaryText1.toString()),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(runSummaryText1.toString()),
                 level: RunSummaryLevel.ERROR,
             },
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(runSummaryText2.toString()),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(runSummaryText2.toString()),
                 level: RunSummaryLevel.ERROR,
             },
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(runSummaryText3.toString()),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(runSummaryText3.toString()),
                 level: RunSummaryLevel.ERROR,
             },
         ];
@@ -116,8 +116,8 @@ describe('runSummaries', () => {
         const expectedTruncatedText: string = longText.substring(0, MAX_RUN_SUMMARY_TEXT_LENGTH) + '...';
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(expectedTruncatedText),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(expectedTruncatedText),
                 level: RunSummaryLevel.ERROR,
             },
         ];
@@ -132,8 +132,8 @@ describe('runSummaries', () => {
         const expectedTruncatedText: string = longText.toString().substring(0, MAX_RUN_SUMMARY_TEXT_LENGTH) + '...';
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: CUSTOM_STATUS_CODE,
-                text: JSON.stringify(expectedTruncatedText),
+                text: CUSTOM_STATUS_CODE,
+                message: JSON.stringify(expectedTruncatedText),
                 level: RunSummaryLevel.ERROR,
             },
         ];
@@ -158,7 +158,7 @@ describe('runSummaries', () => {
         };
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: expectedStatusCode,
+                text: expectedStatusCode,
                 level: RunSummaryLevel.ERROR,
                 templateVariables: expectedTemplateVariables,
             },
@@ -179,9 +179,9 @@ describe('runSummaries', () => {
         };
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: expectedStatusCode,
+                text: expectedStatusCode,
                 level: RunSummaryLevel.ERROR,
-                text: JSON.stringify(expectedMessage),
+                message: JSON.stringify(expectedMessage),
             },
         ];
 
@@ -217,14 +217,14 @@ describe('runSummaries', () => {
         
         const expectedRunSummaries: RunSummaryMessage[] = [
             {
-                statusCode: expectedStatusCode1,
+                text: expectedStatusCode1,
                 level: RunSummaryLevel.ERROR,
                 templateVariables: expectedTemplateVariables1,
             },
             {
-                statusCode: expectedStatusCode2,
+                text: expectedStatusCode2,
                 level: RunSummaryLevel.ERROR,
-                text: JSON.stringify(expectedMessage2),
+                message: JSON.stringify(expectedMessage2),
             },
         ];
 
