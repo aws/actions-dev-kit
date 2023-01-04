@@ -1,6 +1,6 @@
 {
   "name": "@quokka/run-summaries",
-  "version": "0.47.0",
+  "version": "0.47.1",
   "description": "Quokka run summaries entity",
   "homepage": "",
   "license": "ISC",
@@ -15,6 +15,6 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@quokka/adk-core": "0.47.0"
+    "@quokka/adk-core": "0.47.1"
   }
 }
