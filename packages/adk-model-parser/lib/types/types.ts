@@ -12,15 +12,15 @@ export interface Model {
 }
 
 export interface Environment {
-  Required: boolean;
+    Required: boolean;
 }
 
 export interface Sources {
-  Required: boolean;
+    Required: boolean;
 }
 
 export interface Configuration {
-    inputs: Map<string, Input>;
+    [index: string]: Input;
 }
 
 export interface Input {
@@ -28,7 +28,7 @@ export interface Input {
     Required: boolean;
     DisplayName: string;
     Type: string;
-    Default: boolean;
+    Default: string;
 }
 
 export interface RunConfig {

@@ -1,4 +1,4 @@
-import { getInputParam, setOutputParam, runCommand, allEnv, setFailure, validateInput } from './command-wrapper';
+import { getInputParam, setOutputParam, runCommand, setFailure, validateInput } from './command-wrapper';
 
 /**
 * Provides the value of the action parameter as setup on the workflow definition.
@@ -61,15 +61,6 @@ export function command(cmd: string) {
 }
 
 /**
-* Provides the value of all the environment variables as setup on the workflow definition and runtime environment.
-*
-* @return Value of all the environment variable.
-*/
-export function allEnvs() {
-    return allEnv();
-}
-
-/**
 * Sets the action as failed with associated message.
 *
 * @param message The message to fail the action with
@@ -119,8 +110,4 @@ export class Utils {
         return runCommand(cmd);
     }
 
-    /** View documentation at {@link allEnvs | `allEnvs`} */
-    static allEnvs() {
-        return allEnv();
-    }
 }

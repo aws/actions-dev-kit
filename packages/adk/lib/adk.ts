@@ -11,6 +11,7 @@ import { SchemaType } from './validation/model';
 import { INestApplicationContext, Logger } from '@nestjs/common';
 import { ValidationController } from './validation/controller';
 import { BootstrapController } from './bootstrap/controller';
+import { escape } from '@quokka/adk-utils';
 
 let APP_CONTEXT: INestApplicationContext;
 const bootstrap = async (): Promise<INestApplicationContext> => {
@@ -92,10 +93,10 @@ async function initAppContext(): Promise<INestApplicationContext> {
     return context;
 }
 
-
 async function parseCLIArgs() {
     const argv = await cliArgs();
     const cmd = argv._[0];
+    let sanitizedFileName = escape(argv.file);
 
     switch (cmd) {
         case 'validate':
@@ -103,16 +104,16 @@ async function parseCLIArgs() {
             Logger.log('Starting action validation');
             return validateAppContext.get(ValidationController).validateAction(
                 {
-                    file: argv.file,
+                    file: sanitizedFileName,
                     schemaType: SchemaType.Quokka,
                 },
             );
         case 'bootstrap':
             const bootstrapAppContext = await initAppContext();
-            Logger.log(`Starting action bootstrap based on definition file ${argv.file}`);
+            Logger.log(`Starting action bootstrap based on definition file ${sanitizedFileName}`);
             return bootstrapAppContext.get(BootstrapController).bootstrapAction(
                 {
-                    file: argv.file,
+                    file: sanitizedFileName,
                     schemaType: SchemaType.Quokka,
                     templateBasePath: `${__dirname}/..`,
                     language: 'typescript',
@@ -120,12 +121,15 @@ async function parseCLIArgs() {
             );
         case 'init':
             const productInfo: ProductInfo = {
-                organization: argv.org,
-                project: argv.proj,
-                repository: argv.repo,
+                organization: escape(argv.org),
+                project: escape(argv.proj),
+                repository: escape(argv.repo),
             };
             console.log(chalk.green('Initializing ADK project...'));
-            return init(productInfo, argv.action, argv.language, argv.disconnected);
+            return init(productInfo,
+                escape(argv.action),
+                escape(argv.language),
+                argv.disconnected);
         default:
             console.log('Invalid command');
             return;
