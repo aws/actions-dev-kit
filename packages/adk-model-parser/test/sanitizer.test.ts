@@ -1,6 +1,6 @@
 'use strict';
 
-import { Model, sanitizeAndParseModelFile } from '../lib';
+import { Model, parseAndSanitizeYamlFile } from '../lib';
 
 jest.mock('fs', () => ({
     ...jest.requireActual('fs'),
@@ -13,7 +13,7 @@ describe('Action.yaml Sanitizer Test', () => {
 
     it('should escape all strings in action.yml', async () => {
         const file = `${__dirname}/invalid_input_code_injection.yml`;
-        let model: Model = sanitizeAndParseModelFile(file);
+        let model: Model = parseAndSanitizeYamlFile(file);
 
         expect(model).toBeDefined();
         expect(model.SchemaVersion === '1.0%25\\n\\r%3A%2C').toBeTruthy();

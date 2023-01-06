@@ -14,7 +14,6 @@ export class FileCopyGenerator implements BoootstrapGenerator {
             Logger.log('Copying files from template..');
             const files = ['tsconfig.json', '.prettierrc.json'];
             files.forEach((fl) => {
-                // fs.copyFileSync(`${__dirname}/../../../templates/action/typescript/${fl}`, `${fl}`, fs.constants.COPYFILE_EXCL);
                 fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/${fl}`, `${fl}`, fs.constants.COPYFILE_EXCL);
             });
 

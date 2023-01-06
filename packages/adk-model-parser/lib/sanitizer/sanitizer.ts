@@ -1,22 +1,31 @@
 import { Input, Model } from '../types/types';
+import { escape } from '@quokka/adk-utils/lib';
 
+/**
+ *
+ * Sanitizes {@link Model | `Action model`} model by HTML escaping special characters
+ *
+ * @param model The model object
+ *
+ * @returns {@link Model | `Action model`} The sanitized model
+ */
 export function sanitizeModel(model: Model): Model {
-    model['SchemaVersion'] = escapeInput(model.SchemaVersion);
+    model['SchemaVersion'] = escape(model.SchemaVersion);
 
     if (model.Author) {
-        model['Author'] = escapeInput(model.Author);
+        model['Author'] = escape(model.Author);
     }
     if (model.Description) {
-        model['Description'] = escapeInput(model.Description);
+        model['Description'] = escape(model.Description);
     }
     if (model.Id) {
-        model['Id'] = escapeInput(model.Id);
+        model['Id'] = escape(model.Id);
     }
     if (model.Name) {
-        model['Name'] = escapeInput(model.Name);
+        model['Name'] = escape(model.Name);
     }
     if (model.Version) {
-        model['Version'] = escapeInput(model.Version);
+        model['Version'] = escape(model.Version);
     }
 
     if (model.Configuration !== undefined) {
@@ -24,7 +33,7 @@ export function sanitizeModel(model: Model): Model {
         const sanitizedInputsMap: { [key: string]: Input } = {};
 
         Object.entries(model.Configuration!).map(([key, value]) => {
-            const sanitizedKey = escapeInput(key);
+            const sanitizedKey = escape(key);
             const sanitizedInput = escapeConfigurationInput(value);
             sanitizedInputsMap[sanitizedKey] = sanitizedInput;
         });
@@ -33,10 +42,10 @@ export function sanitizeModel(model: Model): Model {
 
     if (model.Runs) {
         if (model.Runs.Main) {
-            model.Runs['Main'] = escapeInput(model.Runs.Main);
+            model.Runs['Main'] = escape(model.Runs.Main);
         }
         if (model.Runs.Using) {
-            model.Runs['Using'] = escapeInput(model.Runs.Using);
+            model.Runs['Using'] = escape(model.Runs.Using);
         }
     }
 
@@ -49,30 +58,18 @@ function isString(input: any): boolean {
 
 function escapeConfigurationInput(input: Input): Input {
     if (input.Description) {
-        input['Description'] = escapeInput(input.Description);
+        input['Description'] = escape(input.Description);
     }
     if (input.Type && isString(input.Type)) {
-        input['Type'] = escapeInput(input.Type);
+        input['Type'] = escape(input.Type);
     }
     if (input.DisplayName) {
-        input['DisplayName'] = escapeInput(input.DisplayName);
+        input['DisplayName'] = escape(input.DisplayName);
     }
     if (input.Default && isString(input.Default)) {
-        input['Default'] = escapeInput(input.Default);
+        input['Default'] = escape(input.Default);
     }
 
     return input;
 }
 
-// following github approach:
-// https://github.com/actions/toolkit/blob/main/packages/core/src/command.ts#L80-L94
-export function escapeInput(input?: string): string {
-    return input === undefined
-        ? ''
-        : input
-            .replace(/%/g, '%25')
-            .replace(/\r/g, '%0D')
-            .replace(/\n/g, '%0A')
-            .replace(/:/g, '%3A')
-            .replace(/,/g, '%2C');
-}

@@ -11,7 +11,7 @@ import { SchemaType } from './validation/model';
 import { INestApplicationContext, Logger } from '@nestjs/common';
 import { ValidationController } from './validation/controller';
 import { BootstrapController } from './bootstrap/controller';
-import { escapeInput } from '@quokka/adk-model-parser/lib/sanitizer/sanitizer';
+import { escape } from '@quokka/adk-utils';
 
 let APP_CONTEXT: INestApplicationContext;
 const bootstrap = async (): Promise<INestApplicationContext> => {
@@ -96,7 +96,7 @@ async function initAppContext(): Promise<INestApplicationContext> {
 async function parseCLIArgs() {
     const argv = await cliArgs();
     const cmd = argv._[0];
-    let sanitizedFileName = escapeInput(argv.file);
+    let sanitizedFileName = escape(argv.file);
 
     switch (cmd) {
         case 'validate':
@@ -121,14 +121,14 @@ async function parseCLIArgs() {
             );
         case 'init':
             const productInfo: ProductInfo = {
-                organization: escapeInput(argv.org),
-                project: escapeInput(argv.proj),
-                repository: escapeInput(argv.repo),
+                organization: escape(argv.org),
+                project: escape(argv.proj),
+                repository: escape(argv.repo),
             };
             console.log(chalk.green('Initializing ADK project...'));
             return init(productInfo,
-                escapeInput(argv.action),
-                escapeInput(argv.language),
+                escape(argv.action),
+                escape(argv.language),
                 argv.disconnected);
         default:
             console.log('Invalid command');

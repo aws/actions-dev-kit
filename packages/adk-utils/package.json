@@ -1,0 +1,23 @@
+{
+  "name": "@quokka/adk-utils",
+  "version": "0.46.1",
+  "description": "ADK UTIL",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc && eslint **/*.ts",
+    "lint": "eslint **/*.ts",
+    "test": "jest --verbose"
+  },
+  "files": [
+    "lib"
+  ],
+  "dependencies": {
+    "@nestjs/common": "^8.4.7",
+    "@nestjs/core": "^8.4.7"
+  },
+  "devDependencies": {
+  },
+  "gitHead": "53eac4e49b1acefc56f3fa5bae19ff894c5e8cc6"
+}

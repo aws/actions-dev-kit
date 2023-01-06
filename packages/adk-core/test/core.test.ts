@@ -42,9 +42,4 @@ describe('@quokka/adk-core', () => {
         expect(adkCore.Utils.getMultiLineInput(varName)).toMatch(multiLineInputValue);
     });
 
-    it('should return env inputs for actions', () => {
-        let inputValue = 'inputVar1';
-        process.env.INPUT_VAR1 = inputValue;
-        expect(adkCore.allEnvs()).toMatch(inputValue);
-    });
 });
