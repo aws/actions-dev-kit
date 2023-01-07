@@ -4,7 +4,7 @@ import { getInputParam, setOutputParam, runCommand, setFailure, validateInput } 
 * Provides the value of the action parameter as setup on the workflow definition.
 * Limits the value to a single line.
 *
-* @param inputVar The name of the variable to find the value of
+* @param inputVar The name of the variable to find the value of. The value is sanitized by escaping special characters.
 *
 * @returns The value of the resolved input variable as setup in the workflow definition
 */
@@ -15,7 +15,7 @@ export function getInput(inputVar: string) {
 /**
 * Provides the multi-line value of the action parameter as setup on the workflow definition.
 *
-* @param inputVar The name of the variable to find the value of
+* @param inputVar The name of the variable to find the value of. The value is sanitized by escaping special characters.
 *
 * @returns The multi-line value of the resolved input variable as setup in the workflow definition
 */
@@ -27,7 +27,7 @@ export function getMultiLineInput(inputVar: string) {
 * Provides the value of the environment variable as setup on the workflow definition and runtime environment.
 * Limits the value to a single line.
 *
-* @param inputVar The name of the environment variable to find the value of
+* @param inputVar The name of the environment variable to find the value of. The value is sanitized by escaping special characters.
 *
 * @return Value of the environment variable. Limits to single line.
 */
@@ -52,12 +52,14 @@ export function setOutput(varName: string, varValue: string) {
 
 /**
 * Executes the command on the runtime.
+* Both command and its argument are sanitized (escaped) before execution
 *
 * @param cmd The command to execute
+* @param args The command arguments
 * @return {@link ICommandOutput | `Command Output`} complex object with runtime execution parameters.
 */
-export function command(cmd: string) {
-    return runCommand(cmd);
+export function command(cmd: string, args?: string[]) {
+    return runCommand(cmd, args);
 }
 
 /**
@@ -106,8 +108,8 @@ export class Utils {
     }
 
     /** View documentation at {@link command | `command`} */
-    static command(cmd: string) {
-        return runCommand(cmd);
+    static command(cmd: string, args?: string[]) {
+        return runCommand(cmd, args);
     }
 
 }
