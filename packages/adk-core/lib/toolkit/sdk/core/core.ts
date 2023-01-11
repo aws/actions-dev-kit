@@ -62,7 +62,7 @@ export function command(cmd: string, args?: string[]) {
 /**
 * Sets the action as failed with associated message.
 *
-* @param message The message to fail the action.
+* @param message The message as to why the action failed.
 */
 export function setFailed(message: any) {
     setFailure(message, 1);
@@ -74,9 +74,9 @@ export function setFailed(message: any) {
 export interface ICommandOutput {
     /** The command output exit code. */
     code: number;
-    /** standard output captured buffer. */
+    /** The standard output captured buffer. */
     stdout: any;
-    /** standard error captured output. */
+    /** The standard error captured buffer. */
     stderr: any;
 }
 
