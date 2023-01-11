@@ -2,10 +2,12 @@ import { exec } from 'shelljs';
 // @ts-ignore
 import os from 'os';
 import { ICommandOutput } from './core';
+import { sanitizeCommand } from '@quokka/adk-utils/lib';
 
-export function runCommand(cmd: string) {
+export function runCommand(cmd: string, args?: string[]) {
     const command_output = <ICommandOutput>{};
-    const shell_command = exec(cmd, { async: false });
+    const sanitizedCommand = sanitizeCommand(cmd, args);
+    const shell_command = exec(sanitizedCommand, { async: false });
     command_output.code = shell_command.code;
     command_output.stdout = shell_command.stdout;
     command_output.stderr = shell_command.stderr;
@@ -13,15 +15,11 @@ export function runCommand(cmd: string) {
 }
 
 export function getInputParam(inputVar: string) {
-    return runCommand('printenv ' + inputVar).stdout;
+    return runCommand('printenv', [inputVar]).stdout;
 }
 
 export function setOutputParam(varName: string, varValue: string) {
     return runCommand(`echo "::set-output name=${varName}::${varValue}"`).stdout;
-}
-
-export function allEnv() {
-    return runCommand('env | xargs').stdout;
 }
 
 export function validateInput(inputVar: string) {

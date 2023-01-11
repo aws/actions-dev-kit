@@ -1,1 +1,1 @@
-export { escape } from './util/util';
+export { escape, sanitizeCommand } from './util/util';
