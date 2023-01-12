@@ -11,7 +11,7 @@ import {
     ListIssueStoreStatusesOutput,
     ListIssueStoreStatusesRequestInput,
 } from '@quokka/adk-client/dist/fusi';
-import { Organization } from '@quokka/organization/lib';
+import { Space } from '@quokka/space/lib';
 import { Project } from '@quokka/project/lib';
 
 export interface IssueProvider {
@@ -35,7 +35,7 @@ export class Issue {
 
     public getIssueProvider = () => this.provider;
 
-    public async getIssue(organization: Organization, project: Project, shortId: string): Promise<GetIssueOutput | undefined> {
+    public async getIssue(organization: Space, project: Project, shortId: string): Promise<GetIssueOutput | undefined> {
         const listIssuesOutput = await this.provider.listIssues({
             organizationName: organization.name,
             projectName: project.name,
@@ -52,11 +52,11 @@ export class Issue {
             undefined;
     }
 
-    public async createIssueInBacklog(organization: Organization, project: Project, title: string, description: string = '', priority: string = 'low') {
+    public async createIssueInBacklog(space: Space, project: Project, title: string, description: string = '', priority: string = 'low') {
         let projectName = project.name;
-        let organizationName = organization.name;
+        let spaceName = space.name;
         let listIssueStoreStatusesOutput = await this.provider.listIssueStoreStatuses({
-            organizationName: organizationName,
+            organizationName: spaceName,
             projectName: projectName,
             issueStoreName: DEFAULT_ISSUE_STORE_NAME,
         });
@@ -65,7 +65,7 @@ export class Issue {
             throw new Error("can't find the backlog status");
         }
         return this.provider.createIssue({
-            organizationName: organizationName,
+            organizationName: spaceName,
             projectName: projectName,
             issueStoreName: DEFAULT_ISSUE_STORE_NAME,
             description: description,

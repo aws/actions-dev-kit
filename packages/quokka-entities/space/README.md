@@ -1,11 +1,11 @@
-# `organization`
+# `space`
 
 > TODO: description
 
 ## Usage
 
 ```
-const organization = require('organization');
+const space = require('space');
 
 // TODO: DEMONSTRATE API
 ```

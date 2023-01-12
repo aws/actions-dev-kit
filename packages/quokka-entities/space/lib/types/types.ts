@@ -1,4 +1,4 @@
-export interface Organization {
+export interface Space {
     name: string;
     id: string;
 }
