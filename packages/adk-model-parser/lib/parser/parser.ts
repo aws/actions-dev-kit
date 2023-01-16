@@ -18,7 +18,5 @@ export function parseAndSanitizeYamlFile(fileName: any): Model {
 
 function parseModelFileContents(fileContents: any): Model {
     const definition = yaml.load(fileContents) as Model;
-    const sanitizedDefinition = sanitizeModel(definition);
-    console.log('Final Definition: ' + Object.values(sanitizedDefinition));
-    return definition;
+    return sanitizeModel(definition);
 }
