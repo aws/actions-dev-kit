@@ -12,7 +12,7 @@ export interface SchemaValidator extends Validator {
 export class JsonSchemaValidator implements SchemaValidator {
     validate(context: ValidationContext): ValidationResult {
         try {
-            const validatorResult = validate(context.instance, ActionSchemas.get(context.props.schemaType ?? SchemaType.Quokka));
+            const validatorResult = validate(context.instance, ActionSchemas.get(context.props.schemaType ?? SchemaType.CodeCatalyst));
             return new ValidationResult(validatorResult.errors.map(i => i.toString()));
         } catch (e) {
             Logger.error(e);

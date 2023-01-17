@@ -2,7 +2,7 @@ import fs from 'fs';
 import { applyTemplate } from '../../util/template';
 import { Injectable, Logger, Scope } from '@nestjs/common';
 import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError } from '../model';
-import { Model, Configuration } from '@quokka/adk-model-parser';
+import { Model, Configuration } from '@codecatalyst/adk-model-parser';
 import { GeneratorProps } from '../model';
 
 export const README_GENERATOR = 'readme_generator';

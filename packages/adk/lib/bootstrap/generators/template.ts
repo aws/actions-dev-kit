@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger, Scope } from '@nestjs/common';
 import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
-import { Model } from '@quokka/adk-model-parser';
+import { Model } from '@codecatalyst/adk-model-parser';
 import { BootstrapCodeGenerator, CODE_GENERATOR } from './code';
 import { FileCopyGenerator, FILE_COPY_GENERATOR } from './fscopy';
 import { README_GENERATOR, ReadmeGenerator } from './readme';

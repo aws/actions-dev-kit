@@ -30,7 +30,7 @@
   "workspaces": {
     "packages": [
       "packages/*",
-      "packages/quokka-entities/*"
+      "packages/codecatalyst-entities/*"
     ],
     "nohoist": [
       "**/adk-core/**"

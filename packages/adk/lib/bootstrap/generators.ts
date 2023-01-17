@@ -1,5 +1,5 @@
 import { Inject, Injectable, Logger, Scope } from '@nestjs/common';
-import { Model } from '@quokka/adk-model-parser';
+import { Model } from '@codecatalyst/adk-model-parser';
 import { TEMPLATE_GENERATOR, TemplateGenerator } from './generators/template';
 import { GeneratorProps } from './model';
 

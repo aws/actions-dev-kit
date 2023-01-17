@@ -20,7 +20,7 @@ Using ADK SDK, customers can interact with Code.AWS concepts and resources. Lets
 #### Sample Usage
 
 ```
-const core = require('@quokka/adk-core')
+const core = require('@codecatalyst/adk-core')
 const destinationBucket = core.getInput('DestinationBucketName')
     # => Maps to the destination bucket configuration in Code.AWS workflow definition
 const srcDir = core.getInput('SourcePath')

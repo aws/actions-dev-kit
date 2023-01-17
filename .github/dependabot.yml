@@ -26,14 +26,18 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
-    directory: "packages/quokka-entities/issue"
+    directory: "packages/codecatalyst-entities/issue"
     schedule:
       interval: "daily"      
   - package-ecosystem: "npm"
-    directory: "packages/quokka-entities/organization"
+    directory: "packages/codecatalyst-entities/space"
     schedule:
       interval: "daily"      
   - package-ecosystem: "npm"
-    directory: "packages/quokka-entities/project"
+    directory: "packages/codecatalyst-entities/project"
     schedule:
-      interval: "daily"            
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "packages/codecatalyst-entities/run-summaries"
+    schedule:
+      interval: "daily"

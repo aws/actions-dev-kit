@@ -11,7 +11,7 @@ import { SchemaType } from './validation/model';
 import { INestApplicationContext, Logger } from '@nestjs/common';
 import { ValidationController } from './validation/controller';
 import { BootstrapController } from './bootstrap/controller';
-import { escape } from '@quokka/adk-utils';
+import { escape } from '@codecatalyst/adk-utils';
 
 let APP_CONTEXT: INestApplicationContext;
 const bootstrap = async (): Promise<INestApplicationContext> => {
@@ -105,7 +105,7 @@ async function parseCLIArgs() {
             return validateAppContext.get(ValidationController).validateAction(
                 {
                     file: sanitizedFileName,
-                    schemaType: SchemaType.Quokka,
+                    schemaType: SchemaType.CodeCatalyst,
                 },
             );
         case 'bootstrap':
@@ -114,7 +114,7 @@ async function parseCLIArgs() {
             return bootstrapAppContext.get(BootstrapController).bootstrapAction(
                 {
                     file: sanitizedFileName,
-                    schemaType: SchemaType.Quokka,
+                    schemaType: SchemaType.CodeCatalyst,
                     templateBasePath: `${__dirname}/..`,
                     language: 'typescript',
                 },

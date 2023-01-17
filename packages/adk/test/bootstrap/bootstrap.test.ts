@@ -41,7 +41,7 @@ describe('Bootstrap Command Tests', () => {
         const file = `${__dirname}/valid_input.yml`;
         const props: GeneratorProps = {
             file: file,
-            schemaType: SchemaType.Quokka,
+            schemaType: SchemaType.CodeCatalyst,
             templateBasePath: `${__dirname}/../..`,
             language: 'typescript',
         };
@@ -53,7 +53,7 @@ describe('Bootstrap Command Tests', () => {
         const file = `${__dirname}/valid_input_noenv.yml`;
         const props: GeneratorProps = {
             file: file,
-            schemaType: SchemaType.Quokka,
+            schemaType: SchemaType.CodeCatalyst,
             templateBasePath: `${__dirname}/../..`,
             language: 'typescript',
         };
@@ -65,7 +65,7 @@ describe('Bootstrap Command Tests', () => {
         const file = `${__dirname}/valid_input_code_injection.yml`;
         const props: GeneratorProps = {
             file: file,
-            schemaType: SchemaType.Quokka,
+            schemaType: SchemaType.CodeCatalyst,
             templateBasePath: `${__dirname}/../..`,
             language: 'typescript',
         };
