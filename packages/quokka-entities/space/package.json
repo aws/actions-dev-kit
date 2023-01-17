@@ -1,7 +1,7 @@
 {
-  "name": "@quokka/organization",
+  "name": "@quokka/space",
   "version": "0.48.1",
-  "description": "Quokka organization entity",
+  "description": "Quokka space entity",
   "homepage": "",
   "license": "",
   "main": "lib/index.js",
