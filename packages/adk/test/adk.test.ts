@@ -2,7 +2,7 @@
 
 import { adkCli } from '../lib';
 
-describe('@quokka/adk', () => {
+describe('@codecatalyst/adk', () => {
     it('run basic test', () => {
         adkCli();
     });

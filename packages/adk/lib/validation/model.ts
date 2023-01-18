@@ -4,16 +4,16 @@ export interface ValidationProps {
 }
 
 export enum SchemaType {
-    Quokka = 'Quokka',
+    CodeCatalyst = 'CodeCatalyst',
     GitHub = 'GitHub',
 }
 
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const QUOKKA_MODEL_SCHEMA = require('../../templates/quokka_model_schema.json');
+const CODECATALYST_MODEL_SCHEMA = require('../../templates/codecatalyst_model_schema.json');
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const GITHUB_MODEL_SCHEMA = require('../../templates/github_model_schema.json');
 export const ActionSchemas = new Map<string, any>([
-    [SchemaType.Quokka, QUOKKA_MODEL_SCHEMA],
+    [SchemaType.CodeCatalyst, CODECATALYST_MODEL_SCHEMA],
     [SchemaType.GitHub, GITHUB_MODEL_SCHEMA],
 ]);
 

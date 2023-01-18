@@ -13,9 +13,9 @@
     "all": "npm run build && npm run format && npm run lint && npm run package"
   },
   "dependencies": {
-    "@quokka/adk-core": "%%adk_version%%",
-    "@quokka/organization": "%%adk_version%%",
-    "@quokka/project": "%%adk_version%%",
+    "@codecatalyst/adk-core": "%%adk_version%%",
+    "@codecatalyst/organization": "%%adk_version%%",
+    "@codecatalyst/project": "%%adk_version%%",
     "@vercel/ncc": "^0.31.1"
   },
   "devDependencies": {

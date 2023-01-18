@@ -1,5 +1,5 @@
 import { SchemaType } from '../validation/model';
-import { Model } from '@quokka/adk-model-parser';
+import { Model } from '@codecatalyst/adk-model-parser';
 
 export interface GeneratorProps {
     readonly file?: string;

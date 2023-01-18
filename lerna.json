@@ -4,7 +4,7 @@
   "useWorkspaces": true,
   "packages": [
     "packages/*",
-    "packages/quokka-entities/*"
+    "packages/codecatalyst-entities/*"
   ],
   "version": "0.48.1",
   "command": {
