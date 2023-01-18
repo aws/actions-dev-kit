@@ -1,6 +1,6 @@
 {
   "name": "@codecatalyst/adk-client",
-  "version": "0.48.1",
+  "version": "0.49.0",
   "main": "dist/lib/fusi.js",
   "types": "dist/lib/fusi.d.ts",
   "files": [
