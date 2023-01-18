@@ -15,7 +15,7 @@
     "lint:fix": "eslint --fix '**/*.ts'"
   },
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^3.3.0"
   },
   "devDependencies": {
     "@graphql-codegen/add": "^3.2.3",
