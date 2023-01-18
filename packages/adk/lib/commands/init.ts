@@ -6,7 +6,7 @@ import yaml from 'js-yaml';
 
 
 const validations: Array<(productInfo: ProductInfo, action: any, language: any, disconnected: boolean) => boolean | Promise<boolean>> = [
-    validateQuokkaInputs,
+    validateCodeCatalystInputs,
     validateGitDirectory,
     validateNoExistingADKConfigFile,
     validateLanguage,
@@ -98,7 +98,7 @@ function validateNoExistingADKConfigFile(productInfo: ProductInfo, action: any, 
     return true;
 }
 
-function validateQuokkaInputs(productInfo: ProductInfo, action: any, language: any, disconnected: boolean) {
+function validateCodeCatalystInputs(productInfo: ProductInfo, action: any, language: any, disconnected: boolean) {
     return (isDefined(productInfo.organization, 'organization') &&
         isDefined(productInfo.project, 'project') &&
         isDefined(productInfo.repository, 'repository') &&

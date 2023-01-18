@@ -1,5 +1,5 @@
 import { Input, Model } from '../types/types';
-import { escape } from '@quokka/adk-utils/lib';
+import { escape } from '@codecatalyst/adk-utils/lib';
 
 /**
  *

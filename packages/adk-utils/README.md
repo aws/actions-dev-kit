@@ -1,11 +1,11 @@
-# `@quokka/adk-utils`
+# `@codecatalyst/adk-utils`
 
 > TODO: description
 
 ## Usage
 
 ```
-const adk = require('@quokka/adk-utils');
+const adk = require('@codecatalyst/adk-utils');
 
 // TODO: DEMONSTRATE API
 ```

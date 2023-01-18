@@ -2,7 +2,7 @@ import { Inject, Injectable, Logger, Scope } from '@nestjs/common';
 import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { PACKAGE_JSON_GENERATOR, PackageJsonGenerator } from './packagejson';
 import { RUNTIME_CODE_GENERATOR, RuntimeCodeGenerator } from './runtime';
-import { Model } from '@quokka/adk-model-parser';
+import { Model } from '@codecatalyst/adk-model-parser';
 
 export const CODE_GENERATOR = 'code_generator';
 

@@ -1,13 +1,13 @@
-const core = require('@quokka/adk-core');
-const quokkaOrg = require('@quokka/organization');
-const quokkaProject = require('@quokka/project');
+const core = require('@codecatalyst/adk-core');
+const codecatalystOrg = require('@codecatalyst/organization');
+const codecatalystProject = require('@codecatalyst/project');
 
 try {
   // Get inputs from the action
   %%action_input_config%%
 
-  // Interact with quokka entities
-  console.log(`Current quokka org ${quokkaOrg.getOrganization().name}`);
+  // Interact with CodeCatalyst entities
+  console.log(`Current CodeCatalyst org ${codecatalystOrg.getOrganization().name}`);
 
   // Action Code start
 
