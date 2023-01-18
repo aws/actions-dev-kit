@@ -1,6 +1,6 @@
 {
   "name": "@codecatalyst/issue",
-  "version": "0.49.0",
+  "version": "0.49.1",
   "description": "CodeCatalyst issue entity",
   "homepage": "",
   "license": "",
@@ -15,10 +15,10 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@codecatalyst/adk-client": "0.49.0",
-    "@codecatalyst/adk-core": "0.49.0",
-    "@codecatalyst/project": "0.49.0",
-    "@codecatalyst/space": "0.49.0"
+    "@codecatalyst/adk-client": "0.49.1",
+    "@codecatalyst/adk-core": "0.49.1",
+    "@codecatalyst/project": "0.49.1",
+    "@codecatalyst/space": "0.49.1"
   },
   "gitHead": "53eac4e49b1acefc56f3fa5bae19ff894c5e8cc6"
 }
