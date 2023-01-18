@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.49.1 (2023-01-18)
+
+**Note:** Version bump only for package @codecatalyst/run-summaries
+
+
+
+
+
+# 0.49.0 (2023-01-18)
+
+**Note:** Version bump only for package @codecatalyst/run-summaries
+
+
+
+
+
 ## [0.48.1](https://github.com/aws/actions-dev-kit/compare/v0.47.1...v0.48.1) (2023-01-04)
 
 **Note:** Version bump only for package @quokka/run-summaries
