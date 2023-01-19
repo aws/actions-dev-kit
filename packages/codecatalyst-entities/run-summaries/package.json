@@ -14,6 +14,9 @@
     "test": "jest --verbose",
     "api-ref": "typedoc"
   },
+  "typedoc": {
+    "entryPoint": "lib/index.ts"
+  },
   "devDependencies": {
     "@codecatalyst/adk-core": "0.49.1"
   }

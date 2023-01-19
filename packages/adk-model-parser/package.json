@@ -23,5 +23,8 @@
     "fs-extra": "^9.1.0",
     "graceful-fs": "^4.2.9"
   },
+  "typedoc": {
+    "entryPoint": "lib/index.ts"
+  },
   "gitHead": "53eac4e49b1acefc56f3fa5bae19ff894c5e8cc6"
 }
