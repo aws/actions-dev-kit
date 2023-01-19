@@ -25,7 +25,7 @@
     "all": "lerna run build --stream && lerna run test --stream",
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix '**/*.ts'",
-    "api-ref": "lerna run api-ref"
+    "api-ref": "typedoc"
   },
   "workspaces": {
     "packages": [
