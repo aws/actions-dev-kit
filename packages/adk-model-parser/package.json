@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
     "chalk": "^4",
-    "fs-extra": "^9.1.0",
+    "fs-extra": "^11.1.0",
     "graceful-fs": "^4.2.9"
   },
   "typedoc": {
