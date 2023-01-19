@@ -5,7 +5,7 @@
 ## Usage
 
 ```
-        const issueProvider = new QuokkaIssueProvider('https://public.api-gamma.quokka.codes/graphql', {
+        const issueProvider = new CodeCatalystIssueProvider('https://public.api-gamma.quokka.codes/graphql', {
             cookie: '<<cookie>>',
             csrfToken: '<<csrfToken>>',
         });

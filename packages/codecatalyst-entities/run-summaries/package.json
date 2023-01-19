@@ -1,7 +1,7 @@
 {
   "name": "@codecatalyst/run-summaries",
   "version": "0.49.1",
-  "description": "Quokka run summaries entity",
+  "description": "CodeCatalyst run summaries entity",
   "homepage": "",
   "license": "ISC",
   "main": "lib/index.js",
