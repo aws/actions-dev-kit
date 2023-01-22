@@ -1,5 +1,5 @@
 export interface ProductInfo {
-    organization: any;
+    space: any;
     project: any;
     repository: any;
 }
