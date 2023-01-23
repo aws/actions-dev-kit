@@ -1,7 +1,7 @@
 import { handleCommand as init } from '../lib/commands/init';
-import { product_name } from '../lib/util/product';
+import { product_name } from './util/product';
 import { version as adk_version } from '../lib/util/version';
-import { ProductInfo } from '../lib/types/types';
+import { ProductInfo } from './types/types';
 import chalk from 'chalk';
 import * as yargs from 'yargs';
 import { NestFactory } from '@nestjs/core';
@@ -42,10 +42,10 @@ async function cliArgs() {
         })
         .command('init', 'Initializes the current workspace with default Action definition', (yargs) => {
             return yargs
-                .option(product_name() + '-org', {
+                .option(product_name() + '-space', {
                     type: 'string',
-                    alias: 'org',
-                    desc: product_name() + ' Organization to work against',
+                    alias: 'space',
+                    desc: product_name() + ' Space to work against',
                     requiresArg: true,
                 })
                 .option(product_name() + '-project', {
@@ -121,7 +121,7 @@ async function parseCLIArgs() {
             );
         case 'init':
             const productInfo: ProductInfo = {
-                organization: escape(argv.org),
+                space: escape(argv.space),
                 project: escape(argv.proj),
                 repository: escape(argv.repo),
             };

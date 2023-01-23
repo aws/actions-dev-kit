@@ -14,7 +14,7 @@ const validations: Array<(productInfo: ProductInfo, action: any, language: any, 
 
 const GIT_DIR_NAME = '.git';
 const ADK_ACTION_CONFIG_FILE_NAME = '.actionconfig';
-const ADK_ACTION_DEFINITION_FILE_NAME = 'caws_action.yml';
+const ADK_ACTION_DEFINITION_FILE_NAME = 'action.yml';
 const SUPPORTED_LANGUAGES = new Set(['typescript']);
 const NODE_VERSION = 'node12';
 
@@ -43,9 +43,9 @@ async function validatePrerequisites(productInfo: ProductInfo, action: any, lang
 
 function writeActionConfiguration(productInfo: ProductInfo, action: any, language: any) {
     let data = {
-        caws_organization: `${productInfo.organization}`,
-        caws_project: `${productInfo.project}`,
-        caws_repository: `${productInfo.repository}`,
+        codecatalyst_space: `${productInfo.space}`,
+        codecatalyst_project: `${productInfo.project}`,
+        codecatalyst_repository: `${productInfo.repository}`,
         action_language: `${language}`,
         action_name: `${action}`,
     };
@@ -57,10 +57,10 @@ function writeActionDefinitionYaml(productInfo: ProductInfo, action: any, langua
     let templateKeys: { [key: string]: string } = {
         node_version: `${NODE_VERSION}`,
         action_name: `${action}`,
-        caws_organization: `${productInfo.organization}`,
-        caws_project: `${productInfo.project}`,
+        codecatalyst_space: `${productInfo.space}`,
+        codecatalyst_project: `${productInfo.project}`,
     };
-    const templateContents = fs.readFileSync(`${__dirname}/../../templates/definition/hello-world/${language}/caws_action.yml`, 'utf-8');
+    const templateContents = fs.readFileSync(`${__dirname}/../../templates/definition/hello-world/${language}/action.yml`, 'utf-8');
     const finalContents = applyTemplate(templateContents, templateKeys);
     fs.writeFileSync(ADK_ACTION_DEFINITION_FILE_NAME, finalContents, 'utf8');
 }
@@ -99,7 +99,7 @@ function validateNoExistingADKConfigFile(productInfo: ProductInfo, action: any, 
 }
 
 function validateCodeCatalystInputs(productInfo: ProductInfo, action: any, language: any, disconnected: boolean) {
-    return (isDefined(productInfo.organization, 'organization') &&
+    return (isDefined(productInfo.space, 'space') &&
         isDefined(productInfo.project, 'project') &&
         isDefined(productInfo.repository, 'repository') &&
         isDefined(action, 'action name'));

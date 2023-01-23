@@ -9,7 +9,7 @@ describe('Init Command Tests', () => {
     describe('Init validation tests', () => {
         it('should fail validation if organization input params are not valid', async () => {
             const productInfo : ProductInfo = {
-                organization: undefined,
+                space: undefined,
                 project: 'project',
                 repository: 'repo',
             };
@@ -21,7 +21,7 @@ describe('Init Command Tests', () => {
 
         it('should fail validation if project input params are not valid', async () => {
             const productInfo : ProductInfo = {
-                organization: 'org',
+                space: 'space',
                 project: undefined,
                 repository: 'repo',
             };
@@ -33,7 +33,7 @@ describe('Init Command Tests', () => {
 
         it('should fail validation if repository input params are not valid', async () => {
             const productInfo : ProductInfo = {
-                organization: 'org',
+                space: 'space',
                 project: 'project',
                 repository: undefined,
             };
@@ -45,7 +45,7 @@ describe('Init Command Tests', () => {
 
         it('should fail validation if not a git connected workspace', async () => {
             const productInfo : ProductInfo = {
-                organization: 'test',
+                space: 'test',
                 project: 'test',
                 repository: 'test',
             };
@@ -57,7 +57,7 @@ describe('Init Command Tests', () => {
 
         it('should fail validation if action config is already present', async () => {
             const productInfo : ProductInfo = {
-                organization: 'test',
+                space: 'test',
                 project: 'test',
                 repository: 'test',
             };
@@ -69,7 +69,7 @@ describe('Init Command Tests', () => {
 
         it('should fail validation if invalid language is passed', async () => {
             const productInfo : ProductInfo = {
-                organization: 'test',
+                space: 'test',
                 project: 'test',
                 repository: 'test',
             };
@@ -81,7 +81,7 @@ describe('Init Command Tests', () => {
 
         it('should fail validation if invalid action name is passed', async () => {
             const productInfo : ProductInfo = {
-                organization: 'test',
+                space: 'test',
                 project: 'test',
                 repository: 'test',
             };
@@ -116,7 +116,7 @@ describe('Init Command Tests', () => {
 
     async function validateWithMockData(disconnected: boolean = false) {
         const productInfo : ProductInfo = {
-            organization: 'test',
+            space: 'test',
             project: 'test',
             repository: 'test',
         };
@@ -124,11 +124,11 @@ describe('Init Command Tests', () => {
         const language = 'typescript';
         let data = `
       SchemaVersion: 1.0
-      Name: '%%action_name%% Action'
-      Id: '%%caws_organization%%/%%action_name%%-action'
+      Name: '%%action_name%%'
+      Id: '%%codecatalyst_space%%/%%action_name%%'
       Version: '0.0.0'
       Description: 'This Action greets someone and records the time'
-      Author: '%%caws_organization%%/%%caws_project%%'
+      Author: '%%codecatalyst_space%%/%%codecatalyst_project%%'
       Configuration:
         WhoToGreet:
           Description: 'Who are we greeting here'

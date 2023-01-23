@@ -14,13 +14,13 @@ export class WorkflowGenerator implements BoootstrapGenerator {
             Logger.log('Generating Validation Workflow..');
 
             let templateFile: string;
-            Logger.log(`Envirtonment: ${model.Environment?.Required}`);
+            Logger.log(`Environment: ${model.Environment?.Required}`);
             if (model.Environment?.Required) {
                 templateFile = 'ActionName-CI-Validation-Env.yaml';
             } else {
                 templateFile = 'ActionName-CI-Validation.yaml';
             }
-            let templateContents = fs.readFileSync(`${props.templateBasePath}/templates/action/${props.language}/aws/workflows/${templateFile}`, 'utf-8');
+            let templateContents = fs.readFileSync(`${props.templateBasePath}/templates/action/${props.language}/codecatalyst/workflows/${templateFile}`, 'utf-8');
             let action_input = '';
             let first = true;
             let action_name = model.Name?.split(' ', 1);
@@ -36,8 +36,8 @@ export class WorkflowGenerator implements BoootstrapGenerator {
                 action_inputs: `${action_input}`,
             };
             const finalContents = applyTemplate(templateContents, templateKeys);
-            fs.mkdirSync('.aws/workflows', { recursive: true });
-            fs.writeFileSync(`.aws/workflows/${action_name}-CI-Validation.yaml`, finalContents, 'utf8');
+            fs.mkdirSync('.codecatalyst/workflows', { recursive: true });
+            fs.writeFileSync(`.codecatalyst/workflows/${action_name}-CI-Validation.yaml`, finalContents, 'utf8');
             return new BootstrapGeneratorResult();
         } catch (e) {
             Logger.error(e);

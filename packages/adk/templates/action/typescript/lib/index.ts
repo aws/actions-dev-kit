@@ -1,13 +1,15 @@
 const core = require('@codecatalyst/adk-core');
-const codecatalystOrg = require('@codecatalyst/organization');
+const codecatalystIssue = require('@codecatalyst/issue');
 const codecatalystProject = require('@codecatalyst/project');
+const codecatalystRunSummaries = require('@codecatalyst/run-summaries');
+const codecatalystSpace = require('@codecatalyst/space');
 
 try {
   // Get inputs from the action
   %%action_input_config%%
 
   // Interact with CodeCatalyst entities
-  console.log(`Current CodeCatalyst org ${codecatalystOrg.getOrganization().name}`);
+  console.log(`Current CodeCatalyst space ${codecatalystSpace.getSpace().name}`);
 
   // Action Code start
 
