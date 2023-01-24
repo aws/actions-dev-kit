@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.50.0 (2023-01-24)
+
+
+### Bug Fixes
+
+* make generated actions run successfully in CodeCatalyst workflows ([#103](https://github.com/aws/actions-dev-kit/issues/103)) ([0dd14c6](https://github.com/aws/actions-dev-kit/commit/0dd14c6294582b0dfc5725dbd79866e985a005f4))
+
+
+
+
+
 ## 0.49.1 (2023-01-18)
 
 **Note:** Version bump only for package @codecatalyst/adk

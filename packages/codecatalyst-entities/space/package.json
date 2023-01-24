@@ -1,6 +1,6 @@
 {
   "name": "@codecatalyst/space",
-  "version": "0.49.1",
+  "version": "0.50.0",
   "description": "CodeCatalyst space entity",
   "homepage": "",
   "license": "",
@@ -15,7 +15,7 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@codecatalyst/adk-core": "0.49.1"
+    "@codecatalyst/adk-core": "0.50.0"
   },
   "typedoc": {
     "entryPoint": "lib/index.ts"
