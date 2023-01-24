@@ -1,6 +1,6 @@
 # `Issue`
-
-> Use the issue construct to query and mutate the issue resource in the organization
+## Purpose
+Use the issue construct to query and mutate the issue resource in a CodeCatalyst space
 
 ## Usage
 

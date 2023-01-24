@@ -1,5 +1,6 @@
 import { Input, Model } from '../types/types';
 import { escape } from '@codecatalyst/adk-utils/lib';
+import { isString } from '@codecatalyst/adk-utils/lib/util/util';
 
 /**
  *
@@ -50,10 +51,6 @@ export function sanitizeModel(model: Model): Model {
     }
 
     return model;
-}
-
-function isString(input: any): boolean {
-    return typeof input === 'string' || input instanceof String;
 }
 
 function escapeConfigurationInput(input: Input): Input {

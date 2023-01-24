@@ -2,6 +2,10 @@
 import * as core from '@codecatalyst/adk-core';
 import { Space } from './types/types';
 
+/**
+ * Returns CodeCatalyst Space
+ * @return {@link Space | `Space`} object
+ */
 export function getSpace(): Space {
     return <Space> {
         name: getSpaceName(),

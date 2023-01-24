@@ -6,6 +6,9 @@ import { CUSTOM_STATUS_CODE } from './constants';
 const ACTION_RUN_SUMMARY: string = 'ACTION_RUN_SUMMARY';
 const MAX_RUN_SUMMARY_TEXT_LENGTH: number = 200;
 
+/**
+ * Use the RunSummaries construct to set custom summary messages during the execution of actions that will be surfaced on the workflows UI
+ */
 export class RunSummaries {
     static runSummaries: RunSummaryMessage[] = [];
 

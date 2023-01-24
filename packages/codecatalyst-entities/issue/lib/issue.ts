@@ -29,6 +29,10 @@ export interface IssueProvider {
 export const DEFAULT_ISSUE_STORE_NAME = 'default';
 export const BACKLOG = 'Backlog';
 
+/**
+ * Use the Issue construct to query and mutate the Issue resource in a CodeCatalyst space
+ * See https://docs.aws.amazon.com/codecatalyst/latest/userguide/concepts.html#issues-concept to learn more about CodeCatalyst issues
+ */
 export class Issue {
     constructor(private provider: IssueProvider) {
     }
