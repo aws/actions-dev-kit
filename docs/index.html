@@ -1,0 +1,258 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>root</title><meta name="description" content="Documentation for root"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">root</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<h2>root</h2></div>
+<div class="tsd-panel tsd-typography">
+<a href="#actionsdevkit-adk" id="actionsdevkit-adk" style="color: inherit; text-decoration: none;">
+  <h1>ActionsDevKit (ADK)</h1>
+</a>
+
+<a href="#purpose" id="purpose" style="color: inherit; text-decoration: none;">
+  <h2>Purpose</h2>
+</a>
+<p>“Actions” in Code.AWS form basic building blocks for functions or tasks within Code.AWS workflows. E.g. Scan code for vulnerabilities, create JIRA issues for any high severity findings and inform the developers by sending a SMS message using Twilio integration. But we often focus on plugging actions into a workflow, but developing and maintaining an action in itself is not a trivial task either. Lack of fundamental libraries and framework for creating actions along with lack of standards across industry forces action authors to create, author and maintain workflow actions in various different ways. This lack of standards and tooling causes action developers to either go identify best quality actions to learn from or follow sub-optimal quality for the action.
+ADK (actions.dev kit) provides action authors right tooling and development support via libraries and frameworks, where action developers can build fresh actions or iterate on their existing actions at much faster pace, along with maintaining the quality standards for the action. Actions authors can build, test and publish their actions to Code.AWS actions catalog at much higher velocity.</p>
+
+<a href="#components" id="components" style="color: inherit; text-decoration: none;">
+  <h2>Components</h2>
+</a>
+<p>ADK largely comprises of 2 parts, ADK CLI and SDK.
+CLI provides the right interface to either start writing new actions, publish new actions/action versions or unpublish their existing published actions from Code.AWS catalog.
+SDK on the other hand, allows Action developers to write their actions with highest quality using libraries interfaces which make action development easier and conforming to quality standards. Action authors can use ADK SDK to interact with metadata information about the action, workflows, compute, secrets, logs, events, output variables, artifacts, reports etc,
+making it easier for the action author to fully model the input and output of the action code.</p>
+
+<a href="#adk-sdk-adk-lib" id="adk-sdk-adk-lib" style="color: inherit; text-decoration: none;">
+  <h3>ADK SDK (ADK Lib)</h3>
+</a>
+<p>Using ADK SDK, customers can interact with Code.AWS concepts and resources. Lets start writing S3 Publish Action using ADK SDK.</p>
+
+<a href="#sample-usage" id="sample-usage" style="color: inherit; text-decoration: none;">
+  <h4>Sample Usage</h4>
+</a>
+<pre><code><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">core</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;@codecatalyst/adk-core&#39;</span><span class="hl-1">)</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">destinationBucket</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">getInput</span><span class="hl-1">(</span><span class="hl-4">&#39;DestinationBucketName&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">    # </span><span class="hl-0">=&gt;</span><span class="hl-1"> </span><span class="hl-5">Maps</span><span class="hl-1"> </span><span class="hl-5">to</span><span class="hl-1"> </span><span class="hl-5">the</span><span class="hl-1"> </span><span class="hl-5">destination</span><span class="hl-1"> </span><span class="hl-5">bucket</span><span class="hl-1"> </span><span class="hl-5">configuration</span><span class="hl-1"> </span><span class="hl-0">in</span><span class="hl-1"> </span><span class="hl-5">Code</span><span class="hl-1">.</span><span class="hl-2">AWS</span><span class="hl-1"> </span><span class="hl-5">workflow</span><span class="hl-1"> </span><span class="hl-5">definition</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">srcDir</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">getInput</span><span class="hl-1">(</span><span class="hl-4">&#39;SourcePath&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">    # </span><span class="hl-0">=&gt;</span><span class="hl-1"> </span><span class="hl-5">Maps</span><span class="hl-1"> </span><span class="hl-5">to</span><span class="hl-1"> </span><span class="hl-5">the</span><span class="hl-1"> </span><span class="hl-5">src</span><span class="hl-1"> </span><span class="hl-5">dir</span><span class="hl-1"> </span><span class="hl-5">configuration</span><span class="hl-1"> </span><span class="hl-0">in</span><span class="hl-1"> </span><span class="hl-5">Code</span><span class="hl-1">.</span><span class="hl-2">AWS</span><span class="hl-1"> </span><span class="hl-5">workflow</span><span class="hl-1"> </span><span class="hl-5">definition</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">cawsOrg</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">getCawsOrg</span><span class="hl-1">()</span><br/><span class="hl-1">    # </span><span class="hl-0">=&gt;</span><span class="hl-1"> </span><span class="hl-5">Metadata</span><span class="hl-1"> </span><span class="hl-5">information</span><span class="hl-1"> </span><span class="hl-5">about</span><span class="hl-1"> </span><span class="hl-2">CAWS</span><span class="hl-1"> </span><span class="hl-5">org</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">cawsProject</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">getProject</span><span class="hl-1">()</span><br/><span class="hl-1">    # </span><span class="hl-0">=&gt;</span><span class="hl-1"> </span><span class="hl-5">Metadata</span><span class="hl-1"> </span><span class="hl-5">information</span><span class="hl-1"> </span><span class="hl-5">about</span><span class="hl-1"> </span><span class="hl-2">CAWS</span><span class="hl-1"> </span><span class="hl-5">project</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">actionName</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">getActionName</span><span class="hl-1">()</span><br/><span class="hl-5">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-4">&quot;Running action ${actionName}&quot;</span><span class="hl-1">)</span><br/><span class="hl-0">let</span><span class="hl-1"> </span><span class="hl-5">cmd</span><span class="hl-1"> = </span><span class="hl-4">`aws s3 sync </span><span class="hl-0">${</span><span class="hl-5">srcDir</span><span class="hl-0">}</span><span class="hl-4"> s3://</span><span class="hl-0">${</span><span class="hl-5">destinationBucket</span><span class="hl-0">}</span><span class="hl-4">/</span><span class="hl-0">${</span><span class="hl-5">cawsOrg</span><span class="hl-0">}</span><span class="hl-4">/</span><span class="hl-0">${</span><span class="hl-5">cawsProject</span><span class="hl-0">}</span><span class="hl-4">/`</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">cmdOutput</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">command</span><span class="hl-1">(</span><span class="hl-5">cmd</span><span class="hl-1">)</span><br/><span class="hl-5">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-5">cmdOutput</span><span class="hl-1">.</span><span class="hl-5">stdout</span><span class="hl-1">)</span><br/><br/><span class="hl-6">if</span><span class="hl-1"> (</span><span class="hl-5">cmdOutput</span><span class="hl-1">.</span><span class="hl-5">code</span><span class="hl-1"> != </span><span class="hl-7">0</span><span class="hl-1">) {</span><br/><span class="hl-1">  </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">setFailed</span><span class="hl-1">(</span><span class="hl-5">cmdOutput</span><span class="hl-1">.</span><span class="hl-5">stderr</span><span class="hl-1">)</span><br/><span class="hl-1">} </span><span class="hl-6">else</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">setOutputVariable</span><span class="hl-1">(</span><span class="hl-4">&quot;Files&quot;</span><span class="hl-1">, </span><span class="hl-5">cmdOutput</span><span class="hl-1">.</span><span class="hl-5">stdOut</span><span class="hl-1">)</span><br/><span class="hl-1">}</span><br/>
+</code></pre>
+
+<a href="#adk-cli" id="adk-cli" style="color: inherit; text-decoration: none;">
+  <h3>ADK CLI</h3>
+</a>
+
+<a href="#sample-usage-1" id="sample-usage-1" style="color: inherit; text-decoration: none;">
+  <h4>Sample Usage</h4>
+</a>
+<pre><code><span class="hl-1">&gt;&gt; </span><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">init</span><span class="hl-1"> --</span><span class="hl-5">action</span><span class="hl-1">-</span><span class="hl-5">name</span><span class="hl-1"> </span><span class="hl-5">MyAction</span><span class="hl-1"> --</span><span class="hl-5">caws</span><span class="hl-1">-</span><span class="hl-5">org</span><span class="hl-1"> </span><span class="hl-2">ORG</span><span class="hl-1"> --</span><span class="hl-5">caws</span><span class="hl-1">-</span><span class="hl-5">project</span><span class="hl-1"> </span><span class="hl-2">PROJ</span><br/><span class="hl-1">...</span><br/><br/><span class="hl-1">&gt;&gt; </span><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">bootstrap</span><span class="hl-1"> -</span><span class="hl-5">f</span><span class="hl-1"> </span><span class="hl-5">action</span><span class="hl-1">.</span><span class="hl-5">yml</span><br/><span class="hl-1">...</span><br/><br/><span class="hl-1">&gt;&gt; </span><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">validate</span><br/><span class="hl-5">validating</span><span class="hl-1">...</span><br/><span class="hl-5">Missing</span><span class="hl-1"> </span><span class="hl-2">README</span><span class="hl-1"> </span><span class="hl-5">file</span><span class="hl-1">...</span><br/><span class="hl-5">action</span><span class="hl-1">.</span><span class="hl-5">yml</span><span class="hl-1"> </span><span class="hl-5">parsing</span><span class="hl-1"> </span><span class="hl-5">failed</span><span class="hl-1">...</span><br/><br/><span class="hl-1">&gt;&gt; </span><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">publish</span><span class="hl-1"> --</span><span class="hl-5">action</span><span class="hl-1">-</span><span class="hl-5">name</span><span class="hl-1"> </span><span class="hl-5">MyAction</span><span class="hl-1"> --</span><span class="hl-5">version</span><span class="hl-1"> </span><span class="hl-7">1.0</span><span class="hl-1">.</span><span class="hl-7">0</span><br/><span class="hl-5">validating</span><span class="hl-1">...</span><br/><span class="hl-5">Action</span><span class="hl-1"> </span><span class="hl-5">schema</span><span class="hl-1"> </span><span class="hl-8">published</span><span class="hl-1">:</span><br/><span class="hl-1">  </span><span class="hl-8">Name</span><span class="hl-1">: &lt;</span><span class="hl-9">Org</span><span class="hl-1">&gt;/</span><span class="hl-5">MyAction</span><br/><span class="hl-1">  </span><span class="hl-8">Version</span><span class="hl-1">: </span><span class="hl-7">1.0</span><span class="hl-1">.</span><span class="hl-7">0</span><br/><span class="hl-1">  </span><span class="hl-8">Inputs</span><span class="hl-1">:</span><br/><span class="hl-1">    </span><span class="hl-8">DestinationBucketName</span><span class="hl-1">:</span><br/><span class="hl-1">        </span><span class="hl-8">Description</span><span class="hl-1">: </span><span class="hl-4">&#39;Name of the S3 bucket to publish artifacts to&#39;</span><br/><span class="hl-1">        </span><span class="hl-8">Required</span><span class="hl-1">: </span><span class="hl-0">true</span><br/><span class="hl-1">        </span><span class="hl-8">DisplayName</span><span class="hl-1">: </span><span class="hl-4">&#39;Destination Bucket Name&#39;</span><br/><span class="hl-1">        </span><span class="hl-8">Type</span><span class="hl-1">: </span><span class="hl-5">string</span><br/><span class="hl-1">    </span><span class="hl-8">SourcePath</span><span class="hl-1">:</span><br/><span class="hl-1">        </span><span class="hl-8">Description</span><span class="hl-1">: </span><span class="hl-4">&#39;Path of the files to publish in the local filesystem. This could directly be a path or a reference to a file in an input artifact&#39;</span><br/><span class="hl-1">        </span><span class="hl-8">Required</span><span class="hl-1">: </span><span class="hl-0">false</span><br/><span class="hl-1">        </span><span class="hl-8">DisplayName</span><span class="hl-1">: </span><span class="hl-4">&#39;Source Path&#39;</span><br/><span class="hl-1">        </span><span class="hl-8">Type</span><span class="hl-1">: </span><span class="hl-5">string</span><br/><span class="hl-1">        </span><span class="hl-8">Default</span><span class="hl-1">: </span><span class="hl-4">&#39;.&#39;</span><br/><span class="hl-1">   </span><span class="hl-8">Outputs</span><span class="hl-1">:</span><br/><span class="hl-1">     ....</span><br/><br/><span class="hl-5">This</span><span class="hl-1"> </span><span class="hl-5">operation</span><span class="hl-1"> </span><span class="hl-5">will</span><span class="hl-1"> </span><span class="hl-5">publish</span><span class="hl-1"> </span><span class="hl-5">Action</span><span class="hl-1"> &lt;</span><span class="hl-5">Org</span><span class="hl-1">&gt;/</span><span class="hl-8">MyAction</span><span class="hl-1">:</span><span class="hl-7">1.0</span><span class="hl-1">.</span><span class="hl-7">0</span><span class="hl-1"> </span><span class="hl-5">to</span><span class="hl-1"> </span><span class="hl-4">&quot;Public catalog&quot;</span><span class="hl-1">. </span><span class="hl-5">Are</span><span class="hl-1"> </span><span class="hl-5">you</span><span class="hl-1"> </span><span class="hl-5">sure</span><span class="hl-1">?</span>
+</code></pre>
+
+<a href="#commands" id="commands" style="color: inherit; text-decoration: none;">
+  <h4>Commands</h4>
+</a>
+<ul>
+<li><ol>
+<li>initialize - Initializes the ADK project locally, also produces required configuration files with specific language support.</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>bootstrap - Bootstrap Code.AWS Action code by reading action definition. ADK SDK would be used to develop actions.</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>validate - Validates the action definition and README file. In future, expand this command to validate the action is ready to be published.</li>
+</ol>
+</li>
+<li><ol start="4">
+<li>generate-test-workflow - Generate workflow file to test the action without publishing the action. Forms basis for CI workflow for the action.</li>
+</ol>
+</li>
+<li><ol start="5">
+<li>generate-readme - Generate good quality README file for the action developer. This forms basis of what we want from README files to look like for Code.AWS actions.</li>
+</ol>
+</li>
+<li><ol start="6">
+<li>sync - Sync’s the current workspace code with existing published Action.</li>
+</ol>
+</li>
+<li><ol start="7">
+<li>diff - Shows the diff of current workspace code with an existing published action or previous version of an existing published Action. Shows input/output differences as well as runtime/dependency differences.</li>
+</ol>
+</li>
+<li><ol start="8">
+<li>publish - Publish the action from local workspace to Code.AWS. Does validate that the action version can be published.</li>
+</ol>
+</li>
+<li><ol start="9">
+<li>deprecate/unpublish - Once we have deprecate capabilitiy, tries to unpublish an action version or marks an action version ready to publish.</li>
+</ol>
+</li>
+<li><ol start="10">
+<li>version - Increments the current version of the action automatically. Follows semver (<a href="https://semver.org/">https://semver.org/</a>) semantics. Also helps bootstrapping the action version, e.g. starting from no version to first version to subsequent versions. Supports major, minor version increments.</li>
+</ol>
+</li>
+<li><ol start="11">
+<li>help - shows the current set of commands</li>
+</ol>
+</li>
+</ul>
+
+<a href="#getting-started-guides" id="getting-started-guides" style="color: inherit; text-decoration: none;">
+  <h2>Getting Started Guides</h2>
+</a>
+
+<a href="#installation-guide" id="installation-guide" style="color: inherit; text-decoration: none;">
+  <h3>Installation Guide</h3>
+</a>
+<ul>
+<li><a href="guides/install.md">Install Guide</a></li>
+</ul>
+
+<a href="#adk-cli-guide" id="adk-cli-guide" style="color: inherit; text-decoration: none;">
+  <h3>ADK CLI Guide</h3>
+</a>
+<ul>
+<li><a href="guides/adk-cli.md">ADK CLI Guide</a></li>
+</ul>
+
+<a href="#adk-sdk-guide" id="adk-sdk-guide" style="color: inherit; text-decoration: none;">
+  <h3>ADK SDK Guide</h3>
+</a>
+<ul>
+<li><a href="guides/adk-lib.md">ADK CLI Guide</a></li>
+</ul>
+
+<a href="#prerequisites" id="prerequisites" style="color: inherit; text-decoration: none;">
+  <h3>Prerequisites</h3>
+</a>
+<ul>
+<li>Lerna</li>
+</ul>
+<pre><code><span class="hl-5">npm</span><span class="hl-1"> </span><span class="hl-5">install</span><span class="hl-1"> --</span><span class="hl-5">global</span><span class="hl-1"> </span><span class="hl-5">lerna</span>
+</code></pre>
+<ul>
+<li>yarn</li>
+</ul>
+<pre><code><span class="hl-5">npm</span><span class="hl-1"> </span><span class="hl-5">install</span><span class="hl-1"> --</span><span class="hl-5">global</span><span class="hl-1"> </span><span class="hl-5">yarn</span>
+</code></pre>
+
+<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+  <h3>Install</h3>
+</a>
+<ul>
+<li>TODO - Add npmrc commands and how-to generate tokens</li>
+</ul>
+<pre><code><span class="hl-5">npm</span><span class="hl-1"> </span><span class="hl-5">install</span><span class="hl-1"> --</span><span class="hl-5">global</span><span class="hl-1"> </span><span class="hl-5">adk</span>
+</code></pre>
+
+<a href="#development" id="development" style="color: inherit; text-decoration: none;">
+  <h2>Development</h2>
+</a>
+
+<a href="#build" id="build" style="color: inherit; text-decoration: none;">
+  <h3>Build</h3>
+</a>
+<pre><code><span class="hl-5">$</span><span class="hl-1"> ./</span><span class="hl-5">build</span><span class="hl-1">.</span><span class="hl-5">sh</span>
+</code></pre>
+
+<a href="#testing" id="testing" style="color: inherit; text-decoration: none;">
+  <h3>Testing</h3>
+</a>
+<pre><code><span class="hl-5">$</span><span class="hl-1"> </span><span class="hl-5">yarn</span><span class="hl-1"> </span><span class="hl-5">run</span><span class="hl-1"> </span><span class="hl-5">test</span><span class="hl-1">-</span><span class="hl-5">all</span>
+</code></pre>
+
+<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+  <h3>Contributing</h3>
+</a>
+<ul>
+<li>Create branch from main and call it <code>feature-*</code> branch. E.g. <code>feature-add-init-command</code>.</li>
+<li>Creating feature branch creates CI validation workflow against the <code>feature-*</code> branch.</li>
+<li>Update code in your new branch <code>feature-*</code></li>
+<li>Once you&#39;re done with feature development, create <code>Pull Request</code> from source <code>feature-*</code> branch to destination <code>main</code> branch</li>
+<li>This triggers a CI workflow in your feature-* branch. Please update the pull request with the workflow run in the description section of the PR.</li>
+<li>Add atleast 2 reviewers from the reviewer section. Reviewers can be anyone within the organization, but at least one developer from AEF team.</li>
+<li>Once your have all the approvals in your pull request, merge the pull request from UI by choosing <code>squash</code> (not fast forward merge) and reducing the number of commits to just one from feature-branch.
+This makes rollbacks easy if you have one commit per feature branch. If you have large amount of changes in your PR, I suggest re-think your development strategy to iteratively develop and push code.</li>
+<li>On merge, release workflows within ADK repository will kick-off which should automatically bump the version of the ADK package for consumption.</li>
+</ul>
+
+<a href="#coverage-expectations" id="coverage-expectations" style="color: inherit; text-decoration: none;">
+  <h3>Coverage Expectations</h3>
+</a>
+
+<a href="#goal" id="goal" style="color: inherit; text-decoration: none;">
+  <h4>Goal</h4>
+</a>
+<ul>
+<li>branches: 90</li>
+<li>statements: 90</li>
+<li>functions: 90</li>
+<li>lines: 90</li>
+</ul>
+<p>Actual coverages should be covered in the reports section</p>
+<ul>
+<li><a href=".">COVERAGES</a></li>
+</ul>
+
+<a href="#sample-actions-using-adk" id="sample-actions-using-adk" style="color: inherit; text-decoration: none;">
+  <h2>Sample Actions Using ADK</h2>
+</a>
+<ul>
+<li><a href=".">S3 Publish Action</a></li>
+</ul>
+
+<a href="#contact" id="contact" style="color: inherit; text-decoration: none;">
+  <h2>Contact</h2>
+</a>
+<p>Please contact [AEF Team](mailto: <a href="mailto:caws-aef-team@amazon.com">caws-aef-team@amazon.com</a>)</p>
+
+<a href="#changelog" id="changelog" style="color: inherit; text-decoration: none;">
+  <h2>ChangeLog</h2>
+</a>
+<p><a href="CHANGELOG.md">Changelog</a></p>
+
+<a href="#security" id="security" style="color: inherit; text-decoration: none;">
+  <h2>Security</h2>
+</a>
+<p>See CONTRIBUTING for more information.</p>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p>This project is licensed under the Apache-2.0 License.</p>
+</div></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current selected"><a href="modules.html">root</a>
+<ul>
+<li class="tsd-kind-module"><a href="modules/_codecatalyst_adk_core.html">@codecatalyst/adk-<wbr/>core</a></li>
+<li class="tsd-kind-module"><a href="modules/_codecatalyst_adk_model_parser.html">@codecatalyst/adk-<wbr/>model-<wbr/>parser</a></li>
+<li class="tsd-kind-module"><a href="modules/_codecatalyst_adk_utils.html">@codecatalyst/adk-<wbr/>utils</a></li>
+<li class="tsd-kind-module"><a href="modules/_codecatalyst_project.html">@codecatalyst/project</a></li>
+<li class="tsd-kind-module"><a href="modules/_codecatalyst_run_summaries.html">@codecatalyst/run-<wbr/>summaries</a></li>
+<li class="tsd-kind-module"><a href="modules/_codecatalyst_space.html">@codecatalyst/space</a></li></ul></li></ul></div></details></nav></div></div>
+<div class="container tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="assets/main.js"></script></body></html>
