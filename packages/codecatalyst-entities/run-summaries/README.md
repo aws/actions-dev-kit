@@ -1,12 +1,12 @@
 # `RunSummary`
 
-## Overview
-Add the run-summaries construct as a Quokka entity. This new construct will allow users to set custom summary messages during the execution of their actions that will be surfaced on the workflows UI.
+## Purpose
+Add the run-summaries construct as a CodeCatalyst entity. This construct allows users to set custom summary messages during the execution of their actions that will be surfaced on the workflows UI.
 
 ## Usage
 
 ```
-        import { RunSummaryLevel, RunSummaries } from '@quokka/run-summaries';
+        import { RunSummaryLevel, RunSummaries } from '@codecatalyst/run-summaries';
 
         try {
             // execute action code here
@@ -17,8 +17,8 @@ Add the run-summaries construct as a Quokka entity. This new construct will allo
 ```
 
 ```
-        import { RunSummaryLevel, RunSummaries } from '@quokka/run-summaries';
-        import * as adkCore from '@quokka/adk-core';
+        import { RunSummaryLevel, RunSummaries } from '@codecatalyst/run-summaries';
+        import * as adkCore from '@codecatalyst/adk-core';
         
         const cmdOutput = adkCore.command(/* command here */)
         // if the exit code of the command is a failure

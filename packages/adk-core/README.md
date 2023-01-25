@@ -1,23 +1,24 @@
 # `@codecatalyst/adk-core`
-
+## Purpose
 "ADK Core" offers action developers library interfaces which make action development easier. Action authors can interact with core metadata information about the action, workflows, output variables, artifacts, reports etc, making it easier for the action author to fully model the input and output of the action code. 
 
 ## Usage
 
 ```
 const adkCore = require('@codecatalyst/adk-core');
+const codecatalystSpace = require('@codecatalyst/space');
+    # => Metadata information about CodeCatalyst space
+const codecatalystProject = require('@codecatalyst/project');
+    # => Metadata information about CodeCatalyst project
 
 const destinationBucket = core.getInput('DestinationBucketName')
-    # => Maps to the destination bucket configuration in Code.AWS workflow definition
+    # => Maps to the destination bucket configuration in CodeCatalyst workflow definition
 const srcDir = core.getInput('SourcePath')
-    # => Maps to the src dir configuration in Code.AWS workflow definition
-const cawsOrg = core.getCawsOrg()
-    # => Metadata information about CAWS org
-const cawsProject = core.getProject()
-    # => Metadata information about CAWS project
+    # => Maps to the src dir configuration in CodeCatalyst workflow definition
+
 const actionName = core.getActionName()
 console.log("Running action ${actionName}")
-let cmd = `aws s3 sync ${srcDir} s3://${destinationBucket}/${cawsOrg}/${cawsProject}/`
+let cmd = `aws s3 sync ${srcDir} s3://${destinationBucket}/${codecatalystSpace.getSpace().name}/${codecatalystProject.getProject().name}/`
 const cmdOutput = core.command(cmd)
 console.log(cmdOutput.stdout)
 

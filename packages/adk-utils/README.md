@@ -1,11 +1,4 @@
 # `@codecatalyst/adk-utils`
+## Purpose
+"ADK Utils" is a package to store utility functions
 
-> TODO: description
-
-## Usage
-
-```
-const adk = require('@codecatalyst/adk-utils');
-
-// TODO: DEMONSTRATE API
-```
