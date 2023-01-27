@@ -21,3 +21,7 @@ export function escape(input?: string): string {
             .replace(/;/g, '%3B')
             .replace(/,/g, '%2C');
 }
+
+export function isString(input: any): boolean {
+    return typeof input === 'string' || input instanceof String;
+}

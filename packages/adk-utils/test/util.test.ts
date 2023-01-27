@@ -1,6 +1,6 @@
 'use strict';
 
-import { escape, sanitizeCommand } from '../lib';
+import { escape, sanitizeCommand, isString } from '../lib';
 
 describe('ADK-Util test', () => {
     it('should HTML escape all special characters', async () => {
@@ -38,5 +38,15 @@ describe('ADK-Util test', () => {
         expect(sanitizeCommand('', {}) === '').toBeTruthy();
         // @ts-ignore
         expect(sanitizeCommand('', 'not_array') === '').toBeTruthy();
+    });
+
+    it('test isString()', async () => {
+        const input = 'printenv';
+        const inputObj = new String(input);
+
+        expect(isString(input)).toBeTruthy();
+        expect(isString(inputObj)).toBeTruthy();
+        expect(isString(undefined)).toBeFalsy();
+        expect(isString(null)).toBeFalsy();
     });
 });

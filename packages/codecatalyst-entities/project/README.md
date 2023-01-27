@@ -1,11 +1,11 @@
-# `organization`
-
-> TODO: description
+# `Project`
+## Purpose
+Use the project construct to query the project resource metadata in a CodeCatalyst space
 
 ## Usage
 
 ```
-const organization = require('organization');
+const codecatalystProject = require('@codecatalyst/project');
 
-// TODO: DEMONSTRATE API
+console.log("Running action in ${codecatalystProject.getProject().name} project")
 ```

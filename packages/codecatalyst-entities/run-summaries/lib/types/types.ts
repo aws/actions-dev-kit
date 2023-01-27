@@ -6,8 +6,10 @@ export enum RunSummaryLevel {
     ERROR = 'Error'
 }
 
-// the text attribute is used as a status code and message attribute can be used to pass custom messages.
-// in future text will be replaced by statusCode.
+/**
+ * The text attribute is used as a status code and message attribute can be used to pass custom messages.
+ * In future text will be replaced by statusCode.
+ */
 export interface RunSummaryMessage {
     text: string,
     level: RunSummaryLevel,
@@ -15,11 +17,17 @@ export interface RunSummaryMessage {
     templateVariables?: TemplateVariable[]
 }
 
+/**
+ * The template variable
+ */
 export interface TemplateVariable {
     name: string,
     value: string
 }
 
+/**
+ * RunSummary message
+ */
 export interface Message {
     statusCode: string,
     level: RunSummaryLevel,

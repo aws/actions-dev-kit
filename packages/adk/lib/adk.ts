@@ -1,6 +1,6 @@
-import { handleCommand as init } from '../lib/commands/init';
+import { handleCommand as init } from './commands/init';
 import { product_name } from './util/product';
-import { version as adk_version } from '../lib/util/version';
+import { version as adk_version } from './util/version';
 import { ProductInfo } from './types/types';
 import chalk from 'chalk';
 import * as yargs from 'yargs';
@@ -135,7 +135,11 @@ async function parseCLIArgs() {
             return;
     }
 }
-
+/**
+ * ADK CLI entry point.
+ * Parses commands and arguments.
+ * Supports the following commands: init, bootstrap, validate
+ */
 export function adkCli() {
 
     parseCLIArgs()

@@ -1,11 +1,11 @@
-# `space`
-
-> TODO: description
+# `Space`
+## Purpose
+Use the space construct to query CodeCatalyst space resource metadata
 
 ## Usage
 
 ```
-const space = require('space');
+const codecatalystSpace = require('@codecatalyst/space');
 
-// TODO: DEMONSTRATE API
+console.log("Running action in ${codecatalystSpace.getSpace().name} space")
 ```
