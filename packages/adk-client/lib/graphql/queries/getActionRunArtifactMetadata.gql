@@ -1,5 +1,0 @@
-query getActionRunArtifactMetadata($input: GetActionRunArtifactMetadataInput!){
-    getActionRunArtifactMetadata(input: $input){
-        downloadUrl
-    }
-}

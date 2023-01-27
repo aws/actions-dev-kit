@@ -1,6 +1,0 @@
-mutation createCommentForIssue($input: CreateCommentForIssueInput!){
-    createCommentForIssue(input: $input){
-        id
-        version
-    }
-}

@@ -1,5 +1,0 @@
-mutation revokeSession($input: RevokeSessionRequestInput!){
-    revokeSession(input: $input){
-        redirect
-    }
-}

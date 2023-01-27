@@ -1,5 +1,0 @@
-mutation updateIssueStoreMigration($input: UpdateIssueStoreRequestMigrationInput!){
-    updateIssueStoreMigration(input: $input){
-        id
-    }
-}

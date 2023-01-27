@@ -1,6 +1,0 @@
-mutation updateCommentContentForIssue($input: UpdateCommentContentForIssueInput!){
-    updateCommentContentForIssue(input: $input){
-        id
-        version
-    }
-}

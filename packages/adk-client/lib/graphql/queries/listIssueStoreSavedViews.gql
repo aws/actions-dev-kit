@@ -1,9 +1,0 @@
-query listIssueStoreSavedViews($input: ListIssueStoreSavedViewsRequestInput!){
-    listIssueStoreSavedViews(input: $input){
-        items{
-            id
-            name
-            query
-        }
-    }
-}

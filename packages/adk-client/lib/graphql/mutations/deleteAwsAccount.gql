@@ -1,6 +1,0 @@
-mutation deleteAwsAccount($input: DeleteAwsAccountInput!){
-    deleteAwsAccount(input: $input){
-        organizationName
-        name
-    }
-}

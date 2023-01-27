@@ -1,9 +1,0 @@
-mutation stopSessionDevelopmentWorkspace($input: StopSessionDevelopmentWorkspaceRequestInput!){
-    stopSessionDevelopmentWorkspace(input: $input){
-        organizationName
-        projectName
-        developmentWorkspaceId
-        sessionId
-        clientToken
-    }
-}

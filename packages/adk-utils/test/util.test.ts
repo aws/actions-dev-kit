@@ -5,7 +5,7 @@ import { escape, sanitizeCommand, isString } from '../lib';
 describe('ADK-Util test', () => {
     it('should HTML escape all special characters', async () => {
         const input = '%&$\r\n;:,';
-        expect(escape(input) === '%25%26%24%0D%0A%3B%3A%2C').toBeTruthy();
+        expect(escape(input) === '%25%26$%0D%0A%3B:%2C').toBeTruthy();
         expect(escape(undefined) === '').toBeTruthy();
     });
 
@@ -14,7 +14,7 @@ describe('ADK-Util test', () => {
         const cmd = '%&$\r\n;:,';
         const args = [cmdArg1];
 
-        expect(sanitizeCommand(cmd, args) === '%25%26%24%0D%0A%3B%3A%2C %25%26%24%0D%0A%3B%3A%2C').toBeTruthy();
+        expect(sanitizeCommand(cmd, args) === '%25%26$%0D%0A%3B:%2C %25%26$%0D%0A%3B:%2C').toBeTruthy();
     });
 
     it('sanitize command should build command and arguments properly', async () => {

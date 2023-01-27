@@ -1,7 +1,0 @@
-query getSSHPublicKey($input: GetSSHPublicKeyRequestInput!){
-    getSSHPublicKey(input: $input){
-        SSHPublicKeyBody
-        name
-        importDate
-    }
-}

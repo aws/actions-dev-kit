@@ -1,8 +1,0 @@
-query listDummyData($input: ListDummyDataInput!){
-    listDummyData(input: $input){
-        nextToken
-        items{
-            name
-        }
-    }
-}

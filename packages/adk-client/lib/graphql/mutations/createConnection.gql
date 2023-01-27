@@ -1,5 +1,0 @@
-mutation createConnection($input: CreateConnectionInput!){
-    createConnection(input: $input){
-        version
-    }
-}

@@ -1,6 +1,0 @@
-query describeSubscription($input: DescribeSubscriptionRequestInput!){
-    describeSubscription(input: $input){
-        subscriptionType
-        awsAccountName
-    }
-}

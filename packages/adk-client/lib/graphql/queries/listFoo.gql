@@ -1,8 +1,0 @@
-query listFoo($input: ListFooInput!){
-    listFoo(input: $input){
-        nextToken
-        items{
-            name
-        }
-    }
-}

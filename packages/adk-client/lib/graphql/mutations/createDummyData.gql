@@ -1,6 +1,0 @@
-mutation createDummyData($input: CreateDummyDataInput!){
-    createDummyData(input: $input){
-        name
-        version
-    }
-}

@@ -1,5 +1,0 @@
-query getArtifactRepositoryEndpoint($input: GetArtifactRepositoryEndpointInput!){
-    getArtifactRepositoryEndpoint(input: $input){
-        url
-    }
-}

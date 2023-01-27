@@ -1,5 +1,0 @@
-mutation deleteArtifactRepository($input: DeleteArtifactRepositoryInput!){
-    deleteArtifactRepository(input: $input){
-        version
-    }
-}

@@ -1,6 +1,0 @@
-mutation synthesizeBlueprint($input: SynthesizeBlueprintRequestInput!){
-    synthesizeBlueprint(input: $input){
-        synthesisId
-        sessionId
-    }
-}

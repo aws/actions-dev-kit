@@ -1,5 +1,0 @@
-mutation createUserDetails($input: CreateUserDetailsInput!){
-    createUserDetails(input: $input){
-        version
-    }
-}

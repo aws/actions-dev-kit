@@ -1,5 +1,0 @@
-mutation deleteLink($input: DeleteLinkRequestInput!){
-    deleteLink(input: $input){
-        linkId
-    }
-}

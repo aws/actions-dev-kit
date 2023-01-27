@@ -1,5 +1,0 @@
-mutation deleteConnection($input: DeleteConnectionInput!){
-    deleteConnection(input: $input){
-        version
-    }
-}

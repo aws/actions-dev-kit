@@ -1,5 +1,0 @@
-query getFoo($input: GetFooInput!){
-    getFoo(input: $input){
-        name
-    }
-}

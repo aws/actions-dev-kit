@@ -1,8 +1,0 @@
-query describeSourceRepositoryEndpoints($input: DescribeSourceRepositoryEndpointsInput!){
-    describeSourceRepositoryEndpoints(input: $input){
-        items{
-            protocol
-            url
-        }
-    }
-}

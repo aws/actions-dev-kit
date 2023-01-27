@@ -1,5 +1,0 @@
-mutation unlinkExtensionIssueScope($input: UnlinkExtensionIssueScopeInput!){
-    unlinkExtensionIssueScope(input: $input){
-        version
-    }
-}

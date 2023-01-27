@@ -1,6 +1,0 @@
-mutation createPullRequestComment($input: CreatePullRequestCommentInput!){
-    createPullRequestComment(input: $input){
-        id
-        version
-    }
-}
