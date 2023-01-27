@@ -1,6 +1,0 @@
-mutation deletePullRequestCommentContent($input: DeletePullRequestCommentContentInput!){
-    deletePullRequestCommentContent(input: $input){
-        id
-        version
-    }
-}

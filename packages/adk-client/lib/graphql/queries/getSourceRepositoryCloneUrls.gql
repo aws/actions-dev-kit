@@ -1,6 +1,0 @@
-query getSourceRepositoryCloneUrls($input: GetSourceRepositoryCloneUrlsInput){
-    getSourceRepositoryCloneUrls(input: $input){
-        name
-        url
-    }
-}

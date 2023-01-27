@@ -1,7 +1,0 @@
-mutation updateIssue($input: UpdateIssueInput!){
-    updateIssue(input: $input){
-        changeStatus
-        identifier
-        shortId
-    }
-}

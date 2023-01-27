@@ -1,6 +1,0 @@
-mutation linkExtensionIssueScope($input: LinkExtensionIssueScopeInput!){
-    linkExtensionIssueScope(input: $input){
-        version
-        id
-    }
-}

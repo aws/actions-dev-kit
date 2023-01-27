@@ -1,5 +1,0 @@
-mutation mergeSourcePullRequestBySquash($input: MergeSourcePullRequestBySquashInput!){
-    mergeSourcePullRequestBySquash(input: $input){
-        number
-    }
-}

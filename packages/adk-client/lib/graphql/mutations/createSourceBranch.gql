@@ -1,7 +1,0 @@
-mutation createSourceBranch($input: CreateSourceBranchInput!){
-    createSourceBranch(input: $input){
-        sourceRepositoryName
-        branchName
-        commitId
-    }
-}

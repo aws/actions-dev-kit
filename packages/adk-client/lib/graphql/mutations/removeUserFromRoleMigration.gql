@@ -1,5 +1,0 @@
-mutation removeUserFromRoleMigration($input: RemoveUserFromRoleMigrationInput!){
-    removeUserFromRoleMigration(input: $input){
-        friendlyArn
-    }
-}

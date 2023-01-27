@@ -1,5 +1,0 @@
-query getAuthenticationRedirect($input: GetAuthenticationRedirectRequestInput!){
-    getAuthenticationRedirect(input: $input){
-        redirect
-    }
-}

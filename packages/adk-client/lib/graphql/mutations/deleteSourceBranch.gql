@@ -1,5 +1,0 @@
-mutation deleteSourceBranch($input: DeleteSourceBranchInput!){
-    deleteSourceBranch(input: $input){
-        deleted
-    }
-}

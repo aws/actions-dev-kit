@@ -1,6 +1,0 @@
-mutation createComputeFleet($input: CreateComputeFleetInput!){
-    createComputeFleet(input: $input){
-        version
-        id
-    }
-}

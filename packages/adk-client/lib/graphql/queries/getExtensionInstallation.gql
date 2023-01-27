@@ -1,7 +1,0 @@
-query getExtensionInstallation($input: GetExtensionInstallationInput!){
-    getExtensionInstallation(input: $input){
-        organizationName
-        extensionId
-        extensionVersion
-    }
-}

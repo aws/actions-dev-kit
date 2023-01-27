@@ -1,5 +1,0 @@
-mutation updatePerson($input: UpdatePersonInput!){
-    updatePerson(input: $input){
-        version
-    }
-}

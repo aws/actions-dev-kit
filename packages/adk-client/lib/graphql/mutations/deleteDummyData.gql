@@ -1,6 +1,0 @@
-mutation deleteDummyData($input: DeleteDummyDataInput!){
-    deleteDummyData(input: $input){
-        name
-        version
-    }
-}

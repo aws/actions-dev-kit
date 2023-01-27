@@ -1,7 +1,0 @@
-mutation startWorkflowRun($input: StartWorkflowRunInput!){
-    startWorkflowRun(input: $input){
-        id
-        workflowId
-        version
-    }
-}

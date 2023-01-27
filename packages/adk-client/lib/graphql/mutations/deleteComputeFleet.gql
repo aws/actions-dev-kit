@@ -1,5 +1,0 @@
-mutation deleteComputeFleet($input: DeleteComputeFleetInput!){
-    deleteComputeFleet(input: $input){
-        version
-    }
-}

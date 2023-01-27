@@ -1,5 +1,0 @@
-mutation deleteSourceRepository($input: DeleteSourceRepositoryInput!){
-    deleteSourceRepository(input: $input){
-        version
-    }
-}

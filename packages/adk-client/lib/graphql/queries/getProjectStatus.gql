@@ -1,8 +1,0 @@
-query getProjectStatus($input: GetProjectStatusInput!){
-    getProjectStatus(input: $input){
-        status
-        reason
-        lastUpdatedTime
-        version
-    }
-}

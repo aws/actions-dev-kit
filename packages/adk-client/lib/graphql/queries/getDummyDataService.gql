@@ -1,5 +1,0 @@
-query getDummyDataService($input: GetDummyDataServiceInput!){
-    getDummyDataService(input: $input){
-        name
-    }
-}

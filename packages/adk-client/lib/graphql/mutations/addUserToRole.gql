@@ -1,5 +1,0 @@
-mutation addUserToRole($input: AddUserToRoleInput!){
-    addUserToRole(input: $input){
-        friendlyArn
-    }
-}

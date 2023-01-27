@@ -1,6 +1,0 @@
-mutation importSSHPublicKey($input: ImportSSHPublicKeyRequestInput!){
-    importSSHPublicKey(input: $input){
-        SSHPublicKeyId
-        importDate
-    }
-}

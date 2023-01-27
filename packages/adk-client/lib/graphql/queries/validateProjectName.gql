@@ -1,8 +1,0 @@
-query validateProjectName($input: ValidateProjectNameInput!){
-    validateProjectName(input: $input){
-        suggestedName
-        isNameValid
-        isNameTaken
-        message
-    }
-}

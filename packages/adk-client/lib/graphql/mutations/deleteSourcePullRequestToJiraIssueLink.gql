@@ -1,5 +1,0 @@
-mutation deleteSourcePullRequestToJiraIssueLink($input: DeleteSourcePullRequestToJiraIssueLinkInput!){
-    deleteSourcePullRequestToJiraIssueLink(input: $input){
-        version
-    }
-}

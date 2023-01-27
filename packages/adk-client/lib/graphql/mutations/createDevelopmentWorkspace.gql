@@ -1,5 +1,0 @@
-mutation createDevelopmentWorkspace($input: CreateDevelopmentWorkspaceRequestInput!){
-    createDevelopmentWorkspace(input: $input){
-        developmentWorkspaceId
-    }
-}

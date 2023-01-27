@@ -1,5 +1,0 @@
-mutation putProjectNotificationSettings($input: PutProjectNotificationSettingsRequestInput!){
-    putProjectNotificationSettings(input: $input){
-        documentId
-    }
-}

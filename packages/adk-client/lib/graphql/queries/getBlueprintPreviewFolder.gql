@@ -1,7 +1,0 @@
-query getBlueprintPreviewFolder($input: GetBlueprintPreviewFolderRequestInput!){
-    getBlueprintPreviewFolder(input: $input){
-        title
-        files
-        subFolders
-    }
-}

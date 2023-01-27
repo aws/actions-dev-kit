@@ -1,5 +1,0 @@
-mutation renameOrganization($input: RenameOrganizationInput!){
-    renameOrganization(input: $input){
-        versionId
-    }
-}

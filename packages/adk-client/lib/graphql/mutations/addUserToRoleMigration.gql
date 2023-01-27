@@ -1,5 +1,0 @@
-mutation addUserToRoleMigration($input: AddUserToRoleMigrationInput!){
-    addUserToRoleMigration(input: $input){
-        friendlyArn
-    }
-}

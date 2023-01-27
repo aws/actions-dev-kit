@@ -1,6 +1,0 @@
-mutation createSession($input: CreateSessionRequestInput!){
-    createSession(input: $input){
-        redirectLocation
-        userId
-    }
-}

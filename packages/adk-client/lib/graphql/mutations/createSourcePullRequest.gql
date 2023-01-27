@@ -1,5 +1,0 @@
-mutation createSourcePullRequest($input: CreateSourcePullRequestInput!){
-    createSourcePullRequest(input: $input){
-        number
-    }
-}

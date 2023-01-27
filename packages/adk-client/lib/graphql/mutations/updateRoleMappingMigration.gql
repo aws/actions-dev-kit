@@ -1,5 +1,0 @@
-mutation updateRoleMappingMigration($input: UpdateRoleMappingMigrationInput!){
-    updateRoleMappingMigration(input: $input){
-        version
-    }
-}
