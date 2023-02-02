@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.60.0 (2023-02-02)
+
+
+### Bug Fixes
+
+* remove main branch from CI/CD trigger on PullRequests for security reasons ([#115](https://github.com/aws/actions-dev-kit/issues/115)) ([9282601](https://github.com/aws/actions-dev-kit/commit/9282601953ee23c2c26de22b3fad4345709e2c77))
+
+
+
+
+
 ## 0.59.1 (2023-02-01)
 
 **Note:** Version bump only for package @codecatalyst/project

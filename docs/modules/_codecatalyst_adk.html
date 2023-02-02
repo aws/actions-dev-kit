@@ -16,7 +16,7 @@
 <li><a href="_codecatalyst_adk.html">@codecatalyst/adk</a></li></ul>
 <h1>Module @codecatalyst/adk</h1></div><aside class="tsd-sources">
 <ul>
-<li>Defined in <a href="https://github.com/aws/actions-dev-kit/blob/2f69135/packages/adk/lib/index.ts#L1">adk/lib/index.ts:1</a></li></ul></aside>
+<li>Defined in <a href="https://github.com/aws/actions-dev-kit/blob/262cd75/packages/adk/lib/index.ts#L1">adk/lib/index.ts:1</a></li></ul></aside>
 <section class="tsd-panel-group">
 <section class="tsd-panel tsd-typography">
 <a href="#codecatalystadk" id="codecatalystadk" style="color: inherit; text-decoration: none;">
@@ -26,17 +26,17 @@
 <a href="#purpose" id="purpose" style="color: inherit; text-decoration: none;">
   <h2>Purpose</h2>
 </a>
-<p>&quot;ADK&quot; offers action developers command-line interface to kick off action development</p>
+<p>ADK offers action developers a command-line interface (CLI) to kick off action development.</p>
 
 <a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
   <h2>Usage</h2>
 </a>
-<p>It offers 3 commands:</p>
+<p>The following three commands are offered:</p>
 
 <a href="#adk-init" id="adk-init" style="color: inherit; text-decoration: none;">
   <h3>adk init</h3>
 </a>
-<p>Generates action definition file in the current directory (action.yml by default)</p>
+<p>Generates action definition file in the current directory (.codecatalyst/actions/action.yml by default).</p>
 <p>Example:</p>
 <pre><code><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">init</span><span class="hl-1"> --</span><span class="hl-5">lang</span><span class="hl-1"> </span><span class="hl-5">typescript</span><span class="hl-1"> --</span><span class="hl-5">space</span><span class="hl-1"> </span><span class="hl-5">MySpace</span><span class="hl-1"> --</span><span class="hl-5">proj</span><span class="hl-1"> &lt;</span><span class="hl-2">CODECATALYST</span><span class="hl-1">-</span><span class="hl-2">PROJECT</span><span class="hl-1">-</span><span class="hl-2">NAME</span><span class="hl-1">&gt; --</span><span class="hl-5">repo</span><span class="hl-1"> &lt;</span><span class="hl-2">CODECATALYST</span><span class="hl-1">-</span><span class="hl-2">REPO</span><span class="hl-1">-</span><span class="hl-2">NAME</span><span class="hl-1">&gt; --</span><span class="hl-5">action</span><span class="hl-1"> &lt;</span><span class="hl-2">ACTION</span><span class="hl-1">-</span><span class="hl-2">NAME</span><span class="hl-1">&gt;</span>
 </code></pre>
@@ -44,15 +44,15 @@
 <a href="#adk-bootstrap" id="adk-bootstrap" style="color: inherit; text-decoration: none;">
   <h3>adk bootstrap</h3>
 </a>
-<p>Bootstraps action project in the current folder from action.yml file. Bootstrap command generates source code, CI/CD workflow configuration, config files, and basic readme file.</p>
+<p>Bootstraps action project in the current folder from action.yml file. Bootstrap command generates source code, CI/CD workflow configuration, config files, and a basic readme file.</p>
 <p>Example:</p>
-<pre><code><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">bootstrap</span><span class="hl-1"> -</span><span class="hl-5">f</span><span class="hl-1"> </span><span class="hl-5">action</span><span class="hl-1">.</span><span class="hl-5">yml</span>
+<pre><code><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">bootstrap</span><span class="hl-1"> -</span><span class="hl-5">f</span><span class="hl-1"> .</span><span class="hl-5">codecatalyst</span><span class="hl-1">/</span><span class="hl-5">actions</span><span class="hl-1">/</span><span class="hl-5">action</span><span class="hl-1">.</span><span class="hl-5">yml</span>
 </code></pre>
 
 <a href="#adk-validate" id="adk-validate" style="color: inherit; text-decoration: none;">
   <h3>adk validate</h3>
 </a>
-<p>Validates action project</p>
+<p>Validates action project.</p>
 <p>Example:</p>
 <pre><code><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">validate</span>
 </code></pre>
