@@ -19,6 +19,7 @@ export class FileCopyGenerator implements BoootstrapGenerator {
             fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/gitignore`, '.gitignore', fs.constants.COPYFILE_EXCL);
             fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/eslintrc`, '.eslintrc.js', fs.constants.COPYFILE_EXCL);
             fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/jest.conf`, 'jest.config.js', fs.constants.COPYFILE_EXCL);
+
             return new BootstrapGeneratorResult();
         } catch (e) {
             Logger.error(e);
