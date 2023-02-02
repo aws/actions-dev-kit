@@ -30,7 +30,13 @@ export function escape(input?: string): string {
             .replace(/\r/g, '%0D')
             .replace(/\n/g, '%0A')
             .replace(/;/g, '%3B')
-            .replace(/,/g, '%2C');
+            .replace(/,/g, '%2C')
+            .replace(/\|/g, '%7C')
+            .replace(/>/g, '%3E')
+            .replace(/</g, '%3C')
+            .replace(/`/g, '%60')
+            .replace(/\\/g, '%5C')
+            .replace(/!/g, '%21');
 }
 
 /**

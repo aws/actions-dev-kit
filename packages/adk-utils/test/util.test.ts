@@ -1,20 +1,22 @@
 'use strict';
 
+const UNESCAPED_INPUT = '%_&_$_\r_\n_;_:_,_|_>_<_`_\\_!';
+const ESCAPED_INPUT = '%25_%26_$_%0D_%0A_%3B_:_%2C_%7C_%3E_%3C_%60_%5C_%21';
+
 import { escape, sanitizeCommand, isString } from '../lib';
 
 describe('ADK-Util test', () => {
     it('should HTML escape all special characters', async () => {
-        const input = '%&$\r\n;:,';
-        expect(escape(input) === '%25%26$%0D%0A%3B:%2C').toBeTruthy();
+        expect(escape(UNESCAPED_INPUT) === ESCAPED_INPUT).toBeTruthy();
         expect(escape(undefined) === '').toBeTruthy();
     });
 
     it('sanitize command should sanitize and build command and arguments properly', async () => {
-        const cmdArg1 = '%&$\r\n;:,';
-        const cmd = '%&$\r\n;:,';
+        const cmdArg1 = UNESCAPED_INPUT;
+        const cmd = UNESCAPED_INPUT;
         const args = [cmdArg1];
 
-        expect(sanitizeCommand(cmd, args) === '%25%26$%0D%0A%3B:%2C %25%26$%0D%0A%3B:%2C').toBeTruthy();
+        expect(sanitizeCommand(cmd, args) === `${ESCAPED_INPUT} ${ESCAPED_INPUT}`).toBeTruthy();
     });
 
     it('sanitize command should build command and arguments properly', async () => {
