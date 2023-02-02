@@ -1,7 +1,6 @@
 
 /**
- * action.yml model interface
- * Used by bootstrap and validate ADK CLI commands
+ * The action.yml model interface used by bootstrap and validation of ADK CLI commands.
  */
 export interface Model {
     SchemaVersion: string;
@@ -17,14 +16,14 @@ export interface Model {
 }
 
 /**
- * Action configuration. Consists of an array of inputs
+ * Action configuration. Consists of an array of inputs.
  */
 export interface Configuration {
     [index: string]: Input;
 }
 
 /**
- * Action configuration input
+ * Action configuration input.
  */
 export interface Input {
     Description: string;
@@ -35,24 +34,24 @@ export interface Input {
 }
 
 /**
- * A boolean to indicate the action requires CI/CD Environment to be configured to run successfully
- * See https://docs.aws.amazon.com/codecatalyst/latest/userguide/deploy-environments.html to lear more about environments
+ * A boolean to indicate the action requires CI/CD Environment to be configured to run successfully.
+ * To learn more about environments, see https://docs.aws.amazon.com/codecatalyst/latest/userguide/deploy-environments.html.
  */
 export interface Environment {
     Required: boolean;
 }
 
 /**
- * A boolean to indicate whether the action requires Sources. Set to true when the parameter is required.
- * See https://docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-sources.html to lear more about sources
+ * A boolean to indicate whether the action requires sources. Set to true when the parameter is required.
+ * To learn more about sources, see https://docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-sources.html.
  */
 export interface Sources {
     Required: boolean;
 }
 
 /**
- * Specifies whether this is a JavaScript action, a composite action, or a Docker container action and how the action is executed.
- * See https://docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-working-runs.html to lear more about run configs
+ * Specifies whether the action is a JavaScript action, a composite action, or a Docker container action and how the action is executed.
+ * To learn more about run configurations, see https://docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-working-runs.html.
  */
 export interface RunConfig {
     Using: string;

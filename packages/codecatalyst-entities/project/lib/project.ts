@@ -3,7 +3,7 @@ import * as core from '@codecatalyst/adk-core';
 import { Project } from './types/types';
 
 /**
- * Returns CodeCatalyst Project
+ * Returns CodeCatalyst Project.
  * @return {@link Project | `Project`} object
  */
 export function getProject(): Project {

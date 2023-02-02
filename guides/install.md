@@ -14,7 +14,11 @@
 ### Install ADK
 
 * Run `npm install -g @codecatalyst/adk`
-  * Occasionally, npm runs into bug with non-empty cache and switching registry. If you run into issue where certain dependency is not found, either nuke your global npm cache or simply install the dependencies. `npm install -g chalk@4`, `npm install -g @codecatalyst/adk-model-parser` etc.
+  * Occasionally, npm runs into bug with non-empty cache and switching registry. If you run into issue where certain dependency is not found, either nuke your global npm cache or simply install the dependencies. 
+    * `npm install -g @codecatalyst/adk-model-parser`
+    * `npm install -g @codecatalyst/adk-utils`
+    * `npm install -g chalk@4`
+    *  etc.
  
 * Validate ADK is running by running the following command `adk help`
 

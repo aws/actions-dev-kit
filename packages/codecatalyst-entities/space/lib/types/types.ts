@@ -1,6 +1,6 @@
 /**
- * Use the Space construct to query the Space resource in a CodeCatalyst space
- * See https://docs.aws.amazon.com/codecatalyst/latest/userguide/concepts.html#space-concept to learn more about CodeCatalyst projects
+ * Use the Space construct to query the space resource in a CodeCatalyst space. To learn more about CodeCatalyst spaces,
+ * see https://docs.aws.amazon.com/codecatalyst/latest/userguide/concepts.html#space-concept.
  */
 export interface Space {
     name: string;

@@ -1,6 +1,6 @@
 /**
- * An enum which represents the types of messages such as error, info, or warning messages. 
- * Currently, we only support error messages being surfaced.
+ * An enumeration that represents the types of messages such as error, information, or warnings.
+ * Currently, only error messages being surfaced are supported.
  */
 export enum RunSummaryLevel {
     ERROR = 'Error'
@@ -18,7 +18,7 @@ export interface RunSummaryMessage {
 }
 
 /**
- * The template variable
+ * The template variable.
  */
 export interface TemplateVariable {
     name: string,
@@ -26,7 +26,7 @@ export interface TemplateVariable {
 }
 
 /**
- * RunSummary message
+ * RunSummary message.
  */
 export interface Message {
     statusCode: string,

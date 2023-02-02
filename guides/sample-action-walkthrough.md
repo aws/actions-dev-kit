@@ -57,7 +57,7 @@ Actions:
 ```
 ## FAQ
 ### How to get Cookie and Csrf Token?
-1. Login to the quokka UI
+1. Login to the CodeCatalyst UI
 2. Open the Network tab in the browser Console
 3. Add the filter `public.api.quokka.codes`
 4. Select one of the post requests, and look for the `Cookie` and `anti-csrftoken-a2z` value in the Headers 

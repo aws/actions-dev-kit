@@ -1,6 +1,6 @@
 # `Project`
 ## Purpose
-Use the project construct to query the project resource metadata in a CodeCatalyst space
+Use the project construct to query the project resource metadata in a CodeCatalyst space.
 
 ## Usage
 
