@@ -1,16 +1,16 @@
-SchemaVersion: '1.0%\n\r:,'
-Name: 'Action Action%\n\r:,'
-Id: 'Org/Action-action%\n\r:,'
-Version: '1.0.0%\n\r:,'
-Description: 'This Action tries to inject malicious code%\n\r:,'
-Author: 'Org/Proj%\n\r:,'
+SchemaVersion: '1.0_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Name: 'Action_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Id: 'Org/Action_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Version: '1.0.0_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Description: 'This Action tries to inject malicious code_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Author: 'Org/Proj_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
 Configuration:
-  ResponseFilters%\n\r:,:
-    Description: "\nconsole.log('INJECTED_CODE')%\n\r:,"
+  ResponseFilters_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!:
+    Description: "\nconsole.log('INJECTED_CODE')_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!"
     Required: false
-    DisplayName: 'Response Filters with injection\nnew line\rnew windows line%\n\r:,'
-    Type: string::%\n\r:,
-    Default: '%\n\r:,'
+    DisplayName: 'Response Filters with injection_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+    Type: string_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!
+    Default: '%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
 Runs:
   Using: 'node16'
   Main: 'index.js'
