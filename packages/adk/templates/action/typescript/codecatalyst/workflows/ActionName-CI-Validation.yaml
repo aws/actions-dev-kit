@@ -4,7 +4,6 @@ Triggers:
   - Type: PullRequest
     Events: [ open, revision ]
     Branches:
-      - main
       - feature-.*
 Actions:
   Validate%%action_name%%:
