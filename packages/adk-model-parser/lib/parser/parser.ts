@@ -5,11 +5,11 @@ import { sanitizeModel } from '../sanitizer/sanitizer';
 
 /**
  *
- * Parses action.yaml file into a model and sanitizes user input by HTML escaping special characters
+ * Parses action.yaml file into a model and sanitizes user input by HTML escaping special characters.
  *
- * @param fileName The file name to be parsed. The file must be in the YAML format
+ * @param fileName The file name to be parsed. This file must be in the YAML format.
  *
- * @returns {@link Model | `Action model`} The model populated from the file's content
+ * @returns {@link Model | `Action model`} The model populated from the file's content.
  */
 export function parseAndSanitizeYamlFile(fileName: any): Model {
     let modelFile = fs.readFileSync(fileName, 'utf8');

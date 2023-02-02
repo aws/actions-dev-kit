@@ -1,4 +1,4 @@
-# ActionsDevKit (ADK)
+# Action Development Kit (ADK)
 
 ## Purpose
 
@@ -10,12 +10,11 @@ The CodeCatalyst Action Development Kit (ADK) provides action authors appropriat
 
 There are two components of the ADK:
 
-ADK command-line interface (CLI) - ADK CLI offers a set of commands that enables creating, validating, and testing actions.
+* ADK software development kit (SDK)
+    * A set of library interfaces you can use to interact with action matadata and CodeCatalyst resouces, including actions, workflows, secrets, logs, input variables, output variables, artifacts, and reports.
+    * Sample usage (S3 Publish Action):
 
-ADK software development kit (SDK) - as an action author, you can use the ADK SDK to interact with action metadata and CodeCatalyst resources, including actions, workflows, secrets, logs, input variables, output variables, artifacts, and reports, through interfaces.
-
-
-
+    
 #### Sample Usage
 
 ```
@@ -37,18 +36,17 @@ if (cmdOutput.code != 0) {
 } else {
   core.setOutputVariable("Files", cmdOutput.stdOut)
 }
-
 ```
 
-### ADK CLI
-
-#### Sample Usage
+* ADK command line interface (CLI)
+    * Tool to interact with a set of commands you can use to create, validate, and test actions.
+    * Sample usage:
 
 ```
 >> adk init --lang typescript --space <CODECATALYST-SPACE-NAME> --proj <CODECATALYST-PROJECT-NAME> --repo <CODECATALYST-REPO-NAME> --action <ACTION-NAME>
 ...
 
->> adk bootstrap -f action.yml
+>> adk bootstrap -f ./codecatalyst/actions/action.yml
 ...
 
 >> adk validate
@@ -57,48 +55,50 @@ Missing README file...
 action.yml parsing failed...
 ```
 
-#### ADK CLI commands
-* 1. initialize - Initializes the ADK project locally and produces required configuration files with specific language support.
-* 2. bootstrap - Bootstrap CodeCatalyst action code by reading action definition. ADK SDK would be used to develop actions.
-* 3. validate - Validates the action definition and README file.
-* 4. generate-test-workflow - Generates workflow file to test the action without publishing the action. Forms basis for CI workflow for the action.
-* 5. generate-readme - Generates README file for the action developer. Forms basis of what README files look like for CodeCatalyst actions.
-* 6. version - Increments the current version of the action automatically. Follows semver semantics. Also helps bootstrapping the action version (e.g. starting from no version to first version to subsequent versions). Supports major or minor version increments.
-* 7. help - Shows the current set of commands.
+* CLI commands
+  * The following list contains the ADK CLI commands and information about how to use each command:
+    * init – Initializes the ADK project locally and produces required configuration files with specific language support.
+    * bootstrap – Bootstraps CodeCatalyst action code by reading the action definition file. The ADK SDK is used to develop actions.
+    * validate – Validates the action definition and README file.
+    * version – Increments the current version of the action automatically. Follows semver (https://semver.org/) semantics. Also helps bootstrapping the action version (for example, starting from no version to first version to subsequent versions). Supports major and minor version increments.
+    * help – Shows the current set of commands.
 
-## Getting Started Guides
+  
 
-### Installation Guide
-
-- [Install Guide](guides/install.md)
-
-### ADK CLI Guide
-- [ADK CLI Guide](guides/adk-cli.md)
-
-### ADK SDK Guide
-- [ADK CLI Guide](guides/adk-lib.md)
+## Installation Guide
 
 ### Prerequisites
+* [install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+    * Easiest way to install npm is via [nvm](https://github.com/nvm-sh/nvm)
+* override the '@codecatalyst' namespace registry
+    * Run `npm config --global edit`
+    * Add codecatalyst namespace override to the configuration `@codecatalyst:registry=https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com/npm/ActionsDevKitPackage/`
+    * Visit https://isengard.amazon.com/console-access?filter=198147706056 and copy and temporarily credentials for the ReadOnlyAdkCodeArtifact into working terminal session
+      Run `aws codeartifact login --tool npm --repository ActionsDevKitPackage --domain aef-team --domain-owner 198147706056 --region us-west-2`
 
-* Lerna
+* install lerna - Lerna is a fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository (https://lerna.js.org/)
 
 ```
 npm install --global lerna
 ```
 
-* yarn
+* install yarn - Yarn is a package manager that doubles down as project manager. Whether you work on one-shot projects or large monorepos, as a hobbyist or an enterprise user, we've got you covered. (https://yarnpkg.com/)
 
 ```
 npm install --global yarn
 ```
 
-### Install
+### Install ADK
 
-* TODO - Add npmrc commands and how-to generate tokens
+* Run `npm install -g @codecatalyst/adk`
+    * Occasionally, npm runs into bug with non-empty cache and switching registry. If you run into issue where certain dependency is not found, either nuke your global npm cache or simply install the dependencies.
+        * `npm install -g @codecatalyst/adk-model-parser`
+        * `npm install -g @codecatalyst/adk-utils`
+        * `npm install -g chalk@4`
+        *  etc.
 
-```
-npm install --global adk
-```
+* Validate ADK is running by running the following command `adk help`
+
 
 ## Development
 
@@ -116,35 +116,22 @@ $ yarn run test-all
 
 ### Contribute
 
-• Create a branch from main and name it feature-* branch (e.g. feature-add-init-command). Creating
-the feature branch creates CI validation workﬂow against the feature-* branch.
-• Update the code in your new branch feature-.
-• Once you're done with feature development, create a pull request from source feature- branch
-to destination main branch. This triggers a CI workﬂow in your feature-* branch. Update the pull
-request with the workﬂow run in the description section of the pull request.
-• Add at least two reviewers from the reviewer section. Reviewers can be anyone within the
-organization, but at least one must be a developer from the AEF team.
-• Once you have all the approvals in your pull request, merge the pull request from the UI by choosing
-squash (not fast-forward merge) and reducing the number of commits to just one from the feature branch. This makes rollbacks easy if you have one commit per feature branch. If you have large amount
-of changes in your pull request, it's best to rethink your development strategy to iteratively develop
-and push code.
-• On merge, release workﬂows within the ADK repository will kick-oﬀ. This should automatically bump
-the version of the ADK package for consumption.
+You can contribute to the ADK by completing development on a feature branch and creating a pull request:
 
-### Coverage Expectations
+* Create a branch from main and name it feature-* branch (e.g. feature-add-init-command). Creating the feature branch creates CI validation workflow against the feature- branch.
+* Update the code in your new branch feature-*.
+* Once you're done with feature development, create a pull request from source feature-* branch to destination main branch. This triggers a CI workflow in your feature-* branch. Update the pull request with the workflow run in the description section of the pull request.
+* Add reviewers from the reviewer section. Reviewers can be anyone within the organization, but at least one must be a developer from the AEF team.
+* Once you have all the approvals in your pull request, merge the pull request from the UI by choosing squash (not fast forward merge) and reducing the number of commits to just one from the feature branch. This makes rollbacks easy if you have one commit per feature branch. If you have large amount of changes in your pull request, it's best to rethink your development strategy to iteratively develop and push code.
+* On merge, release workflows within the ADK repository will kick-off. This should automatically bump the version of the ADK package for consumption.
 
-#### Goal
-- branches: 90
-- statements: 90
-- functions: 90
-- lines: 90
 
-Actual coverages should be covered in the reports section
-- [COVERAGES](.)
+### Test Coverage Expectations
 
-## Sample Actions Using ADK
-
-- [S3 Publish Action](.)
+- branches: 90%
+- statements: 90%
+- functions: 90%
+- lines: 90%
 
 ## Contact
 
@@ -152,7 +139,7 @@ Please contact [AEF Team](mailto: caws-aef-team@amazon.com)
 
 ## ChangeLog
 
-[Changelog](CHANGELOG.md)
+[Changelog](./CHANGELOG.md)
 
 ## Security
 See CONTRIBUTING for more information.

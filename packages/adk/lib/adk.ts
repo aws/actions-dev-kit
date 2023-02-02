@@ -137,8 +137,7 @@ async function parseCLIArgs() {
 }
 /**
  * ADK CLI entry point.
- * Parses commands and arguments.
- * Supports the following commands: init, bootstrap, validate
+ * Parses commands and arguments supports the following commands: init, bootstrap, validate.
  */
 export function adkCli() {
 

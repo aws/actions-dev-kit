@@ -1,6 +1,6 @@
 # `@codecatalyst/adk-core`
 ## Purpose
-"ADK Core" offers action developers library interfaces which make action development easier. Action authors can interact with core metadata information about the action, workflows, output variables, artifacts, reports etc, making it easier for the action author to fully model the input and output of the action code. 
+ADK Core offers action developers library interfaces that makes action development easier. Action authors can interact with core metadata information about the action, workflows, output variables, artifacts, reports, etc, giving the action author ability to fully model the input and output of the action code.
 
 ## Usage
 

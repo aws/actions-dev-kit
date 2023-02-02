@@ -24,7 +24,7 @@ export function getMultiLineInput(inputVar: string) {
 }
 
 /**
-* Provides the value of the environment variable as setup on the workflow definition and runtime environment.
+* Provides the value of the environment variable as setup in the workflow definition and runtime environment.
 * Limits the value to a single line.
 *
 * @param inputVar The name of the environment variable. The value is sanitized by escaping special characters.

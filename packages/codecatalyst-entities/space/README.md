@@ -1,6 +1,6 @@
 # `Space`
 ## Purpose
-Use the space construct to query CodeCatalyst space resource metadata
+Use the space construct to query CodeCatalyst space resource metadata.
 
 ## Usage
 
