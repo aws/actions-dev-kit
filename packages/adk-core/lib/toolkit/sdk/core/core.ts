@@ -53,7 +53,7 @@ export function setOutput(varName: string, varValue: string) {
 *
 * @param cmd The command to execute.
 * @param args The command arguments.
-* @return {@link ICommandOutput | `Command Output`} complex object with runtime execution parameters.
+* @return {@link ICommandOutput | `Command Output`}: The complex object with runtime execution parameters.
 */
 export function command(cmd: string, args?: string[]) {
     return runCommand(cmd, args);

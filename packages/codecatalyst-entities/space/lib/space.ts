@@ -4,7 +4,7 @@ import { Space } from './types/types';
 
 /**
  * Returns CodeCatalyst Space.
- * @return {@link Space | `Space`} object
+ * @return {@link Space | `Space`}: The space object.
  */
 export function getSpace(): Space {
     return <Space> {
