@@ -1,0 +1,10 @@
+mutation updateArtifactPackageOriginConfiguration($input: UpdateArtifactPackageOriginConfigurationInput!){
+    updateArtifactPackageOriginConfiguration(input: $input){
+        originConfiguration{
+            restrictions{
+                publish
+                upstream
+            }
+        }
+    }
+}

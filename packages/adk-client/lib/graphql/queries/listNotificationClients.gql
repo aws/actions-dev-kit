@@ -1,0 +1,15 @@
+query listNotificationClients($input: ListNotificationClientsRequestInput!){
+    listNotificationClients(input: $input){
+        nextToken
+        items{
+            id
+            type
+            details{
+                slack{
+                    workspaceId
+                    workspaceName
+                }
+            }
+        }
+    }
+}

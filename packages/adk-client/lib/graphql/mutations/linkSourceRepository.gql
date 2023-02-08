@@ -1,0 +1,6 @@
+mutation linkSourceRepository($input: LinkSourceRepositoryInput!){
+    linkSourceRepository(input: $input){
+        version
+        id
+    }
+}

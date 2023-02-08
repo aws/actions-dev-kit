@@ -1,4 +1,5 @@
 const core = require('@codecatalyst/adk-core');
+const codecatalystIssue = require('@codecatalyst/issue');
 const codecatalystProject = require('@codecatalyst/project');
 const codecatalystRunSummaries = require('@codecatalyst/run-summaries');
 const codecatalystSpace = require('@codecatalyst/space');

@@ -1,0 +1,12 @@
+query getRoleMappingMigration($input: GetRoleMappingMigrationInput!){
+    getRoleMappingMigration(input: $input){
+        id
+        title
+        resourceId
+        lastUpdatedTime
+        roleMappings{
+            roleId
+            associatedIdentities
+        }
+    }
+}

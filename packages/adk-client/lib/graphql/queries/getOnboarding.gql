@@ -1,0 +1,16 @@
+query getOnboarding($input: GetOnboardingInput!){
+    getOnboarding(input: $input){
+        onboardingId
+        submitted
+        dismissed
+        nextQuestion
+        sections{
+            questionType
+            questionId
+            answers{
+                answerId
+                userInput
+            }
+        }
+    }
+}

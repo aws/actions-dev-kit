@@ -1,0 +1,15 @@
+query listActiveOrganizationInvitations($input: ListActiveOrganizationInvitationsRequestInput!){
+    listActiveOrganizationInvitations(input: $input){
+        invitations{
+            lastUpdatedTime
+            timestamp
+            inviterUserName
+            inviteeEmailAddress
+            inviteeDisplayName
+            signupEmailAddress
+            organizationName
+            status
+            inviteeRole
+        }
+    }
+}

@@ -1,0 +1,15 @@
+query verifySession{
+    verifySession{
+        identity
+        self{
+            userId
+            userName
+            displayName
+            primaryEmail{
+                email
+                verified
+            }
+            version
+        }
+    }
+}

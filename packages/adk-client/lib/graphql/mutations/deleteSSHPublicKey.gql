@@ -1,0 +1,5 @@
+mutation deleteSSHPublicKey($input: DeleteSSHPublicKeyRequestInput!){
+    deleteSSHPublicKey(input: $input){
+        SSHPublicKeyId
+    }
+}

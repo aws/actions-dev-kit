@@ -1,0 +1,14 @@
+mutation batchUpdateIssueStoreLabels($input: BatchUpdateIssueStoreLabelsRequestInput!){
+    batchUpdateIssueStoreLabels(input: $input){
+        errors{
+            id
+            code
+            message
+        }
+        items{
+            id
+            name
+            labelColor
+        }
+    }
+}

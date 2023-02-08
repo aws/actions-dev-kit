@@ -1,0 +1,10 @@
+schema: ./schema.json
+generates:
+  ./lib/fusi.ts:
+    plugins:
+      - add:
+          content: '/* DO NOT EDIT FILE MANUALLY. Run npm run codegen to update client */'
+      - typescript
+    config:
+      withHooks: false
+      maybeValue: T

@@ -1,0 +1,5 @@
+mutation deleteAccessToken($input: DeleteAccessTokenRequestInput!){
+    deleteAccessToken(input: $input){
+        deleted
+    }
+}

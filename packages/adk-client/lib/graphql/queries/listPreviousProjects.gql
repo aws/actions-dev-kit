@@ -1,0 +1,9 @@
+query listPreviousProjects($input: ListPreviousProjectsInput!){
+    listPreviousProjects(input: $input){
+        items{
+            name
+            displayName
+            description
+        }
+    }
+}

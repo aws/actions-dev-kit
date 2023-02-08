@@ -1,0 +1,16 @@
+query listTestReportStatusesMigration($input: ListTestReportStatusesInputMigrationInput!){
+    listTestReportStatusesMigration(input: $input){
+        items{
+            id
+            name
+            actionRunId
+            lastUpdatedTime
+            phaseHistory{
+                name
+                state
+                startTime
+                errorMessage
+            }
+        }
+    }
+}

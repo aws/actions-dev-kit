@@ -1,0 +1,23 @@
+query listEnvironmentStacks($input: ListEnvironmentStacksInput!){
+    listEnvironmentStacks(input: $input){
+        nextToken
+        items{
+            name
+            environment{
+                environmentName
+                environmentId
+            }
+            connection{
+                roleName
+                roleId
+                accountConnectionName
+                accountConnectionId
+            }
+            descriptor{
+                provider
+                identifier
+            }
+            updateTime
+        }
+    }
+}

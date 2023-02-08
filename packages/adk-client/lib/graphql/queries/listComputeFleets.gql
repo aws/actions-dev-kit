@@ -1,0 +1,27 @@
+query listComputeFleets($input: ListComputeFleetsInput!){
+    listComputeFleets(input: $input){
+        nextToken
+        items{
+            name
+            creationTime
+            lastUpdatedTime
+            computeSettings{
+                architecture
+                os
+                executionModel
+                vcpu
+                memory
+                disk
+            }
+            resolvedInstanceType
+            desiredCapacity
+            overflowBehavior
+            status
+            statusContext{
+                code
+                message
+            }
+            id
+        }
+    }
+}

@@ -1,0 +1,6 @@
+mutation stopDevelopmentWorkspace($input: StopDevelopmentWorkspaceRequestInput!){
+    stopDevelopmentWorkspace(input: $input){
+        developmentWorkspaceId
+        status
+    }
+}

@@ -1,0 +1,40 @@
+query getIssue($input: GetIssueInput!){
+    getIssue(input: $input){
+        item{
+            id
+            title
+            lastUpdatedTime
+            version
+            status
+            description
+            storeId
+            archived
+            blocked
+            assigneeIds
+            createdTime
+            creator
+            lastUpdatedBy
+            priority
+            references{
+                referenceType
+                referenceId
+            }
+            comments{
+                id
+                lastUpdatedTime
+                authorId
+                createdTime
+                message
+            }
+            labelIds
+            position
+            estimate
+            shortId
+            customFields{
+                name
+                type
+                value
+            }
+        }
+    }
+}

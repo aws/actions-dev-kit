@@ -1,0 +1,7 @@
+mutation deleteNotificationClient($input: DeleteNotificationClientRequestInput!){
+    deleteNotificationClient(input: $input){
+        organizationName
+        projectName
+        id
+    }
+}

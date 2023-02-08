@@ -1,0 +1,9 @@
+query listIssueStoreLabels($input: ListIssueStoreLabelsRequestInput!){
+    listIssueStoreLabels(input: $input){
+        items{
+            id
+            name
+            labelColor
+        }
+    }
+}

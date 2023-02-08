@@ -1,0 +1,6 @@
+mutation createBlueprintUploadUrl($input: CreateBlueprintUploadUrlInput!){
+    createBlueprintUploadUrl(input: $input){
+        uploadUrl
+        publishingJobId
+    }
+}

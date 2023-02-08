@@ -1,0 +1,6 @@
+mutation startDevelopmentWorkspace($input: StartDevelopmentWorkspaceRequestInput!){
+    startDevelopmentWorkspace(input: $input){
+        developmentWorkspaceId
+        status
+    }
+}

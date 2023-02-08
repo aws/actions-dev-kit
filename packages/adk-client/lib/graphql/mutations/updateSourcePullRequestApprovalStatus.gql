@@ -1,0 +1,5 @@
+mutation updateSourcePullRequestApprovalStatus($input: UpdateSourcePullRequestApprovalStatusInput!){
+    updateSourcePullRequestApprovalStatus(input: $input){
+        success
+    }
+}

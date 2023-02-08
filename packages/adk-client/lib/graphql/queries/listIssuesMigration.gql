@@ -1,0 +1,10 @@
+query listIssuesMigration($input: ListIssuesRequestMigrationInput!){
+    listIssuesMigration(input: $input){
+        items{
+            id
+            versionId
+            updatedAt
+        }
+        nextToken
+    }
+}

@@ -1,0 +1,15 @@
+query listSourceBranches($input: ListSourceBranchesInput!){
+    listSourceBranches(input: $input){
+        nextToken
+        items{
+            id
+            sourceRepositoryName
+            branchName
+            lastUpdatedTime
+            headCommitId
+            beforeCommitId
+            beforeDocumentCommitId
+            ordinal
+        }
+    }
+}

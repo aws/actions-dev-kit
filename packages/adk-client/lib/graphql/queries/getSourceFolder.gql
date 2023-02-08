@@ -1,0 +1,30 @@
+query getSourceFolder($input: GetSourceFolderInput!){
+    getSourceFolder(input: $input){
+        title
+        folderPath
+        lastUpdatedTime
+        commitSha1
+        treeSha1
+        files{
+            absolutePath
+            relativePath
+            blobSha1
+            fileMode
+        }
+        subFolders{
+            absolutePath
+            relativePath
+            treeSha1
+        }
+        subModules{
+            absolutePath
+            relativePath
+            commitSha1
+        }
+        symbolicLinks{
+            absolutePath
+            relativePath
+            commitSha1
+        }
+    }
+}

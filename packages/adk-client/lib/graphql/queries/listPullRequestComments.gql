@@ -1,0 +1,27 @@
+query listPullRequestComments($input: ListPullRequestCommentsInput!){
+    listPullRequestComments(input: $input){
+        nextToken
+        items{
+            pullRequestId
+            threadId
+            commentRepliedToId
+            creatorId
+            commentId
+            creationTime
+            lastUpdatedTime
+            content
+            contentType
+            deleted
+            reactions{
+                key
+                value
+            }
+            commentType
+            blobId
+            filePath
+            startLineNumber
+            revisionContextId
+            resolvedBy
+        }
+    }
+}

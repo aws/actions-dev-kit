@@ -1,0 +1,6 @@
+query getBar($input: GetBarInput!){
+    getBar(input: $input){
+        name
+        versionId
+    }
+}

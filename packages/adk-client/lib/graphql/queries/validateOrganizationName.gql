@@ -1,0 +1,8 @@
+query validateOrganizationName($input: ValidateOrganizationNameInput!){
+    validateOrganizationName(input: $input){
+        suggestedName
+        isNameValid
+        isNameTaken
+        message
+    }
+}

@@ -1,0 +1,5 @@
+mutation renameProject($input: RenameProjectInput!){
+    renameProject(input: $input){
+        versionId
+    }
+}

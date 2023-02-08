@@ -1,0 +1,12 @@
+query getNotificationClient($input: GetNotificationClientRequestInput!){
+    getNotificationClient(input: $input){
+        id
+        type
+        details{
+            slack{
+                workspaceId
+                workspaceName
+            }
+        }
+    }
+}

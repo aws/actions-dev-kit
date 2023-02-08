@@ -1,0 +1,6 @@
+query getBlueprintPreviewFile($input: GetBlueprintPreviewFileRequestInput!){
+    getBlueprintPreviewFile(input: $input){
+        title
+        fileContent
+    }
+}

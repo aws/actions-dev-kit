@@ -1,0 +1,17 @@
+query getProjectInvitationById($input: GetProjectInvitationByIdRequestInput!){
+    getProjectInvitationById(input: $input){
+        projectInvitation{
+            id
+            title
+            lastUpdatedTime
+            timestamp
+            inviterUserName
+            inviteeEmailAddress
+            inviteeDisplayName
+            signupEmailAddress
+            projectName
+            status
+            inviteeRole
+        }
+    }
+}

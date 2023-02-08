@@ -1,0 +1,13 @@
+query getArtifactRepository($input: GetArtifactRepositoryInput!){
+    getArtifactRepository(input: $input){
+        id
+        name
+        description
+        lastUpdatedTime
+        upstreams{
+            name
+        }
+        externalConnection
+        repositoryType
+    }
+}

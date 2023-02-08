@@ -1,0 +1,11 @@
+query listTestCaseRunResultsStatisticsMigration($input: ListTestCaseRunResultsInputMigrationInput!){
+    listTestCaseRunResultsStatisticsMigration(input: $input){
+        totalTestCases
+        totalPages
+        totalDurationInNanoseconds
+        testCaseResultCounts{
+            result
+            count
+        }
+    }
+}

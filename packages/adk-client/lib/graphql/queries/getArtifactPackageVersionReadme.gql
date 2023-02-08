@@ -1,0 +1,10 @@
+query getArtifactPackageVersionReadme($input: GetArtifactPackageVersionReadmeInput!){
+    getArtifactPackageVersionReadme(input: $input){
+        name
+        version
+        namespace
+        format
+        revision
+        readme
+    }
+}

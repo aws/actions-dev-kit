@@ -1,0 +1,19 @@
+query describeLinks($input: DescribeLinksRequestInput!){
+    describeLinks(input: $input){
+        nextToken
+        items{
+            linkId
+            destination{
+                resourcePath{
+                    type
+                    name
+                }
+                resourceId{
+                    key
+                    value
+                }
+            }
+            linkType
+        }
+    }
+}

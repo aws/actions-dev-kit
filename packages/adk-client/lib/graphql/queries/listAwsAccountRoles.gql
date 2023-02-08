@@ -1,0 +1,25 @@
+query listAwsAccountRoles($input: ListAwsAccountRolesRequestInput!){
+    listAwsAccountRoles(input: $input){
+        roles{
+            organizationName
+            roleName
+            name
+            roleArn
+            awsAccountName
+            roleDescription
+            awsAccountId
+            createdTime
+        }
+        items{
+            organizationName
+            roleName
+            name
+            roleArn
+            awsAccountName
+            roleDescription
+            awsAccountId
+            createdTime
+        }
+        nextToken
+    }
+}

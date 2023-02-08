@@ -1,0 +1,13 @@
+mutation sendOrganizationInvitation($input: SendOrganizationInvitationRequestInput!){
+    sendOrganizationInvitation(input: $input){
+        lastUpdatedTime
+        timestamp
+        inviterUserName
+        inviteeEmailAddress
+        inviteeDisplayName
+        signupEmailAddress
+        organizationName
+        status
+        inviteeRole
+    }
+}

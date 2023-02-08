@@ -1,0 +1,13 @@
+mutation createNotificationChannel($input: CreateNotificationChannelRequestInput!){
+    createNotificationChannel(input: $input){
+        id
+        alias
+        type
+        details{
+            slack{
+                channelId
+                workspaceId
+            }
+        }
+    }
+}

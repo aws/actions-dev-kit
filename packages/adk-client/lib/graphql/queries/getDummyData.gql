@@ -1,0 +1,11 @@
+query getDummyData($nextToken: String, $pageSize: Int, $status: String, $input: GetDummyDataInput!){
+    getDummyData(input: $input){
+        name
+        foo(nextToken: $nextToken, pageSize: $pageSize, status: $status){
+            nextToken
+            items{
+                name
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+query listRoleMappings($input: ListRoleMappingInput!){
+    listRoleMappings(input: $input){
+        nextToken
+        items{
+            id
+            title
+            resourceId
+            lastUpdatedTime
+            roleMappings{
+                roleId
+                associatedIdentities
+            }
+        }
+    }
+}

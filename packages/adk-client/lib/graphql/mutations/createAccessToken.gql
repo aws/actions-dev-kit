@@ -1,0 +1,5 @@
+mutation createAccessToken($input: CreateAccessTokenRequestInput!){
+    createAccessToken(input: $input){
+        secret
+    }
+}

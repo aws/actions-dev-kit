@@ -1,0 +1,28 @@
+query listTestCaseRunResultsMigration($input: ListTestCaseRunResultsInputMigrationInput!){
+    listTestCaseRunResultsMigration(input: $input){
+        nextToken
+        items{
+            id
+            name
+            lastUpdatedTime
+            reportSummaryId
+            shortName
+            result
+            durationInNanoseconds
+            testCaseStartTime
+            message
+            isMessageTruncated
+            additionalProperties{
+                name
+                value
+            }
+            testGroupIds
+            originalResult
+            previousResult
+            previousMessage
+            previousDurationInNanoseconds
+            runNumber
+            totalRuns
+        }
+    }
+}

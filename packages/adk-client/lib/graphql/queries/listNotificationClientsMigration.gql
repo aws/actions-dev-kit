@@ -1,0 +1,15 @@
+query listNotificationClientsMigration($input: ListNotificationClientsMigrationInput!){
+    listNotificationClientsMigration(input: $input){
+        nextToken
+        items{
+            id
+            type
+            details{
+                slack{
+                    workspaceId
+                    workspaceName
+                }
+            }
+        }
+    }
+}
