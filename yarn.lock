@@ -689,24 +689,6 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@codecatalyst/adk-core@0.54.1":
-  version "0.54.1"
-  resolved "https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com:443/npm/ActionsDevKitPackage/@codecatalyst/adk-core/-/adk-core-0.54.1.tgz#0e3d1d950a25c9e2bf079ba7ab1a0f8545949f98"
-  integrity sha512-hF74ONOhmleABXtY2jpHTVkulBrR6Hgms5gzZmugOTBsuKwT0qg0ji4jHoxMXoZC/HpnbB1B+tMiYrwVXNg57Q==
-  dependencies:
-    "@types/shelljs" "^0.8.11"
-    shelljs "^0.8.5"
-
-"@codecatalyst/project@0.54.1":
-  version "0.54.1"
-  resolved "https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com:443/npm/ActionsDevKitPackage/@codecatalyst/project/-/project-0.54.1.tgz#3aacc85598b8281836866868d55f48e3e510d8c0"
-  integrity sha512-iW4mvC5DLYZ5uIhYJSJ5mbSx22Kg8uBEga3VwGLLlbqdo51J1Yr7xvXwox2YTKRC4sf8vc7n9favsM2sQvZt4A==
-
-"@codecatalyst/space@0.54.1":
-  version "0.54.1"
-  resolved "https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com:443/npm/ActionsDevKitPackage/@codecatalyst/space/-/space-0.54.1.tgz#dc11667a8d7e060ce3d05830e5c7e6629be7db1b"
-  integrity sha512-RwXzGVgyat2EVRPZh1lBZmwmTFIqX93nO99ftW7phVzkoowAI9zvLSieNNeVvxFYlpWq1wB3DAoaxPhj+3GPrA==
-
 "@cspotcode/source-map-support@^0.8.0":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@cspotcode/source-map-support/-/source-map-support-0.8.1.tgz#00629c35a688e05a88b1cda684fb9d5e73f000a1"

@@ -1,6 +1,6 @@
 {
   "name": "@codecatalyst/issue",
-  "version": "0.54.1",
+  "version": "0.63.1",
   "description": "CodeCatalyst issue entity",
   "homepage": "",
   "license": "ISC",
@@ -15,10 +15,10 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@codecatalyst/adk-client": "0.54.1",
-    "@codecatalyst/adk-core": "0.54.1",
-    "@codecatalyst/project": "0.54.1",
-    "@codecatalyst/space": "0.54.1"
+    "@codecatalyst/adk-client": "0.63.1",
+    "@codecatalyst/adk-core": "0.63.1",
+    "@codecatalyst/project": "0.63.1",
+    "@codecatalyst/space": "0.63.1"
   },
   "typedoc": {
     "entryPoint": "lib/index.ts"
