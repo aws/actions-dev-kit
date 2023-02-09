@@ -32,7 +32,8 @@ jobs:
       - run: git config user.name "ActionsDevKitRelease"
       - run: lerna version minor --no-push --yes --tag-version-prefix='client'
       - run: git tag -n
-      - run: git status && git add . && git commit --amend --no-edit
+      - run: yarn run api-ref
+      - run: git status && git add . && git add -f docs && git commit --amend --no-edit
       - run: git push origin HEAD:feature-adk-client
       - run: git tag -n
       - name: Configure AWS Credentials
