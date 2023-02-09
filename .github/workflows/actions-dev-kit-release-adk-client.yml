@@ -13,16 +13,6 @@ on:
       - packages/.*/.*\.ts
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - run: npm install --global lerna yarn
-      - run: lerna bootstrap
-      - run: ./build.sh
   publish-update:
     runs-on: ubuntu-latest
     permissions: write-all
@@ -41,6 +31,10 @@ jobs:
       - run: git config user.email "caws-aef-team-workflow@amazon.com"
       - run: git config user.name "ActionsDevKitRelease"
       - run: lerna version minor --no-push --yes --tag-version-prefix='client'
+      - run: git tag -n
+      - run: git status && git add . && git commit --amend --no-edit
+      - run: git push origin HEAD:feature-adk-client
+      - run: git tag -n
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
         with:
