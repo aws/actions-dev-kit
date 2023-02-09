@@ -13,6 +13,17 @@ on:
       - packages/.*/.*\.ts
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm install --global lerna yarn
+      - run: lerna bootstrap
+      - run: ./build.sh
+      - run: yarn run api-ref
   publish-update:
     runs-on: ubuntu-latest
     permissions: write-all
