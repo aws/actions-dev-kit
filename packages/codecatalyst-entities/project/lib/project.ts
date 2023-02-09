@@ -4,7 +4,7 @@ import { Project } from './types/types';
 
 /**
  * Returns CodeCatalyst Project.
- * @return {@link Project | `Project`} object
+ * @return {@link Project | `Project`}: The project object.
  */
 export function getProject(): Project {
     return <Project> {
