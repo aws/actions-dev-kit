@@ -20,47 +20,41 @@
 <a href="#purpose" id="purpose" style="color: inherit; text-decoration: none;">
   <h2>Purpose</h2>
 </a>
-<p>An action is a task or function that can be added into a CodeCatalyst workﬂow such as scanning code for vulnerabilities, sending instant messages with webhook, or sending SMS messages using an engagement platform integration. But we often focus on plugging actions into a workflow, but developing and maintaining an action in itself is not a trivial task either. Lack of fundamental libraries and framework for creating actions along with lack of standards across industry forces action authors to create, author and maintain workflow actions in various different ways. This lack of standards and tooling causes action developers to either go identify the best quality actions to learn from or follow sub-optimal quality for the action.
-The CodeCatalyst Action Development Kit (ADK) provides action authors appropriate tooling and development support using libraries and frameworks. With ADK, actions authors can build, test, and publish actions to CodeCatalyst actions catalog, where other users can add them to workflows. The ADK library enables you to write actions using libraries interfaces that make action development more efficient and ensures quality standards.</p>
+<p>Amazon CodeCatalyst provides software development teams one place to plan work, collaborate on code, and build, test, and deploy applications with continuous integration/continuous delivery (CI/CD) tools. For more information, see <a href="https://docs.aws.amazon.com/codecatalyst/latest/userguide/welcome.html">What is Amazon CodeCatalyst?</a></p>
+<p>With the CodeCatalyst Action Development Kit (ADK), you can build, test, and publish actions to the CodeCatalyst actions catalog, where other users can add them to workflows. This ADK provides tooling and support to help you develop actions using libraries and frameworks.</p>
+<p>In CodeCatalyst, an action is the main building block of a workflow. The actions you author define a logical unit of work to perform during a workflow run. By creating actions and workflows, you can automate procedures that describe how to build, test, and deploy your code as part of a continuous integration and continuous delivery (CI/CD) system. For more information, see <a href="http://nadpat-clouddesk.aka.corp.amazon.com/docs-dev-kit/build/CAWSDocsDevKit/CAWSDocsDevKit-3.0/AL2_x86_64/DEV.STD.PTHREAD/build/server-root/adk/latest/guide/untitled%20folder%202/https://docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-actions.html">Working with actions</a>.</p>
 
 <a href="#adk-components" id="adk-components" style="color: inherit; text-decoration: none;">
   <h2>ADK Components</h2>
 </a>
 <p>There are two components of the ADK:</p>
-<ul>
-<li>ADK software development kit (SDK)<ul>
-<li>A set of library interfaces you can use to interact with action matadata and CodeCatalyst resouces, including actions, workflows, secrets, logs, input variables, output variables, artifacts, and reports.</li>
-<li>Sample usage (S3 Publish Action):</li>
-</ul>
-</li>
-</ul>
+<ol>
+<li>ADK software development kit (SDK)</li>
+</ol>
+<p>A set of library interfaces you can use to interact with action matadata and CodeCatalyst resouces, including actions, workflows, secrets, logs, input variables, output variables, artifacts, and reports.</p>
 
 <a href="#sample-usage" id="sample-usage" style="color: inherit; text-decoration: none;">
   <h4>Sample Usage</h4>
 </a>
 <pre><code><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">core</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;@codecatalyst/adk-core&#39;</span><span class="hl-1">)</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">codecatalystSpace</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;@codecatalyst/space&#39;</span><span class="hl-1">);</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">codecatalystProject</span><span class="hl-1"> = </span><span class="hl-3">require</span><span class="hl-1">(</span><span class="hl-4">&#39;@codecatalyst/project&#39;</span><span class="hl-1">);</span><br/><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">destinationBucket</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">getInput</span><span class="hl-1">(</span><span class="hl-4">&#39;DestinationBucketName&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">    # </span><span class="hl-0">=&gt;</span><span class="hl-1"> </span><span class="hl-5">Maps</span><span class="hl-1"> </span><span class="hl-5">to</span><span class="hl-1"> </span><span class="hl-5">the</span><span class="hl-1"> </span><span class="hl-5">destination</span><span class="hl-1"> </span><span class="hl-5">bucket</span><span class="hl-1"> </span><span class="hl-5">configuration</span><span class="hl-1"> </span><span class="hl-0">in</span><span class="hl-1"> </span><span class="hl-5">Code</span><span class="hl-1">.</span><span class="hl-2">AWS</span><span class="hl-1"> </span><span class="hl-5">workflow</span><span class="hl-1"> </span><span class="hl-5">definition</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">srcDir</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">getInput</span><span class="hl-1">(</span><span class="hl-4">&#39;SourcePath&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">    # </span><span class="hl-0">=&gt;</span><span class="hl-1"> </span><span class="hl-5">Maps</span><span class="hl-1"> </span><span class="hl-5">to</span><span class="hl-1"> </span><span class="hl-5">the</span><span class="hl-1"> </span><span class="hl-5">src</span><span class="hl-1"> </span><span class="hl-5">dir</span><span class="hl-1"> </span><span class="hl-5">configuration</span><span class="hl-1"> </span><span class="hl-0">in</span><span class="hl-1"> </span><span class="hl-5">CodeCatalyst</span><span class="hl-1"> </span><span class="hl-5">workflow</span><span class="hl-1"> </span><span class="hl-5">definition</span><br/><span class="hl-5">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-4">&quot;Running action S3 Publish Action&quot;</span><span class="hl-1">)</span><br/><span class="hl-0">let</span><span class="hl-1"> </span><span class="hl-5">cmd</span><span class="hl-1"> = </span><span class="hl-4">`aws s3 sync </span><span class="hl-0">${</span><span class="hl-5">srcDir</span><span class="hl-0">}</span><span class="hl-4"> s3://</span><span class="hl-0">${</span><span class="hl-5">destinationBucket</span><span class="hl-0">}</span><span class="hl-4">/</span><span class="hl-0">${</span><span class="hl-5">codecatalystSpace</span><span class="hl-6">.</span><span class="hl-3">getSpace</span><span class="hl-6">().</span><span class="hl-5">name</span><span class="hl-0">}</span><span class="hl-4">/</span><span class="hl-0">${</span><span class="hl-5">codecatalystProject</span><span class="hl-6">.</span><span class="hl-3">getProject</span><span class="hl-6">().</span><span class="hl-5">name</span><span class="hl-0">}</span><span class="hl-4">/`</span><br/><span class="hl-0">const</span><span class="hl-1"> </span><span class="hl-2">cmdOutput</span><span class="hl-1"> = </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">command</span><span class="hl-1">(</span><span class="hl-5">cmd</span><span class="hl-1">)</span><br/><span class="hl-5">console</span><span class="hl-1">.</span><span class="hl-3">log</span><span class="hl-1">(</span><span class="hl-5">cmdOutput</span><span class="hl-1">.</span><span class="hl-5">stdout</span><span class="hl-1">)</span><br/><br/><span class="hl-7">if</span><span class="hl-1"> (</span><span class="hl-5">cmdOutput</span><span class="hl-1">.</span><span class="hl-5">code</span><span class="hl-1"> != </span><span class="hl-8">0</span><span class="hl-1">) {</span><br/><span class="hl-1">  </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">setFailed</span><span class="hl-1">(</span><span class="hl-5">cmdOutput</span><span class="hl-1">.</span><span class="hl-5">stderr</span><span class="hl-1">)</span><br/><span class="hl-1">} </span><span class="hl-7">else</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-5">core</span><span class="hl-1">.</span><span class="hl-3">setOutputVariable</span><span class="hl-1">(</span><span class="hl-4">&quot;Files&quot;</span><span class="hl-1">, </span><span class="hl-5">cmdOutput</span><span class="hl-1">.</span><span class="hl-5">stdOut</span><span class="hl-1">)</span><br/><span class="hl-1">}</span>
 </code></pre>
-<ul>
-<li>ADK command line interface (CLI)<ul>
-<li>Tool to interact with a set of commands you can use to create, validate, and test actions.</li>
-<li>Sample usage:</li>
-</ul>
-</li>
-</ul>
+<ol start="2">
+<li>ADK command line interface (CLI)</li>
+</ol>
+<p>Tool to interact with a set of commands you can use to create, validate, and test actions.</p>
+
+<a href="#sample-usage-1" id="sample-usage-1" style="color: inherit; text-decoration: none;">
+  <h4>Sample Usage</h4>
+</a>
 <pre><code><span class="hl-1">&gt;&gt; </span><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">init</span><span class="hl-1"> --</span><span class="hl-5">lang</span><span class="hl-1"> </span><span class="hl-5">typescript</span><span class="hl-1"> --</span><span class="hl-5">space</span><span class="hl-1"> &lt;</span><span class="hl-2">CODECATALYST</span><span class="hl-1">-</span><span class="hl-2">SPACE</span><span class="hl-1">-</span><span class="hl-2">NAME</span><span class="hl-1">&gt; --</span><span class="hl-5">proj</span><span class="hl-1"> &lt;</span><span class="hl-2">CODECATALYST</span><span class="hl-1">-</span><span class="hl-2">PROJECT</span><span class="hl-1">-</span><span class="hl-2">NAME</span><span class="hl-1">&gt; --</span><span class="hl-5">repo</span><span class="hl-1"> &lt;</span><span class="hl-2">CODECATALYST</span><span class="hl-1">-</span><span class="hl-2">REPO</span><span class="hl-1">-</span><span class="hl-2">NAME</span><span class="hl-1">&gt; --</span><span class="hl-5">action</span><span class="hl-1"> &lt;</span><span class="hl-2">ACTION</span><span class="hl-1">-</span><span class="hl-2">NAME</span><span class="hl-1">&gt;</span><br/><span class="hl-1">...</span><br/><br/><span class="hl-1">&gt;&gt; </span><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">bootstrap</span><span class="hl-1"> -</span><span class="hl-5">f</span><span class="hl-1"> ./</span><span class="hl-5">codecatalyst</span><span class="hl-1">/</span><span class="hl-5">actions</span><span class="hl-1">/</span><span class="hl-5">action</span><span class="hl-1">.</span><span class="hl-5">yml</span><br/><span class="hl-1">...</span><br/><br/><span class="hl-1">&gt;&gt; </span><span class="hl-5">adk</span><span class="hl-1"> </span><span class="hl-5">validate</span><br/><span class="hl-5">validating</span><span class="hl-1">...</span><br/><span class="hl-5">Missing</span><span class="hl-1"> </span><span class="hl-2">README</span><span class="hl-1"> </span><span class="hl-5">file</span><span class="hl-1">...</span><br/><span class="hl-5">action</span><span class="hl-1">.</span><span class="hl-5">yml</span><span class="hl-1"> </span><span class="hl-5">parsing</span><span class="hl-1"> </span><span class="hl-5">failed</span><span class="hl-1">...</span>
 </code></pre>
+<p>The following list contains the ADK CLI commands and information about how to use each command:</p>
 <ul>
-<li>CLI commands<ul>
-<li>The following list contains the ADK CLI commands and information about how to use each command:<ul>
 <li>init – Initializes the ADK project locally and produces required configuration files with specific language support.</li>
 <li>bootstrap – Bootstraps CodeCatalyst action code by reading the action definition file. The ADK SDK is used to develop actions.</li>
 <li>validate – Validates the action definition and README file.</li>
-<li>version – Increments the current version of the action automatically. Follows semver (<a href="https://semver.org/">https://semver.org/</a>) semantics. Also helps bootstrapping the action version (for example, starting from no version to first version to subsequent versions). Supports major and minor version increments.</li>
+<li>version – Increments the current version of the action automatically. Follows <a href="https://semver.org/">semver</a> semantics. Also helps bootstrapping the action version (for example, starting from no version to first version to subsequent versions). Supports major and minor version increments.</li>
 <li>help – Shows the current set of commands.</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 
 <a href="#installation-guide" id="installation-guide" style="color: inherit; text-decoration: none;">
@@ -70,49 +64,48 @@ The CodeCatalyst Action Development Kit (ADK) provides action authors appropriat
 <a href="#prerequisites" id="prerequisites" style="color: inherit; text-decoration: none;">
   <h3>Prerequisites</h3>
 </a>
+<ol>
+<li><p>Download the <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">latest version of npm</a>. It is best to use a Node version manager like <a href="https://github.com/nvm-sh/nvm">nvm</a> to install Node.js and npm.</p>
+</li>
+<li><p>Override the namespace registry:</p>
 <ul>
-<li><p><a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">install npm</a></p>
-<ul>
-<li>Easiest way to install npm is via <a href="https://github.com/nvm-sh/nvm">nvm</a></li>
+<li>Run the following npm command to edit the configuration: <code>npm config -g edit</code>.</li>
+<li>Add the CodeCatalyst namespace override to the configuration: <code>@codecatalyst:registry=https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com/npm/ActionsDevKitPackage/</code>.</li>
+<li>From the <a href="https://isengard.amazon.com/console-access?filter=198147706056">AWS Console Access Dashboard</a>, choose the icon to the right of <strong>ReadOnlyAdkCodeArtifact</strong>, choose <strong>base/zsh</strong>, choose <strong>Copy bash/zsh</strong>, and then paste and enter the temporary credentials into the working terminal session.</li>
+<li>Run the following npm command to access the ReadOnlyAdkCodeArtifact: <code>aws codeartifact login —tool npm —repository ActionsDevKitPackage —domain aef-team —domain-owner 198147706056 —region us-west-2</code>.</li>
 </ul>
 </li>
-<li><p>override the &#39;@codecatalyst&#39; namespace registry</p>
+<li><p>Run the following Lerna command: <code>npm install -g lerna</code>.</p>
 <ul>
-<li>Run <code>npm config --global edit</code></li>
-<li>Add codecatalyst namespace override to the configuration <code>@codecatalyst:registry=https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com/npm/ActionsDevKitPackage/</code></li>
-<li>Visit <a href="https://isengard.amazon.com/console-access?filter=198147706056">https://isengard.amazon.com/console-access?filter=198147706056</a> and copy and temporarily credentials for the ReadOnlyAdkCodeArtifact into working terminal session
-Run <code>aws codeartifact login --tool npm --repository ActionsDevKitPackage --domain aef-team --domain-owner 198147706056 --region us-west-2</code></li>
+<li><a href="https://lerna.js.org/">Lerna</a> is a fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository.</li>
 </ul>
 </li>
-<li><p>install lerna - Lerna is a fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository (<a href="https://lerna.js.org/">https://lerna.js.org/</a>)</p>
-</li>
-</ul>
-<pre><code><span class="hl-5">npm</span><span class="hl-1"> </span><span class="hl-5">install</span><span class="hl-1"> --</span><span class="hl-5">global</span><span class="hl-1"> </span><span class="hl-5">lerna</span>
-</code></pre>
+<li><p>Run the following command to install yarn: <code>npm install --global yarn</code></p>
 <ul>
-<li>install yarn - Yarn is a package manager that doubles down as project manager. Whether you work on one-shot projects or large monorepos, as a hobbyist or an enterprise user, we&#39;ve got you covered. (<a href="https://yarnpkg.com/">https://yarnpkg.com/</a>)</li>
+<li><a href="https://yarnpkg.com/">Yarn</a> is a package manager that doubles down as project manager. You can you work on one-shot projects or large monorepos, as a hobbyist or an enterprise user.</li>
 </ul>
-<pre><code><span class="hl-5">npm</span><span class="hl-1"> </span><span class="hl-5">install</span><span class="hl-1"> --</span><span class="hl-5">global</span><span class="hl-1"> </span><span class="hl-5">yarn</span>
-</code></pre>
+</li>
+</ol>
 
-<a href="#install-adk" id="install-adk" style="color: inherit; text-decoration: none;">
-  <h3>Install ADK</h3>
+<a href="#install-adk-cli" id="install-adk-cli" style="color: inherit; text-decoration: none;">
+  <h3>Install ADK CLI</h3>
 </a>
+<ol>
+<li><p>Run the following npm command to get ADK packages:</p>
 <ul>
-<li><p>Run <code>npm install -g @codecatalyst/adk</code></p>
-<ul>
-<li>Occasionally, npm runs into bug with non-empty cache and switching registry. If you run into issue where certain dependency is not found, either nuke your global npm cache or simply install the dependencies.<ul>
-<li><code>npm install -g @codecatalyst/adk-model-parser</code></li>
+<li><code>npm install -g @codecatalyst/adk</code></li>
 <li><code>npm install -g @codecatalyst/adk-utils</code></li>
+</ul>
+</li>
+<li><p>When running npm, you may face a bug with non-empty cache and switching registry. If you run into issues where a certain dependency isn&#39;t found, either remove your global npm cache or install the dependencies:</p>
+<ul>
 <li><code>npm install -g chalk@4</code></li>
-<li>etc.</li>
+<li><code>npm install -g @codecatalyst/adk-model-parser</code></li>
 </ul>
 </li>
-</ul>
+<li><p>Validate that ADK is running with the following command: <code>adk help</code></p>
 </li>
-<li><p>Validate ADK is running by running the following command <code>adk help</code></p>
-</li>
-</ul>
+</ol>
 
 <a href="#development" id="development" style="color: inherit; text-decoration: none;">
   <h2>Development</h2>
@@ -121,12 +114,14 @@ Run <code>aws codeartifact login --tool npm --repository ActionsDevKitPackage --
 <a href="#build" id="build" style="color: inherit; text-decoration: none;">
   <h3>Build</h3>
 </a>
+<p>Run the following build command:</p>
 <pre><code><span class="hl-5">$</span><span class="hl-1"> ./</span><span class="hl-5">build</span><span class="hl-1">.</span><span class="hl-5">sh</span>
 </code></pre>
 
 <a href="#testing" id="testing" style="color: inherit; text-decoration: none;">
   <h3>Testing</h3>
 </a>
+<p>Run the following test command:</p>
 <pre><code><span class="hl-5">$</span><span class="hl-1"> </span><span class="hl-5">yarn</span><span class="hl-1"> </span><span class="hl-5">run</span><span class="hl-1"> </span><span class="hl-5">test</span><span class="hl-1">-</span><span class="hl-5">all</span>
 </code></pre>
 
@@ -135,9 +130,9 @@ Run <code>aws codeartifact login --tool npm --repository ActionsDevKitPackage --
 </a>
 <p>You can contribute to the ADK by completing development on a feature branch and creating a pull request:</p>
 <ul>
-<li>Create a branch from main and name it feature-* branch (e.g. feature-add-init-command). Creating the feature branch creates CI validation workflow against the feature- branch.</li>
-<li>Update the code in your new branch feature-*.</li>
-<li>Once you&#39;re done with feature development, create a pull request from source feature-* branch to destination main branch. This triggers a CI workflow in your feature-* branch. Update the pull request with the workflow run in the description section of the pull request.</li>
+<li>Create a branch from <strong>main</strong> and name it <strong>feature-</strong>* branch (e.g. <strong>feature-add-init-command</strong>). Creating the feature branch creates CI validation workflow against the feature- branch.</li>
+<li>Update the code in your new branch <strong>feature-</strong>*.</li>
+<li>Once you&#39;re done with feature development, create a pull request from source <strong>feature-</strong>* branch to destination main branch. This triggers a CI workflow in your<strong>feature-</strong>* branch. Update the pull request with the workflow run in the description section of the pull request.</li>
 <li>Add reviewers from the reviewer section. Reviewers can be anyone within the organization, but at least one must be a developer from the AEF team.</li>
 <li>Once you have all the approvals in your pull request, merge the pull request from the UI by choosing squash (not fast forward merge) and reducing the number of commits to just one from the feature branch. This makes rollbacks easy if you have one commit per feature branch. If you have large amount of changes in your pull request, it&#39;s best to rethink your development strategy to iteratively develop and push code.</li>
 <li>On merge, release workflows within the ADK repository will kick-off. This should automatically bump the version of the ADK package for consumption.</li>
