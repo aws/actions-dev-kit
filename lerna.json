@@ -6,10 +6,12 @@
     "packages/*",
     "packages/codecatalyst-entities/*"
   ],
-  "version": "0.63.1",
+  "version": "0.64.0",
   "command": {
     "version": {
-      "allowBranch": ["feature-adk-client"],
+      "allowBranch": [
+        "feature-adk-client"
+      ],
       "conventionalCommits": true,
       "exact": true,
       "message": "chore(release): %s"
