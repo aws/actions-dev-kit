@@ -7,7 +7,7 @@ Triggers:
       - feature-.*
 Actions:
   Validate%%action_name%%:
-    Identifier: aws/github-actions-runner@v1
+    Identifier: .
     Inputs:
       Sources:
         - WorkflowSource
