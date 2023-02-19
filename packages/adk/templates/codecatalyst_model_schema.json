@@ -15,62 +15,33 @@
     "Name": {
       "description": "Action name",
       "type": "string",
-      "maxLength": 32,
+      "maxLength": 128,
       "examples": [
         "My action"
-      ]
-    },
-    "Id": {
-      "description": "Action Id",
-      "type": "string",
-      "maxLength": 32,
-      "examples": [
-        "ecs-deploy"
       ]
     },
     "Version": {
       "description": "action version",
       "type": "string",
-      "maxLength": 32,
+      "pattern": "^((?:0|(?:[1-9]\\d?)))\\.((?:0|(?:[1-9]\\d?)))\\.((?:0|(?:[1-9]\\d?)))$",
       "examples": [
         "0.1.0"
       ]
     },
     "Description": {
       "description": "Action description",
-      "maxLength": 256,
+      "minLength": 1,
+      "maxLength": 128,
       "type": "string",
       "examples": [
         "Awesome tools to help you and your team do great things everyday."
       ]
     },
-    "Author": {
-      "description": "Action  owner org name",
-      "maxLength": 128,
-      "type": "string",
-      "examples": [
-        "myorg"
-      ]
-    },
-    "Categories": {
-      "description": "Action categories, TBD",
-      "type": "array",
-      "minItems": 0,
-      "uniqueItems": true,
-      "items": {
-        "description": "List of categories",
-        "type": "string",
-        "enum": [
-          "DEPLOY",
-          "BUILD",
-          "TEST",
-          "CODE_REVIEW"
-        ]
-      }
-    },
     "Configuration": {
       "description": "Action inputs, will be convert to workflow yaml Configuration section",
       "type": "object",
+      "minProperties": 1,
+      "maxProperties": 50,
       "additionalProperties": {
         "type": "object",
         "$ref": "#/definitions/ParameterConfig"
@@ -80,6 +51,32 @@
       "description": "Environment Connection indicator",
       "$ref": "#/definitions/EnvironmentConfig"
     },
+    "SupportedComputeTypes": {
+      "description": "Compute type",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["LAMBDA", "EC2"]
+      }
+    },
+    "Inputs" : {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "Sources": {
+          "description": "workflow source indicator",
+          "$ref": "#/definitions/SourcesConfig"
+        },
+        "Artifacts": {
+          "description": "input artifact indicator",
+          "$ref": "#/definitions/InputArtifactsConfig"
+        }
+      }
+    },
     "Outputs": {
       "type": "object",
       "additionalProperties": false,
@@ -88,6 +85,7 @@
         "Variables": {
           "description": "Action output variables",
           "type": "object",
+          "minProperties": 1,
           "maxProperties": 10,
           "additionalProperties": {
             "type": "object",
@@ -97,7 +95,8 @@
         "Reports": {
           "description": "Action output reports",
           "type": "object",
-          "maxProperties": 50,
+          "minProperties": 1,
+          "maxProperties": 10,
           "additionalProperties": {
             "type": "object",
             "$ref": "#/definitions/OutputReportConfig"
@@ -106,6 +105,7 @@
         "Artifacts": {
           "description": "Action output artifacts",
           "type": "object",
+          "minProperties": 1,
           "maxProperties": 10,
           "additionalProperties": {
             "type": "object",
@@ -125,14 +125,14 @@
       "additionalProperties": false,
       "required": [
         "Description",
-        "Required",
-        "Type"
+        "Required"
       ],
       "properties": {
         "Description": {
           "description": "Input parameter description",
           "type": "string",
-          "maxLength": 128
+          "minLength": 1,
+          "maxLength": 256
         },
         "Required": {
           "description": "A boolean to indicate whether the action requires the input parameter. Set to true when the parameter is required.",
@@ -141,6 +141,7 @@
         "DisplayName": {
           "description": "Input parameter name to display on UI",
           "type": "string",
+          "minLength": 1,
           "maxLength": 128
         },
         "Type": {
@@ -155,13 +156,18 @@
         "Default": {
           "description": "The default value of input parameter",
           "type": [
-            "number",
             "string",
+            "number",
             "boolean"
           ],
           "examples": [
             "bar"
           ]
+        },
+        "DeprecationMessage": {
+          "description": "Deprecation message",
+          "type": "string",
+          "maxLength": 128
         }
       }
     },
@@ -171,6 +177,32 @@
       "properties": {
         "Required": {
           "description": "A boolean to indicate whether the action requires Environment Connection Set to true when the parameter is required.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Required"
+      ]
+    },
+    "SourcesConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Required": {
+          "description": "A boolean to indicate whether the action requires Sources. Set to true when the parameter is required.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Required"
+      ]
+    },
+    "InputArtifactsConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Required": {
+          "description": "A boolean to indicate whether the action requires input artifacts. Set to true when the parameter is required.",
           "type": "boolean"
         }
       },
@@ -188,12 +220,7 @@
         "Description": {
           "description": "Output variable description",
           "type": "string",
-          "maxLength": 128
-        },
-        "Value": {
-          "description": "The value of output variable",
-          "type": "string",
-          "maxLength": 128
+          "maxLength": 256
         }
       }
     },
@@ -209,7 +236,7 @@
         "IncludePaths": {
           "description": "The include file path for report.",
           "type": "array",
-          "maxItems": 50,
+          "maxItems": 10,
           "items": {
             "description": "File path",
             "type": "string"
@@ -218,7 +245,7 @@
         "ExcludePaths": {
           "description": "The exclude file path for report.",
           "type": "array",
-          "maxItems": 50,
+          "maxItems": 10,
           "items": {
             "description": "File path",
             "type": "string"
@@ -260,7 +287,7 @@
         "Files": {
           "description": "The value of output variable",
           "type": "array",
-          "maxItems": 50,
+          "maxItems": 10,
           "items": {
             "description": "File path",
             "type": "string"
@@ -331,10 +358,6 @@
     "NodeConfig": {
       "type": "object",
       "additionalProperties": false,
-      "required": [
-        "Using",
-        "Main"
-      ],
       "properties": {
         "Using": {
           "enum": [
@@ -377,28 +400,11 @@
             "runner.os == 'linux'"
           ]
         }
-      }
-    },
-    "CompositeConfig": {
-      "type": "object",
-      "additionalProperties": false,
+      },
       "required": [
         "Using",
-        "Steps"
-      ],
-      "properties": {
-        "Using": {
-          "const": "composite"
-        },
-        "Steps": {
-          "description": "The steps that you plan to run in this action. These can be either run steps or uses steps.",
-          "type": "array",
-          "minItems": 1,
-          "items": {
-            "$ref": "#/definitions/StepConfig"
-          }
-        }
-      }
+        "Main"
+      ]
     },
     "RunsConfig": {
       "type": "object",
@@ -406,23 +412,8 @@
       "allOf": [
         {
           "if": {
-            "properties": {
-              "Using": {
-                "const": "composite"
-              }
-            }
-          },
-          "then": {
-            "$ref": "#/definitions/CompositeConfig"
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "Using": {
-                "const": "node12"
-              }
-            }
+            "properties": { "Using": { "const": "node12" } },
+            "required": ["Using"]
           },
           "then": {
             "$ref": "#/definitions/NodeConfig"
@@ -430,11 +421,8 @@
         },
         {
           "if": {
-            "properties": {
-              "Using": {
-                "const": "node16"
-              }
-            }
+            "properties": { "Using": { "const": "node16" } },
+            "required": ["Using"]
           },
           "then": {
             "$ref": "#/definitions/NodeConfig"
@@ -442,11 +430,8 @@
         },
         {
           "if": {
-            "properties": {
-              "Using": {
-                "const": "docker"
-              }
-            }
+            "properties": { "Using": { "const": "docker" } },
+            "required": ["Using"]
           },
           "then": {
             "$ref": "#/definitions/DockerConfig"
@@ -460,99 +445,18 @@
           "enum": [
             "node12",
             "node16",
-            "docker",
-            "composite"
+            "docker"
           ]
         }
       },
       "required": [
         "Using"
       ]
-    },
-    "RunStepConfig": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "if": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "env": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "run": {
-          "type": "string"
-        },
-        "working-directory": {
-          "type": "string"
-        },
-        "shell": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "run",
-        "shell"
-      ]
-    },
-    "UsesStepConfig": {
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "if": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "env": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "uses": {
-          "type": "string"
-        },
-        "with": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "string"
-          }
-        }
-      },
-      "required": [
-        "uses"
-      ]
-    },
-    "StepConfig": {
-      "type": "object",
-      "additionalProperties": true,
-      "oneOf": [
-        {
-          "$ref": "#/definitions/UsesStepConfig"
-        },
-        {
-          "$ref": "#/definitions/RunStepConfig"
-        }
-      ]
     }
   },
   "required": [
     "SchemaVersion",
     "Name",
-    "Id",
     "Version",
     "Configuration",
     "Description",
