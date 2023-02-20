@@ -1,9 +1,7 @@
 SchemaVersion: '1.0'
 Name: 'Action Action'
-Id: 'Org/Action-action'
 Version: '1.0.0'
 Description: 'This Action tries to inject malicious code'
-Author: 'Org/Proj'
 Configuration:
   ResponseFilters:
     Description: "\nconsole.log('!!! INJECTED CODE !!!')"

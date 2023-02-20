@@ -16,15 +16,13 @@ describe('Action.yaml Sanitizer Test', () => {
 
     it('should escape all strings in action.yml', async () => {
         const file = `${__dirname}/invalid_input_code_injection.yml`;
-        let model: Model = parseAndSanitizeYamlFile(file);
+        const model: Model = parseAndSanitizeYamlFile(file);
 
         expect(model).toBeDefined();
         expect(model.SchemaVersion === `1.0_${ESCAPED_INPUT}`).toBeTruthy();
         expect(model.Name === `Action_${ESCAPED_INPUT}`).toBeTruthy();
-        expect(model.Id === `Org/Action_${ESCAPED_INPUT}`).toBeTruthy();
         expect(model.Version === `1.0.0_${ESCAPED_INPUT}`).toBeTruthy();
         expect(model.Description === `This Action tries to inject malicious code_${ESCAPED_INPUT}`).toBeTruthy();
-        expect(model.Author === `Org/Proj_${ESCAPED_INPUT}`).toBeTruthy();
 
         const sanitizedResponseFiltersInputKey = `ResponseFilters_${ESCAPED_INPUT}`;
         expect(model.Configuration).toBeDefined();
@@ -44,6 +42,30 @@ describe('Action.yaml Sanitizer Test', () => {
 
         expect(sanitizedResponseFiltersInputValue!.Default
             === `${ESCAPED_INPUT}`).toBeTruthy();
+    });
+
+    it('sanitization should not fail for undefined fields', async () => {
+        const file = `${__dirname}/minimal_input_action.yml`;
+        const model: Model = parseAndSanitizeYamlFile(file);
+
+        expect(model).toBeDefined();
+        expect(model.SchemaVersion === '1.0').toBeTruthy();
+        expect(model.Name === undefined).toBeTruthy();
+        expect(model.Version === undefined).toBeTruthy();
+        expect(model.Description === undefined).toBeTruthy();
+
+        const responseFiltersConfiguration = 'ResponseFilters';
+        expect(model.Configuration).toBeDefined();
+
+        expect(model.Configuration![responseFiltersConfiguration].Description).toBeDefined();
+        expect(model.Configuration![responseFiltersConfiguration].Description === 'Description').toBeTruthy();
+
+        expect(model.Configuration![responseFiltersConfiguration].Required).toBeDefined();
+        expect(model.Configuration![responseFiltersConfiguration].Required).toBeFalsy();
+
+        expect(model.Configuration![responseFiltersConfiguration].Default).toBeUndefined();
+        expect(model.Configuration![responseFiltersConfiguration].Type).toBeUndefined();
+        expect(model.Configuration![responseFiltersConfiguration].DisplayName).toBeUndefined();
     });
 
 });

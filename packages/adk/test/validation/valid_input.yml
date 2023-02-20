@@ -1,9 +1,7 @@
 SchemaVersion: "1.0"
 Name: 'AWS Lambda Invoke Action'
-Id: 'aws-lambda-invoke'
 Version: '1.0.0'
 Description: 'This Action invokes an AWS Lambda Function'
-Author: 'AWS'
 Configuration:
   Function:
     Description: 'Name or ARN of the AWS Lambda function'

@@ -1,9 +1,7 @@
 SchemaVersion: '1.0_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
 Name: 'Action_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
-Id: 'Org/Action_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
 Version: '1.0.0_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
 Description: 'This Action tries to inject malicious code_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
-Author: 'Org/Proj_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
 Configuration:
   ResponseFilters_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!:
     Description: "\nconsole.log('INJECTED_CODE')_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!"

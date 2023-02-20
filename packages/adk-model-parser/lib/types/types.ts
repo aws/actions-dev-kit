@@ -5,10 +5,8 @@
 export interface Model {
     SchemaVersion: string;
     Name?: string;
-    Id?: string;
     Version?: string;
     Description?: string;
-    Author?: string;
     Configuration?: Configuration;
     Environment?: Environment;
     Sources?: Sources;
@@ -28,9 +26,9 @@ export interface Configuration {
 export interface Input {
     Description: string;
     Required: boolean;
-    DisplayName: string;
-    Type: string;
-    Default: string;
+    DisplayName?: string;
+    Type?: string | boolean | number;
+    Default?: string | boolean | number;
 }
 
 /**

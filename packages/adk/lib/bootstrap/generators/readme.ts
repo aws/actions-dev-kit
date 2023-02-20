@@ -1,9 +1,8 @@
 import fs from 'fs';
 import { applyTemplate } from '../../util/template';
 import { Injectable, Logger, Scope } from '@nestjs/common';
-import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError } from '../model';
-import { Model, Configuration } from '@codecatalyst/adk-model-parser';
-import { GeneratorProps } from '../model';
+import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
+import { Model } from '@codecatalyst/adk-model-parser';
 
 export const README_GENERATOR = 'readme_generator';
 
@@ -17,7 +16,6 @@ export class ReadmeGenerator implements BoootstrapGenerator {
             const templateContents = fs.readFileSync(`${props.templateBasePath}/templates/action/${props.language}/README.md`, 'utf-8');
             let action_use = `
             MyAction:
-              Identifier: ${model.Id}
               Configuration:`;
 
             Object.entries(model.Configuration!).map(([configKey, configValue]) => {
@@ -31,7 +29,7 @@ export class ReadmeGenerator implements BoootstrapGenerator {
             };
             const finalContents = applyTemplate(templateContents, templateKeys);
             // Logger.log(`Contents: ${finalContents}`);
-            fs.writeFileSync("README.md", finalContents, 'utf8');
+            fs.writeFileSync('README.md', finalContents, 'utf8');
             return new BootstrapGeneratorResult();
         } catch (e) {
             Logger.error(e);

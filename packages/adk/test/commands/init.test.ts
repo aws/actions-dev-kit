@@ -125,10 +125,8 @@ describe('Init Command Tests', () => {
         let data = `
       SchemaVersion: 1.0
       Name: '%%action_name%%'
-      Id: '%%codecatalyst_space%%/%%action_name%%'
       Version: '0.0.0'
       Description: 'This Action greets someone and records the time'
-      Author: '%%codecatalyst_space%%/%%codecatalyst_project%%'
       Configuration:
         WhoToGreet:
           Description: 'Who are we greeting here'
