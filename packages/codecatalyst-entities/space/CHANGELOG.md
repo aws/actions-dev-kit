@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.66.0 (2023-02-21)
+
+
+### Bug Fixes
+
+* synchronize codecatalyst action schema JSON with AMS ([#120](https://github.com/aws/actions-dev-kit/issues/120)) ([6e6dfc3](https://github.com/aws/actions-dev-kit/commit/6e6dfc33d7d7186f71e8c748aa27ddd886761c1d))
+
+
+
+
+
 ## [0.65.1](https://github.com/aws/actions-dev-kit/compare/v0.64.1...v0.65.1) (2023-02-10)
 
 **Note:** Version bump only for package @codecatalyst/space
