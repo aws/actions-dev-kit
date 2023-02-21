@@ -1,4 +1,4 @@
-SchemaVersion: '1.0'
+SchemaVersion: 'AMS'
 Name: '%%action_name%%'
 Version: '0.0.0'
 Description: 'This Action greets someone and records the time'
