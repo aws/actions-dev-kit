@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.69.1 (2023-02-21)
+
+
+### Bug Fixes
+
+* allow 'AMS' schemaVersion in the codecatalyst JSON schema ([e2570c5](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/e2570c54f84a350ceeb2cca152cb3bb69ee0ba84))
+
+
+
+
+
 # 0.69.0 (2023-02-21)
 
 
