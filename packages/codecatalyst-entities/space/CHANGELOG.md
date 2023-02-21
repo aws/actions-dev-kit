@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.69.0 (2023-02-21)
+
+
+### Bug Fixes
+
+* allow 'AMS' schemaVersion in the codecatalyst JSON schema ([e2570c5](https://github.com/aws/actions-dev-kit/commit/e2570c54f84a350ceeb2cca152cb3bb69ee0ba84))
+
+
+
+
+
 ## 0.68.1 (2023-02-21)
 
 **Note:** Version bump only for package @codecatalyst/space
