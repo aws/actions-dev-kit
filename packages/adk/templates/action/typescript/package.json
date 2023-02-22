@@ -2,7 +2,7 @@
   "name": "%%action_name%%",
   "version": "1.0.0",
   "description": "%%action_description%%",
-  "main": "%%action_main_file%%",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
