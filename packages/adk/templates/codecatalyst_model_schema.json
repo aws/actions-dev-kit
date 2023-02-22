@@ -17,6 +17,7 @@
       "description": "Action name",
       "type": "string",
       "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9\\- _]{1,30}[A-Za-z0-9]$",
       "examples": [
         "My action"
       ]
@@ -42,7 +43,10 @@
       "description": "Action inputs, will be convert to workflow yaml Configuration section",
       "type": "object",
       "minProperties": 1,
-      "maxProperties": 50,
+      "maxProperties": 15,
+      "propertyNames": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9\\-_]{1,30}[A-Za-z0-9]$"
+      },
       "additionalProperties": {
         "type": "object",
         "$ref": "#/definitions/ParameterConfig"
@@ -86,31 +90,14 @@
         "Variables": {
           "description": "Action output variables",
           "type": "object",
+          "propertyNames": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9\\-_]{1,30}[A-Za-z0-9]$"
+          },
           "minProperties": 1,
           "maxProperties": 10,
           "additionalProperties": {
             "type": "object",
             "$ref": "#/definitions/OutputVariableConfig"
-          }
-        },
-        "Reports": {
-          "description": "Action output reports",
-          "type": "object",
-          "minProperties": 1,
-          "maxProperties": 10,
-          "additionalProperties": {
-            "type": "object",
-            "$ref": "#/definitions/OutputReportConfig"
-          }
-        },
-        "Artifacts": {
-          "description": "Action output artifacts",
-          "type": "object",
-          "minProperties": 1,
-          "maxProperties": 10,
-          "additionalProperties": {
-            "type": "object",
-            "$ref": "#/definitions/OutputArtifactConfig"
           }
         }
       }
@@ -142,8 +129,9 @@
         "DisplayName": {
           "description": "Input parameter name to display on UI",
           "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9\\- _]{1,30}[A-Za-z0-9]$",
           "minLength": 1,
-          "maxLength": 128
+          "maxLength": 32
         },
         "Type": {
           "description": "Input parameter type",
@@ -161,6 +149,7 @@
             "number",
             "boolean"
           ],
+          "maxLength": 32,
           "examples": [
             "bar"
           ]
@@ -168,7 +157,7 @@
         "DeprecationMessage": {
           "description": "Deprecation message",
           "type": "string",
-          "maxLength": 128
+          "maxLength": 64
         }
       }
     },
