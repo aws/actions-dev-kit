@@ -1,7 +1,11 @@
-const core = require('@codecatalyst/adk-core');
-const codecatalystProject = require('@codecatalyst/project');
-const codecatalystRunSummaries = require('@codecatalyst/run-summaries');
-const codecatalystSpace = require('@codecatalyst/space');
+// @ts-ignore
+import * as core from '@codecatalyst/adk-core';
+// @ts-ignore
+import * as codecatalystProject from '@codecatalyst/project';
+// @ts-ignore
+import * as codecatalystRunSummaries from '@codecatalyst/run-summaries';
+// @ts-ignore
+import * as codecatalystSpace from '@codecatalyst/space';
 
 try {
   // Get inputs from the action
@@ -9,6 +13,7 @@ try {
 
   // Interact with CodeCatalyst entities
   console.log(`Current CodeCatalyst space ${codecatalystSpace.getSpace().name}`);
+  console.log(`Current CodeCatalyst project ${codecatalystProject.getProject().name}`);
 
   // Action Code start
 

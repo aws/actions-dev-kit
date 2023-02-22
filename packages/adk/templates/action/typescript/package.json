@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@codecatalyst/adk-core": "%%adk_version%%",
-    "@codecatalyst/issue": "%%adk_version%%",
     "@codecatalyst/project": "%%adk_version%%",
     "@codecatalyst/run-summaries": "%%adk_version%%",
     "@codecatalyst/space": "%%adk_version%%",
