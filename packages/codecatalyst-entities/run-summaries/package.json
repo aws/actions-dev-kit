@@ -1,6 +1,6 @@
 {
   "name": "@codecatalyst/run-summaries",
-  "version": "0.70.0",
+  "version": "0.70.1",
   "description": "CodeCatalyst run summaries entity",
   "homepage": "",
   "license": "ISC",
@@ -18,6 +18,6 @@
     "entryPoint": "lib/index.ts"
   },
   "devDependencies": {
-    "@codecatalyst/adk-core": "0.70.0"
+    "@codecatalyst/adk-core": "0.70.1"
   }
 }
