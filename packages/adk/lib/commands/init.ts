@@ -17,7 +17,7 @@ const ADK_ACTION_CONFIG_FILE_NAME = '.actionconfig';
 const ADK_ACTION_DEFINITION_FILE_NAME = 'action.yml';
 const ADK_ACTION_DEFINITION_FILE_PATH = '.codecatalyst/actions/';
 const SUPPORTED_LANGUAGES = new Set(['typescript']);
-const NODE_VERSION = 'node12';
+const NODE_VERSION = 'node16';
 
 export async function handleCommand(productInfo: ProductInfo, action: any, language: any, disconnected: boolean): Promise<number> {
     const preReqValidationStatus = validatePrerequisites(productInfo, action, language, disconnected);

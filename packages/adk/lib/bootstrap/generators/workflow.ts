@@ -26,7 +26,7 @@ export class WorkflowGenerator implements BoootstrapGenerator {
             let action_name = model.Name?.split(' ', 1);
             Object.entries(model.Configuration!).map(([configKey]) => {
                 if (!first) {
-                    action_input = action_input.concat(' '.repeat(12));
+                    action_input = action_input.concat(' '.repeat(6));
                 }
                 action_input = action_input.concat(`${configKey} : 'TEST'\n`);
                 first = false;

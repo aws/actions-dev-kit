@@ -24,4 +24,4 @@ Environment:
   Required: false
 Runs:
   Using: '%%node_version%%'
-  Main: 'lib/index.js'
+  Main: 'dist/index.js'

@@ -3,7 +3,6 @@ test/*.js
 *.js.map
 *.d.ts
 *.generated.ts
-dist
 coverage
 node_modules
 .actionconfig
