@@ -11,8 +11,16 @@ Actions:
     Inputs:
       Sources:
         - WorkflowSource
+    Environment:
+      Name: Default
+      Connections:
+        - Name: CodeArtifactAccount
+          Role: CodeCatalystPreviewDevelopmentAdministrator
     Configuration:
       Steps:
+        - run: aws codeartifact login --region us-west-2 --tool npm --domain ${Secrets.CODEARTIFACT_DOMAIN} --domain-owner ${Secrets.CODEARTIFACT_AWS_ACCOUNT} --repository ActionsDevKitPackage
+        - run: npm config list
+        - run: npm set @codecatalyst:registry=${Secrets.CODEARTIFACT_NPM_REGISTRY} --userconfig .npmrc
         - run: npm install
         - run: npm run all
         - name: %%action_name%%-Test
