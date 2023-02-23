@@ -11,10 +11,5 @@ Actions:
     Inputs:
       Sources:
         - WorkflowSource
-    Environment:
-      Name: Default
-      Connections:
-        - Name: CodeArtifactAccount
-          Role: CodeCatalystPreviewDevelopmentAdministrator
     Configuration:
       %%action_inputs%%
