@@ -85,13 +85,13 @@ export interface ICommandOutput {
 */
 export class Utils {
     /** View documentation at {@link getInput | `getInput`} */
-    static getInput(inputVar: string) {
-        return validateInput(getEnvironmentVariable('INPUT_' + inputVar.toUpperCase()));
+    static getInput(inputVar?: string) {
+        return validateInput(getEnvironmentVariable('INPUT_' + inputVar?.toUpperCase()));
     }
 
     /** View documentation at {@link getMultiLineInput | `getMultiLineInput`} */
-    static getMultiLineInput(inputVar: string) {
-        return getEnvironmentVariable('INPUT_' + inputVar.toUpperCase());
+    static getMultiLineInput(inputVar?: string) {
+        return getEnvironmentVariable('INPUT_' + inputVar?.toUpperCase());
     }
 
     /** View documentation at {@link getEnvironmentVariable | `getEnvironmentVariable`} */

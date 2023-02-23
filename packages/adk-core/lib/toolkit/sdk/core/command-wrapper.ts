@@ -15,15 +15,15 @@ export function runCommand(cmd: string, args?: string[]) {
 }
 
 export function getInputParam(inputVar: string) {
-    return runCommand('printenv', [inputVar]).stdout;
+    return process.env[inputVar] === undefined ? '' : process.env[inputVar];
 }
 
 export function setOutputParam(varName: string, varValue: string) {
     return runCommand(`echo "::set-output name=${varName}::${varValue}"`).stdout;
 }
 
-export function validateInput(inputVar: string) {
-    return inputVar.replace(/\n/g, '');
+export function validateInput(inputVar?: string) {
+    return inputVar?.replace(/\n/g, '');
 }
 
 export function setFailure(message: any, exitCode: number) {
