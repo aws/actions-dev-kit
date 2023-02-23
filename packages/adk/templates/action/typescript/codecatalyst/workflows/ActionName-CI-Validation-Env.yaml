@@ -1,5 +1,5 @@
 Name: %%action_name%%-CI-Validation
-SchemaVersion: "1.0"
+SchemaVersion: "AMS"
 Triggers:
   - Type: PullRequest
     Events: [ open, revision ]
@@ -12,13 +12,7 @@ Actions:
       Sources:
         - WorkflowSource
     Configuration:
-      Steps:
-        - run: npm install
-        - run: npm run all
-        - name: %%action_name%%-Test
-          uses: ./
-          with:
-            %%action_inputs%%
+      %%action_inputs%%
     Environment:
       Name: %%action_name%%-TestEnvironment
       Connections:

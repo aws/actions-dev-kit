@@ -1,4 +1,4 @@
-SchemaVersion: 'AMS'
+SchemaVersion: '1.0'
 Name: '%%action_name%%'
 Version: '0.0.0'
 Description: 'This Action greets someone and records the time'
@@ -14,14 +14,8 @@ Configuration:
     DisplayName: 'How to greet'
     Type: string
     Default: 'Hello there,'
-  WhenToGreet:
-    Description: 'How long to wait before greet the person in seconds'
-    Required: false
-    DisplayName: 'When to greet'
-    Type: number
-    Default: 1
 Environment:
   Required: false
 Runs:
   Using: '%%node_version%%'
-  Main: 'lib/index.js'
+  Main: 'dist/index.js'
