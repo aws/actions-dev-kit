@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.72.0 (2023-02-24)
+
+
+### Bug Fixes
+
+* use 'process.env[input]' instead of 'printenv' to get env variable value ([#126](https://github.com/aws/actions-dev-kit/issues/126)) ([bb1663e](https://github.com/aws/actions-dev-kit/commit/bb1663e9abf987b562cc21da8c29adb0542f003d))
+
+
+
+
+
 ## 0.71.1 (2023-02-23)
 
 **Note:** Version bump only for package root
