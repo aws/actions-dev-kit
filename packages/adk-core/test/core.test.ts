@@ -38,4 +38,12 @@ describe('@codecatalyst/adk-core', () => {
         expect(adkCore.Utils.getMultiLineInput(varName)).toMatch(multiLineInputValue);
     });
 
+    it('should not fail with undefined input', () => {
+        let inputValue = undefined;
+        let varName = 'var1';
+        process.env.INPUT_VAR1 = inputValue;
+        expect(adkCore.getInput(varName)).toMatch('');
+        expect(adkCore.Utils.getInput(varName)).toMatch('');
+    });
+
 });
