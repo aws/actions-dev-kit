@@ -1,7 +1,7 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
 
-name: ActionsDevKit-Release
+name: ActionsDevKit-Release-Gamma
 
 on:
   workflow_dispatch:
@@ -45,7 +45,7 @@ jobs:
       - run: aws sts get-caller-identity
       - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackage
       - run: npm config list
-      - run: npm set registry=${{ secrets.CODEARTIFACT_NPM_REGISTRY }} --userconfig .npmrc
+      - run: npm set registry=${{ secrets.CODEARTIFACT_NPM_REGISTRY_GAMMA }} --userconfig .npmrc
       - run: git status
       - run: lerna publish --yes
 
