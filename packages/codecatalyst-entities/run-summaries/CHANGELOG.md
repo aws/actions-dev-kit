@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.77.0 (2023-02-27)
+
+**Note:** Version bump only for package @codecatalyst/run-summaries
+
+
+
+
+
 ## [0.76.1](https://github.com/aws/actions-dev-kit/compare/v0.75.1...v0.76.1) (2023-02-27)
 
 **Note:** Version bump only for package @codecatalyst/run-summaries
