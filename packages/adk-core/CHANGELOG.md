@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.81.1 (2023-02-28)
+
+
+### Bug Fixes
+
+* adk --version now returns the version value from package.json ([3f13999](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/commits/3f13999a779a2e318dfc3042eb4f8c174fbd1efc))
+
+
+
+
+
 # 0.81.0 (2023-02-28)
 
 
