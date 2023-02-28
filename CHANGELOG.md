@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.78.1](https://github.com/aws/actions-dev-kit/compare/v0.77.1...v0.78.1) (2023-02-28)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 # 0.78.0 (2023-02-28)
 
 **Note:** Version bump only for package root
