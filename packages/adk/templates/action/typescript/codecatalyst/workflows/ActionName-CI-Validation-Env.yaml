@@ -1,5 +1,5 @@
 Name: %%action_name%%-CI-Validation
-SchemaVersion: "AMS"
+SchemaVersion: "1.0"
 Triggers:
   - Type: PullRequest
     Events: [ open, revision ]
