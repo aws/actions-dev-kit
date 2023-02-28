@@ -1,6 +1,6 @@
 {
   "name": "@codecatalyst/project",
-  "version": "0.79.0",
+  "version": "0.79.1",
   "description": "CodeCatalyst project entity",
   "homepage": "",
   "license": "ISC",
@@ -15,7 +15,7 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@codecatalyst/adk-core": "0.79.0"
+    "@codecatalyst/adk-core": "0.79.1"
   },
   "typedoc": {
     "entryPoint": "lib/index.ts"
