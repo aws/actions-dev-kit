@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.81.0 (2023-02-28)
+
+
+### Bug Fixes
+
+* adk --version now returns the version value from package.json ([3f13999](https://github.com/aws/actions-dev-kit/commit/3f13999a779a2e318dfc3042eb4f8c174fbd1efc))
+
+
+
+
+
 ## 0.80.1 (2023-02-28)
 
 **Note:** Version bump only for package @codecatalyst/adk-utils
