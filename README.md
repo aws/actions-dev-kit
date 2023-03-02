@@ -15,15 +15,20 @@ There are two components of the ADK:
 
 1. ADK software development kit (SDK)
 
-A set of library interfaces you can use to interact with action matadata and CodeCatalyst resouces, including actions, workflows, secrets, logs, input variables, output variables, artifacts, and reports.
+A set of library interfaces you can use to interact with action matadata and CodeCatalyst resources, including actions, workflows, secrets, logs, input variables, output variables, artifacts, and reports.
 
     
 #### Sample Usage
 
 ```
-const core = require('@codecatalyst/adk-core')
-const codecatalystSpace = require('@codecatalyst/space');
-const codecatalystProject = require('@codecatalyst/project');
+// @ts-ignore
+import * as core from '@codecatalyst/adk-core';
+// @ts-ignore
+import * as codecatalystProject from '@codecatalyst/project';
+// @ts-ignore
+import * as codecatalystRunSummaries from '@codecatalyst/run-summaries';
+// @ts-ignore
+import * as codecatalystSpace from '@codecatalyst/space';
 
 const destinationBucket = core.getInput('DestinationBucketName')
     # => Maps to the destination bucket configuration in Code.AWS workflow definition
@@ -51,7 +56,7 @@ Tool to interact with a set of commands you can use to create, validate, and tes
 >> adk init --lang typescript --space <CODECATALYST-SPACE-NAME> --proj <CODECATALYST-PROJECT-NAME> --repo <CODECATALYST-REPO-NAME> --action <ACTION-NAME>
 ...
 
->> adk bootstrap -f ./codecatalyst/actions/action.yml
+>> adk bootstrap -f .codecatalyst/actions/action.yml
 ...
 
 >> adk validate
@@ -64,7 +69,7 @@ The following list contains the ADK CLI commands and information about how to us
   * init – Initializes the ADK project locally and produces required configuration files with specific language support.
   * bootstrap – Bootstraps CodeCatalyst action code by reading the action definition file. The ADK SDK is used to develop actions.
   * validate – Validates the action definition and README file.
-  * version – Increments the current version of the action automatically. Follows [semver](https://semver.org/) semantics. Also helps bootstrapping the action version (for example, starting from no version to first version to subsequent versions). Supports major and minor version increments.
+  * version – Returns the current version of ADK.
   * help – Shows the current set of commands.
 
   
@@ -81,7 +86,7 @@ The following list contains the ADK CLI commands and information about how to us
     * Run the following npm command to access the ReadOnlyAdkCodeArtifact: `aws codeartifact login —tool npm —repository ActionsDevKitPackage —domain aef-team —domain-owner 198147706056 —region us-west-2`.
 3. Run the following Lerna command: `npm install -g lerna`.
     * [Lerna](https://lerna.js.org/) is a fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository.
-4. Run the following command to install yarn: `npm install --global yarn`
+4. Run the following command to install yarn: ``npm install --global yarn``
     * [Yarn](https://yarnpkg.com/) is a package manager that doubles down as project manager. You can you work on one-shot projects or large monorepos, as a hobbyist or an enterprise user.
 
 
