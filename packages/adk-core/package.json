@@ -1,6 +1,6 @@
 {
   "name": "@codecatalyst/adk-core",
-  "version": "0.83.0",
+  "version": "0.83.1",
   "description": "ADK Core",
   "homepage": "",
   "main": "lib/toolkit/sdk/core/core.js",
