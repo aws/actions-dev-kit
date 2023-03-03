@@ -10,6 +10,7 @@ import { FileCopyGenerator, FILE_COPY_GENERATOR } from './generators/fscopy';
 import { ReadmeGenerator, README_GENERATOR } from './generators/readme';
 import { RuntimeCodeGenerator, RUNTIME_CODE_GENERATOR } from './generators/runtime';
 import { WorkflowGenerator, WORKFLOW_GENERATOR } from './generators/workflow';
+import { LICENSE_GENERATOR, LicenseGenerator } from './generators/license';
 
 @Module({
     controllers: [BootstrapController],
@@ -40,6 +41,10 @@ import { WorkflowGenerator, WORKFLOW_GENERATOR } from './generators/workflow';
         {
             provide: README_GENERATOR,
             useClass: ReadmeGenerator,
+        },
+        {
+            provide: LICENSE_GENERATOR,
+            useClass: LicenseGenerator,
         },
         {
             provide: WORKFLOW_GENERATOR,

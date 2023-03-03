@@ -8,6 +8,7 @@ import { PackageJsonGenerator } from '../../lib/bootstrap/generators/packagejson
 import { RuntimeCodeGenerator } from '../../lib/bootstrap/generators/runtime';
 import { FileCopyGenerator } from '../../lib/bootstrap/generators/fscopy';
 import { ReadmeGenerator } from '../../lib/bootstrap/generators/readme';
+import { LicenseGenerator } from '../../lib/bootstrap/generators/license';
 import { WorkflowGenerator } from '../../lib/bootstrap/generators/workflow';
 import { JsonSchemaValidator } from '../../lib/validation/validator/schema';
 import { SchemaType } from '../../lib/validation/model';
@@ -27,11 +28,13 @@ describe('Bootstrap Command Tests', () => {
     const codeGen = new BootstrapCodeGenerator(pkgJsonGen, runtimeCodeGen);
     const fileCopyGen = new FileCopyGenerator();
     const readMeGen = new ReadmeGenerator();
+    const licenseGen = new LicenseGenerator();
     const workflowGen = new WorkflowGenerator();
     const generators = new ActionBootstrapGenerators(new TemplateGenerator(
         codeGen,
         fileCopyGen,
         readMeGen,
+        licenseGen,
         workflowGen,
     ));
 
