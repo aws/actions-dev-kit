@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.85.0 (2023-03-03)
+
+
+### Bug Fixes
+
+* ignore existing files on adk bootstrap ([92b9a2b](https://github.com/aws/actions-dev-kit/commit/92b9a2b1c87296789544dada148f710eff42ec4d))
+
+
+
+
+
 ## [0.84.1](https://github.com/aws/actions-dev-kit/compare/v0.83.1...v0.84.1) (2023-03-03)
 
 **Note:** Version bump only for package @codecatalyst/project
