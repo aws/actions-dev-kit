@@ -13,17 +13,23 @@ export class FileCopyGenerator implements BoootstrapGenerator {
             Logger.log('Copying files from template..');
             const files = ['tsconfig.json', '.prettierrc.json'];
             files.forEach((fl) => {
-                fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/${fl}`, `${fl}`, fs.constants.COPYFILE_EXCL);
+                this.copyOrSkipExistingFile(`${props.templateBasePath}/templates/action/typescript/${fl}`, fl);
             });
 
-            fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/gitignore`, '.gitignore', fs.constants.COPYFILE_EXCL);
-            fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/eslintrc`, '.eslintrc.js', fs.constants.COPYFILE_EXCL);
-            fs.copyFileSync(`${props.templateBasePath}/templates/action/typescript/jest.conf`, 'jest.config.js', fs.constants.COPYFILE_EXCL);
+            this.copyOrSkipExistingFile(`${props.templateBasePath}/templates/action/typescript/gitignore`, '.gitignore');
+            this.copyOrSkipExistingFile(`${props.templateBasePath}/templates/action/typescript/eslintrc`, '.eslintrc.js');
+            this.copyOrSkipExistingFile(`${props.templateBasePath}/templates/action/typescript/jest.conf`, 'jest.config.js');
 
             return new BootstrapGeneratorResult();
         } catch (e) {
             Logger.error(e);
             throw new BootstrapError(`${e}`);
+        }
+    }
+
+    copyOrSkipExistingFile(source: string, dest: string) {
+        if (!fs.existsSync(dest)) {
+            fs.copyFileSync(source, dest, fs.constants.COPYFILE_EXCL);
         }
     }
 }

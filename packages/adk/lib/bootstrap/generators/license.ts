@@ -11,7 +11,6 @@ export const ACTION_CONFIG_FILE = '.actionconfig';
 @Injectable({ scope: Scope.DEFAULT })
 export class LicenseGenerator implements BoootstrapGenerator {
 
-
     generate(model: Model, props: GeneratorProps): BootstrapGeneratorResult {
         try {
             Logger.log('Generating MIT LICENSE');
