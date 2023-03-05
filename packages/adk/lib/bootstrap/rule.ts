@@ -56,7 +56,7 @@ export class ActionPreValidationRules {
         });
 
         if (errors.length > 0) {
-            Logger.error(' => Either boostrap in an empty directory or use \'adk bootstrap -o \' to override existing files');
+            Logger.error(' => Either bootstrap in an empty directory or use \'adk bootstrap -o\' to override existing files');
         }
         return errors.length <= 0;
     }
