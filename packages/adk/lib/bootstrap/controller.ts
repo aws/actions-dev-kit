@@ -8,22 +8,22 @@ import { ActionBootstrapGenerators } from './generators';
 export class BootstrapController {
     constructor(
         private preValidationRules: ActionPreValidationRules,
-        private boootstrapGenerator: ActionBootstrapGenerators) {
+        private bootstrapGenerator: ActionBootstrapGenerators) {
     }
 
     bootstrapAction(props: GeneratorProps) {
         if (!this.preValidationRules.apply(props)) {
-            Logger.error('Bootstrap pre-validation Failed');
+            Logger.error('Bootstrap pre-validation failed');
             return 1;
         }
 
         // validation complete, now apply generators
         Logger.log('Validation succeeded for bootstrap');
         console.log(`Properties file: ${props.file}`);
-        if (this.boootstrapGenerator.bootstrap(parseAndSanitizeYamlFile(props.file), props)) {
+        if (this.bootstrapGenerator.bootstrap(parseAndSanitizeYamlFile(props.file), props)) {
             return 0;
         } else {
-            Logger.error('Bootstrapping Failed');
+            Logger.error('Bootstrapping failed');
             return 1;
         }
     }

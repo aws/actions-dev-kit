@@ -1,1 +1,1 @@
-export { escape, sanitizeCommand, isString } from './util/util';
+export { escape, sanitizeCommand, isString, copyToFileSync, writeContentToFileSync } from './util/util';

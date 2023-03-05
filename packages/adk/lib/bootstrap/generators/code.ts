@@ -1,5 +1,5 @@
 import { Inject, Injectable, Logger, Scope } from '@nestjs/common';
-import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
+import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { PACKAGE_JSON_GENERATOR, PackageJsonGenerator } from './packagejson';
 import { RUNTIME_CODE_GENERATOR, RuntimeCodeGenerator } from './runtime';
 import { Model } from '@codecatalyst/adk-model-parser';
@@ -7,7 +7,7 @@ import { Model } from '@codecatalyst/adk-model-parser';
 export const CODE_GENERATOR = 'code_generator';
 
 @Injectable({ scope: Scope.DEFAULT })
-export class BootstrapCodeGenerator implements BoootstrapGenerator {
+export class BootstrapCodeGenerator implements BootstrapGenerator {
 
     constructor(
         @Inject(PACKAGE_JSON_GENERATOR) private packageJsonGen: PackageJsonGenerator,

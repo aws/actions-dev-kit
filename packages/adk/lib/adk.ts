@@ -30,7 +30,12 @@ async function cliArgs() {
                 alias: 'f',
                 description: 'the action definition file to be used for bootstrapping workspace',
                 demandOption: true,
-                default: 'action.yml',
+                default: '.codecatalyst/actions/action.yml',
+            }).option('override', {
+                alias: 'o',
+                description: 'If true, overrides existing files',
+                default: false,
+                type: 'boolean',
             });
         })
         .command('validate', 'Validate the current workspace for Action definition', (yargs) => {
@@ -86,9 +91,7 @@ async function cliArgs() {
 }
 
 async function initAppContext(): Promise<INestApplicationContext> {
-    console.log('Loading appcontext');
     const context = await bootstrap();
-    console.log('Loaded appcontext');
     context.useLogger(context.get(ConsoleLogger));
     return context;
 }
@@ -117,6 +120,7 @@ async function parseCLIArgs() {
                     schemaType: SchemaType.CodeCatalyst,
                     templateBasePath: `${__dirname}/..`,
                     language: 'typescript',
+                    overrideFiles: ((argv.override as unknown) as boolean),
                 },
             );
         case 'init':

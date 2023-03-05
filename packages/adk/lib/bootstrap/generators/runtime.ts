@@ -1,13 +1,15 @@
 import fs from 'fs';
 import { applyTemplate } from '../../util/template';
 import { Injectable, Logger, Scope } from '@nestjs/common';
-import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
+import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { Model } from '@codecatalyst/adk-model-parser';
+import { writeContentToFileSync } from '@codecatalyst/adk-utils/lib';
 
 export const RUNTIME_CODE_GENERATOR = 'runtime_code_generator';
+export const RUNTIME_CODE_DESTINATION_FILES = ['lib/index.ts', 'test/index.test.ts'];
 
 @Injectable({ scope: Scope.DEFAULT })
-export class RuntimeCodeGenerator implements BoootstrapGenerator {
+export class RuntimeCodeGenerator implements BootstrapGenerator {
 
     generate(model: Model, props: GeneratorProps): BootstrapGeneratorResult {
         try {
@@ -31,10 +33,15 @@ export class RuntimeCodeGenerator implements BoootstrapGenerator {
             const codeContents = applyTemplate(templateContents, templateKeys);
             const testContents = applyTemplate(testTemplateContents, templateKeys);
 
-            fs.mkdirSync('lib');
-            fs.mkdirSync('test');
-            fs.writeFileSync('lib/index.ts', codeContents, 'utf8');
-            fs.writeFileSync('test/index.test.ts', testContents, 'utf8');
+            if (!fs.existsSync('lib')) {
+                fs.mkdirSync('lib');
+            }
+            if (!fs.existsSync('test')) {
+                fs.mkdirSync('test');
+            }
+            writeContentToFileSync('lib/index.ts', codeContents, props.overrideFiles);
+            writeContentToFileSync('test/index.test.ts', testContents, props.overrideFiles);
+
             return new BootstrapGeneratorResult();
         } catch (e) {
             Logger.error(e);

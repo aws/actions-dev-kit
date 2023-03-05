@@ -1,3 +1,5 @@
+import fs from "fs";
+
 /**
  * Sanitizes (escapes) special characters in the command and its arguments.
  * @param cmd The command to be sanitized.
@@ -46,4 +48,28 @@ export function escape(input?: string): string {
  */
 export function isString(input: any): boolean {
     return typeof input === 'string' || input instanceof String;
+}
+
+/**
+ * Copies from source to a destination file. Overrides the destination file if it exists and override flag is set to true.
+ * @param src The source file.
+ * @param dest The destination file.
+ * @param overrideDest Override destination file if it already exists.
+ */
+export function copyToFileSync(src: string, dest: string, overrideDest?: boolean) {
+    if (!fs.existsSync(dest) || (fs.existsSync(dest) && overrideDest)) {
+        fs.copyFileSync(src, dest);
+    }
+}
+
+/**
+ * Writes content to a destination file. Overrides the destination file if it exists and override flag is set to true.
+ * @param dest The destination file.
+ * @param content The content to be written.
+ * @param overrideDest Override destination file if it already exists.
+ */
+export function writeContentToFileSync(dest: string, content: string, overrideDest?: boolean) {
+    if (!fs.existsSync(dest) || (fs.existsSync(dest) && overrideDest)) {
+        fs.writeFileSync(dest, content, 'utf8');
+    }
 }
