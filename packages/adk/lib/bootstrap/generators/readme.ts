@@ -1,13 +1,15 @@
 import fs from 'fs';
 import { applyTemplate } from '../../util/template';
 import { Injectable, Logger, Scope } from '@nestjs/common';
-import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
+import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { Model } from '@codecatalyst/adk-model-parser';
+import { writeContentToFileSync } from '@codecatalyst/adk-utils/lib';
 
 export const README_GENERATOR = 'readme_generator';
+export const README_GENERATOR_DESTINATION_FILES = ['README.md'];
 
 @Injectable({ scope: Scope.DEFAULT })
-export class ReadmeGenerator implements BoootstrapGenerator {
+export class ReadmeGenerator implements BootstrapGenerator {
 
     generate(model: Model, props: GeneratorProps): BootstrapGeneratorResult {
         try {
@@ -19,7 +21,6 @@ export class ReadmeGenerator implements BoootstrapGenerator {
               Configuration:`;
 
             Object.entries(model.Configuration!).map(([configKey, configValue]) => {
-                // Logger.log(`${configKey} : 'test' # ${configValue.Description}\r\n`);
                 action_use = action_use.concat(`
                     ${configKey} : 'test' # ${configValue.Description}`);
             });
@@ -28,8 +29,7 @@ export class ReadmeGenerator implements BoootstrapGenerator {
                 action_usage: `${action_use}`,
             };
             const finalContents = applyTemplate(templateContents, templateKeys);
-            // Logger.log(`Contents: ${finalContents}`);
-            fs.writeFileSync('README.md', finalContents, 'utf8');
+            writeContentToFileSync('README.md', finalContents, props.overrideFiles);
             return new BootstrapGeneratorResult();
         } catch (e) {
             Logger.error(e);

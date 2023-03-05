@@ -1,6 +1,7 @@
 export interface ValidationProps {
     readonly file?: string;
-    readonly schemaType?: SchemaType
+    readonly schemaType?: SchemaType,
+    readonly overrideFiles?: boolean
 }
 
 export enum SchemaType {

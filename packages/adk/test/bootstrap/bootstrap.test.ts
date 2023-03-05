@@ -71,14 +71,16 @@ describe('Bootstrap Command Tests', () => {
             schemaType: SchemaType.CodeCatalyst,
             templateBasePath: `${__dirname}/../..`,
             language: 'typescript',
+            overrideFiles: true,
         };
 
         expect(controller.bootstrapAction(props)).toBeDefined();
 
         let generatedSourceCode = jest.mocked(fs.writeFileSync).mock.calls
-            .filter((arrayOfCallsWithArguments) => arrayOfCallsWithArguments[0] =='lib/index.ts')
+            .filter((arrayOfCallsWithArguments) => arrayOfCallsWithArguments[0] == 'lib/index.ts')
             .map(callArguments => callArguments[1]);
 
         expect(generatedSourceCode.toString().includes("// %0Aconsole.log('INJECTED_CODE')%25%0A%0D:%2C")).toBeTruthy();
     });
+
 });

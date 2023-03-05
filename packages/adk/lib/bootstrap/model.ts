@@ -6,9 +6,10 @@ export interface GeneratorProps {
     readonly schemaType?: SchemaType;
     readonly templateBasePath?: string;
     readonly language?: string;
+    readonly overrideFiles?: boolean;
 }
 
-export interface BoootstrapGenerator {
+export interface BootstrapGenerator {
     generate(model: Model, props: GeneratorProps): BootstrapGeneratorResult
 }
 
@@ -44,10 +45,10 @@ export class BootstrapError extends Error {
     }
 }
 
-export class SerialGenerator implements BoootstrapGenerator {
-    private generators: BoootstrapGenerator[];
+export class SerialGenerator implements BootstrapGenerator {
+    private generators: BootstrapGenerator[];
 
-    constructor(...generators: BoootstrapGenerator[]) {
+    constructor(...generators: BootstrapGenerator[]) {
         this.generators = generators;
 
     }

@@ -1,5 +1,5 @@
 import { Inject, Injectable, Logger, Scope } from '@nestjs/common';
-import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
+import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { Model } from '@codecatalyst/adk-model-parser';
 import { BootstrapCodeGenerator, CODE_GENERATOR } from './code';
 import { FileCopyGenerator, FILE_COPY_GENERATOR } from './fscopy';
@@ -10,7 +10,7 @@ import { LICENSE_GENERATOR, LicenseGenerator } from './license';
 export const TEMPLATE_GENERATOR = 'template_generator';
 
 @Injectable({ scope: Scope.DEFAULT })
-export class TemplateGenerator implements BoootstrapGenerator {
+export class TemplateGenerator implements BootstrapGenerator {
 
     constructor(@Inject(CODE_GENERATOR) private codeGenerator: BootstrapCodeGenerator,
         @Inject(FILE_COPY_GENERATOR) private fileCopyGenerator: FileCopyGenerator,

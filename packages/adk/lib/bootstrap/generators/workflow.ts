@@ -1,13 +1,14 @@
 import fs from 'fs';
 import { applyTemplate } from '../../util/template';
 import { Injectable, Logger, Scope } from '@nestjs/common';
-import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
+import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { Model } from '@codecatalyst/adk-model-parser';
+import { writeContentToFileSync } from '@codecatalyst/adk-utils/lib';
 
 export const WORKFLOW_GENERATOR = 'workflow_generator';
 
 @Injectable({ scope: Scope.DEFAULT })
-export class WorkflowGenerator implements BoootstrapGenerator {
+export class WorkflowGenerator implements BootstrapGenerator {
 
     generate(model: Model, props: GeneratorProps): BootstrapGeneratorResult {
         try {
@@ -36,8 +37,11 @@ export class WorkflowGenerator implements BoootstrapGenerator {
                 action_inputs: `${action_input}`,
             };
             const finalContents = applyTemplate(templateContents, templateKeys);
-            fs.mkdirSync('.codecatalyst/workflows', { recursive: true });
-            fs.writeFileSync(`.codecatalyst/workflows/${action_name}-CI-Validation.yaml`, finalContents, 'utf8');
+            if (!fs.existsSync('.codecatalyst/workflows')) {
+                fs.mkdirSync('.codecatalyst/workflows', { recursive: true });
+            }
+            writeContentToFileSync(`.codecatalyst/workflows/${action_name}-CI-Validation.yaml`, finalContents, props.overrideFiles);
+            
             return new BootstrapGeneratorResult();
         } catch (e) {
             Logger.error(e);

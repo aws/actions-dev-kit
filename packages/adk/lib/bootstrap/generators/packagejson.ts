@@ -1,13 +1,15 @@
 import fs from 'fs';
 import { applyTemplate } from '../../util/template';
 import { Injectable, Logger, Scope } from '@nestjs/common';
-import { BoootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
+import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { Model } from '@codecatalyst/adk-model-parser';
+import { writeContentToFileSync } from '@codecatalyst/adk-utils/lib';
 
 export const PACKAGE_JSON_GENERATOR = 'package_json_generator';
+export const PACKAGE_JSON_GENERATOR_DESTINATION_FILES = ['package.json'];
 
 @Injectable({ scope: Scope.DEFAULT })
-export class PackageJsonGenerator implements BoootstrapGenerator {
+export class PackageJsonGenerator implements BootstrapGenerator {
 
     generate(model: Model, props: GeneratorProps): BootstrapGeneratorResult {
         try {
@@ -23,7 +25,7 @@ export class PackageJsonGenerator implements BoootstrapGenerator {
                 adk_version: 'latest',
             };
             const finalContents = applyTemplate(templateContents, templateKeys);
-            fs.writeFileSync('package.json', finalContents, 'utf8');
+            writeContentToFileSync('package.json', finalContents, props.overrideFiles);
             return new BootstrapGeneratorResult();
         } catch (e) {
             Logger.error(e);
