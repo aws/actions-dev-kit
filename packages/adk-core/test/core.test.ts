@@ -46,4 +46,16 @@ describe('@codecatalyst/adk-core', () => {
         expect(adkCore.Utils.getInput(varName)).toMatch('');
     });
 
+    it('test setOutputParam', () => {
+        let outputParamName = 'outputParam';
+        let outputParamValue = 'outputParamValue';
+        const commandResult = adkCore.setOutput(outputParamName, outputParamValue);
+        expect(commandResult).toMatch('::set-output name=outputParam::outputParamValue');
+    });
+
+    it('test setFailed', () => {
+        adkCore.setFailed('error message');
+        expect(process.exitCode === 1).toBeTruthy();
+    });
+
 });
