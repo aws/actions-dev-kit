@@ -26,15 +26,15 @@ describe('ADK-Util test', () => {
         const cmd = UNESCAPED_INPUT;
         const args = [cmdArg1];
 
-        expect(sanitizeCommand(cmd, args) === `${ESCAPED_INPUT} ${ESCAPED_INPUT}`).toBeTruthy();
+        expect(sanitizeCommand(cmd, true, args) === `${ESCAPED_INPUT} ${ESCAPED_INPUT}`).toBeTruthy();
     });
 
     it('sanitize command should build command and arguments properly', async () => {
         const cmd = 'printenv';
         const args = ['arg1', 'arg2', 'arg3', 'arg4'];
 
-        expect(sanitizeCommand(cmd, args) === 'printenv arg1 arg2 arg3 arg4').toBeTruthy();
-        expect(sanitizeCommand('printenv arg1', []) === 'printenv arg1').toBeTruthy();
+        expect(sanitizeCommand(cmd, true, args) === 'printenv arg1 arg2 arg3 arg4').toBeTruthy();
+        expect(sanitizeCommand('printenv arg1', true, []) === 'printenv arg1').toBeTruthy();
     });
 
     it('sanitize command should handle undefined and empty command and arguments properly', async () => {
@@ -42,8 +42,8 @@ describe('ADK-Util test', () => {
         const args = ['cmd_arg_1'];
 
         expect(sanitizeCommand(cmd, undefined) === cmd).toBeTruthy();
-        expect(sanitizeCommand(cmd, []) === cmd).toBeTruthy();
-        expect(sanitizeCommand('', args) === '').toBeTruthy();
+        expect(sanitizeCommand(cmd, true, []) === cmd).toBeTruthy();
+        expect(sanitizeCommand('', true, args) === '').toBeTruthy();
         // @ts-ignore
         expect(sanitizeCommand(undefined, args) === '').toBeTruthy();
         // @ts-ignore

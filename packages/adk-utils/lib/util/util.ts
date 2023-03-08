@@ -1,18 +1,19 @@
-import fs from "fs";
+import fs from 'fs';
 
 /**
  * Sanitizes (escapes) special characters in the command and its arguments.
  * @param cmd The command to be sanitized.
  * @param args The command arguments to be sanitized.
+ * @param sanitizeInput If true, all the input is sanitized.
  * @return The sanitized and concatenated command with arguments.
  */
-export function sanitizeCommand(cmd: string, args?: string[]): string {
-    const sanitizedCommand = cmd == undefined ? '' : escape(cmd.trim());
+export function sanitizeCommand(cmd: string, sanitizeInput: boolean = true, args?: string[]): string {
+    const sanitizedCommand = cmd == undefined ? '' : sanitizeInput ? escape(cmd.trim()) : cmd.trim();
     if (sanitizedCommand === '' || !args || args.length === 0 || !Array.isArray(args)) {
         return sanitizedCommand;
     }
     const sanitizedArguments = args.filter((arg) => arg)
-        .map((arg) => escape(arg.trim()))
+        .map((arg) => sanitizeInput? escape(arg.trim()) : arg.trim())
         .join(' ');
 
     return sanitizedCommand + ' ' + sanitizedArguments;

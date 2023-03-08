@@ -4,9 +4,9 @@ import os from 'os';
 import { ICommandOutput } from './core';
 import { sanitizeCommand } from '@codecatalyst/adk-utils/lib';
 
-export function runCommand(cmd: string, args?: string[]) {
+export function runCommand(cmd: string, sanitizeInput: boolean = true, args?: string[]) {
     const command_output = <ICommandOutput>{};
-    const sanitizedCommand = sanitizeCommand(cmd, args);
+    const sanitizedCommand = sanitizeCommand(cmd, sanitizeInput, args);
     const shell_command = exec(sanitizedCommand, { async: false });
     command_output.code = shell_command.code;
     command_output.stdout = shell_command.stdout;
@@ -18,8 +18,8 @@ export function getInputParam(inputVar: string) {
     return process.env[inputVar] === undefined ? '' : process.env[inputVar];
 }
 
-export function setOutputParam(varName: string, varValue: string) {
-    return runCommand(`echo "::set-output name=${varName}::${varValue}"`).stdout;
+export function setOutputParam(varName: string, varValue: string, sanitizeInput: boolean = true) {
+    return runCommand(`echo "::set-output name=${varName}::${varValue}"`, sanitizeInput).stdout;
 }
 
 export function validateInput(inputVar?: string) {

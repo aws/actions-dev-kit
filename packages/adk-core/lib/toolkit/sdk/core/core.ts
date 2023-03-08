@@ -40,11 +40,12 @@ export function getEnvironmentVariable(inputVar: string) {
 *
 * @param varName The name of the environment variable.
 * @param varValue The fully resolved value of the output variable.
+* @param sanitizeInput If true, all the input is sanitized.
 *
 * @return The result of running `echo ${varName}`.
 */
-export function setOutput(varName: string, varValue: string) {
-    return setOutputParam(varName, varValue);
+export function setOutput(varName: string, varValue: string, sanitizeInput: boolean = true) {
+    return setOutputParam(varName, varValue, sanitizeInput);
 }
 
 /**
@@ -53,10 +54,11 @@ export function setOutput(varName: string, varValue: string) {
 *
 * @param cmd The command to execute.
 * @param args The command arguments.
+* @param sanitizeInput If true, all the input is sanitized.
 * @return {@link ICommandOutput | `Command Output`}: The complex object with runtime execution parameters.
 */
-export function command(cmd: string, args?: string[]) {
-    return runCommand(cmd, args);
+export function command(cmd: string, sanitizeInput: boolean = true, args?: string[]) {
+    return runCommand(cmd, sanitizeInput, args);
 }
 
 /**
@@ -100,13 +102,13 @@ export class Utils {
     }
 
     /** View documentation at {@link setOutput | `setOutput`} */
-    static setOutput(varName: string, varValue: string) {
-        return setOutputParam(varName, varValue);
+    static setOutput(varName: string, varValue: string, sanitizeInput: boolean = true) {
+        return setOutputParam(varName, varValue, sanitizeInput);
     }
 
     /** View documentation at {@link command | `command`} */
-    static command(cmd: string, args?: string[]) {
-        return runCommand(cmd, args);
+    static command(cmd: string, sanitizeInput: boolean = true, args?: string[]) {
+        return runCommand(cmd, sanitizeInput, args);
     }
 
 }

@@ -14,6 +14,9 @@ Configuration:
     DisplayName: 'How to greet'
     Type: string
     Default: 'Hello there,'
+Inputs:
+  Sources:
+    Required: true
 Environment:
   Required: false
 Runs:
