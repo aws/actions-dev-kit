@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.89.0 (2023-03-09)
+
+
+### Bug Fixes
+
+* align prettier and eslint configurations for bracket spacing ([9b530e0](https://github.com/aws/actions-dev-kit/commit/9b530e08af33f466013dc6272dc455ceb1f61979))
+
+
+
+
+
 ## 0.88.1 (2023-03-08)
 
 **Note:** Version bump only for package @codecatalyst/adk-utils
