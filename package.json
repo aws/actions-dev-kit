@@ -14,7 +14,7 @@
     "jest-junit": "^13.0.0",
     "ts-node": "^10.7.0",
     "typedoc": "^0.23.13",
-    "typescript": "^4.6.4"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "prebuild": "./cleanup.sh",
