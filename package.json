@@ -14,7 +14,7 @@
     "jest-junit": "^13.0.0",
     "ts-node": "^10.7.0",
     "typedoc": "^0.23.13",
-    "typescript": "^4.6.4"
+    "typescript": "^4.9.5"
   },
   "scripts": {
     "prebuild": "./cleanup.sh",
@@ -39,6 +39,11 @@
   "repository": {
     "url": "git+https://github.com/aws/actions-dev-kit",
     "type": "git"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Amazon Web Services",
+    "url": "https://aws.amazon.com"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
