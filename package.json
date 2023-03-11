@@ -40,6 +40,11 @@
     "url": "git+https://github.com/aws/actions-dev-kit",
     "type": "git"
   },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Amazon Web Services",
+    "url": "https://aws.amazon.com"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
