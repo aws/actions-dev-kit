@@ -33,7 +33,7 @@
     "jsii-diff": "^1.59.0",
     "jsii-docgen": "^7.0.18",
     "jsii-pacmak": "^1.59.0",
-    "jsii-rosetta": "^1.59.0"
+    "jsii-rosetta": "^5.0.0"
   },
   "typedoc": {
     "entryPoint": "lib/toolkit/sdk/core/core.ts"
