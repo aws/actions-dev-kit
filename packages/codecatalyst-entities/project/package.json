@@ -3,7 +3,7 @@
   "version": "0.90.1",
   "description": "CodeCatalyst project entity",
   "homepage": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "main": "lib/index.js",
   "files": [
     "lib"

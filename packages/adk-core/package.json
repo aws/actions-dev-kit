@@ -14,7 +14,7 @@
     "url": "https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit",
     "type": "git"
   },
-  "license": "ISC",
+  "license": "Apache-2.0",
   "stability": "experimental",
   "scripts": {
     "build": "tsc && eslint **/*.ts",

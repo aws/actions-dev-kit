@@ -3,7 +3,7 @@
   "version": "0.90.1",
   "description": "Model parser for Code.AWS action model",
   "homepage": "",
-  "license": "",
+  "license": "Apache-2.0",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc && eslint **/*.ts",
