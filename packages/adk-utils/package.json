@@ -14,7 +14,7 @@
     "lib"
   ],
   "dependencies": {
-    "@nestjs/common": "^8.4.7",
+    "@nestjs/common": "^9.3.12",
     "@nestjs/core": "^8.4.7"
   },
   "gitHead": "53eac4e49b1acefc56f3fa5bae19ff894c5e8cc6"
