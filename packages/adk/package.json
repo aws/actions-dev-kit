@@ -22,7 +22,7 @@
   ],
   "dependencies": {
     "@nestjs/common": "^9.3.12",
-    "@nestjs/core": "^9.0.5",
+    "@nestjs/core": "^9.3.12",
     "js-yaml": "^4.1.0",
     "jsonschema": "^1.4.0",
     "reflect-metadata": "^0.1.3",
