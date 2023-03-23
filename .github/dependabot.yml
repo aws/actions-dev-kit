@@ -22,6 +22,10 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "npm"
+    directory: "packages/adk-utils"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
     directory: "packages/adk"
     schedule:
       interval: "daily"
