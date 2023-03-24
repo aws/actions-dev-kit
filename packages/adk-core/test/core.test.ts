@@ -58,4 +58,14 @@ describe('@codecatalyst/adk-core', () => {
         expect(process.exitCode === 1).toBeTruthy();
     });
 
+    it('test command with stdin', () => {
+        const output = adkCore.command('read test');
+        expect(output.code === 1).toBeTruthy();
+    });
+
+    it('test command without stdin', () => {
+        const output = adkCore.command('ls');
+        expect(output.code === 0).toBeTruthy();
+    });
+
 });
