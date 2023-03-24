@@ -60,11 +60,15 @@ describe('@codecatalyst/adk-core', () => {
 
     it('test command with stdin', () => {
         const output = adkCore.command('read');
+        console.log(`StdERR ${output.stderr}`);
+        console.log(`StdERR ${output.stdout}`);
         expect(output.code === 1).toBeTruthy();
     });
 
     it('test command without stdin', () => {
         const output = adkCore.command('ls');
+        console.log(`StdERR ${output.stderr}`);
+        console.log(`StdERR ${output.stdout}`);
         expect(output.code === 0).toBeTruthy();
     });
 
