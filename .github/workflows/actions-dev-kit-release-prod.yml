@@ -1,7 +1,7 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
 
-name: ActionsDevKit-Release-Prod
+name: ActionsDevKit-Release-Npm
 
 on:
   workflow_dispatch:
@@ -36,16 +36,17 @@ jobs:
       - run: git status && git add . && git add -f docs && git commit --amend --no-edit
       - run: git push origin HEAD:main
       - run: git tag -n
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v2.0.0
-        with:
-          role-to-assume: ${{ secrets.PUBLISH_ROLE_TO_ASSUME }}
-          aws-region: us-west-2
-          role-session-name: adk-githubworkflow
-      - run: aws sts get-caller-identity
-      - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackageProd
-      - run: npm config list
-      - run: npm set registry=${{ secrets.CODEARTIFACT_NPM_REGISTRY_PROD }} --userconfig .npmrc
+#      - name: Configure AWS Credentials
+#        uses: aws-actions/configure-aws-credentials@v2.0.0
+#        with:
+#          role-to-assume: ${{ secrets.PUBLISH_ROLE_TO_ASSUME }}
+#          aws-region: us-west-2
+#          role-session-name: adk-githubworkflow
+#      - run: aws sts get-caller-identity
+#      - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackageProd
+#      - run: npm config list
+      - run: npm set _auth=${{ secrets.NPM_KSHP_TOKEN }} --userconfig .npmrc
+      - run: npm set scope=@codecatalyst-gamma --userconfig .npmrc
       - run: git status
       - run: lerna publish --yes
 
