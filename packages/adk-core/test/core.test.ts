@@ -59,7 +59,7 @@ describe('@codecatalyst/adk-core', () => {
     });
 
     it('test command with stdin', () => {
-        const output = adkCore.command('read');
+        const output = adkCore.command('read test');
         console.log(`StdERR ${output.stderr}`);
         console.log(`StdERR ${output.stdout}`);
         expect(output.code === 1).toBeTruthy();
