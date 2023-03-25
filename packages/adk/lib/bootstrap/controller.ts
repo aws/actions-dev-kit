@@ -1,7 +1,7 @@
 import { Controller, Logger } from '@nestjs/common';
 import { ActionPreValidationRules } from './rule';
 import { GeneratorProps } from './model';
-import { parseAndSanitizeYamlFile } from '@codecatalyst/adk-model-parser';
+import { parseAndSanitizeYamlFile } from '@aws/codecatalyst-adk-model-parser';
 import { ActionBootstrapGenerators } from './generators';
 
 @Controller()

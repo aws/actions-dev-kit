@@ -1,19 +1,19 @@
 // @ts-ignore
-import * as core from '@codecatalyst/adk-core';
+import * as core from '@aws/codecatalyst-adk-core';
 // @ts-ignore
-import * as codecatalystProject from '@codecatalyst/project';
+import * as project from '@aws/codecatalyst-project';
 // @ts-ignore
-import * as codecatalystRunSummaries from '@codecatalyst/run-summaries';
+import * as runSummaries from '@aws/codecatalyst-run-summaries';
 // @ts-ignore
-import * as codecatalystSpace from '@codecatalyst/space';
+import * as space from '@aws/codecatalyst-space';
 
 try {
   // Get inputs from the action
   %%action_input_config%%
 
   // Interact with CodeCatalyst entities
-  console.log(`Current CodeCatalyst space ${codecatalystSpace.getSpace().name}`);
-  console.log(`Current CodeCatalyst project ${codecatalystProject.getProject().name}`);
+  console.log(`Current CodeCatalyst space ${space.getSpace().name}`);
+  console.log(`Current CodeCatalyst project ${project.getProject().name}`);
 
   // Action Code start
 

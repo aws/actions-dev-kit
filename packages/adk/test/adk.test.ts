@@ -2,7 +2,7 @@
 
 import { adkCli } from '../lib';
 
-describe('@codecatalyst/adk', () => {
+describe('@aws/codecatalyst-adk', () => {
     it('run basic test', () => {
         adkCli();
     });

@@ -22,20 +22,20 @@ A set of library interfaces you can use to interact with action matadata and Cod
 
 ```
 // @ts-ignore
-import * as core from '@codecatalyst/adk-core';
+import * as core from '@aws/codecatalyst-adk-core';
 // @ts-ignore
-import * as codecatalystProject from '@codecatalyst/project';
+import * as project from '@aws/codecatalyst-project';
 // @ts-ignore
-import * as codecatalystRunSummaries from '@codecatalyst/run-summaries';
+import { RunSummaryLevel, RunSummaries } from '@aws/codecatalyst-run-summaries';
 // @ts-ignore
-import * as codecatalystSpace from '@codecatalyst/space';
+import * as space from '@aws/codecatalyst-space';
 
 const destinationBucket = core.getInput('DestinationBucketName')
     # => Maps to the destination bucket configuration in Code.AWS workflow definition
 const srcDir = core.getInput('SourcePath')
     # => Maps to the src dir configuration in CodeCatalyst workflow definition
 console.log("Running action S3 Publish Action")
-let cmd = `aws s3 sync ${srcDir} s3://${destinationBucket}/${codecatalystSpace.getSpace().name}/${codecatalystProject.getProject().name}/`
+let cmd = `aws s3 sync ${srcDir} s3://${destinationBucket}/${space.getSpace().name}/${project.getProject().name}/`
 const cmdOutput = core.command(cmd)
 console.log(cmdOutput.stdout)
 
@@ -56,7 +56,7 @@ Tool to interact with a set of commands you can use to create, validate, and tes
 >> adk init --lang typescript --space <CODECATALYST-SPACE-NAME> --proj <CODECATALYST-PROJECT-NAME> --repo <CODECATALYST-REPO-NAME> --action <ACTION-NAME>
 ...
 
->> adk bootstrap -f .codecatalyst/actions/action.yml
+>> adk bootstrap
 ...
 
 >> adk validate
@@ -81,7 +81,7 @@ The following list contains the ADK CLI commands and information about how to us
 
 2. Override the namespace registry:
     * Run the following npm command to edit the configuration: `npm config -g edit`.
-    * Add the CodeCatalyst namespace override to the configuration: `@codecatalyst:registry=https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com/npm/ActionsDevKitPackage/`.
+    * Add the CodeCatalyst namespace override to the configuration: `@aws:registry=https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com/npm/ActionsDevKitPackage/`.
     * From the [AWS Console Access Dashboard](https://isengard.amazon.com/console-access?filter=198147706056), choose the icon to the right of **ReadOnlyAdkCodeArtifact**, choose **base/zsh**, choose **Copy bash/zsh**, and then paste and enter the temporary credentials into the working terminal session.
     * Run the following npm command to access the ReadOnlyAdkCodeArtifact: `aws codeartifact login —tool npm —repository ActionsDevKitPackage —domain aef-team —domain-owner 198147706056 —region us-west-2`.
 3. Run the following Lerna command: `npm install -g lerna`.
@@ -93,13 +93,13 @@ The following list contains the ADK CLI commands and information about how to us
 ### Install ADK CLI
 
 1. Run the following npm command to get ADK packages:
-   * `npm install -g @codecatalyst/adk`
-   * `npm install -g @codecatalyst/adk-utils`
+   * `npm install -g @aws/codecatalyst-adk`
+   * `npm install -g @aws/codecatalyst-adk-utils`
    
 
 2. When running npm, you may face a bug with non-empty cache and switching registry. If you run into issues where a certain dependency isn't found, either remove your global npm cache or install the dependencies:
    * `npm install -g chalk@4`
-   * `npm install -g @codecatalyst/adk-model-parser`
+   * `npm install -g @aws/codecatalyst-adk-model-parser`
     
 
 3. Validate that ADK is running with the following command: `adk help`

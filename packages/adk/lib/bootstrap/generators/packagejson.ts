@@ -2,8 +2,8 @@ import fs from 'fs';
 import { applyTemplate } from '../../util/template';
 import { Injectable, Logger, Scope } from '@nestjs/common';
 import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
-import { Model } from '@codecatalyst/adk-model-parser';
-import { writeContentToFileSync } from '@codecatalyst/adk-utils/lib';
+import { Model } from '@aws/codecatalyst-adk-model-parser';
+import { writeContentToFileSync } from '@aws/codecatalyst-adk-utils/lib';
 
 export const PACKAGE_JSON_GENERATOR = 'package_json_generator';
 export const PACKAGE_JSON_GENERATOR_DESTINATION_FILES = ['package.json'];

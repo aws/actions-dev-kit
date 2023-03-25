@@ -1,8 +1,8 @@
 import fs from 'fs';
 import { Injectable, Logger, Scope } from '@nestjs/common';
 import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
-import { Model } from '@codecatalyst/adk-model-parser';
-import { copyToFileSync } from '@codecatalyst/adk-utils/lib';
+import { Model } from '@aws/codecatalyst-adk-model-parser';
+import { copyToFileSync } from '@aws/codecatalyst-adk-utils/lib';
 
 export const FILE_COPY_GENERATOR = 'file_copy_generator';
 export const FILE_GENERATOR_DESTINATION_FILES = ['tsconfig.json', '.prettierrc.json', '.gitignore', '.eslintrc.js', 'jest.config.js'];
