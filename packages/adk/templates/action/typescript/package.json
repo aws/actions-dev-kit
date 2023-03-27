@@ -13,11 +13,11 @@
     "all": "npm run build && npm run format && npm run lint && npm run package"
   },
   "dependencies": {
-    "@codecatalyst/adk-core": "%%adk_version%%",
-    "@codecatalyst/project": "%%adk_version%%",
-    "@codecatalyst/run-summaries": "%%adk_version%%",
-    "@codecatalyst/space": "%%adk_version%%",
-    "@codecatalyst/adk-utils": "%%adk_version%%",
+    "@aws/codecatalyst-adk-core": "%%adk_version%%",
+    "@aws/codecatalyst-project": "%%adk_version%%",
+    "@aws/codecatalyst-run-summaries": "%%adk_version%%",
+    "@aws/codecatalyst-space": "%%adk_version%%",
+    "@aws/codecatalyst-adk-utils": "%%adk_version%%",
     "@vercel/ncc": "^0.31.1"
   },
   "devDependencies": {
