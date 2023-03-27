@@ -45,7 +45,8 @@ jobs:
 #      - run: aws sts get-caller-identity
 #      - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackageProd
 #      - run: npm config list
-      - run: npm set _auth=${{ secrets.NPM_KSHP_TOKEN }} --userconfig .npmrc
+#      - run: npm set _auth=${{ secrets.NPM_KSHP_TOKEN }} --userconfig .npmrc
+      - run: lerna publish --legacy-auth ${{ secrets.NPM_KSHP_TOKEN }}
       - run: git status
       - run: lerna publish --yes
 
