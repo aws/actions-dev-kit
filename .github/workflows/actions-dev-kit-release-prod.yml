@@ -31,10 +31,10 @@ jobs:
       - run: git config user.email "caws-aef-team-workflow@amazon.com"
       - run: git config user.name "ActionsDevKitRelease"      
       - run: lerna version minor --no-push --yes
-#      - run: git tag -n
-#      - run: yarn run api-ref
-#      - run: git status && git add . && git add -f docs && git commit --amend --no-edit
-#      - run: git push origin HEAD:main
+      - run: git tag -n
+      - run: yarn run api-ref
+      - run: git status && git add . && git add -f docs && git commit --amend --no-edit
+      - run: git push origin HEAD:main
       - run: git tag -n
 #      - name: Configure AWS Credentials
 #        uses: aws-actions/configure-aws-credentials@v2.0.0
