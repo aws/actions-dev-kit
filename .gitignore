@@ -4,6 +4,7 @@ node_modules/
 lerna-debug.log
 dist/
 docs/
+pre-release-docs/
 **/coverage/
 .DS_Store
 yarn-error.log

@@ -25,7 +25,8 @@
     "all": "lerna run build --stream && lerna run test --stream",
     "lint": "eslint **/*.ts",
     "lint:fix": "eslint --fix '**/*.ts'",
-    "api-ref": "typedoc",
+    "api-ref": "typedoc ",
+    "api-ref-pre-release": "typedoc --out pre-release-docs ",
     "generate-attributions": "ts-node ./scripts/generate-attributions"
   },
   "workspaces": {
