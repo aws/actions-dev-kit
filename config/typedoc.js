@@ -1,4 +1,4 @@
 module.exports = {
     entryPoints: ["lib/index.ts"],
-    out: "docs"
+    out: "pre-release-docs"
 }
