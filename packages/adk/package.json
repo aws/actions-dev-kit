@@ -5,6 +5,14 @@
   "homepage": "",
   "license": "Apache-2.0",
   "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "AEF-Team",
+    "email": "cawsactionextensions@amazon.com",
+    "organization": true
+  },
   "bin": {
     "adk": "bin/adk"
   },
