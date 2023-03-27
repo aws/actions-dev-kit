@@ -9,8 +9,8 @@
     "access": "public"
   },
   "author": {
-    "name": "AEF-Team",
-    "email": "cawsactionextensions@amazon.com",
+    "name": "Amazon CodeCatalyst",
+    "email": "https://codecatalyst.aws/",
     "organization": true
   },
   "scripts": {
