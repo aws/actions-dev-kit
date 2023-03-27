@@ -46,7 +46,6 @@ jobs:
       - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODEARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODEARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackage
       - run: npm config list
       - run: npm config set @aws:registry ${{ secrets.CODEARTIFACT_NPM_REGISTRY_GAMMA }} --userconfig .npmrc
-      - run: npm config list
       - run: git status
       - run: lerna publish --yes
 
