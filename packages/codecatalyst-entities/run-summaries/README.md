@@ -1,4 +1,4 @@
-# `RunSummary`
+# `@aws/codecatalyst-run-summaries`
 
 ## Purpose
 Add the run-summaries construct as a CodeCatalyst entity. This construct allows users to set custom summary messages during the execution of their actions that will be surfaced on the workflows UI.
@@ -6,7 +6,7 @@ Add the run-summaries construct as a CodeCatalyst entity. This construct allows 
 ## Usage
 
 ```
-   import { RunSummaryLevel, RunSummaries } from '@codecatalyst/run-summaries';
+   import { RunSummaryLevel, RunSummaries } from '@aws/codecatalyst-run-summaries';
 
    try {
         // execute action code here
@@ -17,8 +17,8 @@ Add the run-summaries construct as a CodeCatalyst entity. This construct allows 
 ```
 
 ```
-   import { RunSummaryLevel, RunSummaries } from '@codecatalyst/run-summaries';
-   import * as adkCore from '@codecatalyst/adk-core';
+   import { RunSummaryLevel, RunSummaries } from '@aws/codecatalyst-run-summaries';
+   import * as adkCore from '@aws/codecatalyst-adk-core';
         
    const cmdOutput = adkCore.command(/* command here */)
    // if the exit code of the command is a failure

@@ -2,7 +2,7 @@
 
 import * as adkCore from '../lib/toolkit/sdk/core/core.js';
 
-describe('@codecatalyst/adk-core', () => {
+describe('@aws/codecatalyst-adk-core', () => {
 
     it('should access environment variables', () => {
         let inputValue = 'varVal';

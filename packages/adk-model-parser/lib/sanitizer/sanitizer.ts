@@ -1,6 +1,5 @@
 import { Input, Model } from '../types/types';
-import { escape } from '@codecatalyst/adk-utils/lib';
-import { isString } from '@codecatalyst/adk-utils/lib/util/util';
+import { escape, isString } from '@aws/codecatalyst-adk-utils/lib';
 
 /**
  *

@@ -1,9 +1,9 @@
 // @ts-ignore
-import * as core from '@codecatalyst/adk-core';
+import * as core from '@aws/codecatalyst-adk-core';
 import { Message, RunSummaries, RunSummaryLevel, RunSummaryMessage, TemplateVariable } from '../lib';
 import { CUSTOM_STATUS_CODE } from '../lib/constants';
 
-jest.mock('@codecatalyst/adk-core/lib/toolkit/sdk/core/command-wrapper');
+jest.mock('@aws/codecatalyst-adk-core/lib/toolkit/sdk/core/command-wrapper');
 const ACTION_RUN_SUMMARY: string = 'ACTION_RUN_SUMMARY';
 const MAX_RUN_SUMMARY_TEXT_LENGTH: number = 200;
 

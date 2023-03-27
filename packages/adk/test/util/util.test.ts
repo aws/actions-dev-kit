@@ -12,7 +12,7 @@ jest.mock('chalk', () => ({
     white: jest.fn(),
 }));
 
-describe('@codecatalyst/adk/util', () => {
+describe('@aws/codecatalyst-adk-utils', () => {
 
     const log = new ConsoleLogger();
 

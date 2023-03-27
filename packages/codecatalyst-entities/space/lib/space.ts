@@ -1,5 +1,5 @@
 // @ts-ignore
-import * as core from '@codecatalyst/adk-core';
+import * as core from '@aws/codecatalyst-adk-core';
 import { Space } from './types/types';
 
 /**

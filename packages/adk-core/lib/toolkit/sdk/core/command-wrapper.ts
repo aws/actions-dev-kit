@@ -2,7 +2,7 @@ import { exec } from 'shelljs';
 // @ts-ignore
 import os from 'os';
 import { ICommandOutput } from './core';
-import { sanitizeCommand } from '@codecatalyst/adk-utils/lib';
+import { sanitizeCommand } from '@aws/codecatalyst-adk-utils/lib';
 
 export function runCommand(cmd: string, sanitizeInput: boolean = true, args?: string[]) {
     const command_output = <ICommandOutput>{};

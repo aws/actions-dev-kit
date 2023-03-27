@@ -1,5 +1,5 @@
 // @ts-ignore
-import { setOutput } from '@codecatalyst/adk-core';
+import { setOutput } from '@aws/codecatalyst-adk-core';
 import { RunSummaryLevel, RunSummaryMessage, Message } from './types/types';
 import { CUSTOM_STATUS_CODE } from './constants';
 

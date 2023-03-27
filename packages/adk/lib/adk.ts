@@ -11,7 +11,7 @@ import { SchemaType } from './validation/model';
 import { INestApplicationContext, Logger } from '@nestjs/common';
 import { ValidationController } from './validation/controller';
 import { BootstrapController } from './bootstrap/controller';
-import { escape } from '@codecatalyst/adk-utils';
+import { escape } from '@aws/codecatalyst-adk-utils';
 
 let APP_CONTEXT: INestApplicationContext;
 const bootstrap = async (): Promise<INestApplicationContext> => {
@@ -43,6 +43,7 @@ async function cliArgs() {
                 alias: 'f',
                 description: 'the action file to be validated',
                 demandOption: true,
+                default: '.codecatalyst/actions/action.yml',
             });
         })
         .command('init', 'Initializes the current workspace with default Action definition', (yargs) => {

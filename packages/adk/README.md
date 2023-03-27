@@ -1,4 +1,4 @@
-# `@codecatalyst/adk`
+# `@aws/codecatalyst-adk`
 ## Purpose
 ADK offers action developers a command-line interface (CLI) to kick off action development.
 
