@@ -16,6 +16,8 @@ jobs:
   publish-update:
     runs-on: ubuntu-latest
     permissions: write-all
+    env:
+      GITHUB_TOKEN: ${{ secrets.PUSH_TO_MAIN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -34,6 +36,7 @@ jobs:
       - run: git tag -n
       - run: yarn run api-ref-pre-release
       - run: git status && git add . && git add -f pre-release-docs && git commit --amend --no-edit
+      - run:
       - run: git push origin HEAD:main
       - run: git tag -n
       - name: Configure AWS Credentials
