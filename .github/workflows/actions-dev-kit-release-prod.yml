@@ -47,8 +47,9 @@ jobs:
             git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
           fi
       - uses: actions/checkout@v3
-        fetch-depth: 0
-        ssh-key: ${{ env.SSH_PRIVATE_KEY }}
+        with:
+          fetch-depth: 0
+          ssh-key: ${{ env.SSH_PRIVATE_KEY }}
       - uses: actions/setup-node@v3
         with:
           node-version: 16
