@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-adk-model-parser",
-  "version": "0.104.1",
+  "version": "0.105.0",
   "description": "Model parser for Code.AWS action model",
   "homepage": "",
   "license": "Apache-2.0",

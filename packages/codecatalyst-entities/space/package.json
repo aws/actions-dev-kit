@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-space",
-  "version": "0.104.1",
+  "version": "0.105.0",
   "description": "CodeCatalyst space entity",
   "homepage": "",
   "license": "Apache-2.0",
@@ -23,7 +23,7 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@aws/codecatalyst-adk-core": "0.104.1"
+    "@aws/codecatalyst-adk-core": "0.105.0"
   },
   "typedoc": {
     "entryPoint": "lib/index.ts"
