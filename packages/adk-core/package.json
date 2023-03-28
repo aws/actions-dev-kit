@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-adk-core",
-  "version": "0.103.1",
+  "version": "0.104.0",
   "description": "ADK Core",
   "homepage": "",
   "main": "lib/toolkit/sdk/core/core.js",
