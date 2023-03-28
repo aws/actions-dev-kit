@@ -12,26 +12,55 @@ on:
       - configs/.*\.ts
       - packages/.*/.*\.ts
 
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  GIT_COMMITTER_NAME: ActionsDevKitRelease
+  GIT_COMMITTER_EMAIL: caws-aef-team-workflow@amazon.com
+
 jobs:
   publish-update:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
       - uses: actions/checkout@v3
+      - name: Git & SSH auth setup
+        run: |
+          # See https://github.com/actions/runner-images/issues/6775#issuecomment-1409268124
+          # and https://github.com/actions/runner-images/issues/6775#issuecomment-1410270956
+          sudo git config --system --add safe.directory "*"
+          if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
+              echo "SSH Key pair found, configuring signing..."
+              mkdir ~/.ssh
+              echo -e "$SSH_PRIVATE_KEY" >> ~/.ssh/signing_key
+              cat ~/.ssh/signing_key
+              echo -e "$SSH_PUBLIC_KEY" >> ~/.ssh/signing_key.pub
+              cat ~/.ssh/signing_key.pub
+              chmod 600 ~/.ssh/signing_key && chmod 600 ~/.ssh/signing_key.pub
+              eval "$(ssh-agent)"
+              ssh-add ~/.ssh/signing_key
+              git config --global gpg.format ssh
+              git config --global user.signingKey ~/.ssh/signing_key
+              git config --global commit.gpgsign true
+              git config --global user.email $GIT_COMMITTER_EMAIL
+              git config --global user.name $GIT_COMMITTER_NAME
+              touch ~/.ssh/allowed_signers
+              echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
+              git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
+          fi
       - uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-          github-token: "${{ secrets.PUSH_TO_MAIN_TOKEN }}"
       - run: npm install --global lerna@5.0.0 yarn@1.22.18
       - run: lerna --version
       - run: yarn --version
       - run: npm --version
       - run: lerna bootstrap
       - run: yarn run all
-      - run: git config user.email "cawsactionextensions+adk-npm-release@amazon.com"
-      - run: git config user.name "cawsactionextensions-adk-npm-release"
-#      - run: lerna version minor --no-push --yes
+      - run: git config user.email GIT_COMMITTER_EMAIL
+      - run: git config user.name $GIT_COMMITTER_NAME
       - run: lerna version minor --yes
       - run: git tag -n
       - name: Configure AWS Credentials
