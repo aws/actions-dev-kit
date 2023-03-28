@@ -54,7 +54,6 @@
     "@types/jsonwebtoken": "9.0.0",
     "json5": "^2.2.2",
     "jsonwebtoken": "^9.0.0",
-    "lerna": "^6.1.0",
     "tsconfig-paths": "^4.0.0"
   }
 }
