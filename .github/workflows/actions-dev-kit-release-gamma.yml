@@ -66,8 +66,6 @@ jobs:
       - run: git config user.name $GIT_COMMITTER_NAME
       - run: lerna version minor --no-push --yes
       - run: git tag -n
-      - run: yarn run api-ref
-      - run: git status && git add . && git add -f docs && git commit --amend --no-edit
       - run: yarn run api-ref-pre-release
       - run: git status && git add . && git add -f pre-release-docs && git commit --amend --no-edit
       - run: git push origin HEAD:main
