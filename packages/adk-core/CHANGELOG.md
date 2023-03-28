@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.102.0](https://git.service.quokka.codes/v1/AEF-Team/ActionsDevKit/ActionsDevKit/compare/v0.101.1...v0.102.0) (2023-03-28)
+
+**Note:** Version bump only for package @aws/codecatalyst-adk-core
+
+
+
+
+
 ## 0.101.1 (2023-03-27)
 
 **Note:** Version bump only for package @aws/codecatalyst-adk-core
