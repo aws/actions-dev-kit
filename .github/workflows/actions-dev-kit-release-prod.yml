@@ -27,7 +27,7 @@ jobs:
       - name: Git & SSH auth setup
         run: |
           sudo git config --system --add safe.directory "*"
-            if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
+          if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
             echo "SSH Key pair found, configuring signing..."
             mkdir ~/.ssh
             echo -e "$SSH_PRIVATE_KEY" >> ~/.ssh/signing_key
