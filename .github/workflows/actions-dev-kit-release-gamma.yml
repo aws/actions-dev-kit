@@ -16,8 +16,6 @@ jobs:
   publish-update:
     runs-on: ubuntu-latest
     permissions: write-all
-    env:
-      GITHUB_TOKEN: ${{ secrets.PUSH_TO_MAIN_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -33,10 +31,6 @@ jobs:
       - run: git config user.email "cawsactionextensions+adk-npm-release@amazon.com"
       - run: git config user.name "cawsactionextensions-adk-npm-release"
       - run: lerna version minor --no-push --yes
-#      - run: git tag -n
-#      - run: yarn run api-ref-pre-release
-#      - run: git status && git add . && git add -f pre-release-docs && git commit --amend --no-edit
-#      - run: git push origin HEAD:main
       - run: git tag -n
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2.0.0
