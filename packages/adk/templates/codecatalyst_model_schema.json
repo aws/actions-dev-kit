@@ -9,15 +9,14 @@
       "description": "A number corresponding to the version of the manifest format. should be 1.0",
       "type": "string",
       "enum": [
-        "1.0",
-        "AMS"
+        "1.0"
       ]
     },
     "Name": {
-      "description": "Action name",
+      "description": "Action display name",
       "type": "string",
-      "maxLength": 128,
-      "pattern": "^[A-Za-z0-9][A-Za-z0-9\\- _]{1,30}[A-Za-z0-9]$",
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9\\s\\-_]{1,62}[A-Za-z0-9]$",
       "examples": [
         "My action"
       ]
@@ -43,9 +42,9 @@
       "description": "Action inputs, will be convert to workflow yaml Configuration section",
       "type": "object",
       "minProperties": 1,
-      "maxProperties": 15,
+      "maxProperties": 20,
       "propertyNames": {
-        "pattern": "^[A-Za-z0-9][A-Za-z0-9\\-_]{1,30}[A-Za-z0-9]$"
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9\\-_]{1,34}[A-Za-z0-9]$"
       },
       "additionalProperties": {
         "type": "object",
@@ -129,7 +128,7 @@
         "DisplayName": {
           "description": "Input parameter name to display on UI",
           "type": "string",
-          "pattern": "^[A-Za-z0-9][A-Za-z0-9\\- _]{1,30}[A-Za-z0-9]$",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9\\- _.,]{1,30}[A-Za-z0-9]$",
           "minLength": 1,
           "maxLength": 32
         },
