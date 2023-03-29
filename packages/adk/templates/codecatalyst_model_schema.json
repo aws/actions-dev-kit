@@ -34,6 +34,7 @@
       "minLength": 1,
       "maxLength": 128,
       "type": "string",
+      "pattern": "^[^\"]+$",
       "examples": [
         "Awesome tools to help you and your team do great things everyday."
       ]
@@ -118,6 +119,7 @@
         "Description": {
           "description": "Input parameter description",
           "type": "string",
+          "pattern": "^[^\"]+$",
           "minLength": 1,
           "maxLength": 256
         },
@@ -209,7 +211,8 @@
         "Description": {
           "description": "Output variable description",
           "type": "string",
-          "maxLength": 256
+          "maxLength": 256,
+          "pattern": "^[^\"]+$"
         }
       }
     },
@@ -271,6 +274,7 @@
         "Description": {
           "description": "Artifact description",
           "type": "string",
+          "pattern": "^[^\"]+$",
           "maxLength": 128
         },
         "Files": {
