@@ -32,7 +32,7 @@ Configuration:
     Type: boolean
     Default: false
   LogType:
-    Description: 'Set to "Tail" to return the tail logs of the executed Lambda function. Set it to None otherwise.'
+    Description: "Set to 'Tail' to return the tail logs of the executed Lambda function. Set it to None otherwise."
     Required: false
     DisplayName: 'Log Type'
     Type: string
