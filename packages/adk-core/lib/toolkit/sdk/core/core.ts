@@ -44,8 +44,8 @@ export function getEnvironmentVariable(inputVar: string) {
 *
 * @return The result of running `echo ${varName}`.
 */
-export function setOutput(varName: string, varValue: string, sanitizeInput: boolean = true) {
-    return setOutputParam(varName, varValue, sanitizeInput);
+export function setOutput(varName: string, varValue: string) {
+    return setOutputParam(varName, varValue);
 }
 
 /**
@@ -102,8 +102,8 @@ export class Utils {
     }
 
     /** View documentation at {@link setOutput | `setOutput`} */
-    static setOutput(varName: string, varValue: string, sanitizeInput: boolean = true) {
-        return setOutputParam(varName, varValue, sanitizeInput);
+    static setOutput(varName: string, varValue: string) {
+        return setOutputParam(varName, varValue);
     }
 
     /** View documentation at {@link command | `command`} */

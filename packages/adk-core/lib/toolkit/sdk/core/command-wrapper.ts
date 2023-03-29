@@ -18,8 +18,8 @@ export function getInputParam(inputVar: string) {
     return process.env[inputVar] === undefined ? '' : process.env[inputVar];
 }
 
-export function setOutputParam(varName: string, varValue: string, sanitizeInput: boolean = true) {
-    return runCommand(`echo "::set-output name=${varName}::${varValue}"`, sanitizeInput).stdout;
+export function setOutputParam(varName: string, varValue: string) {
+    return runCommand(`echo "::set-output name=${varName}::${varValue}"`, false).stdout;
 }
 
 export function validateInput(inputVar?: string) {

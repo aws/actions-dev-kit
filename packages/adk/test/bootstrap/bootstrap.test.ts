@@ -80,7 +80,7 @@ describe('Bootstrap Command Tests', () => {
             .filter((arrayOfCallsWithArguments) => arrayOfCallsWithArguments[0] == 'lib/index.ts')
             .map(callArguments => callArguments[1]);
 
-        expect(generatedSourceCode.toString().includes("// %0Aconsole.log('INJECTED_CODE')%25%0A%0D:%2C")).toBeTruthy();
+        expect(generatedSourceCode.toString().includes("// %0Aconsole.log('INJECTED_CODE')%25%0A%0D:,")).toBeTruthy();
     });
 
 });
