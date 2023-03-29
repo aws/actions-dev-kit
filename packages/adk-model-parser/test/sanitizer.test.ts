@@ -2,8 +2,8 @@
 
 import { Model, parseAndSanitizeYamlFile } from '../lib';
 
-const ESCAPED_INPUT = '%25_%26_$_%5Cr_%5Cn_%3B_:_%2C_%7C_%3E_%3C_%60_%5C_%21';
-const ESCAPED_INPUT_WITH_YAML_JS_ESCAPING = '%25_%26_$_%0D_%0A_%3B_:_%2C_%7C_%3E_%3C_%60_ %21';
+const ESCAPED_INPUT = '%25_&_$_\\r_\\n_;_:_,_|_>_<_`_\\_!';
+const ESCAPED_INPUT_WITH_YAML_JS_ESCAPING = '%25_&_$_%0D_%0A_;_:_,_|_>_<_`_ !';
 
 jest.mock('fs', () => ({
     ...jest.requireActual('fs'),

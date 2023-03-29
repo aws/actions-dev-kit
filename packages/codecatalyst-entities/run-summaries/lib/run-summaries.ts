@@ -19,7 +19,7 @@ export class RunSummaries {
             level: summaryLevel,
         };
         this.runSummaries.push(runSummaryMessage);
-        setOutput(ACTION_RUN_SUMMARY, JSON.stringify(this.runSummaries), false);
+        setOutput(ACTION_RUN_SUMMARY, JSON.stringify(this.runSummaries));
     }
 
     public static addRunSummaryMessage(message: Message): void {
@@ -32,12 +32,12 @@ export class RunSummaries {
             templateVariables: message.templateVariables,
         };
         this.runSummaries.push(runSummaryMessage);
-        setOutput(ACTION_RUN_SUMMARY, JSON.stringify(this.runSummaries), false);
+        setOutput(ACTION_RUN_SUMMARY, JSON.stringify(this.runSummaries));
     }
     
     public static clearRunSummaries() {
         this.runSummaries = [];
-        setOutput(ACTION_RUN_SUMMARY, JSON.stringify(this.runSummaries), false);
+        setOutput(ACTION_RUN_SUMMARY, JSON.stringify(this.runSummaries));
     }
 
     private static truncate(s: string, length: number): string {

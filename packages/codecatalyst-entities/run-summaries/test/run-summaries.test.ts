@@ -20,7 +20,7 @@ describe('runSummaries', () => {
 
         RunSummaries.clearRunSummaries();
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummary sets the expected output variable to an array with 1 run summary with string type text', () => {
@@ -35,7 +35,7 @@ describe('runSummaries', () => {
 
         RunSummaries.addRunSummary(runSummaryText, RunSummaryLevel.ERROR);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummary sets the expected output variable to an array with 1 run summary with error type text', () => {
@@ -50,7 +50,7 @@ describe('runSummaries', () => {
 
         RunSummaries.addRunSummary(runSummaryText, RunSummaryLevel.ERROR);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummary sets the expected output variable to an array with multiple run summaries with string type texts', () => {
@@ -79,7 +79,7 @@ describe('runSummaries', () => {
         RunSummaries.addRunSummary(runSummaryText2, RunSummaryLevel.ERROR);
         RunSummaries.addRunSummary(runSummaryText3, RunSummaryLevel.ERROR);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummary sets the expected output variable to an array with multiple run summaries with error type texts', () => {
@@ -108,7 +108,7 @@ describe('runSummaries', () => {
         RunSummaries.addRunSummary(runSummaryText2, RunSummaryLevel.ERROR);
         RunSummaries.addRunSummary(runSummaryText3, RunSummaryLevel.ERROR);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummary with a long text sets the expected output variable with a truncated string type text attribute', () => {
@@ -124,7 +124,7 @@ describe('runSummaries', () => {
 
         RunSummaries.addRunSummary(longText, RunSummaryLevel.ERROR);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummary with a long text sets the expected output variable with a truncated error type text attribute', () => {
@@ -140,7 +140,7 @@ describe('runSummaries', () => {
 
         RunSummaries.addRunSummary(longText, RunSummaryLevel.ERROR);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummaryMessage sets the expected output variable to an array with 1 run summary with status code and template variables', () => {
@@ -166,7 +166,7 @@ describe('runSummaries', () => {
 
         RunSummaries.addRunSummaryMessage(message);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummaryMessage sets the expected output variable to an array with 1 run summary with status code, and message', () => {
@@ -187,7 +187,7 @@ describe('runSummaries', () => {
 
         RunSummaries.addRunSummaryMessage(message);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 
     it('addRunSummaryMessage sets the expected output variable to an array with multiple run summaries', () => {
@@ -231,6 +231,6 @@ describe('runSummaries', () => {
         RunSummaries.addRunSummaryMessage(message1);
         RunSummaries.addRunSummaryMessage(message2);
 
-        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries), false);
+        expect(core.setOutput).toHaveBeenCalledWith(ACTION_RUN_SUMMARY, JSON.stringify(expectedRunSummaries));
     });
 });
