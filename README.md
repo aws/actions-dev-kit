@@ -78,15 +78,9 @@ The following list contains the ADK CLI commands and information about how to us
 
 ### Prerequisites
 1. Download the [latest version of npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). It is best to use a Node version manager like [nvm](https://github.com/nvm-sh/nvm) to install Node.js and npm.
-
-2. Override the namespace registry:
-    * Run the following npm command to edit the configuration: `npm config -g edit`.
-    * Add the CodeCatalyst namespace override to the configuration: `@aws:registry=https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com/npm/ActionsDevKitPackage/`.
-    * From the [AWS Console Access Dashboard](https://isengard.amazon.com/console-access?filter=198147706056), choose the icon to the right of **ReadOnlyAdkCodeArtifact**, choose **base/zsh**, choose **Copy bash/zsh**, and then paste and enter the temporary credentials into the working terminal session.
-    * Run the following npm command to access the ReadOnlyAdkCodeArtifact: `aws codeartifact login —tool npm —repository ActionsDevKitPackage —domain aef-team —domain-owner 198147706056 —region us-west-2`.
-3. Run the following Lerna command: `npm install -g lerna`.
+2. Run the following Lerna command: `npm install -g lerna`.
     * [Lerna](https://lerna.js.org/) is a fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository.
-4. Run the following command to install yarn: ``npm install --global yarn``
+3. Run the following command to install yarn: ``npm install --global yarn``
     * [Yarn](https://yarnpkg.com/) is a package manager that doubles down as project manager. You can you work on one-shot projects or large monorepos, as a hobbyist or an enterprise user.
 
 
