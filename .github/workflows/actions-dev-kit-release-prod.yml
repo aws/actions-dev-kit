@@ -67,6 +67,7 @@ jobs:
       - run: git tag -n
       - run: npm config set @aws:registry https://registry.npmjs.org/
       - run: npm config set //registry.npmjs.org:_authToken ${{ secrets.NPM_KSHP_TOKEN }}
+      - run: npm whoami --registry https://registry.npmjs.org/
       - run: npm config list
       - run: git status
       - run: lerna publish --yes
