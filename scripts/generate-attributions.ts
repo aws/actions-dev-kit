@@ -8,22 +8,14 @@ import * as fs from 'fs';
 
 import { packages } from './packages'
 import { findPackageRoot } from './findPackageRoot'
-import { isString } from "@codecatalyst/adk-utils/lib";
+import { isString } from "@aws/codecatalyst-adk-utils/lib";
 
 // This list is not comprehensive, but simply covers the approved licenses
 // we're using so far.
-const PERMISSIBLE_DISTRIBUTION_LICENSES = ['Apache-2.0', 'MIT', 'ISC', 'Apache-1.1', 'BSD-3-Clause', 'BSD-2-Clause',
-    'BSD-2-Clause-FreeBSD', 'BSD-3-Clause-Attribution', 'BSD-1-Clause', 'BSD-Source-Code', '0BSD', 'EDL',
-    'HDF5', 'OLDAP-2.8', 'Python-2.0', '(MIT OR CC0-1.0)', 'CC-BY-3.0', 'CC0-1.0', '(MIT OR Apache-2.0)', 'BSD',
-    'CC-BY-4.0']
+const PERMISSIBLE_DISTRIBUTION_LICENSES = ['Apache-2.0', 'MIT', 'ISC', '0BSD', 'BSD-2-Clause', 'BSD-3-Clause', 'Python-2.0']
 
 // Those packages don't have a LICENSE file, but they do have license set in the package.json
-const DEPENDENCIES_WITHOUT_LICENSE_FILE = ['consola', '@lerna/list', 'imurmurhash',
-    '@lerna/filter-options', '@npmcli/node-gyp', 'agent-base', 'http-proxy-agent', 'https-proxy-agent',
-    'err-code', 'ip', 'socks-proxy-agent', 'spdx-exceptions', 'spdx-license-ids', '@lerna/bootstrap',
-    '@lerna/add', '@lerna/changed', '@lerna/clean', '@lerna/exec', 'array-ify', 'add-stream', 'gitconfiglocal',
-    'filelist', 'jake', '@lerna/version', '@lerna/publish', '@lerna/run', '@yarnpkg/lockfile', '@yarnpkg/parsers',
-    'lerna', 'bser', 'fb-watchman', 'saxes', 'jest-pnp-resolver', 'natural-compare', 'esrecurse'];
+const DEPENDENCIES_WITHOUT_LICENSE_FILE = ['consola'];
 
 export function getFullAttributionsText(packageName: string): string {
     const attributions = getAttributions(packageName)
@@ -81,7 +73,7 @@ function loadPackageJsonInfo(
         : packageJson.license.type
     return {
         dependencies: Object.keys(packageJson.dependencies || {})
-            .filter( (dep) => !DEPENDENCIES_WITHOUT_LICENSE_FILE.includes(dep)),
+        .filter( (dep) => !DEPENDENCIES_WITHOUT_LICENSE_FILE.includes(dep)),
         version: packageJson.version,
         licenseId: license
     }
