@@ -1,4 +1,4 @@
-@codecatalyst/adk-model-parser includes the following third-party software/licensing:
+@aws/codecatalyst-adk-model-parser includes the following third-party software/licensing:
 
 ** js-yaml@4.1.0 - https://npmjs.com/package/js-yaml
 (The MIT License)
