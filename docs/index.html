@@ -65,23 +65,12 @@
   <h3>Prerequisites</h3>
 </a>
 <ol>
-<li><p>Download the <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">latest version of npm</a>. It is best to use a Node version manager like <a href="https://github.com/nvm-sh/nvm">nvm</a> to install Node.js and npm.</p>
-</li>
-<li><p>Override the namespace registry:</p>
-<ul>
-<li>Run the following npm command to edit the configuration: <code>npm config -g edit</code>.</li>
-<li>Add the CodeCatalyst namespace override to the configuration: <code>@aws:registry=https://aef-team-198147706056.d.codeartifact.us-west-2.amazonaws.com/npm/ActionsDevKitPackage/</code>.</li>
-<li>From the <a href="https://isengard.amazon.com/console-access?filter=198147706056">AWS Console Access Dashboard</a>, choose the icon to the right of <strong>ReadOnlyAdkCodeArtifact</strong>, choose <strong>base/zsh</strong>, choose <strong>Copy bash/zsh</strong>, and then paste and enter the temporary credentials into the working terminal session.</li>
-<li>Run the following npm command to access the ReadOnlyAdkCodeArtifact: <code>aws codeartifact login —tool npm —repository ActionsDevKitPackage —domain aef-team —domain-owner 198147706056 —region us-west-2</code>.</li>
-</ul>
-</li>
-<li><p>Run the following Lerna command: <code>npm install -g lerna</code>.</p>
-<ul>
+<li>Download the <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">latest version of npm</a>. It is best to use a Node version manager like <a href="https://github.com/nvm-sh/nvm">nvm</a> to install Node.js and npm.</li>
+<li>Run the following Lerna command: <code>npm install -g lerna</code>.<ul>
 <li><a href="https://lerna.js.org/">Lerna</a> is a fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository.</li>
 </ul>
 </li>
-<li><p>Run the following command to install yarn: <code>npm install --global yarn</code></p>
-<ul>
+<li>Run the following command to install yarn: <code>npm install --global yarn</code><ul>
 <li><a href="https://yarnpkg.com/">Yarn</a> is a package manager that doubles down as project manager. You can you work on one-shot projects or large monorepos, as a hobbyist or an enterprise user.</li>
 </ul>
 </li>
