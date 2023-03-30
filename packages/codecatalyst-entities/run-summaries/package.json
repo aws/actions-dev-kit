@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-run-summaries",
-  "version": "0.108.0",
+  "version": "0.108.1",
   "description": "CodeCatalyst run summaries entity",
   "homepage": "",
   "license": "Apache-2.0",
@@ -26,6 +26,6 @@
     "entryPoint": "lib/index.ts"
   },
   "devDependencies": {
-    "@aws/codecatalyst-adk-core": "0.108.0"
+    "@aws/codecatalyst-adk-core": "0.108.1"
   }
 }
