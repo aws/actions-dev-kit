@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.109.1](https://github.com/aws/actions-dev-kit/compare/v0.108.1...v0.109.1) (2023-03-30)
+
+**Note:** Version bump only for package @aws/codecatalyst-adk-model-parser
+
+
+
+
+
 # 0.109.0 (2023-03-30)
 
 **Note:** Version bump only for package @aws/codecatalyst-adk-model-parser
