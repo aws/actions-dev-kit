@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.3](https://github.com/aws/actions-dev-kit/compare/v1.1.0...v1.0.3) (2023-03-31)
+
+
+### Reverts
+
+* Revert "chore(release): v1.1.0" ([a6fc70a](https://github.com/aws/actions-dev-kit/commit/a6fc70aff4932786ce2f21040c3ff7f934b5135b))
+
+
+
+
+
 ## [1.0.2](https://github.com/aws/actions-dev-kit/compare/v1.0.1...v1.0.2) (2023-03-31)
 
 
