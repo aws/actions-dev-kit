@@ -133,10 +133,6 @@ You can contribute to the ADK by completing development on a feature branch and 
 - functions: 90%
 - lines: 90%
 
-## Contact
-
-Please contact [AEF Team](mailto: caws-aef-team@amazon.com)
-
 ## ChangeLog
 
 [Changelog](./CHANGELOG.md)
