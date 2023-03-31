@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/aws/actions-dev-kit/compare/v1.0.1...v1.1.0) (2023-03-31)
+
+
+### Bug Fixes
+
+* upgrade template dependencies to the latest versions ([f0a3058](https://github.com/aws/actions-dev-kit/commit/f0a30581a778e620188ea93e737fe4276618a1fe))
+
+
+
+
+
 ## [1.0.2](https://github.com/aws/actions-dev-kit/compare/v1.0.1...v1.0.2) (2023-03-31)
 
 
