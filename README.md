@@ -31,7 +31,7 @@ import { RunSummaryLevel, RunSummaries } from '@aws/codecatalyst-run-summaries';
 import * as space from '@aws/codecatalyst-space';
 
 const destinationBucket = core.getInput('DestinationBucketName')
-    # => Maps to the destination bucket configuration in Code.AWS workflow definition
+    # => Maps to the destination bucket configuration in CodeCatalyst workflow definition
 const srcDir = core.getInput('SourcePath')
     # => Maps to the src dir configuration in CodeCatalyst workflow definition
 console.log("Running action S3 Publish Action")
