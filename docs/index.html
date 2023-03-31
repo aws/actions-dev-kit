@@ -1,0 +1,190 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>root</title><meta name="description" content="Documentation for root"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os"</script><header class="tsd-page-toolbar">
+<div class="tsd-toolbar-contents container">
+<div class="table-cell" id="tsd-search" data-base=".">
+<div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M15.7824 13.833L12.6666 10.7177C12.5259 10.5771 12.3353 10.499 12.1353 10.499H11.6259C12.4884 9.39596 13.001 8.00859 13.001 6.49937C13.001 2.90909 10.0914 0 6.50048 0C2.90959 0 0 2.90909 0 6.49937C0 10.0896 2.90959 12.9987 6.50048 12.9987C8.00996 12.9987 9.39756 12.4863 10.5008 11.6239V12.1332C10.5008 12.3332 10.5789 12.5238 10.7195 12.6644L13.8354 15.7797C14.1292 16.0734 14.6042 16.0734 14.8948 15.7797L15.7793 14.8954C16.0731 14.6017 16.0731 14.1267 15.7824 13.833ZM6.50048 10.499C4.29094 10.499 2.50018 8.71165 2.50018 6.49937C2.50018 4.29021 4.28781 2.49976 6.50048 2.49976C8.71001 2.49976 10.5008 4.28708 10.5008 6.49937C10.5008 8.70852 8.71314 10.499 6.50048 10.499Z" fill="var(--color-text)"></path></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div>
+<div class="field">
+<div id="tsd-toolbar-links"></div></div>
+<ul class="results">
+<li class="state loading">Preparing search index...</li>
+<li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">root</a></div>
+<div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="3" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="7" width="14" height="2" fill="var(--color-text)"></rect><rect x="1" y="11" width="14" height="2" fill="var(--color-text)"></rect></svg></a></div></div></header>
+<div class="container container-main">
+<div class="col-8 col-content">
+<div class="tsd-page-title">
+<h2>root</h2></div>
+<div class="tsd-panel tsd-typography">
+<a href="#action-development-kit-adk" id="action-development-kit-adk" style="color: inherit; text-decoration: none;">
+  <h1>Action Development Kit (ADK)</h1>
+</a>
+
+<a href="#purpose" id="purpose" style="color: inherit; text-decoration: none;">
+  <h2>Purpose</h2>
+</a>
+<p>Amazon CodeCatalyst provides software development teams one place to plan work, collaborate on code, and build, test, and deploy applications with continuous integration/continuous delivery (CI/CD) tools. For more information, see <a href="https://docs.aws.amazon.com/codecatalyst/latest/userguide/welcome.html">What is Amazon CodeCatalyst?</a></p>
+<p>With the CodeCatalyst Action Development Kit (ADK), you can build, test, and publish actions to the CodeCatalyst actions catalog, where other users can add them to workflows. This ADK provides tooling and support to help you develop actions using libraries and frameworks.</p>
+<p>In CodeCatalyst, an action is the main building block of a workflow. The actions you author define a logical unit of work to perform during a workflow run. By creating actions and workflows, you can automate procedures that describe how to build, test, and deploy your code as part of a continuous integration and continuous delivery (CI/CD) system. For more information, see <a href="http://nadpat-clouddesk.aka.corp.amazon.com/docs-dev-kit/build/CAWSDocsDevKit/CAWSDocsDevKit-3.0/AL2_x86_64/DEV.STD.PTHREAD/build/server-root/adk/latest/guide/untitled%20folder%202/https://docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-actions.html">Working with actions</a>.</p>
+
+<a href="#adk-components" id="adk-components" style="color: inherit; text-decoration: none;">
+  <h2>ADK Components</h2>
+</a>
+<p>There are two components of the ADK:</p>
+<ol>
+<li>ADK software development kit (SDK)</li>
+</ol>
+<p>A set of library interfaces you can use to interact with action matadata and CodeCatalyst resources, including actions, workflows, secrets, logs, input variables, output variables, artifacts, and reports.</p>
+
+<a href="#sample-usage" id="sample-usage" style="color: inherit; text-decoration: none;">
+  <h4>Sample Usage</h4>
+</a>
+<pre><code><span class="hl-0">// @ts-ignore</span><br/><span class="hl-1">import</span><span class="hl-2"> </span><span class="hl-3">*</span><span class="hl-2"> </span><span class="hl-1">as</span><span class="hl-2"> </span><span class="hl-4">core</span><span class="hl-2"> </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-5">&#39;@aws/codecatalyst-adk-core&#39;</span><span class="hl-2">;</span><br/><span class="hl-0">// @ts-ignore</span><br/><span class="hl-1">import</span><span class="hl-2"> </span><span class="hl-3">*</span><span class="hl-2"> </span><span class="hl-1">as</span><span class="hl-2"> </span><span class="hl-4">project</span><span class="hl-2"> </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-5">&#39;@aws/codecatalyst-project&#39;</span><span class="hl-2">;</span><br/><span class="hl-0">// @ts-ignore</span><br/><span class="hl-1">import</span><span class="hl-2"> { </span><span class="hl-4">RunSummaryLevel</span><span class="hl-2">, </span><span class="hl-4">RunSummaries</span><span class="hl-2"> } </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-5">&#39;@aws/codecatalyst-run-summaries&#39;</span><span class="hl-2">;</span><br/><span class="hl-0">// @ts-ignore</span><br/><span class="hl-1">import</span><span class="hl-2"> </span><span class="hl-3">*</span><span class="hl-2"> </span><span class="hl-1">as</span><span class="hl-2"> </span><span class="hl-4">space</span><span class="hl-2"> </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-5">&#39;@aws/codecatalyst-space&#39;</span><span class="hl-2">;</span><br/><br/><span class="hl-3">const</span><span class="hl-2"> </span><span class="hl-6">destinationBucket</span><span class="hl-2"> = </span><span class="hl-4">core</span><span class="hl-2">.</span><span class="hl-7">getInput</span><span class="hl-2">(</span><span class="hl-5">&#39;DestinationBucketName&#39;</span><span class="hl-2">)</span><br/><span class="hl-2">    # </span><span class="hl-3">=&gt;</span><span class="hl-2"> </span><span class="hl-4">Maps</span><span class="hl-2"> </span><span class="hl-4">to</span><span class="hl-2"> </span><span class="hl-4">the</span><span class="hl-2"> </span><span class="hl-4">destination</span><span class="hl-2"> </span><span class="hl-4">bucket</span><span class="hl-2"> </span><span class="hl-4">configuration</span><span class="hl-2"> </span><span class="hl-3">in</span><span class="hl-2"> </span><span class="hl-4">Code</span><span class="hl-2">.</span><span class="hl-6">AWS</span><span class="hl-2"> </span><span class="hl-4">workflow</span><span class="hl-2"> </span><span class="hl-4">definition</span><br/><span class="hl-3">const</span><span class="hl-2"> </span><span class="hl-6">srcDir</span><span class="hl-2"> = </span><span class="hl-4">core</span><span class="hl-2">.</span><span class="hl-7">getInput</span><span class="hl-2">(</span><span class="hl-5">&#39;SourcePath&#39;</span><span class="hl-2">)</span><br/><span class="hl-2">    # </span><span class="hl-3">=&gt;</span><span class="hl-2"> </span><span class="hl-4">Maps</span><span class="hl-2"> </span><span class="hl-4">to</span><span class="hl-2"> </span><span class="hl-4">the</span><span class="hl-2"> </span><span class="hl-4">src</span><span class="hl-2"> </span><span class="hl-4">dir</span><span class="hl-2"> </span><span class="hl-4">configuration</span><span class="hl-2"> </span><span class="hl-3">in</span><span class="hl-2"> </span><span class="hl-4">CodeCatalyst</span><span class="hl-2"> </span><span class="hl-4">workflow</span><span class="hl-2"> </span><span class="hl-4">definition</span><br/><span class="hl-4">console</span><span class="hl-2">.</span><span class="hl-7">log</span><span class="hl-2">(</span><span class="hl-5">&quot;Running action S3 Publish Action&quot;</span><span class="hl-2">)</span><br/><span class="hl-3">let</span><span class="hl-2"> </span><span class="hl-4">cmd</span><span class="hl-2"> = </span><span class="hl-5">`aws s3 sync </span><span class="hl-3">${</span><span class="hl-4">srcDir</span><span class="hl-3">}</span><span class="hl-5"> s3://</span><span class="hl-3">${</span><span class="hl-4">destinationBucket</span><span class="hl-3">}</span><span class="hl-5">/</span><span class="hl-3">${</span><span class="hl-4">space</span><span class="hl-8">.</span><span class="hl-7">getSpace</span><span class="hl-8">().</span><span class="hl-4">name</span><span class="hl-3">}</span><span class="hl-5">/</span><span class="hl-3">${</span><span class="hl-4">project</span><span class="hl-8">.</span><span class="hl-7">getProject</span><span class="hl-8">().</span><span class="hl-4">name</span><span class="hl-3">}</span><span class="hl-5">/`</span><br/><span class="hl-3">const</span><span class="hl-2"> </span><span class="hl-6">cmdOutput</span><span class="hl-2"> = </span><span class="hl-4">core</span><span class="hl-2">.</span><span class="hl-7">command</span><span class="hl-2">(</span><span class="hl-4">cmd</span><span class="hl-2">)</span><br/><span class="hl-4">console</span><span class="hl-2">.</span><span class="hl-7">log</span><span class="hl-2">(</span><span class="hl-4">cmdOutput</span><span class="hl-2">.</span><span class="hl-4">stdout</span><span class="hl-2">)</span><br/><br/><span class="hl-1">if</span><span class="hl-2"> (</span><span class="hl-4">cmdOutput</span><span class="hl-2">.</span><span class="hl-4">code</span><span class="hl-2"> != </span><span class="hl-9">0</span><span class="hl-2">) {</span><br/><span class="hl-2">  </span><span class="hl-4">core</span><span class="hl-2">.</span><span class="hl-7">setFailed</span><span class="hl-2">(</span><span class="hl-4">cmdOutput</span><span class="hl-2">.</span><span class="hl-4">stderr</span><span class="hl-2">)</span><br/><span class="hl-2">} </span><span class="hl-1">else</span><span class="hl-2"> {</span><br/><span class="hl-2">  </span><span class="hl-4">core</span><span class="hl-2">.</span><span class="hl-7">setOutputVariable</span><span class="hl-2">(</span><span class="hl-5">&quot;Files&quot;</span><span class="hl-2">, </span><span class="hl-4">cmdOutput</span><span class="hl-2">.</span><span class="hl-4">stdOut</span><span class="hl-2">)</span><br/><span class="hl-2">}</span>
+</code></pre>
+<ol start="2">
+<li>ADK command line interface (CLI)</li>
+</ol>
+<p>Tool to interact with a set of commands you can use to create, validate, and test actions.</p>
+
+<a href="#sample-usage-1" id="sample-usage-1" style="color: inherit; text-decoration: none;">
+  <h4>Sample Usage</h4>
+</a>
+<pre><code><span class="hl-2">&gt;&gt; </span><span class="hl-4">adk</span><span class="hl-2"> </span><span class="hl-4">init</span><span class="hl-2"> --</span><span class="hl-4">lang</span><span class="hl-2"> </span><span class="hl-4">typescript</span><span class="hl-2"> --</span><span class="hl-4">space</span><span class="hl-2"> &lt;</span><span class="hl-6">CODECATALYST</span><span class="hl-2">-</span><span class="hl-6">SPACE</span><span class="hl-2">-</span><span class="hl-6">NAME</span><span class="hl-2">&gt; --</span><span class="hl-4">proj</span><span class="hl-2"> &lt;</span><span class="hl-6">CODECATALYST</span><span class="hl-2">-</span><span class="hl-6">PROJECT</span><span class="hl-2">-</span><span class="hl-6">NAME</span><span class="hl-2">&gt; --</span><span class="hl-4">repo</span><span class="hl-2"> &lt;</span><span class="hl-6">CODECATALYST</span><span class="hl-2">-</span><span class="hl-6">REPO</span><span class="hl-2">-</span><span class="hl-6">NAME</span><span class="hl-2">&gt; --</span><span class="hl-4">action</span><span class="hl-2"> &lt;</span><span class="hl-6">ACTION</span><span class="hl-2">-</span><span class="hl-6">NAME</span><span class="hl-2">&gt;</span><br/><span class="hl-2">...</span><br/><br/><span class="hl-2">&gt;&gt; </span><span class="hl-4">adk</span><span class="hl-2"> </span><span class="hl-4">bootstrap</span><br/><span class="hl-2">...</span><br/><br/><span class="hl-2">&gt;&gt; </span><span class="hl-4">adk</span><span class="hl-2"> </span><span class="hl-4">validate</span><br/><span class="hl-4">validating</span><span class="hl-2">...</span><br/><span class="hl-4">Missing</span><span class="hl-2"> </span><span class="hl-6">README</span><span class="hl-2"> </span><span class="hl-4">file</span><span class="hl-2">...</span><br/><span class="hl-4">action</span><span class="hl-2">.</span><span class="hl-4">yml</span><span class="hl-2"> </span><span class="hl-4">parsing</span><span class="hl-2"> </span><span class="hl-4">failed</span><span class="hl-2">...</span>
+</code></pre>
+<p>The following list contains the ADK CLI commands and information about how to use each command:</p>
+<ul>
+<li>init – Initializes the ADK project locally and produces required configuration files with specific language support.</li>
+<li>bootstrap – Bootstraps CodeCatalyst action code by reading the action definition file. The ADK SDK is used to develop actions.</li>
+<li>validate – Validates the action definition and README file.</li>
+<li>version – Returns the current version of ADK.</li>
+<li>help – Shows the current set of commands.</li>
+</ul>
+
+<a href="#installation-guide" id="installation-guide" style="color: inherit; text-decoration: none;">
+  <h2>Installation Guide</h2>
+</a>
+
+<a href="#prerequisites" id="prerequisites" style="color: inherit; text-decoration: none;">
+  <h3>Prerequisites</h3>
+</a>
+<ol>
+<li>Download the <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">latest version of npm</a>. It is best to use a Node version manager like <a href="https://github.com/nvm-sh/nvm">nvm</a> to install Node.js and npm.</li>
+<li>Run the following Lerna command: <code>npm install -g lerna</code>.<ul>
+<li><a href="https://lerna.js.org/">Lerna</a> is a fast, modern build system for managing and publishing multiple JavaScript/TypeScript packages from the same repository.</li>
+</ul>
+</li>
+<li>Run the following command to install yarn: <code>npm install --global yarn</code><ul>
+<li><a href="https://yarnpkg.com/">Yarn</a> is a package manager that doubles down as project manager. You can you work on one-shot projects or large monorepos, as a hobbyist or an enterprise user.</li>
+</ul>
+</li>
+</ol>
+
+<a href="#install-adk-cli" id="install-adk-cli" style="color: inherit; text-decoration: none;">
+  <h3>Install ADK CLI</h3>
+</a>
+<ol>
+<li><p>Run the following npm command to get ADK packages:</p>
+<ul>
+<li><code>npm install -g @aws/codecatalyst-adk</code></li>
+<li><code>npm install -g @aws/codecatalyst-adk-utils</code></li>
+</ul>
+</li>
+<li><p>When running npm, you may face a bug with non-empty cache and switching registry. If you run into issues where a certain dependency isn&#39;t found, either remove your global npm cache or install the dependencies:</p>
+<ul>
+<li><code>npm install -g chalk@4</code></li>
+<li><code>npm install -g @aws/codecatalyst-adk-model-parser</code></li>
+</ul>
+</li>
+<li><p>Validate that ADK is running with the following command: <code>adk help</code></p>
+</li>
+</ol>
+
+<a href="#development" id="development" style="color: inherit; text-decoration: none;">
+  <h2>Development</h2>
+</a>
+
+<a href="#build" id="build" style="color: inherit; text-decoration: none;">
+  <h3>Build</h3>
+</a>
+<p>Run the following build command:</p>
+<pre><code><span class="hl-4">$</span><span class="hl-2"> ./</span><span class="hl-4">build</span><span class="hl-2">.</span><span class="hl-4">sh</span>
+</code></pre>
+
+<a href="#testing" id="testing" style="color: inherit; text-decoration: none;">
+  <h3>Testing</h3>
+</a>
+<p>Run the following test command:</p>
+<pre><code><span class="hl-4">$</span><span class="hl-2"> </span><span class="hl-4">yarn</span><span class="hl-2"> </span><span class="hl-4">run</span><span class="hl-2"> </span><span class="hl-4">test</span><span class="hl-2">-</span><span class="hl-4">all</span>
+</code></pre>
+
+<a href="#contribute" id="contribute" style="color: inherit; text-decoration: none;">
+  <h3>Contribute</h3>
+</a>
+<p>You can contribute to the ADK by completing development on a feature branch and creating a pull request:</p>
+<ul>
+<li>Create a branch from <strong>main</strong> and name it <strong>feature-</strong>* branch (e.g. <strong>feature-add-init-command</strong>). Creating the feature branch creates CI validation workflow against the feature- branch.</li>
+<li>Update the code in your new branch <strong>feature-</strong>*.</li>
+<li>Once you&#39;re done with feature development, create a pull request from source <strong>feature-</strong>* branch to destination main branch. This triggers a CI workflow in your<strong>feature-</strong>* branch. Update the pull request with the workflow run in the description section of the pull request.</li>
+<li>Add reviewers from the reviewer section. Reviewers can be anyone within the organization, but at least one must be a developer from the AEF team.</li>
+<li>Once you have all the approvals in your pull request, merge the pull request from the UI by choosing squash (not fast forward merge) and reducing the number of commits to just one from the feature branch. This makes rollbacks easy if you have one commit per feature branch. If you have large amount of changes in your pull request, it&#39;s best to rethink your development strategy to iteratively develop and push code.</li>
+<li>On merge, release workflows within the ADK repository will kick-off. This should automatically bump the version of the ADK package for consumption.</li>
+</ul>
+
+<a href="#test-coverage-expectations" id="test-coverage-expectations" style="color: inherit; text-decoration: none;">
+  <h3>Test Coverage Expectations</h3>
+</a>
+<ul>
+<li>branches: 90%</li>
+<li>statements: 90%</li>
+<li>functions: 90%</li>
+<li>lines: 90%</li>
+</ul>
+
+<a href="#contact" id="contact" style="color: inherit; text-decoration: none;">
+  <h2>Contact</h2>
+</a>
+<p>Please contact [AEF Team](mailto: <a href="mailto:caws-aef-team@amazon.com">caws-aef-team@amazon.com</a>)</p>
+
+<a href="#changelog" id="changelog" style="color: inherit; text-decoration: none;">
+  <h2>ChangeLog</h2>
+</a>
+<p><a href="./CHANGELOG.md">Changelog</a></p>
+
+<a href="#security" id="security" style="color: inherit; text-decoration: none;">
+  <h2>Security</h2>
+</a>
+<p>See CONTRIBUTING for more information.</p>
+
+<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+  <h2>License</h2>
+</a>
+<p>This project is licensed under the Apache-2.0 License.</p>
+</div></div>
+<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+<div class="tsd-navigation settings">
+<details class="tsd-index-accordion"><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Settings</h3></summary>
+<div class="tsd-accordion-details">
+<div class="tsd-filter-visibility">
+<h4 class="uppercase">Member Visibility</h4><form>
+<ul id="tsd-filter-options">
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li>
+<li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></form></div>
+<div class="tsd-theme-toggle">
+<h4 class="uppercase">Theme</h4><select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div>
+<nav class="tsd-navigation primary">
+<details class="tsd-index-accordion" open><summary class="tsd-accordion-summary">
+<h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4.93896 8.531L12 15.591L19.061 8.531L16.939 6.409L12 11.349L7.06098 6.409L4.93896 8.531Z" fill="var(--color-text)"></path></svg> Modules</h3></summary>
+<div class="tsd-accordion-details">
+<ul>
+<li class="current selected"><a href="modules.html">root</a>
+<ul>
+<li class="tsd-kind-module"><a href="modules/_aws_codecatalyst_adk.html">@aws/codecatalyst-<wbr/>adk</a></li>
+<li class="tsd-kind-module"><a href="modules/_aws_codecatalyst_adk_core.html">@aws/codecatalyst-<wbr/>adk-<wbr/>core</a></li>
+<li class="tsd-kind-module"><a href="modules/_aws_codecatalyst_adk_model_parser.html">@aws/codecatalyst-<wbr/>adk-<wbr/>model-<wbr/>parser</a></li>
+<li class="tsd-kind-module"><a href="modules/_aws_codecatalyst_adk_utils.html">@aws/codecatalyst-<wbr/>adk-<wbr/>utils</a></li>
+<li class="tsd-kind-module"><a href="modules/_aws_codecatalyst_project.html">@aws/codecatalyst-<wbr/>project</a></li>
+<li class="tsd-kind-module"><a href="modules/_aws_codecatalyst_run_summaries.html">@aws/codecatalyst-<wbr/>run-<wbr/>summaries</a></li>
+<li class="tsd-kind-module"><a href="modules/_aws_codecatalyst_space.html">@aws/codecatalyst-<wbr/>space</a></li></ul></li></ul></div></details></nav></div></div>
+<div class="container tsd-generator">
+<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div>
+<div class="overlay"></div><script src="assets/main.js"></script></body></html>

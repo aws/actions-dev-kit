@@ -1,0 +1,20 @@
+Name: %%action_name%%-CI-Validation
+SchemaVersion: "1.0"
+Triggers:
+  - Type: PullRequest
+    Events: [ open, revision ]
+    Branches:
+      - feature-.*
+Actions:
+  Validate%%action_name%%:
+    Identifier: .
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Configuration:
+      %%action_inputs%%
+    Environment:
+      Name: %%action_name%%-TestEnvironment
+      Connections:
+        - Name: %%action_name%%-Connection
+          Role: %%action_name%%-Role

@@ -1,0 +1,14 @@
+SchemaVersion: '1.0_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Name: 'Action_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Version: '1.0.0_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Description: 'This Action tries to inject malicious code_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Configuration:
+  ResponseFilters_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!:
+    Description: "\nconsole.log('INJECTED_CODE')_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!"
+    Required: false
+    DisplayName: 'Response Filters with injection_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+    Type: string_%_&_$_\r_\n_;_:_,_|_>_<_`_\_!
+    Default: '%_&_$_\r_\n_;_:_,_|_>_<_`_\_!'
+Runs:
+  Using: 'node16'
+  Main: 'index.js'

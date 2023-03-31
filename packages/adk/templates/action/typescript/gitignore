@@ -1,0 +1,9 @@
+lib/*.js
+test/*.js
+*.js.map
+*.d.ts
+*.generated.ts
+coverage
+node_modules
+.actionconfig
+/.idea/

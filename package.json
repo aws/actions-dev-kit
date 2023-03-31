@@ -1,0 +1,59 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "@tsconfig/node12": "^1.0.2",
+    "@types/jest": "^27.4.1",
+    "@types/node": "^17.0.22",
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
+    "eslint": "^8.12.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^26.1.5",
+    "jest": "^27.5.1",
+    "jest-junit": "^13.0.0",
+    "ts-node": "^10.7.0",
+    "typedoc": "^0.23.13",
+    "typescript": "^4.9.5"
+  },
+  "scripts": {
+    "prebuild": "./cleanup.sh",
+    "prebuild-all": "./cleanup.sh",
+    "build": "./build.sh",
+    "build-all": "lerna run build",
+    "test-all": "lerna run test",
+    "all": "lerna run build --stream && lerna run test --stream",
+    "lint": "eslint **/*.ts",
+    "lint:fix": "eslint --fix '**/*.ts'",
+    "api-ref": "typedoc ",
+    "api-ref-pre-release": "typedoc --out pre-release-docs ",
+    "generate-attributions": "ts-node ./scripts/generate-attributions"
+  },
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "packages/codecatalyst-entities/*"
+    ],
+    "nohoist": [
+      "**/adk-core/**"
+    ]
+  },
+  "repository": {
+    "url": "git+https://github.com/aws/actions-dev-kit",
+    "type": "git"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Amazon Web Services",
+    "url": "https://aws.amazon.com"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "dependencies": {
+    "@types/jsonwebtoken": "^9.0.0",
+    "json5": "^2.2.2",
+    "jsonwebtoken": "^9.0.0",
+    "tsconfig-paths": "^4.0.0"
+  }
+}

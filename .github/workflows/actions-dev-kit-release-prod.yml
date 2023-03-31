@@ -1,0 +1,99 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
+
+name: ActionsDevKit-Release-Npm
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - configs/.*\.ts
+      - packages/.*/.*\.ts
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  GIT_COMMITTER_NAME: ActionsDevKitRelease
+  GIT_COMMITTER_EMAIL: caws-aef-team-workflow@amazon.com
+
+jobs:
+  publish-update:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - name: Git & SSH auth setup
+        run: |
+          sudo git config --system --add safe.directory "*"
+          if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
+            echo "SSH Key pair found, configuring signing..."
+            mkdir ~/.ssh
+            echo -e "$SSH_PRIVATE_KEY" >> ~/.ssh/signing_key
+            cat ~/.ssh/signing_key
+            echo -e "$SSH_PUBLIC_KEY" >> ~/.ssh/signing_key.pub
+            cat ~/.ssh/signing_key.pub
+            chmod 600 ~/.ssh/signing_key && chmod 600 ~/.ssh/signing_key.pub
+            eval "$(ssh-agent)"
+            ssh-add ~/.ssh/signing_key
+            git config --global gpg.format ssh
+            git config --global user.signingKey ~/.ssh/signing_key
+            git config --global commit.gpgsign true
+            git config --global user.email $GIT_COMMITTER_EMAIL
+            git config --global user.name $GIT_COMMITTER_NAME
+            touch ~/.ssh/allowed_signers
+            echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
+            git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
+          fi
+      - uses: actions/checkout@v3
+        with:
+          ssh-key: ${{ env.SSH_PRIVATE_KEY }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: https://npm.pkg.github.com/
+      - run: npm install --global lerna@5.0.0 yarn@1.22.18
+      - run: lerna --version
+      - run: yarn --version
+      - run: npm --version
+      - run: lerna bootstrap
+      - run: yarn run all
+      - run: lerna version minor --no-push --yes
+      - run: git tag -n
+      - run: yarn run api-ref
+      - run: git status && git add . && git add -f docs && git commit --amend --no-edit
+      - run: git push origin HEAD:main
+      - run: git tag -n
+      - run: npm config set @aws:registry https://registry.npmjs.org/
+      - run: npm config set //registry.npmjs.org:_authToken ${{ secrets.NPM_KSHP_TOKEN }}
+      - run: npm config list
+      - run: git status
+      - run: lerna publish --yes
+
+  generate-docs:
+    # Add a dependency to the build job
+    needs: publish-update
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+     contents: read
+     pages: write
+     id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - run: ls
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: './docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+

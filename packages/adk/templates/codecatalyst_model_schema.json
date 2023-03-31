@@ -1,0 +1,458 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Action manifest schema",
+  "description": "Document describing data associated with a Compute Action execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "SchemaVersion": {
+      "description": "A number corresponding to the version of the manifest format. should be 1.0",
+      "type": "string",
+      "enum": [
+        "1.0"
+      ]
+    },
+    "Name": {
+      "description": "Action display name",
+      "type": "string",
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9\\s\\-_]{1,62}[A-Za-z0-9]$",
+      "examples": [
+        "My action"
+      ]
+    },
+    "Version": {
+      "description": "action version",
+      "type": "string",
+      "pattern": "^((?:0|(?:[1-9]\\d?)))\\.((?:0|(?:[1-9]\\d?)))\\.((?:0|(?:[1-9]\\d?)))$",
+      "examples": [
+        "0.1.0"
+      ]
+    },
+    "Description": {
+      "description": "Action description",
+      "minLength": 1,
+      "maxLength": 128,
+      "type": "string",
+      "pattern": "^[^\"]+$",
+      "examples": [
+        "Awesome tools to help you and your team do great things everyday."
+      ]
+    },
+    "Configuration": {
+      "description": "Action inputs, will be convert to workflow yaml Configuration section",
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 20,
+      "propertyNames": {
+        "pattern": "^[A-Za-z0-9][A-Za-z0-9\\-_]{1,34}[A-Za-z0-9]$"
+      },
+      "additionalProperties": {
+        "type": "object",
+        "$ref": "#/definitions/ParameterConfig"
+      }
+    },
+    "Environment": {
+      "description": "Environment Connection indicator",
+      "$ref": "#/definitions/EnvironmentConfig"
+    },
+    "SupportedComputeTypes": {
+      "description": "Compute type",
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["LAMBDA", "EC2"]
+      }
+    },
+    "Inputs" : {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "Sources": {
+          "description": "workflow source indicator",
+          "$ref": "#/definitions/SourcesConfig"
+        },
+        "Artifacts": {
+          "description": "input artifact indicator",
+          "$ref": "#/definitions/InputArtifactsConfig"
+        }
+      }
+    },
+    "Outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "Variables": {
+          "description": "Action output variables",
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9\\-_]{1,30}[A-Za-z0-9]$"
+          },
+          "minProperties": 1,
+          "maxProperties": 10,
+          "additionalProperties": {
+            "type": "object",
+            "$ref": "#/definitions/OutputVariableConfig"
+          }
+        }
+      }
+    },
+    "Runs": {
+      "description": "Specifies whether this is a JavaScript action, a composite action, or a Docker container action and how the action is executed.",
+      "$ref": "#/definitions/RunsConfig"
+    }
+  },
+  "definitions": {
+    "ParameterConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Description",
+        "Required"
+      ],
+      "properties": {
+        "Description": {
+          "description": "Input parameter description",
+          "type": "string",
+          "pattern": "^[^\"]+$",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "Required": {
+          "description": "A boolean to indicate whether the action requires the input parameter. Set to true when the parameter is required.",
+          "type": "boolean"
+        },
+        "DisplayName": {
+          "description": "Input parameter name to display on UI",
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9\\- _.,]{1,30}[A-Za-z0-9]$",
+          "minLength": 1,
+          "maxLength": 32
+        },
+        "Type": {
+          "description": "Input parameter type",
+          "type": "string",
+          "enum": [
+            "string",
+            "number",
+            "boolean"
+          ]
+        },
+        "Default": {
+          "description": "The default value of input parameter",
+          "type": [
+            "string",
+            "number",
+            "boolean"
+          ],
+          "maxLength": 32,
+          "examples": [
+            "bar"
+          ]
+        },
+        "DeprecationMessage": {
+          "description": "Deprecation message",
+          "type": "string",
+          "maxLength": 64
+        }
+      }
+    },
+    "EnvironmentConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Required": {
+          "description": "A boolean to indicate whether the action requires Environment Connection Set to true when the parameter is required.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Required"
+      ]
+    },
+    "SourcesConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Required": {
+          "description": "A boolean to indicate whether the action requires Sources. Set to true when the parameter is required.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Required"
+      ]
+    },
+    "InputArtifactsConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Required": {
+          "description": "A boolean to indicate whether the action requires input artifacts. Set to true when the parameter is required.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "Required"
+      ]
+    },
+    "OutputVariableConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Description"
+      ],
+      "properties": {
+        "Description": {
+          "description": "Output variable description",
+          "type": "string",
+          "maxLength": 256,
+          "pattern": "^[^\"]+$"
+        }
+      }
+    },
+    "OutputReportConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Description": {
+          "description": "Artifact description",
+          "type": "string",
+          "maxLength": 128
+        },
+        "IncludePaths": {
+          "description": "The include file path for report.",
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "description": "File path",
+            "type": "string"
+          }
+        },
+        "ExcludePaths": {
+          "description": "The exclude file path for report.",
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "description": "File path",
+            "type": "string"
+          }
+        },
+        "Format": {
+          "description": "Report format type",
+          "type": "string",
+          "enum": [
+            "CUCUMBERJSON",
+            "JUNITXML",
+            "NUNITXML",
+            "NUNIT3XML",
+            "VISUALSTUDIOTRX",
+            "TESTNGXML",
+            "CLOVERXML",
+            "COBERTURAXML",
+            "JACOCOXML",
+            "SIMPLECOV",
+            "SARIFSCA"
+          ]
+        }
+      },
+      "required": [
+        "IncludePaths",
+        "Format",
+        "Description"
+      ]
+    },
+    "OutputArtifactConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Description": {
+          "description": "Artifact description",
+          "type": "string",
+          "pattern": "^[^\"]+$",
+          "maxLength": 128
+        },
+        "Files": {
+          "description": "The value of output variable",
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "description": "File path",
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "Files",
+        "Description"
+      ]
+    },
+    "DockerConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "Using",
+        "Image"
+      ],
+      "properties": {
+        "Using": {
+          "const": "docker"
+        },
+        "Image": {
+          "description": "The Docker image to use as the container to run the action.",
+          "type": "string",
+          "examples": [
+            "Dockerfile"
+          ]
+        },
+        "Env": {
+          "description": "Specifies a key/value map of environment variables to set in the container environment.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "Entrypoint": {
+          "description": "Overrides the Docker ENTRYPOINT in the Dockerfile.",
+          "type": "string",
+          "examples": [
+            "main.sh"
+          ]
+        },
+        "PreEntrypoint": {
+          "description": "Allows you to run a script before the entrypoint action begins.",
+          "type": "string",
+          "examples": [
+            "setup.sh"
+          ]
+        },
+        "PostEntrypoint": {
+          "description": " Allows you to run a cleanup script once the runs.entrypoint action has completed. ",
+          "type": "string",
+          "examples": [
+            "cleanup.sh"
+          ]
+        },
+        "Args": {
+          "description": "An array of strings that define the inputs for a Docker container. Inputs can include hardcoded strings.",
+          "type": "array",
+          "items": {
+            "description": "args",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "NodeConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "Using": {
+          "enum": [
+            "node12",
+            "node16"
+          ]
+        },
+        "Main": {
+          "description": "The file that contains your action code.",
+          "type": "string",
+          "examples": [
+            "index.js"
+          ]
+        },
+        "Pre": {
+          "description": "Allows you to run a script at the start of a job.",
+          "type": "string",
+          "examples": [
+            "setup.js"
+          ]
+        },
+        "Post": {
+          "description": "Allows you to run a script at the end of a job.",
+          "type": "string",
+          "examples": [
+            "cleanup.js"
+          ]
+        },
+        "PreIf": {
+          "description": "Allows you to define conditions for the pre: action execution.",
+          "type": "string",
+          "examples": [
+            "runner.os == 'linux'"
+          ]
+        },
+        "PostIf": {
+          "description": "Allows you to define conditions for the post: action execution.",
+          "type": "string",
+          "examples": [
+            "runner.os == 'linux'"
+          ]
+        }
+      },
+      "required": [
+        "Using",
+        "Main"
+      ]
+    },
+    "RunsConfig": {
+      "type": "object",
+      "additionalProperties": true,
+      "allOf": [
+        {
+          "if": {
+            "properties": { "Using": { "const": "node12" } },
+            "required": ["Using"]
+          },
+          "then": {
+            "$ref": "#/definitions/NodeConfig"
+          }
+        },
+        {
+          "if": {
+            "properties": { "Using": { "const": "node16" } },
+            "required": ["Using"]
+          },
+          "then": {
+            "$ref": "#/definitions/NodeConfig"
+          }
+        },
+        {
+          "if": {
+            "properties": { "Using": { "const": "docker" } },
+            "required": ["Using"]
+          },
+          "then": {
+            "$ref": "#/definitions/DockerConfig"
+          }
+        }
+      ],
+      "properties": {
+        "Using": {
+          "description": "The runtime used to execute the code",
+          "type": "string",
+          "enum": [
+            "node12",
+            "node16",
+            "docker"
+          ]
+        }
+      },
+      "required": [
+        "Using"
+      ]
+    }
+  },
+  "required": [
+    "SchemaVersion",
+    "Name",
+    "Version",
+    "Configuration",
+    "Description",
+    "Runs"
+  ]
+}

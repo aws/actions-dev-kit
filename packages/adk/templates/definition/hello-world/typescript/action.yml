@@ -1,0 +1,24 @@
+SchemaVersion: '1.0'
+Name: '%%action_name%%'
+Version: '0.0.0'
+Description: 'This Action greets someone and records the time'
+Configuration:
+  WhoToGreet:
+    Description: 'Who are we greeting here'
+    Required: true
+    DisplayName: 'Who to greet'
+    Type: string
+  HowToGreet:
+    Description: 'How to greet the person'
+    Required: false
+    DisplayName: 'How to greet'
+    Type: string
+    Default: 'Hello there,'
+Inputs:
+  Sources:
+    Required: true
+Environment:
+  Required: false
+Runs:
+  Using: '%%node_version%%'
+  Main: 'dist/index.js'

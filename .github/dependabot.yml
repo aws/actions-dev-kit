@@ -1,0 +1,47 @@
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+# Please see the documentation for all configuration options:
+# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "packages/adk-client"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "packages/adk-core"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "packages/adk-model-parser"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "packages/adk-utils"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "packages/adk"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "packages/codecatalyst-entities/issue"
+    schedule:
+      interval: "daily"      
+  - package-ecosystem: "npm"
+    directory: "packages/codecatalyst-entities/space"
+    schedule:
+      interval: "daily"      
+  - package-ecosystem: "npm"
+    directory: "packages/codecatalyst-entities/project"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm"
+    directory: "packages/codecatalyst-entities/run-summaries"
+    schedule:
+      interval: "daily"

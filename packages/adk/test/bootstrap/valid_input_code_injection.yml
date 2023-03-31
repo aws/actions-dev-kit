@@ -1,0 +1,14 @@
+SchemaVersion: '1.0'
+Name: 'Cannot be injected'
+Version: '1.0.0' #No code injection is possible into the Version field as it is constrained by the following pattern: ^((?:0|(?:[1-9]\\d?)))\\.((?:0|(?:[1-9]\\d?)))\\.((?:0|(?:[1-9]\\d?)))$
+Description: 'This Action tries to inject malicious code%\n\r:,'
+Configuration:
+  ResponseFilters:
+    Description: "\nconsole.log('INJECTED_CODE')%\n\r:,"
+    Required: false
+    DisplayName: 'Cannot be injected'
+    Type: string
+    Default: '%\n\r:,'
+Runs:
+  Using: 'node16'
+  Main: 'dist/index.js'
