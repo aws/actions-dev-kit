@@ -6,7 +6,7 @@ Amazon CodeCatalyst provides software development teams one place to plan work, 
 
 With the CodeCatalyst Action Development Kit (ADK), you can build, test, and publish actions to the CodeCatalyst actions catalog, where other users can add them to workflows. This ADK provides tooling and support to help you develop actions using libraries and frameworks.
 
-In CodeCatalyst, an action is the main building block of a workflow. The actions you author define a logical unit of work to perform during a workflow run. By creating actions and workflows, you can automate procedures that describe how to build, test, and deploy your code as part of a continuous integration and continuous delivery (CI/CD) system. For more information, see [Working with actions](http://nadpat-clouddesk.aka.corp.amazon.com/docs-dev-kit/build/CAWSDocsDevKit/CAWSDocsDevKit-3.0/AL2_x86_64/DEV.STD.PTHREAD/build/server-root/adk/latest/guide/untitled%20folder%202/https://docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-actions.html).
+In CodeCatalyst, an action is the main building block of a workflow. The actions you author define a logical unit of work to perform during a workflow run. By creating actions and workflows, you can automate procedures that describe how to build, test, and deploy your code as part of a continuous integration and continuous delivery (CI/CD) system. For more information, see [Working with actions](https://docs.aws.amazon.com/codecatalyst/latest/userguide/workflows-actions.html).
 
 
 ## ADK Components
