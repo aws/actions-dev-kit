@@ -1,7 +1,15 @@
 'use strict';
 
 import fs from 'fs';
-import { escape, sanitizeCommand, isString, copyToFileSync, writeContentToFileSync } from '../lib';
+import {
+    escape,
+    sanitizeCommand,
+    isString,
+    copyToFileSync,
+    writeContentToFileSync,
+    unknownToStringOrUndefined,
+    unknownToBooleanOrFalse,
+} from '../lib';
 
 const UNESCAPED_INPUT = '%_&_$_\r_\n_;_:_,_|_>_<_`_\\_!';
 const ESCAPED_INPUT = '%25_&_$_%0D_%0A_;_:_,_|_>_<_`_\\_!';
@@ -50,6 +58,26 @@ describe('ADK-Util test', () => {
         expect(sanitizeCommand('', {}) === '').toBeTruthy();
         // @ts-ignore
         expect(sanitizeCommand('', 'not_array') === '').toBeTruthy();
+    });
+
+    it('test unknownToStringOrUndefined()', async () => {
+        const input = 'printenv';
+        const input_unknown : unknown = '';
+        const input_unknown_and_undefined : unknown = undefined;
+
+        expect(isString(unknownToStringOrUndefined(input))).toBeTruthy();
+        expect(isString(unknownToStringOrUndefined(input_unknown))).toBeTruthy();
+        expect(isString(unknownToStringOrUndefined(input_unknown_and_undefined))).toBeFalsy();
+    });
+
+    it('test unknownToBooleanOrFalse()', async () => {
+        const input = true;
+        const input_unknown : unknown = true;
+        const input_unknown_and_undefined : unknown = undefined;
+
+        expect(unknownToBooleanOrFalse(input)).toBeTruthy();
+        expect(unknownToBooleanOrFalse(input_unknown)).toBeTruthy();
+        expect(unknownToBooleanOrFalse(input_unknown_and_undefined)).toBeFalsy();
     });
 
     it('test isString()', async () => {
