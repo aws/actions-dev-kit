@@ -11,7 +11,7 @@ import { SchemaType } from './validation/model';
 import { INestApplicationContext, Logger } from '@nestjs/common';
 import { ValidationController } from './validation/controller';
 import { BootstrapController } from './bootstrap/controller';
-import { escape } from '@aws/codecatalyst-adk-utils';
+import { escape, unknownToBooleanOrFalse, unknownToStringOrUndefined } from '@aws/codecatalyst-adk-utils';
 
 let APP_CONTEXT: INestApplicationContext;
 const bootstrap = async (): Promise<INestApplicationContext> => {
@@ -100,7 +100,7 @@ async function initAppContext(): Promise<INestApplicationContext> {
 async function parseCLIArgs() {
     const argv = await cliArgs();
     const cmd = argv._[0];
-    let sanitizedFileName = escape(argv.file);
+    let sanitizedFileName = escape(unknownToStringOrUndefined(argv.file));
 
     switch (cmd) {
         case 'validate':
@@ -126,15 +126,15 @@ async function parseCLIArgs() {
             );
         case 'init':
             const productInfo: ProductInfo = {
-                space: escape(argv.space),
-                project: escape(argv.proj),
-                repository: escape(argv.repo),
+                space: escape(unknownToStringOrUndefined(argv.space)),
+                project: escape(unknownToStringOrUndefined(argv.proj)),
+                repository: escape(unknownToStringOrUndefined(argv.repo)),
             };
             console.log(chalk.green('Initializing ADK project...'));
             return init(productInfo,
-                escape(argv.action),
-                escape(argv.language),
-                argv.disconnected);
+                escape(unknownToStringOrUndefined(argv.action)),
+                escape(unknownToStringOrUndefined(argv.language)),
+                unknownToBooleanOrFalse(argv.disconnected));
         default:
             console.log('Invalid command');
             return;

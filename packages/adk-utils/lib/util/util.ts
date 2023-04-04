@@ -43,6 +43,24 @@ export function isString(input: any): boolean {
 }
 
 /**
+ * Checks if the input is a string.
+ * @param input The input to be checked.
+ * @return Returns the input as a string or undefined.
+ */
+export function unknownToStringOrUndefined(input: unknown): string | undefined {
+    return (typeof input === 'string') ? input as string : undefined;
+}
+
+/**
+ * Checks if the input is a boolean.
+ * @param input The input to be checked.
+ * @return Returns the input as a boolean or undefined.
+ */
+export function unknownToBooleanOrFalse(input: unknown): boolean {
+    return (typeof input === 'boolean') ? input as boolean : false;
+}
+
+/**
  * Copies from source to a destination file. Overrides the destination file if it exists and override flag is set to true.
  * @param src The source file.
  * @param dest The destination file.
