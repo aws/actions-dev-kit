@@ -1,7 +1,7 @@
 # `@aws/codecatalyst-run-summaries`
 
 ## Purpose
-Add the run-summaries construct as a CodeCatalyst entity. This construct allows users to set custom summary messages during the execution of their actions that will be surfaced on the workflows UI.
+Use the run-summaries construct to set custom summary messages during the execution of actions that will be surfaced on the CodeCatalyst workflows UI.
 
 ## Usage
 
