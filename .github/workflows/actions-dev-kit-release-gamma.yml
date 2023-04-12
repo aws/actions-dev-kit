@@ -64,6 +64,8 @@ jobs:
       - run: yarn run all
       # Upgrades patch version for all the packages even if there's no changes in some of them
       - run: lerna version --conventional-commits --no-changelog --no-git-tag-version --force-publish --yes
+      # Commit package.json files with version bump
+      - run: git status && git add . && git commit --amend --no-edit
       # Configures AWS credentials to access ADK CodeArtifact Gamma repository
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2.0.0
