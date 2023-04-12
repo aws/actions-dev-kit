@@ -18,7 +18,7 @@ Bootstraps action project in the current folder from action.yml file. Bootstrap 
 
 Example:
 ```
-adk bootstrap -f .codecatalyst/actions/action.yml
+adk bootstrap
 ```
 
 ### adk validate 
