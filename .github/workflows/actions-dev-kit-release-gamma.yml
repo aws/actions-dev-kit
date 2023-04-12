@@ -82,6 +82,7 @@ jobs:
 
   publish-update-prod:
     runs-on: ubuntu-latest
+    needs: publish-update-gamma
     permissions: write-all
     steps:
       # Allows to push to the main branch for
