@@ -7,10 +7,6 @@ on:
   workflow_dispatch:
   pull_request:
     branches: [ main ]
-    paths:
-      - configs/.*\.ts
-      - packages/.*/.*\.ts
-      - .github/.*/.*
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
