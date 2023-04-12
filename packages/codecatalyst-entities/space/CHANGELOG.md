@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.101](https://github.com/aws/actions-dev-kit/compare/v1.2.100...v1.2.101) (2023-04-12)
+
+**Note:** Version bump only for package @aws/codecatalyst-space
+
+
+
+
+
 ## [1.2.100](https://github.com/aws/actions-dev-kit/compare/v1.2.99...v1.2.100) (2023-04-12)
 
 **Note:** Version bump only for package @aws/codecatalyst-space
