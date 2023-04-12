@@ -62,16 +62,14 @@ jobs:
       - run: lerna bootstrap
       # Builds and tests all the packages
       - run: yarn run all
-      # Creates another git tag
-      - run: git tag -n
       # Upgrades minor version for all the packages
-      - run: lerna version minor --no-push --no-git-tag-version --yes
-      # Commits content of the pre-release-docs/ folder
-      - run: git status && git add . && git commit --amend --no-edit
-      # Pushes content of the pre-release-docs/ folder to the main branch
-      - run: git push origin HEAD:${{ github.event.pull_request.head.ref }}
+      - run: lerna version patch --yes
+#      # Commits content of the pre-release-docs/ folder
+#      - run: git status && git add . && git commit --amend --no-edit
+#      # Pushes content of the pre-release-docs/ folder to the main branch
+#      - run: git push origin HEAD:${{ github.event.pull_request.head.ref }}
       # Creates another git tag
-      - run: git tag -n
+#      - run: git tag -n
       # Configures AWS credentials to access ADK CodeArtifact Gamma repository
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2.0.0
