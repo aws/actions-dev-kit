@@ -9,7 +9,7 @@
   "version": "1.2.0",
   "command": {
     "version": {
-      "allowBranch": "feature-test-gha-locally",
+      "allowBranch": "feature-test-workflows",
       "conventionalCommits": true,
       "exact": true,
       "message": "chore(release): %s"

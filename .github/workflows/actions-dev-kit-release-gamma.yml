@@ -67,7 +67,7 @@ jobs:
       # Commits content of the pre-release-docs/ folder
       - run: git status && git add . && git add -f pre-release-docs && git commit --amend --no-edit
       # Pushes content of the pre-release-docs/ folder to the main branch
-      - run: git push origin HEAD:feature-test-gha-locally
+      - run: git push origin ${{ github.event.pull_request.head.ref }}
       # Creates another git tag
       - run: git tag -n
       # Configures AWS credentials to access ADK CodeArtifact Gamma repository
