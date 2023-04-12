@@ -53,7 +53,7 @@ jobs:
           node-version: 16
           registry-url: ${{ secrets.CODEARTIFACT_NPM_REGISTRY_GAMMA }}
           scope: '@aws'
-      # Setup install dependencies
+      # Install dependencies
       - run: npm install --global lerna@5.0.0 yarn@1.22.18
       - run: lerna --version
       - run: yarn --version
@@ -62,8 +62,8 @@ jobs:
       - run: lerna bootstrap
       # Builds and tests all the packages
       - run: yarn run all
-      # Upgrades minor version for all the packages
-      - run: lerna version patch --yes --no-changelog
+      # Upgrades patch version for all the packages even if there's no changes in some of them
+      - run: lerna version --conventional-commits --no-changelog --force-publish --yes
       # Configures AWS credentials to access ADK CodeArtifact Gamma repository
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2.0.0
@@ -76,6 +76,6 @@ jobs:
       - run: npm config list
       - run: git status
       # Publishes ADK packages to CodeArtifact
-      - run: lerna publish --yes
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: lerna publish from-package --yes
+#        env:
+#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
