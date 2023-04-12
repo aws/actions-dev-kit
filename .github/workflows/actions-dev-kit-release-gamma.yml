@@ -1,0 +1,94 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: ActionsDevKit-Release-Gamma
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - configs/.*\.ts
+      - packages/.*/.*\.ts
+      - .github/.*/.*
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  GIT_COMMITTER_NAME: ActionsDevKitRelease
+  GIT_COMMITTER_EMAIL: cawsactionextensions+adk-release@amazon.com
+
+jobs:
+  publish-update:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      # Allows to push to the main branch for
+      - name: Git & SSH auth setup
+        run: |
+          sudo git config --system --add safe.directory "*"
+          if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
+              echo "SSH Key pair found, configuring signing..."
+              mkdir ~/.ssh
+              echo -e "$SSH_PRIVATE_KEY" >> ~/.ssh/signing_key
+              cat ~/.ssh/signing_key
+              echo -e "$SSH_PUBLIC_KEY" >> ~/.ssh/signing_key.pub
+              cat ~/.ssh/signing_key.pub
+              chmod 600 ~/.ssh/signing_key && chmod 600 ~/.ssh/signing_key.pub
+              eval "$(ssh-agent)"
+              ssh-add ~/.ssh/signing_key
+              git config --global gpg.format ssh
+              git config --global user.signingKey ~/.ssh/signing_key
+              git config --global commit.gpgsign true
+              git config --global user.email $GIT_COMMITTER_EMAIL
+              git config --global user.name $GIT_COMMITTER_NAME
+              touch ~/.ssh/allowed_signers
+              echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
+              git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
+          fi
+      - uses: actions/checkout@v3
+        with:
+          ssh-key: ${{ env.SSH_PRIVATE_KEY }}
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: ${{ secrets.CODEARTIFACT_NPM_REGISTRY_GAMMA }}
+          scope: '@aws'
+      # Setup install dependencies
+      - run: npm install --global lerna@5.0.0 yarn@1.22.18
+      - run: lerna --version
+      - run: yarn --version
+      - run: npm --version
+      # Runs `yarn install` and prepare all the packages in this monorepo for the build
+      - run: lerna bootstrap
+      # Builds and tests all the packages
+      - run: yarn run all
+      # Upgrades minor version for all the packages
+      - run: lerna version minor --no-push --yes
+      # Creates git tag
+      - run: git tag -n
+      # Generates documentation via typedoc into the pre-release-docs/
+      - run: yarn run api-ref-pre-release
+      # Commits content of the pre-release-docs/ folder
+      - run: git status && git add . && git add -f pre-release-docs && git commit --amend --no-edit
+      # Pushes content of the pre-release-docs/ folder to the main branch
+      - run: git push origin HEAD:feature-test-gha-locally
+      # Creates another git tag
+      - run: git tag -n
+      # Configures AWS credentials to access ADK CodeArtifact Gamma repository
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2.0.0
+        with:
+          role-to-assume: ${{ secrets.PUBLISH_ROLE_TO_ASSUME }}
+          aws-region: us-west-2
+          role-session-name: adk-githubworkflow
+      - run: aws sts get-caller-identity
+      - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODEARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODEARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackage
+      - run: npm config list
+      - run: git status
+      # Publishes ADK packages to CodeArtifact
+      - run: lerna publish --yes
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
