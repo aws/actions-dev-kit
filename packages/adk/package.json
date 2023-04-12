@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-adk",
-  "version": "1.2.70",
+  "version": "1.2.71",
   "description": "ADK CLI",
   "homepage": "",
   "license": "Apache-2.0",
