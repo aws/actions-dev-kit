@@ -6,7 +6,7 @@
     "packages/*",
     "packages/codecatalyst-entities/*"
   ],
-  "version": "1.2.37",
+  "version": "1.2.38",
   "command": {
     "version": {
       "allowBranch": "feature-test-workflows",
