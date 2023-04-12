@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.88](https://github.com/aws/actions-dev-kit/compare/v1.2.87...v1.2.88) (2023-04-12)
+
+**Note:** Version bump only for package @aws/codecatalyst-project
+
+
+
+
+
 ## [1.2.87](https://github.com/aws/actions-dev-kit/compare/v1.2.86...v1.2.87) (2023-04-12)
 
 **Note:** Version bump only for package @aws/codecatalyst-project
