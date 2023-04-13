@@ -23,7 +23,7 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@aws/codecatalyst-adk-core": "1.2.205"
+    "@aws/codecatalyst-adk-core": "1.0.3"
   },
   "typedoc": {
     "entryPoint": "lib/index.ts"
