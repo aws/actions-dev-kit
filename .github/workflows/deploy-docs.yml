@@ -14,9 +14,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     permissions:
-     contents: read
-     pages: write
-     id-token: write
+      contents: read
+      pages: write
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       # Allows to push to the main branch
@@ -55,15 +55,5 @@ jobs:
       - run: lerna bootstrap
       - run: yarn run api-ref
       # Commit package.json files with version bump
-      - run: git status && git add . && git add -f docs && git commit --amend --no-edit
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - run: ls
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          # Upload entire repository
-          path: './docs'
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      - run: git status && git add -f docs && git commit --amend --no-edit && git push
+
