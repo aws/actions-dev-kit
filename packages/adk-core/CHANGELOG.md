@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.153](https://github.com/aws/actions-dev-kit/compare/v1.2.152...v1.2.153) (2023-04-13)
+
+**Note:** Version bump only for package @aws/codecatalyst-adk-core
+
+
+
+
+
 ## [1.2.152](https://github.com/aws/actions-dev-kit/compare/v1.2.151...v1.2.152) (2023-04-13)
 
 **Note:** Version bump only for package @aws/codecatalyst-adk-core
