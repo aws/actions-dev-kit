@@ -10,50 +10,50 @@ env:
 jobs:
     generate-docs:
     # Add a dependency to the build job
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    runs-on: ubuntu-latest
-    steps:
-      # Allows to push to the main branch
-      - name: Git & SSH auth setup
-        run: |
-          sudo git config --system --add safe.directory "*"
-          if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
-              echo "SSH Key pair found, configuring signing..."
-              mkdir ~/.ssh
-              echo -e "$SSH_PRIVATE_KEY" >> ~/.ssh/signing_key
-              cat ~/.ssh/signing_key
-              echo -e "$SSH_PUBLIC_KEY" >> ~/.ssh/signing_key.pub
-              cat ~/.ssh/signing_key.pub
-              chmod 600 ~/.ssh/signing_key && chmod 600 ~/.ssh/signing_key.pub
-              eval "$(ssh-agent)"
-              ssh-add ~/.ssh/signing_key
-              git config --global gpg.format ssh
-              git config --global user.signingKey ~/.ssh/signing_key
-              git config --global commit.gpgsign true
-              git config --global user.email $GIT_COMMITTER_EMAIL
-              git config --global user.name $GIT_COMMITTER_NAME
-              touch ~/.ssh/allowed_signers
-              echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
-              git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
-          fi
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          ssh-key: ${{ env.SSH_PRIVATE_KEY }}
-      # Install dependencies
-      - run: npm install --global lerna@5.0.0 yarn@1.22.18
-      - run: lerna --version
-      - run: yarn --version
-      - run: npm --version
-      # Runs `yarn install` and prepare all the packages in this monorepo for the build
-      - run: lerna bootstrap
-      - run: yarn run api-ref
-      # Commit package.json files with version bump
-      - run: git status && git add -f docs && git commit --amend --no-edit && git push
+      environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+      permissions:
+        contents: read
+        pages: write
+        id-token: write
+      runs-on: ubuntu-latest
+      steps:
+        # Allows to push to the main branch
+        - name: Git & SSH auth setup
+          run: |
+            sudo git config --system --add safe.directory "*"
+            if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
+                echo "SSH Key pair found, configuring signing..."
+                mkdir ~/.ssh
+                echo -e "$SSH_PRIVATE_KEY" >> ~/.ssh/signing_key
+                cat ~/.ssh/signing_key
+                echo -e "$SSH_PUBLIC_KEY" >> ~/.ssh/signing_key.pub
+                cat ~/.ssh/signing_key.pub
+                chmod 600 ~/.ssh/signing_key && chmod 600 ~/.ssh/signing_key.pub
+                eval "$(ssh-agent)"
+                ssh-add ~/.ssh/signing_key
+                git config --global gpg.format ssh
+                git config --global user.signingKey ~/.ssh/signing_key
+                git config --global commit.gpgsign true
+                git config --global user.email $GIT_COMMITTER_EMAIL
+                git config --global user.name $GIT_COMMITTER_NAME
+                touch ~/.ssh/allowed_signers
+                echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
+                git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
+            fi
+        - uses: actions/checkout@v3
+          with:
+            ref: ${{ github.event.pull_request.head.ref }}
+            ssh-key: ${{ env.SSH_PRIVATE_KEY }}
+        # Install dependencies
+        - run: npm install --global lerna@5.0.0 yarn@1.22.18
+        - run: lerna --version
+        - run: yarn --version
+        - run: npm --version
+        # Runs `yarn install` and prepare all the packages in this monorepo for the build
+        - run: lerna bootstrap
+        - run: yarn run api-ref
+        # Commit package.json files with version bump
+        - run: git status && git add -f docs && git commit --amend --no-edit && git push
 

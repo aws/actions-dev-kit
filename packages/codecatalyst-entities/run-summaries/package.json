@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-run-summaries",
-  "version": "1.2.205",
+  "version": "1.0.3",
   "description": "CodeCatalyst run summaries entity",
   "homepage": "",
   "license": "Apache-2.0",
