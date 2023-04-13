@@ -64,8 +64,9 @@ jobs:
       - run: yarn run all
       # Upgrades patch version for all the packages even if there's no changes in some of them
       - run: lerna version --conventional-commits --no-changelog --no-git-tag-version --force-publish --yes
+      - run: yarn run api-ref
       # Commit package.json files with version bump
-      - run: git status && git add . && git commit --amend --no-edit
+      - run: git status && git add . && git add -f docs && git commit --amend --no-edit
       # Configures AWS credentials to access ADK CodeArtifact Gamma repository
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2.0.0
@@ -79,6 +80,33 @@ jobs:
       - run: git status
       # Publishes ADK packages to CodeArtifact
       - run: lerna publish from-package --yes
+
+  generate-docs:
+    # Add a dependency to the build job
+    needs: publish-update
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - run: ls
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload entire repository
+          path: './docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
 
 #  publish-update-prod:
 #    runs-on: ubuntu-latest
