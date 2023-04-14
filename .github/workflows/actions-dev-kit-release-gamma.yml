@@ -1,7 +1,7 @@
 # This workflow is a stub just to appear in the Actions UI.
 # It must be executed on the gamma branch where the real definition is.
 
-name: ActionsDevKit-Release-To-Gamma
+name: adk-release-to-gamma
 
 on: [workflow_dispatch]
 

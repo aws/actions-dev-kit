@@ -1,7 +1,7 @@
 # This workflow will build and run tests using node and then publish a package to the public NPM repository
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
-name: ActionsDevKit-Release-To-Prod
+name: adk-release-to-prod
 
 on: [workflow_dispatch]
 

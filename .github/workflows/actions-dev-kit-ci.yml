@@ -7,7 +7,7 @@
 # - performs secrets scan using trufflesecurity/trufflehog GHA
 # - performs vulnerabilities scan using returntocorp/semgrep GHA
 
-name: ActionsDevKit-CI
+name: adk-ci
 
 on:
   workflow_dispatch:
