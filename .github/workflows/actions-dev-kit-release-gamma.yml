@@ -9,9 +9,6 @@ on:
     branches: [ main ]
 
 env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
-  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   GIT_COMMITTER_NAME: ActionsDevKitRelease
   GIT_COMMITTER_EMAIL: cawsactionextensions+adk-release@amazon.com
 
@@ -20,33 +17,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions: write-all
     steps:
-      # Allows to push to the main branch
-      - name: Git & SSH auth setup
-        run: |
-          sudo git config --system --add safe.directory "*"
-          if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
-              echo "SSH Key pair found, configuring signing..."
-              mkdir ~/.ssh
-              echo -e "$SSH_PRIVATE_KEY" >> ~/.ssh/signing_key
-              cat ~/.ssh/signing_key
-              echo -e "$SSH_PUBLIC_KEY" >> ~/.ssh/signing_key.pub
-              cat ~/.ssh/signing_key.pub
-              chmod 600 ~/.ssh/signing_key && chmod 600 ~/.ssh/signing_key.pub
-              eval "$(ssh-agent)"
-              ssh-add ~/.ssh/signing_key
-              git config --global gpg.format ssh
-              git config --global user.signingKey ~/.ssh/signing_key
-              git config --global commit.gpgsign true
-              git config --global user.email $GIT_COMMITTER_EMAIL
-              git config --global user.name $GIT_COMMITTER_NAME
-              touch ~/.ssh/allowed_signers
-              echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
-              git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
-          fi
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          ssh-key: ${{ env.SSH_PRIVATE_KEY }}
+          ref: gamma
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
