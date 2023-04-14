@@ -64,6 +64,11 @@ describe('@aws/codecatalyst-adk-core', () => {
     });
 
     it('test command without stdin', () => {
+        const output = adkCore.command('ls', true, false);
+        expect(output.code === 0).toBeTruthy();
+    });
+
+    it('test command without stdin', () => {
         const output = adkCore.command('ls');
         expect(output.code === 0).toBeTruthy();
     });

@@ -4,9 +4,16 @@ import os from 'os';
 import { ICommandOutput } from './core';
 import { sanitizeCommand } from '@aws/codecatalyst-adk-utils/lib';
 
-export function runCommand(cmd: string, sanitizeInput: boolean = true, args?: string[]) {
+export function runCommand(cmd: string,
+    sanitizeInput: boolean = true,
+    disableStdInput: boolean = true,
+    args?: string[]) {
+
     const command_output = <ICommandOutput>{};
-    const sanitizedCommand = disableStdInput(sanitizeCommand(cmd, sanitizeInput, args));
+    const sanitizedCommand = disableStdInput
+        ? redirectStdInputToDevNull(sanitizeCommand(cmd, sanitizeInput, args))
+        : sanitizeCommand(cmd, sanitizeInput, args);
+
     const shell_command = exec(sanitizedCommand, { async: false });
     command_output.code = shell_command.code;
     command_output.stdout = shell_command.stdout;
@@ -32,6 +39,6 @@ export function setFailure(message: any, exitCode: number) {
     process.stdout.write(errorText + os.EOL);
 }
 
-function disableStdInput(cmd: string) {
+function redirectStdInputToDevNull(cmd: string) {
     return cmd + ' < /dev/null';
 }
