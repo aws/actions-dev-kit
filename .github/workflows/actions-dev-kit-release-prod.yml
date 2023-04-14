@@ -42,6 +42,7 @@ jobs:
           fi
       - uses: actions/checkout@v3
         with:
+          ref: ${{ github.event.pull_request.head.ref }}
           ssh-key: ${{ env.SSH_PRIVATE_KEY }}
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
