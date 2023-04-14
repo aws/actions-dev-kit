@@ -1,7 +1,6 @@
 name: ActionsDevKit-Deploy-Docs
 
-on:
-  workflow_dispatch:
+on: [workflow_dispatch]
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -16,10 +15,7 @@ jobs:
       environment:
         name: github-pages
         url: ${{ steps.deployment.outputs.page_url }}
-      permissions:
-        contents: read
-        pages: write
-        id-token: write
+      permissions: write-all
       runs-on: ubuntu-latest
       steps:
         # Allows to push to the main branch
@@ -47,7 +43,6 @@ jobs:
             fi
         - uses: actions/checkout@v3
           with:
-            ref: ${{ github.event.pull_request.head.ref }}
             ssh-key: ${{ env.SSH_PRIVATE_KEY }}
         # Install dependencies
         - run: npm install --global lerna@5.0.0 yarn@1.22.18
@@ -56,6 +51,8 @@ jobs:
         - run: npm --version
         # Runs `yarn install` and prepare all the packages in this monorepo for the build
         - run: lerna bootstrap
+        # Build
+        - run: yarn run all
         - run: yarn run api-ref
         # Commit package.json files with version bump
         - run: git status && git add -f docs && git commit --amend --no-edit && git push
