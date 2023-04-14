@@ -76,6 +76,6 @@ jobs:
       - run: git status
       - run: git pull
       # Publishes ADK packages to CodeArtifact
-      - run: lerna publish --yes
+      - run: lerna publish from-package --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
