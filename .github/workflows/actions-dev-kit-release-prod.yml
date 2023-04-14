@@ -1,12 +1,9 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# This workflow will build and run tests using node and then publish a package to the public NPM repository
 # For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
 name: ActionsDevKit-Release-To-Prod
 
-on:
-  workflow_dispatch:
-  pull_request:
-    branches: [ main ]
+on: [workflow_dispatch]
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -43,9 +40,14 @@ jobs:
               echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
               git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
           fi
+      # Checkout main branch
       - uses: actions/checkout@v3
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          # Checkout with ssh key to be able to push changes back to the branch.
+          # The expected changes are:
+          # - a version bump in the package.json files
+          # - and ./lerna.json
+          # - changes in changelogs
           ssh-key: ${{ env.SSH_PRIVATE_KEY }}
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
@@ -58,15 +60,16 @@ jobs:
       - run: lerna --version
       - run: yarn --version
       - run: npm --version
+
       # Runs `yarn install` and prepare all the packages in this monorepo for the build
       - run: lerna bootstrap
       # Builds and tests all the packages
       - run: yarn run all
-      # Upgrades patch version for all the packages even if there's no changes in some or all of them
+      # Upgrades major|minor|patch version for all the packages even if there's no changes in some or all of them.
+      # Follows https://www.conventionalcommits.org/en/v1.0.0/
       - run: lerna version --conventional-commits --force-publish --yes
       # Push package.json files, changelogs, lerna.json back to the main repo
-      - run: git status && git add . && git commit --amend --no-edit
-#      && git push && git status
+      - run: git status && git add . && git commit --amend --no-edit && git push && git status
       # Publishes ADK packages to CodeArtifact
       - run: lerna publish --yes
         env:

@@ -11,14 +11,10 @@ env:
 
 jobs:
     generate-docs:
-    # Add a dependency to the build job
-      environment:
-        name: github-pages
-        url: ${{ steps.deployment.outputs.page_url }}
       permissions: write-all
       runs-on: ubuntu-latest
       steps:
-        # Allows to push to the main branch
+        # Allows bot user to push to the main branch
         - name: Git & SSH auth setup
           run: |
             sudo git config --system --add safe.directory "*"
@@ -41,19 +37,20 @@ jobs:
                 echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
                 git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
             fi
+        # Checkout main branch
         - uses: actions/checkout@v3
           with:
+            # Checkout with ssh key to be able to push changes back to the branch
             ssh-key: ${{ env.SSH_PRIVATE_KEY }}
         # Install dependencies
         - run: npm install --global lerna@5.0.0 yarn@1.22.18
         - run: lerna --version
         - run: yarn --version
         - run: npm --version
-        # Runs `yarn install` and prepare all the packages in this monorepo for the build
-        - run: lerna bootstrap
-        # Build
-        - run: yarn run all
-        - run: yarn run api-ref
-        # Commit package.json files with version bump
+
+        - run: lerna bootstrap # Runs `yarn install` and prepare all the packages in this monorepo for the build
+        - run: yarn run all #build
+        - run: yarn run api-ref #generate /docs
+        # Commit /docs folder back to the main branch. GitHub then deploys it automatically to GitHub pages
         - run: git status && git add -f docs && git commit --amend --no-edit && git push
 
