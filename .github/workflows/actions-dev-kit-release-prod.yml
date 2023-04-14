@@ -46,6 +46,7 @@ jobs:
       # Checkout main branch
       - uses: actions/checkout@v3
         with:
+          ref: ${{ github.event.pull_request.head.ref }}
           # Checkout with ssh key to be able to push changes back to the branch.
           # The expected changes are:
           # - a version bump in the package.json files
@@ -71,10 +72,8 @@ jobs:
       # Upgrades major|minor|patch version for all the packages even if there's no changes in some or all of them.
       # Follows https://www.conventionalcommits.org/en/v1.0.0/
       - run: lerna version --conventional-commits --force-publish --yes
-      # Push package.json files, changelogs, lerna.json back to the main repo
-      - run: git status && git add . && git commit --amend --no-edit
+      - run: git status
       - run: git pull
-      - run: git status && git push && git status
       # Publishes ADK packages to CodeArtifact
       - run: lerna publish --yes
         env:
