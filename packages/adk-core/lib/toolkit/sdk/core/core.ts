@@ -55,10 +55,14 @@ export function setOutput(varName: string, varValue: string) {
 * @param cmd The command to execute.
 * @param args The command arguments.
 * @param sanitizeInput If true, all the input is sanitized.
+* @param disableStdInput If true, standard input will be disabled for the command.
 * @return {@link ICommandOutput | `Command Output`}: The complex object with runtime execution parameters.
 */
-export function command(cmd: string, sanitizeInput: boolean = true, args?: string[]) {
-    return runCommand(cmd, sanitizeInput, args);
+export function command(cmd: string,
+    sanitizeInput: boolean = true,
+    disableStdInput: boolean = true,
+    args?: string[]) {
+    return runCommand(cmd, sanitizeInput, disableStdInput, args);
 }
 
 /**
@@ -107,8 +111,8 @@ export class Utils {
     }
 
     /** View documentation at {@link command | `command`} */
-    static command(cmd: string, sanitizeInput: boolean = true, args?: string[]) {
-        return runCommand(cmd, sanitizeInput, args);
+    static command(cmd: string, sanitizeInput: boolean = true, disableStdInput: boolean = true, args?: string[]) {
+        return runCommand(cmd, sanitizeInput, disableStdInput, args);
     }
 
 }
