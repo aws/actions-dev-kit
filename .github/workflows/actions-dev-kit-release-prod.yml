@@ -9,6 +9,9 @@ on:
     branches: [ main ]
 
 env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
   GIT_COMMITTER_NAME: ActionsDevKitRelease
   GIT_COMMITTER_EMAIL: cawsactionextensions+adk-release@amazon.com
 
@@ -52,8 +55,6 @@ jobs:
           scope: '@aws'
       # Install dependencies
       - run: npm install --global lerna@5.0.0 yarn@1.22.18
-        env:
-          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: lerna --version
       - run: yarn --version
       - run: npm --version
