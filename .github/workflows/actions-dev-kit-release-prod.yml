@@ -1,0 +1,76 @@
+# This workflow will build and run tests using node and then publish a package to the public NPM repository
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: ActionsDevKit-Release-To-Prod
+
+on: [workflow_dispatch]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  GIT_COMMITTER_NAME: ActionsDevKitRelease
+  GIT_COMMITTER_EMAIL: cawsactionextensions+adk-release@amazon.com
+
+jobs:
+  release-to-prod:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      # Allows to push to the main branch for
+      - name: Git & SSH auth setup
+        run: |
+          sudo git config --system --add safe.directory "*"
+          if [[  -n $SSH_PUBLIC_KEY && -n $SSH_PRIVATE_KEY ]]; then
+              echo "SSH Key pair found, configuring signing..."
+              mkdir ~/.ssh
+              echo -e "$SSH_PRIVATE_KEY" >> ~/.ssh/signing_key
+              cat ~/.ssh/signing_key
+              echo -e "$SSH_PUBLIC_KEY" >> ~/.ssh/signing_key.pub
+              cat ~/.ssh/signing_key.pub
+              chmod 600 ~/.ssh/signing_key && chmod 600 ~/.ssh/signing_key.pub
+              eval "$(ssh-agent)"
+              ssh-add ~/.ssh/signing_key
+              git config --global gpg.format ssh
+              git config --global user.signingKey ~/.ssh/signing_key
+              git config --global commit.gpgsign true
+              git config --global user.email $GIT_COMMITTER_EMAIL
+              git config --global user.name $GIT_COMMITTER_NAME
+              touch ~/.ssh/allowed_signers
+              echo "$GIT_COMMITTER_EMAIL $SSH_PUBLIC_KEY" > ~/.ssh/allowed_signers
+              git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
+          fi
+      # Checkout main branch
+      - uses: actions/checkout@v3
+        with:
+          # Checkout with ssh key to be able to push changes back to the branch.
+          # The expected changes are:
+          # - a version bump in the package.json files
+          # - and ./lerna.json
+          # - changes in changelogs
+          ssh-key: ${{ env.SSH_PRIVATE_KEY }}
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@aws'
+      # Install dependencies
+      - run: npm install --global lerna@5.0.0 yarn@1.22.18
+      - run: lerna --version
+      - run: yarn --version
+      - run: npm --version
+
+      # Runs `yarn install` and prepare all the packages in this monorepo for the build
+      - run: lerna bootstrap
+      # Builds and tests all the packages
+      - run: yarn run all
+      # Upgrades major|minor|patch version for all the packages even if there's no changes in some or all of them.
+      # Follows https://www.conventionalcommits.org/en/v1.0.0/
+      - run: lerna version --conventional-commits --force-publish --yes
+      - run: git status
+      - run: git pull
+      # Publishes ADK packages to CodeArtifact
+      - run: lerna publish from-package --yes
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

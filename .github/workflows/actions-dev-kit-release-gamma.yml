@@ -1,0 +1,15 @@
+# This workflow is a stub just to appear in the Actions UI.
+# It must be executed on the gamma branch where the real definition is.
+
+name: ActionsDevKit-Release-To-Gamma
+
+on: [workflow_dispatch]
+
+env:
+  GIT_COMMITTER_NAME: ActionsDevKitRelease
+  GIT_COMMITTER_EMAIL: cawsactionextensions+adk-release@amazon.com
+
+jobs:
+  release-to-gamma:
+    runs-on: ubuntu-latest
+    permissions: write-all
