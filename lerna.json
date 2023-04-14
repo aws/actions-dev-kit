@@ -6,10 +6,10 @@
     "packages/*",
     "packages/codecatalyst-entities/*"
   ],
-  "version": "1.2.0",
+  "version": "1.0.5",
   "command": {
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "gamma",
       "conventionalCommits": true,
       "exact": true,
       "message": "chore(release): %s"
