@@ -56,4 +56,4 @@ jobs:
       - run: yarn run all #build
       - run: yarn run api-ref #generate /docs
       # Commit /docs folder back to the main branch. GitHub then deploys it automatically to GitHub pages
-      - run: git status && git add -f docs && git commit --amend --no-edit && git push
+      - run: git status && git add . && git add -f docs && git commit --amend --no-edit && git push
