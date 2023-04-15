@@ -54,4 +54,6 @@ jobs:
       - run: yarn run all #build
       - run: yarn run api-ref-pre-release #generate /pre-release-docs
       # Commit /pre-release-docs folder back to the main branch. GitHub then deploys it automatically to GitHub pages
-      - run: git status && git add . && git add -f pre-release-docs && git commit -m "update API reference" && git push
+      - run: git status && git add . && git add -f pre-release-docs
+      - run: git commit -m "chore(docs) - update /pre-release-docs"
+      - run: git push
