@@ -1,6 +1,7 @@
 name: adk-deploy-docs
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - main
