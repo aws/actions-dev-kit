@@ -44,6 +44,7 @@ jobs:
       # Checkout main branch
       - uses: actions/checkout@v3
         with:
+          ref: ${{ github.ref }}
           # Checkout with ssh key to be able to push changes back to the branch
           ssh-key: ${{ env.SSH_PRIVATE_KEY }}
       # Install dependencies
