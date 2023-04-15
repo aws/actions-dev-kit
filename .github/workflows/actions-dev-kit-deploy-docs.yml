@@ -40,6 +40,7 @@ jobs:
       # Checkout main branch
       - uses: actions/checkout@v3
         with:
+          ref: ${{ github.base_ref }}
           # Checkout with ssh key to be able to push changes back to the branch
           ssh-key: ${{ env.SSH_PRIVATE_KEY }}
       # Install dependencies
@@ -52,5 +53,6 @@ jobs:
       - run: yarn run all #build
       - run: yarn run api-ref #generate /docs
       # Commit /docs folder back to the main branch. GitHub then deploys it automatically to GitHub pages
-      - run: git status && git add -f docs && git commit --amend --no-edit && git push
-
+      - run: git status && git add . && git add -f docs
+      - run: git commit -m "chore(docs) - update API reference"
+      - run: git push
