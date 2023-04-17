@@ -55,7 +55,7 @@ export function setOutput(varName: string, varValue: string) {
 * @param cmd The command to execute.
 * @param args The command arguments.
 * @param sanitizeInput If true, all the input is sanitized.
-* @param disableStdInput If true, standard input will be disabled for the command.
+* @param disableStdInput (since v1.0.13) If true, standard input will be disabled for the command.
 * @return {@link ICommandOutput | `Command Output`}: The complex object with runtime execution parameters.
 */
 export function command(cmd: string,
