@@ -2,7 +2,6 @@
 # It must be executed on the gamma branch where the real definition is.
 
 name: adk-release-to-gamma
-
 on: [workflow_dispatch]
 
 env:
@@ -13,3 +12,7 @@ jobs:
   release-to-gamma:
     runs-on: ubuntu-latest
     permissions: write-all
+
+    steps:
+      - name: Log warning
+        run: 'echo "Gamma release workflow. Must be run on the gamma branch."'

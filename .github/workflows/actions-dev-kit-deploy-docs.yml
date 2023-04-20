@@ -54,5 +54,5 @@ jobs:
       - run: yarn run api-ref #generate /docs
       # Commit /docs folder back to the main branch. GitHub then deploys it automatically to GitHub pages
       - run: git status && git add . && git add -f docs
-      - run: git commit -m "chore(docs) - update API reference"
+      - run: 'git commit -m "chore(docs): - update API reference"'
       - run: git push
