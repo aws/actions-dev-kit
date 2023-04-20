@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "adk",
   "private": true,
   "devDependencies": {
     "@tsconfig/node12": "^1.0.2",
@@ -27,7 +27,8 @@
     "lint:fix": "eslint --fix '**/*.ts'",
     "api-ref": "typedoc ",
     "api-ref-pre-release": "typedoc --out pre-release-docs ",
-    "generate-attributions": "ts-node ./scripts/generate-attributions"
+    "generate-attributions": "ts-node ./scripts/generate-attributions",
+    "set-version": "lerna version --no-push --no-git-tag-version"
   },
   "workspaces": {
     "packages": [
