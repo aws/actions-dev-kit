@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "adk",
   "private": true,
   "devDependencies": {
     "@tsconfig/node12": "^1.0.2",
