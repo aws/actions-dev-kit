@@ -5,6 +5,9 @@ import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, Generator
 import { Model } from '@aws/codecatalyst-adk-model-parser';
 import { writeContentToFileSync } from '@aws/codecatalyst-adk-utils/lib';
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const pj = require('../../../package.json');
+
 export const PACKAGE_JSON_GENERATOR = 'package_json_generator';
 export const PACKAGE_JSON_GENERATOR_DESTINATION_FILES = ['package.json'];
 
@@ -19,7 +22,7 @@ export class PackageJsonGenerator implements BootstrapGenerator {
                 action_name: `${model.Name}`,
                 action_description: `${model.Description}`,
                 action_main_file: `${model.Runs?.Main}`,
-                adk_version: 'latest',
+                adk_version: `^${pj.version}`,
             };
             const finalContents = applyTemplate(templateContents, templateKeys);
             writeContentToFileSync('package.json', finalContents, props.overrideFiles);
