@@ -16,17 +16,11 @@ export class ReadmeGenerator implements BootstrapGenerator {
             Logger.log('Generating README');
 
             const templateContents = fs.readFileSync(`${props.templateBasePath}/templates/action/${props.language}/README.md`, 'utf-8');
-            let action_use = `
-            MyAction:
-              Configuration:`;
-
-            Object.entries(model.Configuration!).map(([configKey, configValue]) => {
-                action_use = action_use.concat(`
-                    ${configKey} : 'test' # ${configValue.Description}`);
-            });
+            let action_name = model.Name?.split(' ', 1);
 
             let templateKeys: { [key: string]: string } = {
-                action_usage: `${action_use}`,
+                ACTION_NAME: `${action_name}`,
+                ACTION_NAME_LOWERCASE: `${action_name}`.toLowerCase(),
             };
             const finalContents = applyTemplate(templateContents, templateKeys);
             writeContentToFileSync('README.md', finalContents, props.overrideFiles);
