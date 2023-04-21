@@ -1,7 +1,7 @@
 'use strict';
 
 import chalk from 'chalk';
-import { product_name } from '../../lib/util/product';
+import { productName } from '../../lib/util/product';
 import { ConsoleLogger } from '../../lib/util/logger';
 
 const mockChalk: jest.Mocked<typeof chalk> = <jest.Mocked<typeof chalk>>chalk;
@@ -17,7 +17,7 @@ describe('@aws/codecatalyst-adk-utils', () => {
     const log = new ConsoleLogger();
 
     it('test product', () => {
-        expect('codecatalyst' === product_name()).toBeTruthy();
+        expect('codecatalyst' === productName()).toBeTruthy();
     });
 
     it('test chalk', () => {
