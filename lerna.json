@@ -6,7 +6,7 @@
     "packages/*",
     "packages/codecatalyst-entities/*"
   ],
-  "version": "1.0.7",
+  "version": "1.0.14",
   "command": {
     "version": {
       "allowBranch": "gamma",
