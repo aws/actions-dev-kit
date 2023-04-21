@@ -1,5 +1,5 @@
 import { handleCommand as init } from './commands/init';
-import { product_name } from './util/product';
+import { productName } from './util/product';
 import { version as adk_version } from './util/version';
 import { ProductInfo } from './types/types';
 import chalk from 'chalk';
@@ -48,22 +48,22 @@ async function cliArgs() {
         })
         .command('init', 'Initializes the current workspace with default Action definition', (yargs) => {
             return yargs
-                .option(product_name() + '-space', {
+                .option(productName() + '-space', {
                     type: 'string',
                     alias: 'space',
-                    desc: product_name() + ' Space to work against',
+                    desc: productName() + ' Space to work against',
                     requiresArg: true,
                 })
-                .option(product_name() + '-project', {
+                .option(productName() + '-project', {
                     type: 'string',
                     alias: 'proj',
-                    desc: product_name() + ' Project to work against',
+                    desc: productName() + ' Project to work against',
                     requiresArg: true,
                 })
-                .option(product_name() + '-repository', {
+                .option(productName() + '-repository', {
                     type: 'string',
                     alias: 'repo',
-                    desc: product_name() + ' source repository to work against',
+                    desc: productName() + ' source repository to work against',
                     requiresArg: true,
                 })
                 .option('action', {
@@ -81,7 +81,7 @@ async function cliArgs() {
                 .option('disconnected', {
                     type: 'boolean',
                     default: false,
-                    desc: 'If true, only generates ADK project files locally, without syncing with ' + product_name(),
+                    desc: 'If true, only generates ADK project files locally, without syncing with ' + productName(),
                 });
         })
         .version(adk_version())
