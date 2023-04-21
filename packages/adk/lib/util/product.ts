@@ -1,5 +1,5 @@
 const PRODUCT_NAME = 'codecatalyst';
 
-export function product_name() {
+export function productName() {
     return PRODUCT_NAME;
 }

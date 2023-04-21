@@ -4,7 +4,7 @@ import { Injectable, Logger, Scope } from '@nestjs/common';
 import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { Model } from '@aws/codecatalyst-adk-model-parser';
 import { writeContentToFileSync } from '@aws/codecatalyst-adk-utils/lib';
-import { read_space } from '../../util/space';
+import { readSpace } from '../../util/space';
 
 
 export const LICENSE_GENERATOR = 'license_generator';
@@ -19,7 +19,7 @@ export class LicenseGenerator implements BootstrapGenerator {
             Logger.log('Generating MIT LICENSE');
             const year = new Date().getFullYear();
             const templateContents = fs.readFileSync(`${props.templateBasePath}/templates/action/${props.language}/LICENSE.md`, 'utf-8');
-            const copyRightHolder = read_space();
+            const copyRightHolder = readSpace();
 
             let templateKeys: { [key: string]: string } = {
                 YEAR: `${year}`,

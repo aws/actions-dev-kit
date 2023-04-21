@@ -4,7 +4,7 @@ import { Injectable, Logger, Scope } from '@nestjs/common';
 import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { Model } from '@aws/codecatalyst-adk-model-parser';
 import { writeContentToFileSync } from '@aws/codecatalyst-adk-utils/lib';
-import { read_space } from '../../util/space';
+import { readSpace } from '../../util/space';
 
 export const README_GENERATOR = 'readme_generator';
 export const README_GENERATOR_DESTINATION_FILES = ['README.md'];
@@ -18,7 +18,7 @@ export class ReadmeGenerator implements BootstrapGenerator {
 
             const templateContents = fs.readFileSync(`${props.templateBasePath}/templates/action/${props.language}/README.md`, 'utf-8');
             let action_name = model.Name?.split(' ', 1);
-            let space_name = read_space();
+            let space_name = readSpace();
             if (!fs.existsSync('../')) {
                 fs.mkdirSync('.codecatalyst/workflows', { recursive: true });
             }
