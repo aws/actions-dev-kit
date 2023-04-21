@@ -29,6 +29,11 @@ SchemaVersion: 1.0
 Actions:      
   %%ACTION_NAME%%:
     Identifier: %%ACTION_NAME_LOWERCASE%%@v1
+    Environment:
+      Name: codecatalyst-environment
+      Connections:
+        - Name: codecatalyst-account-connection
+          Role: codecatalyst-role
     Inputs:
       Sources:
         - WorkflowSource
@@ -48,6 +53,85 @@ The friendly name for the **%%ACTION_NAME%%** action, and is used as a label in 
 Required: Yes
 
 Default: %%ACTION_NAME%%
+
+---
+### Environment.Name
+
+The name of an existing environment that you want to associate with the action.  For information about environments, see [Working with environments](https://docs.aws.amazon.com/codecatalyst/latest/userguide/deploy-environments.html) in the *Amazon CodeCatalyst User Guide*.
+
+Required: No
+
+Default: none
+
+---
+
+### Environment.Connections.Name
+
+The name of the account connection. For information about account connections, see [Adding an AWS account to a space](https://docs.aws.amazon.com/codecatalyst/latest/userguide/ipa-connect-account-create.html) in the *Amazon CodeCatalyst User Guide*.
+
+Required: Yes
+
+Default: none
+
+---
+
+### Environment.Connections.Role
+
+The name of the IAM role that the **%%ACTION_NAME%%** action uses to access AWS resources. Make sure that the role includes:
+
+
+The following permissions policy:
+
+> **Warning**: Limit the permissions to the minimum required for the action to run successfully. Using a role with broader permissions might pose a security risk.
+
+> **Note**:  The example is for illustrative purposes, and will not work without additional configuration.
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:DescribeStackEvents",
+                "cloudformation:DescribeChangeSet",
+                "cloudformation:DescribeStacks",
+                "cloudformation:ListStackResources"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "sts:AssumeRole",
+            "Resource": "arn:aws:iam::aws-account:role/cdk-*"
+        }
+    ]
+}
+```
+The following custom trust policy:
+```
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "",
+                "Effect": "Allow",
+                "Principal": {
+                    "Service":  [
+                       "codecatalyst-runner.amazonaws.com",
+                       "codecatalyst.amazonaws.com"
+                     ]
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+```
+Make sure that this role is added to your account connection.
+
+For more information on creating IAM roles, see [Creating a role using a custom trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-custom.html) in the *AWS Identity and Access Management User Guide*.
 
 ---
 
