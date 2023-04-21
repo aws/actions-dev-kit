@@ -4,6 +4,7 @@ import { Injectable, Logger, Scope } from '@nestjs/common';
 import { BootstrapGenerator, BootstrapGeneratorResult, BootstrapError, GeneratorProps } from '../model';
 import { Model } from '@aws/codecatalyst-adk-model-parser';
 import { writeContentToFileSync } from '@aws/codecatalyst-adk-utils/lib';
+import { read_space } from '../../util/space';
 
 export const README_GENERATOR = 'readme_generator';
 export const README_GENERATOR_DESTINATION_FILES = ['README.md'];
@@ -17,10 +18,22 @@ export class ReadmeGenerator implements BootstrapGenerator {
 
             const templateContents = fs.readFileSync(`${props.templateBasePath}/templates/action/${props.language}/README.md`, 'utf-8');
             let action_name = model.Name?.split(' ', 1);
+            let space_name = read_space();
+            if (!fs.existsSync('../')) {
+                fs.mkdirSync('.codecatalyst/workflows', { recursive: true });
+            }
+
+            let action_use = '    Configuration:';
+            Object.entries(model.Configuration!).map(([configKey, configValue]) => {
+                action_use = action_use.concat(
+                    `\n      ${configKey} : 'test' # ${configValue.Description}`);
+            });
 
             let templateKeys: { [key: string]: string } = {
+                ACTION_USAGE: `${action_use}`,
                 ACTION_NAME: `${action_name}`,
                 ACTION_NAME_LOWERCASE: `${action_name}`.toLowerCase(),
+                CODECATALYST_SPACE_LOWERCASE: `${space_name}`.toLowerCase(),
             };
             const finalContents = applyTemplate(templateContents, templateKeys);
             writeContentToFileSync('README.md', finalContents, props.overrideFiles);

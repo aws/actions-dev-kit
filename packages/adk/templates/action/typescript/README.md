@@ -28,7 +28,7 @@ SchemaVersion: 1.0
 ...
 Actions:      
   %%ACTION_NAME%%:
-    Identifier: %%ACTION_NAME_LOWERCASE%%@v1
+    Identifier: %%CODECATALYST_SPACE_LOWERCASE%%/%%ACTION_NAME_LOWERCASE%%@v1
     Environment:
       Name: codecatalyst-environment
       Connections:
@@ -37,9 +37,7 @@ Actions:
     Inputs:
       Sources:
         - WorkflowSource
-    Configuration:
-      WhoToGreet: Name
-      HowToGreet: Hello there,
+%%ACTION_USAGE%%
 ```
 ---
 
@@ -55,6 +53,17 @@ Required: Yes
 Default: %%ACTION_NAME%%
 
 ---
+
+### Identifier
+
+Identifies the action.
+
+Required: Yes
+
+Default: %%CODECATALYST_SPACE_LOWERCASE%%/%%ACTION_NAME_LOWERCASE%%@v1
+
+---
+
 ### Environment.Name
 
 The name of an existing environment that you want to associate with the action.  For information about environments, see [Working with environments](https://docs.aws.amazon.com/codecatalyst/latest/userguide/deploy-environments.html) in the *Amazon CodeCatalyst User Guide*.
@@ -132,16 +141,6 @@ The following custom trust policy:
 Make sure that this role is added to your account connection.
 
 For more information on creating IAM roles, see [Creating a role using a custom trust policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-custom.html) in the *AWS Identity and Access Management User Guide*.
-
----
-
-### Identifier
-
-Identifies the action. 
-
-Required: Yes
-
-Default: %%ACTION_NAME_LOWERCASE%%@v1
 
 ---
 
