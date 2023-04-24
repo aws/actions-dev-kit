@@ -86,17 +86,11 @@ The following list contains the ADK CLI commands and information about how to us
 
 ### Install ADK CLI
 
-1. Run the following npm command to get ADK packages:
-   * `npm install -g @aws/codecatalyst-adk`
-   * `npm install -g @aws/codecatalyst-adk-utils`
+1. Run the following npm command to install the ADK CLI package globally:
    
+   * `npm install -g @aws/codecatalyst-adk`
 
-2. When running npm, you may face a bug with non-empty cache and switching registry. If you run into issues where a certain dependency isn't found, either remove your global npm cache or install the dependencies:
-   * `npm install -g chalk@4`
-   * `npm install -g @aws/codecatalyst-adk-model-parser`
-    
-
-3. Validate that ADK is running with the following command: `adk help`
+2. Validate that ADK is running with the following command: `adk help`
 
 
 ## Development
