@@ -31,7 +31,7 @@
   "dependencies": {
     "@aws/codecatalyst-adk-model-parser": "1.0.14",
     "@aws/codecatalyst-adk-utils": "1.0.14",
-    "@nestjs/common": "^9.3.12",
+    "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^9.3.12",
     "js-yaml": "^4.1.0",
     "jsonschema": "^1.4.0",
