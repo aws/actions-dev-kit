@@ -30,7 +30,7 @@
   "devDependencies": {
     "jsii": "^5.0.0",
     "jsii-diff": "^1.59.0",
-    "jsii-docgen": "^8.0.5",
+    "jsii-docgen": "^9.0.10",
     "jsii-pacmak": "^1.59.0",
     "jsii-rosetta": "^5.0.0"
   },
