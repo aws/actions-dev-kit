@@ -5,6 +5,7 @@ import {
     escape,
     sanitizeCommand,
     isString,
+    isValidOutputVariableName,
     copyToFileSync,
     writeContentToFileSync,
     unknownToStringOrUndefined,
@@ -124,5 +125,23 @@ describe('ADK-Util test', () => {
         mockFS.existsSync.mockReturnValueOnce(true);
         writeContentToFileSync('dummy', 'dummy', true);
         expect(fs.writeFileSync).toHaveBeenCalledTimes(1);
+    });
+
+    it('test validateOutputVariableName', async () => {
+        const validInput = 'Stack_ID';
+        const validInput30Chars = 'Stack_ID_12345678910111213145';
+        const emptyInput = '';
+        const invalidInput = 'Stack ID';
+        const tooLongInput = 'longer_than_30_chars_123456789101112131415161718';
+        const startsWithInvalidChar = '-Stack_ID';
+        const endsWithInvalidChar = 'Stack_ID-';
+
+        expect(isValidOutputVariableName(validInput)).toBeTruthy();
+        expect(isValidOutputVariableName(validInput30Chars)).toBeTruthy();
+        expect(isValidOutputVariableName(emptyInput)).toBeFalsy();
+        expect(isValidOutputVariableName(invalidInput)).toBeFalsy();
+        expect(isValidOutputVariableName(tooLongInput)).toBeFalsy();
+        expect(isValidOutputVariableName(startsWithInvalidChar)).toBeFalsy();
+        expect(isValidOutputVariableName(endsWithInvalidChar)).toBeFalsy();
     });
 });
