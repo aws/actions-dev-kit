@@ -1,2 +1,2 @@
-lerna bootstrap
+yarn install
 yarn run all

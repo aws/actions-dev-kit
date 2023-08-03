@@ -26,8 +26,8 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: npm install --global lerna yarn #install dependencies
-      - run: lerna bootstrap #prepare packages to be built
+      - run: npm install --global lerna yarn #install global dependencies
+      - run: yarn install #install and link depdendencies
       - run: ./build.sh #build
       - run: yarn run api-ref #test generate /docs
       - run: yarn run api-ref-pre-release #test generate /pre-release-docs
@@ -40,7 +40,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: TruffleHog OSS
-        uses: trufflesecurity/trufflehog@v3.32.0
+        uses: trufflesecurity/trufflehog@v3.45.1
         with:
           path: ./
           # Target branch of the pull request
