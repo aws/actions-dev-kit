@@ -29,7 +29,7 @@ jobs:
       - run: yarn --version
       - run: npm --version
       # Runs `yarn install` and prepare all the packages in this monorepo for the build
-      - run: lerna bootstrap
+      - run: yarn install
       # Builds and tests all the packages
       - run: yarn run all
       # Upgrades patch version for all the packages even if there's no changes in some of them
