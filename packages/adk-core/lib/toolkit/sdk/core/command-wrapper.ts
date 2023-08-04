@@ -2,7 +2,7 @@ import { exec } from 'shelljs';
 // @ts-ignore
 import os from 'os';
 import { ICommandOutput } from './core';
-import { sanitizeCommand } from '@aws/codecatalyst-adk-utils/lib';
+import { isValidOutputVariableName, outputVariableNamePattern, sanitizeCommand } from '@aws/codecatalyst-adk-utils/lib';
 
 export function runCommand(cmd: string,
     sanitizeInput: boolean = true,
@@ -26,6 +26,15 @@ export function getInputParam(inputVar: string) {
 }
 
 export function setOutputParam(varName: string, varValue: string) {
+    if (!isValidOutputVariableName(varName)) {
+        const errorMessage = `Invalid output parameter name, it must match the following pattern ${outputVariableNamePattern}`;
+        const command_output = <ICommandOutput>{};
+        command_output.code = 1;
+        command_output.stdout = errorMessage;
+        command_output.stderr = errorMessage;
+        setFailure(errorMessage, 1);
+        return command_output;
+    }
     return runCommand(`echo "::set-output name=${varName}::${varValue}"`, false).stdout;
 }
 

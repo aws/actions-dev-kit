@@ -1,6 +1,7 @@
 'use strict';
 
 import * as adkCore from '../lib/toolkit/sdk/core/core.js';
+import { outputVariableNamePattern } from '@aws/codecatalyst-adk-utils/lib';
 
 describe('@aws/codecatalyst-adk-core', () => {
 
@@ -71,6 +72,35 @@ describe('@aws/codecatalyst-adk-core', () => {
     it('test command without stdin', () => {
         const output = adkCore.command('ls');
         expect(output.code === 0).toBeTruthy();
+    });
+
+    it('test setOutput validation', () => {
+        const errorMessage = `Invalid output parameter name, it must match the following pattern ${outputVariableNamePattern}`;
+        const outputParamValue = 'outputParamValue';
+        const validInput30Chars = 'Stack_ID_12345678910111213145';
+
+        const emptyInput = '';
+        const invalidInput = 'Stack ID';
+        const tooLongInput = 'longer_than_30_chars_123456789101112131415161718';
+        const startsWithInvalidChar = '-Stack_ID';
+        const endsWithInvalidChar = 'Stack_ID-';
+
+        expect(adkCore.setOutput(validInput30Chars, outputParamValue).code === undefined).toBeTruthy();
+
+        expect(adkCore.setOutput(emptyInput, outputParamValue).code === 1).toBeTruthy();
+        expect(adkCore.setOutput(emptyInput, outputParamValue).stdout === errorMessage).toBeTruthy();
+
+        expect(adkCore.setOutput(invalidInput, outputParamValue).code === 1).toBeTruthy();
+        expect(adkCore.setOutput(invalidInput, outputParamValue).stdout === errorMessage).toBeTruthy();
+
+        expect(adkCore.setOutput(tooLongInput, outputParamValue).code === 1).toBeTruthy();
+        expect(adkCore.setOutput(tooLongInput, outputParamValue).stdout === errorMessage).toBeTruthy();
+
+        expect(adkCore.setOutput(startsWithInvalidChar, outputParamValue).code === 1).toBeTruthy();
+        expect(adkCore.setOutput(startsWithInvalidChar, outputParamValue).stdout === errorMessage).toBeTruthy();
+
+        expect(adkCore.setOutput(endsWithInvalidChar, outputParamValue).code === 1).toBeTruthy();
+        expect(adkCore.setOutput(endsWithInvalidChar, outputParamValue).stdout === errorMessage).toBeTruthy();
     });
 
 });
