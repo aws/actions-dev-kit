@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+export const outputVariableNamePattern = new RegExp(/^[A-Za-z0-9][A-Za-z0-9\-_]{1,30}[A-Za-z0-9]$/);
+
 /**
  * Sanitizes (escapes) special characters in the command and its arguments.
  * @param cmd The command to be sanitized.
@@ -82,4 +84,12 @@ export function writeContentToFileSync(dest: string, content: string, overrideDe
     if (!fs.existsSync(dest) || (fs.existsSync(dest) && overrideDest)) {
         fs.writeFileSync(dest, content, 'utf8');
     }
+}
+
+/**
+ * Validates if the output variable name is valid by checking against this pattern - https://github.com/aws/actions-dev-kit/blob/main/packages/adk/templates/codecatalyst_model_schema.json#L94
+ * @param varName The destination file.
+ */
+export function isValidOutputVariableName(varName: string): boolean {
+    return outputVariableNamePattern.test(varName);
 }

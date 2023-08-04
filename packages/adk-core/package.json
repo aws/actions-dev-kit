@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "@types/shelljs": "^0.8.11",
-    "shelljs": "^0.8.5"
+    "shelljs": "^0.8.5",
+    "@aws/codecatalyst-adk-utils": "^1.0.14"
   },
   "devDependencies": {
     "jsii": "^5.0.0",

@@ -38,9 +38,8 @@ export function getEnvironmentVariable(inputVar: string) {
 /**
 * Sets the output value for the action output parameter.
 *
-* @param varName The name of the environment variable.
+* @param varName The name of the environment variable. Must match the `^[A-Za-z0-9][A-Za-z0-9\-_]{1,30}[A-Za-z0-9]$` pattern.
 * @param varValue The fully resolved value of the output variable.
-* @param sanitizeInput If true, all the input is sanitized.
 *
 * @return The result of running `echo ${varName}`.
 */
