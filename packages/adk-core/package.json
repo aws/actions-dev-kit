@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-adk-core",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "ADK Core",
   "homepage": "",
   "main": "lib/toolkit/sdk/core/core.js",
@@ -24,9 +24,9 @@
     "api-ref": "typedoc"
   },
   "dependencies": {
+    "@aws/codecatalyst-adk-utils": "1.0.15",
     "@types/shelljs": "^0.8.11",
-    "shelljs": "^0.8.5",
-    "@aws/codecatalyst-adk-utils": "^1.0.14"
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {
     "jsii": "^5.0.0",
