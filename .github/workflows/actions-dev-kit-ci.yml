@@ -40,7 +40,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: TruffleHog OSS
-        uses: trufflesecurity/trufflehog@v3.54.0
+        uses: trufflesecurity/trufflehog@v3.56.0
         with:
           path: ./
           # Target branch of the pull request
