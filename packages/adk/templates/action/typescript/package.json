@@ -10,7 +10,7 @@
     "lint": "eslint **/*.ts",
     "package": "tsc && jest && ncc build -o dist",
     "test": "jest",
-    "all": "npm run build && npm run format && npm run lint && npm run package"
+    "all": "npm run format && npm run lint && npm run build && npm run package"
   },
   "dependencies": {
     "@aws/codecatalyst-adk-core": "%%adk_version%%",
