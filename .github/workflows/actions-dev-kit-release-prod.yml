@@ -41,7 +41,7 @@ jobs:
               git config --global gpg.ssh.allowedSignersFile ~/.ssh/allowed_signers
           fi
       # Checkout main branch
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           # Checkout with ssh key to be able to push changes back to the branch.
           # The expected changes are:
