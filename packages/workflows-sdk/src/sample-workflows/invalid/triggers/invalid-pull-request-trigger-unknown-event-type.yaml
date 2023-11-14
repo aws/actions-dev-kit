@@ -1,7 +1,9 @@
-Name: ScheduledWorkflow
+Name: PullRequestWorkflow
 SchemaVersion: 1.0
 Triggers:
-  - Type: SCHEDULE
+  - Type: PULLREQUEST
+    Events:
+      - UNKNOWN
 Actions:
   BackendBuildAndPackage:
     Identifier: aws/build@v1

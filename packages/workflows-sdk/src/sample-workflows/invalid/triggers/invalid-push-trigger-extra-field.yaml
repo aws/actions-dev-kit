@@ -5,13 +5,21 @@ Triggers:
     Branches:
       - feature/branch_1
       - feature/branch_2
-    Files:
+    FilesChanged:
       - file_1
       - file_2
     ExtraField: "This should not be allowed"
 Actions:
-  Build:
+  BackendBuildAndPackage:
     Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      Artifacts:
+        - Name: backend
+          Files:
+            - "**/*"
     Configuration:
       Steps:
-        - Run: ls
+        - Run: echo "Building Backend Artifacts..."

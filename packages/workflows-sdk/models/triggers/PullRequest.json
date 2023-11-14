@@ -31,5 +31,6 @@
       }
     }
   },
+  "required": ["Type", "Events"],
   "additionalProperties": false
 }

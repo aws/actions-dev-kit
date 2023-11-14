@@ -1,7 +1,13 @@
-Name: ScheduledWorkflow
+Name: PushWorkflow
 SchemaVersion: 1.0
 Triggers:
-  - Type: SCHEDULE
+  - Type: PULLREQUEST
+    Events:
+      - "DRAFT"
+      - "OPEN"
+      - "CLOSED"
+      - "MERGED"
+      - "REVISION"
 Actions:
   BackendBuildAndPackage:
     Identifier: aws/build@v1

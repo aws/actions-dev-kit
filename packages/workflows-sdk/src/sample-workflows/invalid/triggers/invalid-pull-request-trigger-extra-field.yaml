@@ -1,7 +1,16 @@
-Name: ScheduledWorkflow
+Name: PullRequestWorkflow
 SchemaVersion: 1.0
 Triggers:
-  - Type: SCHEDULE
+  - Type: PULLREQUEST
+    Events:
+      - OPEN
+    Branches:
+      - feature/branch_1
+      - feature/branch_2
+    FilesChanged:
+      - file_1
+      - file_2
+    ExtraField: "This should not be allowed"
 Actions:
   BackendBuildAndPackage:
     Identifier: aws/build@v1
