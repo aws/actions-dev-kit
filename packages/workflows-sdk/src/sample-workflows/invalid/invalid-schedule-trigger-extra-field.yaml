@@ -1,0 +1,12 @@
+Name: ScheduledWorkflow
+SchemaVersion: 1.0
+Triggers:
+  - Type: SCHEDULE
+    Expression: "0 0 ? * MON-FRI *"
+    ExtraField: "This should not be allowed"
+Actions:
+  Build:
+    Identifier: aws/build@v1
+    Configuration:
+      Steps:
+        - Run: ls

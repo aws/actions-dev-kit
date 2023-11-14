@@ -1,0 +1,10 @@
+Name: ScheduledWorkflow
+SchemaVersion: 1.0
+Triggers:
+  - Type: SCHEDULE
+Actions:
+  Build:
+    Identifier: aws/build@v1
+    Configuration:
+      Steps:
+        - Run: ls
