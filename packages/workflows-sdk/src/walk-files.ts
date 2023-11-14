@@ -1,16 +1,16 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 /* eslint-disable import/no-extraneous-dependencies */
-import * as globule from "globule";
+import * as globule from 'globule';
 
 // globa patterns that represent all files.
-export const ALL_FILES = ["**/*", "**/*.??*", "*"];
+export const ALL_FILES = ['**/*', '**/*.??*', '*'];
 /**
  * Returns all the file paths under this locationPath that adhere to this glob patterns.
  */
 export function walkFiles(
   locationPath: string,
-  globPatterns: string[]
+  globPatterns: string[],
 ): string[] {
   return globule
     .find(ALL_FILES, {
@@ -20,7 +20,7 @@ export function walkFiles(
     .filter((localPath) => matchesGlob(localPath, globPatterns))
     .filter(
       (localPath) =>
-        !fs.lstatSync(path.join(locationPath, localPath)).isDirectory()
+        !fs.lstatSync(path.join(locationPath, localPath)).isDirectory(),
     );
 }
 

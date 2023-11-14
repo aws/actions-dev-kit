@@ -2,7 +2,7 @@
   "name": "@amzn/codecatalyst-workflows-sdk",
   "description": "This is the codecatalysts workflow sdk. This defines the workflow configuration a for codecatalyst project.",
   "scripts": {
-    "build": "yarn generate && npx projen build",
+    "build": "yarn projen && yarn generate && npx projen build",
     "bump": "npx projen bump",
     "bump:preview": "npx projen bump:preview",
     "clobber": "npx projen clobber",
@@ -20,13 +20,13 @@
     "upgrade": "npx projen upgrade",
     "watch": "npx projen watch",
     "projen": "npx projen --no-post",
-    "generate": "cd generators && npx ts-node ts-codegen-driver.ts",
+    "generate": "npx ts-node ./generators/ts-codegen-driver.ts",
     "component:package": "yarn build && yarn package",
     "npm:push": "yarn bump && yarn component:package && yarn npm:publish",
     "npm:publish": "npm publish dist/js/*.tgz"
   },
   "devDependencies": {
-    "@types/jest": "*",
+    "@types/jest": "^29.5.8",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^5",
     "@typescript-eslint/parser": "^5",
@@ -35,7 +35,7 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-import": "^2.29.0",
     "husky": "^4.3.8",
-    "jest": "*",
+    "jest": "^29.7.0",
     "jest-junit": "^15",
     "json-schema-to-typescript": "^13.1.1",
     "npm-check-updates": "^16",
@@ -46,7 +46,7 @@
     "pretty-quick": "^3.1.3",
     "projen": "0.71.112",
     "standard-version": "^9",
-    "ts-jest": "*",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10",
     "typescript": "^5.2.2"
   },

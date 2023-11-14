@@ -6,7 +6,7 @@ import { WorkflowDefintion } from "./sdk/WorkflowDefinition";
 import { walkFiles } from "./walk-files";
 
 const validWorkflows = path.resolve(
-  path.join(__dirname, "./sample-workflows/valid/")
+  path.join(__dirname, "./sample-workflows/valid/"),
 );
 const validFiles = walkFiles(validWorkflows, ["**/*.yaml"]);
 validFiles.forEach((file) => {
@@ -19,7 +19,7 @@ validFiles.forEach((file) => {
 });
 
 const invalidWorkflows = path.resolve(
-  path.join(__dirname, "./sample-workflows/invalid/")
+  path.join(__dirname, "./sample-workflows/invalid/"),
 );
 const invalidFiles = walkFiles(invalidWorkflows, ["**/*.yaml"]);
 invalidFiles.forEach((file) => {
@@ -35,7 +35,7 @@ function testWorkflow(
   workflowFilepath: string,
   options: {
     expected: boolean;
-  }
+  },
 ) {
   const workflow = yaml.load(fs.readFileSync(workflowFilepath).toString());
   const result = WorkflowDefintion.validate(workflow);
