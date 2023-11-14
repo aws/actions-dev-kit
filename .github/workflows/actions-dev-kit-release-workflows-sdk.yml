@@ -1,0 +1,41 @@
+# This workflow will build and run tests using node and then publish a package to the public NPM repository
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: adk-release-workflows-sdk
+
+on: [workflow_dispatch]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  GIT_COMMITTER_NAME: ActionsDevKitRelease
+  GIT_COMMITTER_EMAIL: cawsactionextensions+adk-release@amazon.com
+
+jobs:
+  release-to-prod:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ env.SSH_PRIVATE_KEY }}
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@aws'
+      # Install dependencies
+      - run: npm install --global lerna@5.0.0 yarn@1.22.18
+      - run: lerna --version
+      - run: yarn --version
+      - run: npm --version
+      - run: cd packages/workflows-sdk
+      # Runs `yarn install` and prepare all the packages in this monorepo for the build
+      - run: yarn install
+      # Builds and tests all the packages
+      - run: yarn build
+      - run: cd packages/workflows-sdk && yarn npm:push
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
