@@ -60,7 +60,7 @@
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
-  "version": "0.1.5-preview.0",
+  "version": "0.1.5-preview.1",
   "jest": {
     "verbose": true,
     "testMatch": [
