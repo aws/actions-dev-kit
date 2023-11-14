@@ -1,0 +1,17 @@
+Name: PushWorkflow
+SchemaVersion: 1.0
+Triggers:
+  - Type: PUSH
+    Branches:
+      - feature/branch_1
+      - feature/branch_2
+    Files:
+      - file_1
+      - file_2
+    ExtraField: "This should not be allowed"
+Actions:
+  Build:
+    Identifier: aws/build@v1
+    Configuration:
+      Steps:
+        - Run: ls
