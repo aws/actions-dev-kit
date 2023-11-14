@@ -1,5 +1,5 @@
 {
-  "name": "@amzn/codecatalyst-workflows-sdk",
+  "name": "@aws/codecatalyst-workflows-sdk",
   "description": "This is the codecatalysts workflow sdk. This defines the workflow configuration a for codecatalyst project.",
   "scripts": {
     "build": "yarn projen && yarn generate && npx projen build",
@@ -22,8 +22,8 @@
     "projen": "npx projen --no-post",
     "generate": "npx ts-node ./generators/ts-codegen-driver.ts",
     "component:package": "yarn build && yarn package",
-    "npm:push": "yarn bump && yarn component:package && yarn npm:publish",
-    "npm:publish": "npm publish dist/js/*.tgz"
+    "npm:push": "yarn bump:preview && yarn component:package && yarn npm:publish",
+    "npm:publish": "npm publish dist/js/*.tgz --access public"
   },
   "devDependencies": {
     "@types/jest": "^29.5.8",
@@ -60,7 +60,7 @@
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
-  "version": "0.1.5-alpha.0",
+  "version": "0.1.5-preview.0",
   "jest": {
     "verbose": true,
     "testMatch": [

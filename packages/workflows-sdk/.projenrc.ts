@@ -5,7 +5,7 @@ const packageJSON = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
 
 const project = new typescript.TypeScriptProject({
   defaultReleaseBranch: 'main',
-  packageName: '@amzn/codecatalyst-workflows-sdk',
+  packageName: '@aws/codecatalyst-workflows-sdk',
   description:
     'This is the codecatalysts workflow sdk. This defines the workflow configuration a for codecatalyst project.',
   name: 'codecatalyst-workflows-sdk',
@@ -89,8 +89,8 @@ project.setScript('build', ['yarn projen', 'yarn generate', 'npx projen build'].
 
 project.setScript(
   'npm:push',
-  ['yarn bump', 'yarn component:package', 'yarn npm:publish'].join(' && '),
+  ['yarn bump:preview', 'yarn component:package', 'yarn npm:publish'].join(' && '),
 );
-project.setScript('npm:publish', 'npm publish dist/js/*.tgz');
+project.setScript('npm:publish', 'npm publish dist/js/*.tgz --access public');
 
 project.synth();
