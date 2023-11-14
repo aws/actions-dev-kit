@@ -29,6 +29,7 @@
     ".projenrc.js",
     "src/**/*.ts",
     "test/**/*.ts",
+    "models",
     "generators/**/*.ts",
     ".projenrc.ts",
     "projenrc/**/*.ts"

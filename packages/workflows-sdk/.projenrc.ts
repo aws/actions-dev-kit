@@ -29,6 +29,7 @@ const project = new typescript.TypeScriptProject({
   },
   gitignore: ['!/old-model-baseline.tgz'],
   tsconfig: {
+    include: ['models'],
     compilerOptions: {
       esModuleInterop: true,
       noImplicitAny: false,

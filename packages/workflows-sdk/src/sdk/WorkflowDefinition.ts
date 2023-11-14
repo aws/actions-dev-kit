@@ -2,7 +2,9 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { Validator, ValidatorResult, Options } from 'jsonschema';
 import * as types from '../index';
-import workflowEntry from '../models/workflow/Workflow.json';
+
+const MODELS_LOCATION = path.resolve(path.join(__dirname, '../../models/'));
+const WORKFLOW_ENTRY = 'workflow/Workflow.json';
 
 /**
  * Generates a typesafe codecatalyst workflow definition.
@@ -20,7 +22,7 @@ export class WorkflowDefintion {
     _options?: Options,
   ): ValidatorResult {
     const v = new Validator();
-    v.addSchema(workflowEntry);
+    v.addSchema(fetchSchema(WORKFLOW_ENTRY));
     while (v.unresolvedRefs.length) {
       const nextSchema = v.unresolvedRefs.shift();
       if (nextSchema && !v.schemas[nextSchema]) {
@@ -34,7 +36,7 @@ export class WorkflowDefintion {
         );
       }
     }
-    const result = v.validate(workflowLikeObject, workflowEntry);
+    const result = v.validate(workflowLikeObject, fetchSchema(WORKFLOW_ENTRY));
     return result;
   }
 
@@ -73,7 +75,7 @@ export class WorkflowDefintion {
 }
 
 export function fetchSchema(pathloc: string) {
-  const schemapath = path.resolve(path.join(__dirname, '../models/', pathloc));
+  const schemapath = path.join(MODELS_LOCATION, pathloc);
   // const result -fs.readFileSync().toString();
   return JSON.parse(fs.readFileSync(schemapath).toString());
 }

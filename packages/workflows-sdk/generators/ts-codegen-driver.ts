@@ -16,7 +16,7 @@ const logger = pino.default(
 );
 
 void (async () => {
-  const modelsEntrypoint = "../src/models";
+  const modelsEntrypoint = "../models";
   const typescriptSDK = "../src/generated";
 
   cp.execSync(`rm -rf ${typescriptSDK}`);
