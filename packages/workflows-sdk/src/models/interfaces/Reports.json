@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/interface/Reports/1",
+  "title": "Reports",
+  "definitions": {
+    "SeverityCounter": {
+      "description": "Composite threshold consisting of a severity level and a counter.",
+      "type": "object",
+      "title": "ReportSeverityCounter",
+      "additionalProperties": false,
+      "properties": {
+        "Severity": {
+          "description": "Severity level",
+          "type": "string",
+          "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL"]
+        },
+        "Number": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": ["Severity"]
+    }
+  },
+  "type": "object",
+  "description": "Map of reports",
+  "propertyNames": {
+    "pattern": "^[A-Za-z0-9_-]*$",
+    "maxLength": 255
+  },
+  "additionalProperties": {
+    "type": "object",
+    "description": "Report details",
+    "additionalProperties": false,
+    "properties": {
+      "Format": {
+        "description": "Format of the report",
+        "type": "string",
+        "title": "ReportFormat",
+        "enum": [
+          "ESLINTJSON",
+          "PYLINTJSON",
+          "CUCUMBERJSON",
+          "JUNITXML",
+          "NUNIT3XML",
+          "NUNITXML",
+          "TESTNGXML",
+          "VISUALSTUDIOTRX",
+          "COBERTURAXML",
+          "CLOVERXML",
+          "SIMPLECOV",
+          "JACOCOXML",
+          "LCOV",
+          "SARIFSCA",
+          "SARIFSA",
+          "CucumberJson",
+          "JunitXml",
+          "NunitXml",
+          "Nunit3Xml",
+          "TestngXml",
+          "VisualStudioTRX",
+          "CoberturaXml",
+          "CloverXml",
+          "SimpleCov",
+          "JacocoXml"
+        ]
+      },
+      "SuccessCriteria": {
+        "description": "SuccessCriteria for Report",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "PassRate": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "LineCoverage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "BranchCoverage": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "Vulnerabilities": {
+            "$ref": "#/definitions/SeverityCounter"
+          },
+          "StaticAnalysisBug": {
+            "$ref": "#/definitions/SeverityCounter"
+          },
+          "StaticAnalysisSecurity": {
+            "$ref": "#/definitions/SeverityCounter"
+          },
+          "StaticAnalysisQuality": {
+            "$ref": "#/definitions/SeverityCounter"
+          },
+          "StaticAnalysisCodeSmell": {
+            "$ref": "#/definitions/SeverityCounter"
+          },
+          "StaticAnalysisOther": {
+            "$ref": "#/definitions/SeverityCounter"
+          },
+          "StaticAnalysisFinding": {
+            "$ref": "#/definitions/SeverityCounter"
+          }
+        }
+      },
+      "IncludePaths": {
+        "type": "array",
+        "description": "List of paths of report",
+        "minimum": 1,
+        "items": {
+          "type": "string",
+          "description": "Singular path glob of report"
+        }
+      },
+      "ExcludePaths": {
+        "type": "array",
+        "description": "List of paths of report",
+        "minimum": 0,
+        "items": {
+          "type": "string",
+          "description": "Singular path glob of report"
+        }
+      }
+    },
+    "required": ["Format", "IncludePaths"]
+  },
+  "maxProperties": 50
+}

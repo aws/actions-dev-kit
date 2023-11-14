@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/interface/OutputVariables/1",
+  "type": "array",
+  "title": "OutputVariables",
+  "items": {
+    "type": "string",
+    "pattern": "^[A-Za-z0-9@\\-_]+$",
+    "minLength": 1,
+    "maxLength": 255
+  },
+  "minItems": 0,
+  "maxItems": 256
+}
