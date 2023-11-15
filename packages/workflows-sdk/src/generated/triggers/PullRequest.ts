@@ -8,8 +8,8 @@
 export type PullRequestEventType = "DRAFT" | "OPEN" | "CLOSED" | "MERGED" | "REVISION";
 
 export interface PullRequestTrigger {
-  Type?: "PULLREQUEST";
-  Events?: [PullRequestEventType];
+  Type: "PULLREQUEST";
+  Events: [PullRequestEventType];
   Branches?: string[];
   FilesChanged?: string[];
 }

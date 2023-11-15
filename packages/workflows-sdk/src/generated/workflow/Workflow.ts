@@ -168,6 +168,7 @@ export interface Workflow {
    * The name of the workflow
    */
   Name: string;
+  SchemaVersion: "1.0" | 1;
   /**
    * The run mode the workflow uses
    */
@@ -189,22 +190,22 @@ export interface Workflow {
   [k: string]: unknown;
 }
 export interface PushTrigger {
-  Type?: "PUSH";
+  Type: "PUSH";
   Branches?: string[];
   FilesChanged?: string[];
 }
 export interface PullRequestTrigger {
-  Type?: "PULLREQUEST";
-  Events?: [PullRequestEventType];
+  Type: "PULLREQUEST";
+  Events: [PullRequestEventType];
   Branches?: string[];
   FilesChanged?: string[];
 }
 export interface ScheduleTrigger {
-  Type?: "SCHEDULE";
+  Type: "SCHEDULE";
   /**
    * A CRON expression representing the schedule the workflow runs on
    */
-  Expression?: {
+  Expression: {
     [k: string]: unknown;
   };
   Branches?: string[];

@@ -1,10 +1,10 @@
-import * as fs from "fs";
-import * as path from "path";
-import { Validator, ValidatorResult, Options } from "jsonschema";
-import * as types from "../index";
+import * as fs from 'fs';
+import * as path from 'path';
+import { Validator, ValidatorResult, Options } from 'jsonschema';
+import * as types from '../index';
 
-const MODELS_LOCATION = path.resolve(path.join(__dirname, "../../models/"));
-const WORKFLOW_ENTRY = "workflow/Workflow.json";
+const MODELS_LOCATION = path.resolve(path.join(__dirname, '../../models/'));
+const WORKFLOW_ENTRY = 'workflow/Workflow.json';
 
 /**
  * Generates a typesafe codecatalyst workflow definition.
@@ -19,7 +19,7 @@ export class WorkflowDefintion {
    */
   static validate(
     workflowLikeObject: any,
-    _options?: Options
+    _options?: Options,
   ): ValidatorResult {
     const v = new Validator();
     v.addSchema(fetchSchema(WORKFLOW_ENTRY));
@@ -32,7 +32,7 @@ export class WorkflowDefintion {
             $id: nextSchema,
             id: nextSchema,
           },
-          nextSchema
+          nextSchema,
         );
       }
     }
@@ -48,12 +48,12 @@ export class WorkflowDefintion {
        * This will create a workflow definition from an exisiting workflow definition
        */
       workflow?: Partial<types.Workflow>;
-    }
+    },
   ) {
     this.definition = {
       Name: name,
-      SchemaVersion: "1.0",
-      RunMode: "PARALLEL",
+      SchemaVersion: '1.0',
+      RunMode: 'PARALLEL',
       Actions: {},
       ...options?.workflow,
     };
@@ -69,7 +69,7 @@ export class WorkflowDefintion {
   addAction<T extends types.Action | types.ActionGroup>(
     name: string,
     action: T,
-    _options?: {}
+    _options?: {},
   ) {
     this.definition[name] = action;
   }

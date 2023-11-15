@@ -6,7 +6,7 @@
  */
 
 export interface PushTrigger {
-  Type?: "PUSH";
+  Type: "PUSH";
   Branches?: string[];
   FilesChanged?: string[];
 }

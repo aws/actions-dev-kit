@@ -6,11 +6,11 @@
  */
 
 export interface ScheduleTrigger {
-  Type?: "SCHEDULE";
+  Type: "SCHEDULE";
   /**
    * A CRON expression representing the schedule the workflow runs on
    */
-  Expression?: {
+  Expression: {
     [k: string]: unknown;
   };
   Branches?: string[];
