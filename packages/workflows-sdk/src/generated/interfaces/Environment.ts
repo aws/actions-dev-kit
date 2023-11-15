@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export interface Environment1 {
+export interface Environment {
   /**
    * Name of the environment
    */

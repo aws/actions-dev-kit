@@ -53,7 +53,7 @@
       "$ref": "../interfaces/DependsOn.json"
     },
     "Environment": {
-      "$ref": "../interfaces/EnvironmentMinimal.json"
+      "$ref": "../interfaces/EnvironmentWithoutConnection.json"
     },
     "Compute": {
       "$ref": "../interfaces/Compute.json"
@@ -62,7 +62,7 @@
       "$ref": "../interfaces/Timeout.json"
     },
     "Caching": {
-      "title": "Caching",
+      "title": "TestActionCaching",
       "type": "object",
       "properties": {
         "FileCaching": {

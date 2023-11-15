@@ -81,7 +81,7 @@
       "$ref": "../interfaces/DependsOn.json"
     },
     "Environment": {
-      "$ref": "../interfaces/EnvironmentMinimal.json"
+      "$ref": "../interfaces/EnvironmentWithoutConnection.json"
     },
     "Compute": {
       "$ref": "../interfaces/Compute.json"

@@ -25,7 +25,7 @@ export type BuildSteps = BuildStep[];
  * @maxItems 50
  */
 export type DependsOn = string[];
-export type InterfaceCompute1 =
+export type Compute =
   | {
       Type: "EC2";
       Fleet?:
@@ -47,7 +47,11 @@ export type InterfaceCompute1 =
       /**
        * On-demand fleet
        */
-      Fleet?: "Linux.x86-64.Large" | "Linux.x86-64.XLarge" | "Linux.Arm64.Large" | "Linux.Arm64.XLarge";
+      Fleet?:
+        | "Linux.x86-64.Large"
+        | "Linux.x86-64.XLarge"
+        | "Linux.Arm64.Large"
+        | "Linux.Arm64.XLarge";
       [k: string]: unknown;
     };
 export type Timeout = number;
@@ -139,10 +143,10 @@ export interface BuildAction {
   Identifier: "aws/build@v1";
   Configuration: BuildConfiguration;
   DependsOn?: DependsOn;
-  Environment?: Environment1;
-  Compute?: InterfaceCompute1;
+  Environment?: Environment;
+  Compute?: Compute;
   Timeout?: Timeout;
-  Caching?: Caching;
+  Caching?: BuildActionCaching;
   Packages?: Packages;
   Outputs?: {
     OutputVariables?: OutputVariables;
@@ -176,7 +180,7 @@ export interface BuildStep {
    */
   Run?: string;
 }
-export interface Environment1 {
+export interface Environment {
   /**
    * Name of the environment
    */
@@ -192,7 +196,7 @@ export interface Environment1 {
   }[];
   [k: string]: unknown;
 }
-export interface Caching {
+export interface BuildActionCaching {
   FileCaching?: FileCaching;
 }
 export interface FileCaching {

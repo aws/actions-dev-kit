@@ -1,6 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/OutputVariables/1",
+  "title": "OutputVariables",
   "type": "array",
   "title": "OutputVariables",
   "items": {

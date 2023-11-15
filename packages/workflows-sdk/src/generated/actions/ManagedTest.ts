@@ -22,7 +22,7 @@ export type ManagedTestSteps = {
  * @maxItems 50
  */
 export type DependsOn = string[];
-export type InterfaceCompute1 =
+export type Compute =
   | {
       Type: "EC2";
       Fleet?:
@@ -44,7 +44,11 @@ export type InterfaceCompute1 =
       /**
        * On-demand fleet
        */
-      Fleet?: "Linux.x86-64.Large" | "Linux.x86-64.XLarge" | "Linux.Arm64.Large" | "Linux.Arm64.XLarge";
+      Fleet?:
+        | "Linux.x86-64.Large"
+        | "Linux.x86-64.XLarge"
+        | "Linux.Arm64.Large"
+        | "Linux.Arm64.XLarge";
       [k: string]: unknown;
     };
 export type Timeout = number;
@@ -139,10 +143,10 @@ export interface ManagedTestAction {
     Steps: ManagedTestSteps;
   };
   DependsOn?: DependsOn;
-  Environment?: Environment2;
-  Compute?: InterfaceCompute1;
+  Environment?: EnvironmentWithoutConnection;
+  Compute?: Compute;
   Timeout?: Timeout;
-  Caching?: Caching;
+  Caching?: TestActionCaching;
   Packages?: Packages;
   Outputs?: {
     OutputVariables?: OutputVariables;
@@ -169,7 +173,7 @@ export interface ManagedTestContainer {
    */
   Registry?: string;
 }
-export interface Environment2 {
+export interface EnvironmentWithoutConnection {
   /**
    * Name of the environment
    */
@@ -185,7 +189,7 @@ export interface Environment2 {
   }[];
   [k: string]: unknown;
 }
-export interface Caching {
+export interface TestActionCaching {
   FileCaching?: FileCaching;
 }
 export interface FileCaching {
