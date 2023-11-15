@@ -16,8 +16,8 @@ const logger = pino.default(
 );
 
 void (async () => {
-  const modelsEntrypoint = "../models";
-  const typescriptSDK = "../src/generated";
+  const modelsEntrypoint = path.resolve(path.join(__dirname, "../models"));
+  const typescriptSDK = path.resolve(path.join(__dirname, "../src/generated"));
 
   cp.execSync(`rm -rf ${typescriptSDK}`);
   const typescriptFiles: string[] = [];

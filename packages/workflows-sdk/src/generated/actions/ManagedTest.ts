@@ -44,11 +44,7 @@ export type InterfaceCompute1 =
       /**
        * On-demand fleet
        */
-      Fleet?:
-        | "Linux.x86-64.Large"
-        | "Linux.x86-64.XLarge"
-        | "Linux.Arm64.Large"
-        | "Linux.Arm64.XLarge";
+      Fleet?: "Linux.x86-64.Large" | "Linux.x86-64.XLarge" | "Linux.Arm64.Large" | "Linux.Arm64.XLarge";
       [k: string]: unknown;
     };
 export type Timeout = number;

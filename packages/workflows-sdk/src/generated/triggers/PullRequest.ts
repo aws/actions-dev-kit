@@ -5,12 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type PullRequestEventType =
-  | "DRAFT"
-  | "OPEN"
-  | "CLOSED"
-  | "MERGED"
-  | "REVISION";
+export type PullRequestEventType = "DRAFT" | "OPEN" | "CLOSED" | "MERGED" | "REVISION";
 
 export interface PullRequestTrigger {
   Type?: "PULLREQUEST";
