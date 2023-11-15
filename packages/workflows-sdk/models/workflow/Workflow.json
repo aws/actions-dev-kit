@@ -11,6 +11,18 @@
       "minLength": 1,
       "maxLength": 100
     },
+    "SchemaVersion": {
+      "oneOf": [
+        {
+          "type": "string",
+          "const": "1.0"
+        },
+        {
+          "type": "number",
+          "const": 1.0
+        }
+      ]
+    },
     "RunMode": {
       "description": "The run mode the workflow uses",
       "type": "string",
@@ -42,7 +54,7 @@
       "additionalProperties": false
     }
   },
-  "required": ["Name", "Actions"],
+  "required": ["Name", "SchemaVersion", "Actions"],
   "definitions": {
     "ActionGroup": {
       "description": "A group of actions",
