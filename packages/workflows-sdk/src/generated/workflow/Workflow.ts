@@ -6,12 +6,7 @@
  */
 
 export type Trigger = PushTrigger | PullRequestTrigger | ScheduleTrigger;
-export type PullRequestEventType =
-  | "DRAFT"
-  | "OPEN"
-  | "CLOSED"
-  | "MERGED"
-  | "REVISION";
+export type PullRequestEventType = "DRAFT" | "OPEN" | "CLOSED" | "MERGED" | "REVISION";
 /**
  * An action in a workflow
  *
@@ -61,11 +56,7 @@ export type Compute =
       /**
        * On-demand fleet
        */
-      Fleet?:
-        | "Linux.x86-64.Large"
-        | "Linux.x86-64.XLarge"
-        | "Linux.Arm64.Large"
-        | "Linux.Arm64.XLarge";
+      Fleet?: "Linux.x86-64.Large" | "Linux.x86-64.XLarge" | "Linux.Arm64.Large" | "Linux.Arm64.XLarge";
       [k: string]: unknown;
     };
 export type Timeout = number;
