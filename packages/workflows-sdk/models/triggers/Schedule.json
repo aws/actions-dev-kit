@@ -3,6 +3,7 @@
   "$id": "/triggers/Push/1",
   "type": "object",
   "title": "Schedule Trigger",
+  "description": "A schedule trigger causes a workflow run to start on a schedule that you define",
   "properties": {
     "Type": {
       "type": "string",

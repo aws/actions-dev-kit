@@ -1,8 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/Timeout/1",
-  "title": "Timeout",
   "type": "integer",
+  "title": "Timeout",
+  "description": "The length of time an action can run for before cancelling the run.",
   "minimum": 1,
   "maximum": 480
 }

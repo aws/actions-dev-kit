@@ -5,6 +5,9 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+/**
+ * The location to the code is run in, or deployed to, depending on the action type. This version of environment does not require a connection
+ */
 export interface EnvironmentWithoutConnection {
   /**
    * Name of the environment

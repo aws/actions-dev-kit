@@ -5,6 +5,9 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+/**
+ * When file caching is enabled, the build and test actions save on-disk files to a cache and restore them from that cache in subsequent workflow runs.
+ */
 export interface FileCaching {
   /**
    * This interface was referenced by `FileCaching`'s JSON-Schema definition

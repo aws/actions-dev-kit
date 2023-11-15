@@ -3,6 +3,7 @@
   "$id": "/action/ManagedTest.json.0.0",
   "type": "object",
   "title": "Managed Test Action",
+  "description": "Run integration and system tests against your application or artifacts.",
   "properties": {
     "Identifier": {
       "type": "string",

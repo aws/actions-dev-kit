@@ -6,6 +6,8 @@
  */
 
 /**
+ * An artifact is the output of a workflow action, and typically consists of a folder or archive of files. This configures a previously created artifact to be used as part of this action
+ *
  * @minItems 0
  * @maxItems 5
  */

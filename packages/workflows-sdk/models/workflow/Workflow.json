@@ -1,8 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "Workflow",
-  "name": "Workflow",
   "type": "object",
+  "title": "Workflow",
+  "description": "A workflow is an automated procedure that describes how to build, test, and deploy your code as part of a continuous integration and continuous delivery (CI/CD) system. ",
   "properties": {
     "Name": {
       "description": "The name of the workflow",
@@ -57,7 +58,7 @@
   "required": ["Name", "SchemaVersion", "Actions"],
   "definitions": {
     "ActionGroup": {
-      "description": "A group of actions",
+      "description": "An action group contains one or more actions.",
       "type": "object",
       "properties": {
         "DependsOn": {
@@ -76,7 +77,7 @@
       }
     },
     "Action": {
-      "description": "An action in a workflow",
+      "description": "An action is the main building block of a workflow, and defines a logical unit of work to perform during a workflow run.",
       "type": "object",
       "oneOf": [
         {

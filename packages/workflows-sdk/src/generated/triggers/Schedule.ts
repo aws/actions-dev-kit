@@ -5,6 +5,9 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+/**
+ * A schedule trigger causes a workflow run to start on a schedule that you define
+ */
 export interface ScheduleTrigger {
   Type: "SCHEDULE";
   /**

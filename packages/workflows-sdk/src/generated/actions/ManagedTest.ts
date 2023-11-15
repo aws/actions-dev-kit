@@ -18,10 +18,15 @@ export type ManagedTestSteps = {
   Run?: string;
 }[];
 /**
+ * Refers to the actions or action groups this action depends on.
+ *
  * @minItems 0
  * @maxItems 50
  */
 export type DependsOn = string[];
+/**
+ * Compute refers to the computing engine (the CPU, memory, and operating system) managed and maintained by CodeCatalyst to run your workflows
+ */
 export type Compute =
   | {
       Type: "EC2";
@@ -47,6 +52,9 @@ export type Compute =
       Fleet?: "Linux.x86-64.Large" | "Linux.x86-64.XLarge" | "Linux.Arm64.Large" | "Linux.Arm64.XLarge";
       [k: string]: unknown;
     };
+/**
+ * The length of time an action can run for before cancelling the run.
+ */
 export type Timeout = number;
 /**
  * @minItems 1
@@ -54,6 +62,8 @@ export type Timeout = number;
  */
 export type Scopes = string[];
 /**
+ *  A variable is a key-value pair that contains information that you can reference in your CodeCatalyst workflow. When configured the action will export the variables set.
+ *
  * @minItems 0
  * @maxItems 256
  */
@@ -87,6 +97,9 @@ export type ReportFormat =
   | "CloverXml"
   | "SimpleCov"
   | "JacocoXml";
+/**
+ * An artifact is the output of a workflow action, and typically consists of a folder or archive of files
+ */
 export type OutputArtifacts =
   | {
       Name?: string;
@@ -110,15 +123,22 @@ export type OutputArtifacts =
       };
     };
 /**
+ * An artifact is the output of a workflow action, and typically consists of a folder or archive of files. This configures a previously created artifact to be used as part of this action
+ *
  * @minItems 0
  * @maxItems 5
  */
 export type InputArtifacts = string[];
 /**
+ * A source, also called an input source, is a source repository that a workflow action needs access to in order to carry out its tasks
+ *
  * @minItems 0
  * @maxItems 1
  */
 export type InputSources = string[];
+/**
+ * A variable is a key-value pair that contains information that you can reference in your CodeCatalyst workflow. When configured the action will have access to the variables set.
+ */
 export type InputVariables =
   | {
       Name?: string;
@@ -132,6 +152,9 @@ export type InputVariables =
       [k: string]: string;
     };
 
+/**
+ * Run integration and system tests against your application or artifacts.
+ */
 export interface ManagedTestAction {
   Identifier: "aws/managed-test@v1";
   Configuration: {
@@ -169,6 +192,9 @@ export interface ManagedTestContainer {
    */
   Registry?: string;
 }
+/**
+ * The location to the code is run in, or deployed to, depending on the action type. This version of environment does not require a connection
+ */
 export interface EnvironmentWithoutConnection {
   /**
    * Name of the environment
@@ -188,6 +214,9 @@ export interface EnvironmentWithoutConnection {
 export interface TestActionCaching {
   FileCaching?: FileCaching;
 }
+/**
+ * When file caching is enabled, the build and test actions save on-disk files to a cache and restore them from that cache in subsequent workflow runs.
+ */
 export interface FileCaching {
   /**
    * This interface was referenced by `FileCaching`'s JSON-Schema definition
@@ -202,6 +231,9 @@ export interface FileCaching {
     RestoreKeys?: string[];
   };
 }
+/**
+ * The artifact repository to be used when running the action
+ */
 export interface Packages {
   NpmConfiguration?: {
     /**
@@ -215,6 +247,9 @@ export interface PackagesRegistry {
   PackagesRepository: string;
   Scopes?: Scopes;
 }
+/**
+ * Automatically discover outputs of various tools, such as JUnit test reports, and generate relevant CodeCatalyst reports from them. Auto-discovery helps ensure that reports continue to be generated even if names or paths to discovered outputs change. When new files are added, CodeCatalyst automatically discovers them and produces relevant reports
+ */
 export interface AutoDiscoveryReports {
   /**
    * Flag to determine if Auto Discovery for reports is enabled

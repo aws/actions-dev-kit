@@ -3,6 +3,7 @@
   "$id": "/action/GitHubActionsRunner.json.0.0",
   "type": "object",
   "title": "GitHub Action Runner",
+  "description": "Add a GitHub Action to your workflow. You can use any action in the GitHub Marketplace.",
   "properties": {
     "Identifier": {
       "type": "string",

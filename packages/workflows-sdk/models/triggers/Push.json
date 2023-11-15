@@ -3,6 +3,7 @@
   "$id": "/triggers/Push/1",
   "type": "object",
   "title": "Push Trigger",
+  "description": "A code push trigger causes a workflow run to start whenever a commit is pushed.",
   "properties": {
     "Type": {
       "type": "string",

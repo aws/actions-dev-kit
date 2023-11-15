@@ -11,6 +11,9 @@
  */
 export type Scopes = string[];
 
+/**
+ * The artifact repository to be used when running the action
+ */
 export interface Packages {
   NpmConfiguration?: {
     /**

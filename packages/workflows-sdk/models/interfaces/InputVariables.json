@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/InputVariables/1",
   "title": "InputVariables",
+  "description": "A variable is a key-value pair that contains information that you can reference in your CodeCatalyst workflow. When configured the action will have access to the variables set.",
   "oneOf": [
     {
       "type": "array",

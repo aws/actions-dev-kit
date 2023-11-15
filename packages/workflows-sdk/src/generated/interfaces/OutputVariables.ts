@@ -6,6 +6,8 @@
  */
 
 /**
+ *  A variable is a key-value pair that contains information that you can reference in your CodeCatalyst workflow. When configured the action will export the variables set.
+ *
  * @minItems 0
  * @maxItems 256
  */

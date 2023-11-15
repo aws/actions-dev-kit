@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/Compute/1",
   "title": "Compute",
+  "description": "Compute refers to the computing engine (the CPU, memory, and operating system) managed and maintained by CodeCatalyst to run your workflows",
   "oneOf": [
     {
       "type": "object",

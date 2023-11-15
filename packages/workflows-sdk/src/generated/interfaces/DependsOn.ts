@@ -6,6 +6,8 @@
  */
 
 /**
+ * Refers to the actions or action groups this action depends on.
+ *
  * @minItems 0
  * @maxItems 50
  */

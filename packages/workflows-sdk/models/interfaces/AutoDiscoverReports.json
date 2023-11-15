@@ -3,6 +3,7 @@
   "$id": "/interface/AutoDiscoverReports/1",
   "type": "object",
   "title": "AutoDiscoveryReports",
+  "description": "Automatically discover outputs of various tools, such as JUnit test reports, and generate relevant CodeCatalyst reports from them. Auto-discovery helps ensure that reports continue to be generated even if names or paths to discovered outputs change. When new files are added, CodeCatalyst automatically discovers them and produces relevant reports",
   "definitions": {
     "SeverityCounter": {
       "description": "Composite threshold consisting of a severity level and a counter.",

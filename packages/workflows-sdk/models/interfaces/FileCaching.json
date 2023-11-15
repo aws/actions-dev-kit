@@ -1,8 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/FileCaching/1",
-  "title": "FileCaching",
   "type": "object",
+  "title": "FileCaching",
+  "description": "When file caching is enabled, the build and test actions save on-disk files to a cache and restore them from that cache in subsequent workflow runs.",
   "additionalProperties": false,
   "minProperties": 1,
   "maxProperties": 5,

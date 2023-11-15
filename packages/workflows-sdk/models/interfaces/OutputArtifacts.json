@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/OutputArtifacts/1",
   "title": "OutputArtifacts",
+  "description": "An artifact is the output of a workflow action, and typically consists of a folder or archive of files",
   "oneOf": [
     {
       "type": "array",

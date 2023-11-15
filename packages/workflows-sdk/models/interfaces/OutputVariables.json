@@ -1,9 +1,9 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/OutputVariables/1",
-  "title": "OutputVariables",
   "type": "array",
   "title": "OutputVariables",
+  "description": " A variable is a key-value pair that contains information that you can reference in your CodeCatalyst workflow. When configured the action will export the variables set.",
   "items": {
     "type": "string",
     "pattern": "^[A-Za-z0-9@\\-_]+$",

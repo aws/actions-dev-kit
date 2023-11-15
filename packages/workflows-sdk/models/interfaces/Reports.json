@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/Reports/1",
   "title": "Reports",
+  "description": "An output from an action.",
   "definitions": {
     "SeverityCounter": {
       "description": "Composite threshold consisting of a severity level and a counter.",

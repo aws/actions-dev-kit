@@ -2,6 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "/interface/DependsOn/1",
   "title": "DependsOn",
+  "description": "Refers to the actions or action groups this action depends on.",
   "type": "array",
   "items": {
     "type": "string",

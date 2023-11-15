@@ -5,6 +5,9 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+/**
+ * An artifact is the output of a workflow action, and typically consists of a folder or archive of files
+ */
 export type OutputArtifacts =
   | {
       Name?: string;

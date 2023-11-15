@@ -6,6 +6,8 @@
  */
 
 /**
+ * A source, also called an input source, is a source repository that a workflow action needs access to in order to carry out its tasks
+ *
  * @minItems 0
  * @maxItems 1
  */

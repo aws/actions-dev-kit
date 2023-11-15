@@ -5,4 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+/**
+ * The length of time an action can run for before cancelling the run.
+ */
 export type Timeout = number;

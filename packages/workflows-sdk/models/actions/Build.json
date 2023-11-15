@@ -3,6 +3,7 @@
   "$id": "/action/Build.0.0",
   "type": "object",
   "title": "Build action",
+  "description": "The Build action compiles your source code, validates code quality by running unit tests, checking code coverage, and produces artifacts that are ready to be deployed or published.",
   "properties": {
     "Identifier": {
       "type": "string",

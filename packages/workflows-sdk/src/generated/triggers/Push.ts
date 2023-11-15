@@ -5,6 +5,9 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+/**
+ * A code push trigger causes a workflow run to start whenever a commit is pushed.
+ */
 export interface PushTrigger {
   Type: "PUSH";
   Branches?: string[];

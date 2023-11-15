@@ -3,6 +3,7 @@
   "$id": "/triggers/PullRequest/1",
   "type": "object",
   "title": "Pull Request Trigger",
+  "description": "A pull request trigger causes a workflow run to start whenever a pull request is either created, revised, or closed.",
   "properties": {
     "Type": {
       "type": "string",
