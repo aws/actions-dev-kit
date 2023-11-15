@@ -39,7 +39,7 @@
     "jest-junit": "^15",
     "json-schema-to-typescript": "^13.1.1",
     "npm-check-updates": "^16",
-    "old-model-baseline": "file:./old-model-baseline.tgz",
+    "old-model-baseline": "file:./old-model-baseline-0.1.5-preview.tgz",
     "pino": "^6.13.4",
     "pino-pretty": "^10.2.0",
     "prettier": "^2.6.0",

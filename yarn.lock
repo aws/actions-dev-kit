@@ -6308,11 +6308,12 @@ object.values@^1.1.7:
     define-properties "^1.2.0"
     es-abstract "^1.22.1"
 
-"old-model-baseline@file:./packages/workflows-sdk/old-model-baseline.tgz":
-  version "0.1.4"
-  resolved "file:./packages/workflows-sdk/old-model-baseline.tgz#4313eec8b8d16b511a33c4adf5621914f04dc0be"
+"old-model-baseline@file:./packages/workflows-sdk/old-model-baseline-0.1.5-preview.tgz":
+  version "0.1.5-preview.2"
+  resolved "file:./packages/workflows-sdk/old-model-baseline-0.1.5-preview.tgz#6929f4921e80ea25083bb54b915cdf2e17f9a76f"
   dependencies:
     globule "^1.3.4"
+    js-yaml "^4.1.0"
     jsonschema "^1.4.1"
 
 on-exit-leak-free@^2.1.0:

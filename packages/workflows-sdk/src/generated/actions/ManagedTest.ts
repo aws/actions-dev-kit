@@ -205,7 +205,7 @@ export interface EnvironmentWithoutConnection {
    * @maxItems 1
    */
   Connections?: {
-    Name: string;
+    Name: string | number;
     Role: string;
     [k: string]: unknown;
   }[];

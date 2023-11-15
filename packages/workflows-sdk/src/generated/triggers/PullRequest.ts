@@ -5,12 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type PullRequestEventType =
-  | "DRAFT"
-  | "OPEN"
-  | "CLOSED"
-  | "MERGED"
-  | "REVISION";
+export type PullRequestEventType = "DRAFT" | "OPEN" | "CLOSED" | "MERGED" | "REVISION";
 
 /**
  * A pull request trigger causes a workflow run to start whenever a pull request is either created, revised, or closed.

@@ -18,10 +18,19 @@
         "description": "Connection associated with the Environment",
         "properties": {
           "Name": {
-            "type": "string",
-            "pattern": "^[A-Za-z0-9\\-_]+$",
-            "minLength": 3,
-            "maxLength": 63
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9\\-_]+$",
+                "minLength": 3,
+                "maxLength": 63
+              },
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 999999999999
+              }
+            ]
           },
           "Role": {
             "type": "string",
