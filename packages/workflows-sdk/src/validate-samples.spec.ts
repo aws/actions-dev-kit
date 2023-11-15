@@ -2,7 +2,7 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as yaml from "js-yaml";
-import { WorkflowDefintion } from "./sdk/WorkflowDefinition";
+import { WorkflowDefinition } from "./sdk/WorkflowDefinition";
 import { walkFiles } from "./walk-files";
 
 const validWorkflows = path.resolve(
@@ -38,7 +38,7 @@ function testWorkflow(
   },
 ) {
   const workflow = yaml.load(fs.readFileSync(workflowFilepath).toString());
-  const result = WorkflowDefintion.validate(workflow);
+  const result = WorkflowDefinition.validate(workflow);
 
   try {
     expect(result.valid).toBe(options.expected);
@@ -46,7 +46,6 @@ function testWorkflow(
     console.error({
       error,
       workflowFilepath,
-      // workflow: JSON.stringify(workflow),
       reason: result.toString(),
     });
     throw error;

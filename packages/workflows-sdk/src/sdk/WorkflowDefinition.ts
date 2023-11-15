@@ -10,7 +10,7 @@ const WORKFLOW_ENTRY = 'workflow/Workflow.json';
  * Generates a typesafe codecatalyst workflow definition.
  * Use getDefinition() to generate a typesafe defintion
  */
-export class WorkflowDefintion {
+export class WorkflowDefinition {
   /**
    * Validates an object against the underlying json schema
    * @param workflowLikeObject
