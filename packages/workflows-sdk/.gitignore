@@ -29,7 +29,7 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
-!/old-model-baseline.tgz
+!/old-model-baseline*.tgz
 !/.projenrc.js
 /test-reports/
 junit.xml
