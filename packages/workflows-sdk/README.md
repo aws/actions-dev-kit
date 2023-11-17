@@ -2,7 +2,7 @@
 
 ## Description
 
-An SDK JavaScript CodeCatalyst Workflows for Node.js, Browser and React Native.
+A JavaScript SDK for CodeCatalyst Workflows.
 
 This SDK is meant to aid users in creating [Amazon CodeCatalyst Workflows](https://docs.aws.amazon.com/codecatalyst/latest/userguide/flows.html)
 by providing a client to syntactically validate a workflow yaml prior to committing the file. 
