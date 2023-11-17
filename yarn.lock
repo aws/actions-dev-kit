@@ -6308,9 +6308,9 @@ object.values@^1.1.7:
     define-properties "^1.2.0"
     es-abstract "^1.22.1"
 
-"old-model-baseline@file:./packages/workflows-sdk/old-model-baseline-0.1.5-preview.1.tgz":
-  version "0.1.5-preview.2"
-  resolved "file:./packages/workflows-sdk/old-model-baseline-0.1.5-preview.1.tgz#6929f4921e80ea25083bb54b915cdf2e17f9a76f"
+"old-model-baseline@file:./packages/workflows-sdk/old-model-baseline-sdk-0.1.5-preview.6.tgz":
+  version "0.1.5-preview.4"
+  resolved "file:./packages/workflows-sdk/old-model-baseline-sdk-0.1.5-preview.6.tgz#428b04c950cc3c71d63c5324f93f2c98db696172"
   dependencies:
     globule "^1.3.4"
     js-yaml "^4.1.0"

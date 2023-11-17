@@ -5,6 +5,11 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type SchemaVersion = "1.0" | 1;
+/**
+ * The run mode the workflow uses
+ */
+export type RunModes = "PARALLEL" | "QUEUED" | "SUPERSEDED";
 export type Trigger = PushTrigger | PullRequestTrigger | ScheduleTrigger;
 export type PullRequestEventType = "DRAFT" | "OPEN" | "CLOSED" | "MERGED" | "REVISION";
 /**
@@ -191,25 +196,13 @@ export interface Workflow {
    * The name of the workflow
    */
   Name: string;
-  SchemaVersion: "1.0" | 1;
-  /**
-   * The run mode the workflow uses
-   */
-  RunMode?: "PARALLEL" | "QUEUED" | "SUPERSEDED";
+  SchemaVersion: SchemaVersion;
+  RunMode?: RunModes;
   /**
    * The triggers the workflow uses
    */
   Triggers?: Trigger[];
-  /**
-   * The actions for the workflow
-   */
-  Actions: {
-    /**
-     * This interface was referenced by `undefined`'s JSON-Schema definition
-     * via the `patternProperty` "^[A-Za-z0-9_-]+$".
-     */
-    [k: string]: Action | ActionGroup;
-  };
+  Actions: Actions;
   [k: string]: unknown;
 }
 /**
@@ -225,7 +218,7 @@ export interface PushTrigger {
  */
 export interface PullRequestTrigger {
   Type: "PULLREQUEST";
-  Events: [PullRequestEventType];
+  Events: PullRequestEventType[];
   Branches?: string[];
   FilesChanged?: string[];
 }
@@ -243,10 +236,20 @@ export interface ScheduleTrigger {
   Branches?: string[];
 }
 /**
+ * The actions for the workflow
+ */
+export interface Actions {
+  /**
+   * This interface was referenced by `Actions`'s JSON-Schema definition
+   * via the `patternProperty` "^[A-Za-z0-9_-]+$".
+   */
+  [k: string]: Action | ActionGroup;
+}
+/**
  * The Build action compiles your source code, validates code quality by running unit tests, checking code coverage, and produces artifacts that are ready to be deployed or published.
  */
 export interface BuildAction {
-  Identifier: "aws/build@v1";
+  Identifier: string;
   Configuration: BuildConfiguration;
   DependsOn?: DependsOn;
   Environment?: Environment;
@@ -254,17 +257,8 @@ export interface BuildAction {
   Timeout?: Timeout;
   Caching?: BuildActionCaching;
   Packages?: Packages;
-  Outputs?: {
-    OutputVariables?: OutputVariables;
-    AutoDiscoverReports?: AutoDiscoveryReports;
-    Reports?: Reports;
-    OutputArtifacts?: OutputArtifacts;
-  };
-  Inputs?: {
-    InputArtifacts?: InputArtifacts;
-    InputSources?: InputSources;
-    InputVariables?: InputVariables;
-  };
+  Outputs?: BuildActionOutput;
+  Inputs?: BuildActionInputs;
 }
 export interface BuildConfiguration {
   Container?: BuildContainer;
@@ -340,6 +334,12 @@ export interface Packages {
 export interface PackagesRegistry {
   PackagesRepository: string;
   Scopes?: Scopes;
+}
+export interface BuildActionOutput {
+  OutputVariables?: OutputVariables;
+  AutoDiscoverReports?: AutoDiscoveryReports;
+  Reports?: Reports;
+  OutputArtifacts?: OutputArtifacts;
 }
 /**
  * Automatically discover outputs of various tools, such as JUnit test reports, and generate relevant CodeCatalyst reports from them. Auto-discovery helps ensure that reports continue to be generated even if names or paths to discovered outputs change. When new files are added, CodeCatalyst automatically discovers them and produces relevant reports
@@ -437,28 +437,24 @@ export interface ReportSeverityCounter {
   Severity: "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "INFORMATIONAL";
   Number?: number;
 }
+export interface BuildActionInputs {
+  InputArtifacts?: InputArtifacts;
+  InputSources?: InputSources;
+  InputVariables?: InputVariables;
+}
 /**
  * Add a GitHub Action to your workflow. You can use any action in the GitHub Marketplace.
  */
 export interface GitHubActionRunner {
-  Identifier: "aws/github-actions-runner@v1";
+  Identifier: string;
   Configuration: GitHubActionRunnerConfiguration;
   DependsOn?: DependsOn;
   Environment?: EnvironmentWithoutConnection;
   Compute?: Compute;
   Timeout?: Timeout;
   Caching?: Caching;
-  Outputs?: {
-    OutputVariables?: OutputVariables;
-    AutoDiscoverReports?: AutoDiscoveryReports;
-    Reports?: Reports;
-    OutputArtifacts?: OutputArtifacts;
-  };
-  Inputs?: {
-    InputArtifacts?: InputArtifacts;
-    InputSources?: InputSources;
-    InputVariables?: InputVariables;
-  };
+  Outputs?: GitHubActionOutputs;
+  Inputs?: GitHubActionInputs;
 }
 export interface GitHubActionRunnerConfiguration {
   Steps: GitHubActionRunnerSteps;
@@ -505,32 +501,35 @@ export interface EnvironmentWithoutConnection {
 export interface Caching {
   FileCaching?: FileCaching;
 }
+export interface GitHubActionOutputs {
+  OutputVariables?: OutputVariables;
+  AutoDiscoverReports?: AutoDiscoveryReports;
+  Reports?: Reports;
+  OutputArtifacts?: OutputArtifacts;
+}
+export interface GitHubActionInputs {
+  InputArtifacts?: InputArtifacts;
+  InputSources?: InputSources;
+  InputVariables?: InputVariables;
+}
 /**
  * Run integration and system tests against your application or artifacts.
  */
 export interface ManagedTestAction {
-  Identifier: "aws/managed-test@v1";
-  Configuration: {
-    Container?: ManagedTestContainer;
-    Steps: ManagedTestSteps;
-  };
+  Identifier: string;
+  Configuration: ManagedTestActionConfiguration;
   DependsOn?: DependsOn;
   Environment?: EnvironmentWithoutConnection;
   Compute?: Compute;
   Timeout?: Timeout;
   Caching?: TestActionCaching;
   Packages?: Packages;
-  Outputs?: {
-    OutputVariables?: OutputVariables;
-    AutoDiscoverReports?: AutoDiscoveryReports;
-    Reports?: Reports;
-    OutputArtifacts?: OutputArtifacts;
-  };
-  Inputs?: {
-    InputArtifacts?: InputArtifacts;
-    InputSources?: InputSources;
-    InputVariables?: InputVariables;
-  };
+  Outputs?: ManagedTestActionOutputs;
+  Inputs?: ManagedTestActionInputs;
+}
+export interface ManagedTestActionConfiguration {
+  Container?: ManagedTestContainer;
+  Steps: ManagedTestSteps;
 }
 /**
  * The container to run the build
@@ -547,6 +546,17 @@ export interface ManagedTestContainer {
 }
 export interface TestActionCaching {
   FileCaching?: FileCaching;
+}
+export interface ManagedTestActionOutputs {
+  OutputVariables?: OutputVariables;
+  AutoDiscoverReports?: AutoDiscoveryReports;
+  Reports?: Reports;
+  OutputArtifacts?: OutputArtifacts;
+}
+export interface ManagedTestActionInputs {
+  InputArtifacts?: InputArtifacts;
+  InputSources?: InputSources;
+  InputVariables?: InputVariables;
 }
 /**
  * An action group contains one or more actions.

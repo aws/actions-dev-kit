@@ -6,10 +6,44 @@
   "description": "The Build action compiles your source code, validates code quality by running unit tests, checking code coverage, and produces artifacts that are ready to be deployed or published.",
   "properties": {
     "Identifier": {
-      "type": "string",
-      "const": "aws/build@v1"
+      "$ref": "#/definitions/BuildActionIdentifier"
     },
     "Configuration": {
+      "$ref": "#/definitions/BuildActionConfiguration"
+    },
+    "DependsOn": {
+      "$ref": "../interfaces/DependsOn.json"
+    },
+    "Environment": {
+      "$ref": "../interfaces/Environment.json"
+    },
+    "Compute": {
+      "$ref": "../interfaces/Compute.json"
+    },
+    "Timeout": {
+      "$ref": "../interfaces/Timeout.json"
+    },
+    "Caching": {
+      "$ref": "#/definitions/BuildActionCaching"
+    },
+    "Packages": {
+      "$ref": "../interfaces/Packages.json"
+    },
+    "Outputs": {
+      "$ref": "#/definitions/BuildActionOutput"
+    },
+    "Inputs": {
+      "$ref": "#/definitions/BuildActionInputs"
+    }
+  },
+  "required": ["Configuration", "Identifier"],
+  "additionalProperties": false,
+  "definitions": {
+    "BuildActionIdentifier": {
+      "type": "string",
+      "pattern": "^aws/build@1?(.0){0,2}"
+    },
+    "BuildActionConfiguration": {
       "type": "object",
       "title": "BuildConfiguration",
       "additionalProperties": false,
@@ -54,19 +88,7 @@
         }
       }
     },
-    "DependsOn": {
-      "$ref": "../interfaces/DependsOn.json"
-    },
-    "Environment": {
-      "$ref": "../interfaces/Environment.json"
-    },
-    "Compute": {
-      "$ref": "../interfaces/Compute.json"
-    },
-    "Timeout": {
-      "$ref": "../interfaces/Timeout.json"
-    },
-    "Caching": {
+    "BuildActionCaching": {
       "title": "BuildActionCaching",
       "type": "object",
       "properties": {
@@ -77,10 +99,7 @@
       "additionalProperties": false,
       "minProperties": 1
     },
-    "Packages": {
-      "$ref": "../interfaces/Packages.json"
-    },
-    "Outputs": {
+    "BuildActionOutput": {
       "type": "object",
       "properties": {
         "OutputVariables": {
@@ -99,7 +118,7 @@
       "additionalProperties": false,
       "minProperties": 1
     },
-    "Inputs": {
+    "BuildActionInputs": {
       "type": "object",
       "properties": {
         "InputArtifacts": {
@@ -115,7 +134,5 @@
       "additionalProperties": false,
       "minProperties": 1
     }
-  },
-  "required": ["Configuration", "Identifier"],
-  "additionalProperties": false
+  }
 }

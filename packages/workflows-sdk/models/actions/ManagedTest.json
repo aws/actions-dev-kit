@@ -6,10 +6,44 @@
   "description": "Run integration and system tests against your application or artifacts.",
   "properties": {
     "Identifier": {
-      "type": "string",
-      "const": "aws/managed-test@v1"
+      "$ref": "#/definitions/ManagedTestActionIdentifier"
     },
     "Configuration": {
+      "$ref": "#/definitions/ManagedTestActionConfiguration"
+    },
+    "DependsOn": {
+      "$ref": "../interfaces/DependsOn.json"
+    },
+    "Environment": {
+      "$ref": "../interfaces/EnvironmentWithoutConnection.json"
+    },
+    "Compute": {
+      "$ref": "../interfaces/Compute.json"
+    },
+    "Timeout": {
+      "$ref": "../interfaces/Timeout.json"
+    },
+    "Caching": {
+      "$ref": "#/definitions/ManagedTestActionCaching"
+    },
+    "Packages": {
+      "$ref": "../interfaces/Packages.json"
+    },
+    "Outputs": {
+      "$ref": "#/definitions/ManagedTestActionOutputs"
+    },
+    "Inputs": {
+      "$ref": "#/definitions/ManagedTestActionInputs"
+    }
+  },
+  "required": ["Configuration", "Identifier"],
+  "additionalProperties": false,
+  "definitions": {
+    "ManagedTestActionIdentifier": {
+      "type": "string",
+      "pattern": "^aws/managed-test@1?(.0){0,2}"
+    },
+    "ManagedTestActionConfiguration": {
       "type": "object",
       "additionalProperties": false,
       "required": ["Steps"],
@@ -50,19 +84,7 @@
         }
       }
     },
-    "DependsOn": {
-      "$ref": "../interfaces/DependsOn.json"
-    },
-    "Environment": {
-      "$ref": "../interfaces/EnvironmentWithoutConnection.json"
-    },
-    "Compute": {
-      "$ref": "../interfaces/Compute.json"
-    },
-    "Timeout": {
-      "$ref": "../interfaces/Timeout.json"
-    },
-    "Caching": {
+    "ManagedTestActionCaching": {
       "title": "TestActionCaching",
       "type": "object",
       "properties": {
@@ -73,10 +95,7 @@
       "additionalProperties": false,
       "minProperties": 1
     },
-    "Packages": {
-      "$ref": "../interfaces/Packages.json"
-    },
-    "Outputs": {
+    "ManagedTestActionOutputs": {
       "type": "object",
       "properties": {
         "OutputVariables": {
@@ -95,7 +114,7 @@
       "additionalProperties": false,
       "minProperties": 1
     },
-    "Inputs": {
+    "ManagedTestActionInputs": {
       "type": "object",
       "properties": {
         "InputArtifacts": {
@@ -111,7 +130,5 @@
       "additionalProperties": false,
       "minProperties": 1
     }
-  },
-  "required": ["Configuration", "Identifier"],
-  "additionalProperties": false
+  }
 }

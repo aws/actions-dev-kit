@@ -11,13 +11,9 @@
     },
     "Events": {
       "type": "array",
-      "items": [
-        {
-          "type": "string",
-          "title": "PullRequestEventType",
-          "enum": ["DRAFT", "OPEN", "CLOSED", "MERGED", "REVISION"]
-        }
-      ]
+      "items": {
+        "$ref": "#/definitions/PullRequestEventType"
+      }
     },
     "Branches": {
       "type": "array",
@@ -33,5 +29,12 @@
     }
   },
   "required": ["Type", "Events"],
-  "additionalProperties": false
+  "additionalProperties": false,
+  "definitions": {
+    "PullRequestEventType": {
+      "type": "string",
+      "title": "PullRequestEventType",
+      "enum": ["DRAFT", "OPEN", "CLOSED", "MERGED", "REVISION"]
+    }
+  }
 }

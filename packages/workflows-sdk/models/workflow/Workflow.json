@@ -13,6 +13,25 @@
       "maxLength": 100
     },
     "SchemaVersion": {
+      "$ref": "#/definitions/SchemaVersion"
+    },
+    "RunMode": {
+      "$ref": "#/definitions/RunModes"
+    },
+    "Triggers": {
+      "description": "The triggers the workflow uses",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Trigger"
+      }
+    },
+    "Actions": {
+      "$ref": "#/definitions/Actions"
+    }
+  },
+  "required": ["Name", "SchemaVersion", "Actions"],
+  "definitions": {
+    "SchemaVersion": {
       "oneOf": [
         {
           "type": "string",
@@ -24,18 +43,11 @@
         }
       ]
     },
-    "RunMode": {
+    "RunModes": {
       "description": "The run mode the workflow uses",
       "type": "string",
       "default": "QUEUED",
       "enum": ["PARALLEL", "QUEUED", "SUPERSEDED"]
-    },
-    "Triggers": {
-      "description": "The triggers the workflow uses",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Trigger"
-      }
     },
     "Actions": {
       "description": "The actions for the workflow",
@@ -53,10 +65,7 @@
         }
       },
       "additionalProperties": false
-    }
-  },
-  "required": ["Name", "SchemaVersion", "Actions"],
-  "definitions": {
+    },
     "ActionGroup": {
       "description": "An action group contains one or more actions.",
       "type": "object",

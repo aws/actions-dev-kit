@@ -5,6 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
+export type BuildActionIdentifier = string;
 /**
  * Image to run in the container
  */
@@ -159,7 +160,7 @@ export type InputVariables =
  * The Build action compiles your source code, validates code quality by running unit tests, checking code coverage, and produces artifacts that are ready to be deployed or published.
  */
 export interface BuildAction {
-  Identifier: "aws/build@v1";
+  Identifier: BuildActionIdentifier;
   Configuration: BuildConfiguration;
   DependsOn?: DependsOn;
   Environment?: Environment;
@@ -167,17 +168,8 @@ export interface BuildAction {
   Timeout?: Timeout;
   Caching?: BuildActionCaching;
   Packages?: Packages;
-  Outputs?: {
-    OutputVariables?: OutputVariables;
-    AutoDiscoverReports?: AutoDiscoveryReports;
-    Reports?: Reports;
-    OutputArtifacts?: OutputArtifacts;
-  };
-  Inputs?: {
-    InputArtifacts?: InputArtifacts;
-    InputSources?: InputSources;
-    InputVariables?: InputVariables;
-  };
+  Outputs?: BuildActionOutput;
+  Inputs?: BuildActionInputs;
 }
 export interface BuildConfiguration {
   Container?: BuildContainer;
@@ -253,6 +245,12 @@ export interface Packages {
 export interface PackagesRegistry {
   PackagesRepository: string;
   Scopes?: Scopes;
+}
+export interface BuildActionOutput {
+  OutputVariables?: OutputVariables;
+  AutoDiscoverReports?: AutoDiscoveryReports;
+  Reports?: Reports;
+  OutputArtifacts?: OutputArtifacts;
 }
 /**
  * Automatically discover outputs of various tools, such as JUnit test reports, and generate relevant CodeCatalyst reports from them. Auto-discovery helps ensure that reports continue to be generated even if names or paths to discovered outputs change. When new files are added, CodeCatalyst automatically discovers them and produces relevant reports
@@ -349,4 +347,9 @@ export interface ReportSeverityCounter {
    */
   Severity: "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "INFORMATIONAL";
   Number?: number;
+}
+export interface BuildActionInputs {
+  InputArtifacts?: InputArtifacts;
+  InputSources?: InputSources;
+  InputVariables?: InputVariables;
 }
