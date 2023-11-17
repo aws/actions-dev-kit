@@ -1,4 +1,4 @@
-Name: PushWorkflow
+Name: PullRequestWorkflow
 SchemaVersion: 1.0
 Triggers:
   - Type: PULLREQUEST
