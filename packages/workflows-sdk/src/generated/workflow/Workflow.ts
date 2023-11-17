@@ -5,7 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type SchemaVersion = "1.0" | 1;
+export type SchemaVersion = "1.0" | 1 | string;
 /**
  * The run mode the workflow uses
  */
@@ -18,7 +18,7 @@ export type PullRequestEventType = "DRAFT" | "OPEN" | "CLOSED" | "MERGED" | "REV
  * This interface was referenced by `undefined`'s JSON-Schema definition
  * via the `patternProperty` "^[A-Za-z0-9_-]+$".
  */
-export type Action = BuildAction | GitHubActionRunner | ManagedTestAction;
+export type Action = BuildAction | GenericAction | GitHubActionRunner | ManagedTestAction;
 /**
  * Image to run in the container
  */
@@ -187,6 +187,7 @@ export type ManagedTestSteps = {
    */
   Run?: string;
 }[];
+export type WorkflowCompute = EC2Compute | LambdaCompute;
 
 /**
  * A workflow is an automated procedure that describes how to build, test, and deploy your code as part of a continuous integration and continuous delivery (CI/CD) system.
@@ -203,7 +204,7 @@ export interface Workflow {
    */
   Triggers?: Trigger[];
   Actions: Actions;
-  [k: string]: unknown;
+  Compute?: WorkflowCompute;
 }
 /**
  * A code push trigger causes a workflow run to start whenever a commit is pushed.
@@ -249,7 +250,7 @@ export interface Actions {
  * The Build action compiles your source code, validates code quality by running unit tests, checking code coverage, and produces artifacts that are ready to be deployed or published.
  */
 export interface BuildAction {
-  Identifier: string;
+  Identifier: (string | "aws/build@v1") & string;
   Configuration: BuildConfiguration;
   DependsOn?: DependsOn;
   Environment?: EnvironmentWithoutConnection;
@@ -336,10 +337,10 @@ export interface PackagesRegistry {
   Scopes?: Scopes;
 }
 export interface BuildActionOutput {
-  OutputVariables?: OutputVariables;
+  Variables?: OutputVariables;
   AutoDiscoverReports?: AutoDiscoveryReports;
   Reports?: Reports;
-  OutputArtifacts?: OutputArtifacts;
+  Artifacts?: OutputArtifacts;
 }
 /**
  * Automatically discover outputs of various tools, such as JUnit test reports, and generate relevant CodeCatalyst reports from them. Auto-discovery helps ensure that reports continue to be generated even if names or paths to discovered outputs change. When new files are added, CodeCatalyst automatically discovers them and produces relevant reports
@@ -438,15 +439,47 @@ export interface ReportSeverityCounter {
   Number?: number;
 }
 export interface BuildActionInputs {
-  InputArtifacts?: InputArtifacts;
-  InputSources?: InputSources;
-  InputVariables?: InputVariables;
+  Artifacts?: InputArtifacts;
+  Sources?: InputSources;
+  Variables?: InputVariables;
+}
+/**
+ * This is a Generic Action. This can be used for validation prior to all actions being modelled.
+ */
+export interface GenericAction {
+  Identifier: string;
+  Configuration?: GenericActionConfiguration;
+  DependsOn?: DependsOn;
+  Environment?: EnvironmentWithoutConnection;
+  Compute?: Compute;
+  Timeout?: Timeout;
+  Caching?: GenericActionCaching;
+  Packages?: Packages;
+  Outputs?: GenericActionOutput;
+  Inputs?: GenericActionInputs;
+}
+export interface GenericActionConfiguration {
+  [k: string]: unknown;
+}
+export interface GenericActionCaching {
+  FileCaching?: FileCaching;
+}
+export interface GenericActionOutput {
+  Variables?: OutputVariables;
+  AutoDiscoverReports?: AutoDiscoveryReports;
+  Reports?: Reports;
+  Artifacts?: OutputArtifacts;
+}
+export interface GenericActionInputs {
+  Artifacts?: InputArtifacts;
+  Sources?: InputSources;
+  Variables?: InputVariables;
 }
 /**
  * Add a GitHub Action to your workflow. You can use any action in the GitHub Marketplace.
  */
 export interface GitHubActionRunner {
-  Identifier: string;
+  Identifier: ("aws/github-actions-runner@v1" | string) & string;
   Configuration: GitHubActionRunnerConfiguration;
   DependsOn?: DependsOn;
   Environment?: Environment;
@@ -502,21 +535,21 @@ export interface Caching {
   FileCaching?: FileCaching;
 }
 export interface GitHubActionOutputs {
-  OutputVariables?: OutputVariables;
+  Variables?: OutputVariables;
   AutoDiscoverReports?: AutoDiscoveryReports;
   Reports?: Reports;
-  OutputArtifacts?: OutputArtifacts;
+  Artifacts?: OutputArtifacts;
 }
 export interface GitHubActionInputs {
-  InputArtifacts?: InputArtifacts;
-  InputSources?: InputSources;
-  InputVariables?: InputVariables;
+  Artifacts?: InputArtifacts;
+  Sources?: InputSources;
+  Variables?: InputVariables;
 }
 /**
  * Run integration and system tests against your application or artifacts.
  */
 export interface ManagedTestAction {
-  Identifier: string;
+  Identifier: ("aws/github-actions-runner@v1" | string) & string;
   Configuration: ManagedTestActionConfiguration;
   DependsOn?: DependsOn;
   Environment?: EnvironmentWithoutConnection;
@@ -548,15 +581,15 @@ export interface TestActionCaching {
   FileCaching?: FileCaching;
 }
 export interface ManagedTestActionOutputs {
-  OutputVariables?: OutputVariables;
+  Variables?: OutputVariables;
   AutoDiscoverReports?: AutoDiscoveryReports;
   Reports?: Reports;
-  OutputArtifacts?: OutputArtifacts;
+  Artifacts?: OutputArtifacts;
 }
 export interface ManagedTestActionInputs {
-  InputArtifacts?: InputArtifacts;
-  InputSources?: InputSources;
-  InputVariables?: InputVariables;
+  Artifacts?: InputArtifacts;
+  Sources?: InputSources;
+  Variables?: InputVariables;
 }
 /**
  * An action group contains one or more actions.
@@ -569,5 +602,27 @@ export interface ActionGroup {
   Actions?: {
     [k: string]: Action;
   };
-  [k: string]: unknown;
+}
+export interface EC2Compute {
+  Type: "EC2" | "ec2";
+  Fleet?:
+    | string
+    | (
+        | "Linux.x86-64.Large"
+        | "Linux.x86-64.XLarge"
+        | "Linux.x86-64.2XLarge"
+        | "Linux.Arm64.Large"
+        | "Linux.Arm64.XLarge"
+        | "Linux.Arm64.2XLarge"
+        | "Windows.x86-64.XLarge"
+        | "Windows.x86-64.2XLarge"
+      );
+  SharedInstance?: "TRUE" | "FALSE";
+}
+export interface LambdaCompute {
+  Type: "LAMBDA" | "Lambda";
+  /**
+   * On-demand fleet
+   */
+  Fleet?: "Linux.x86-64.Large" | "Linux.x86-64.XLarge" | "Linux.Arm64.Large" | "Linux.Arm64.XLarge";
 }

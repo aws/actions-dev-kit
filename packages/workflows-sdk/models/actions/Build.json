@@ -41,7 +41,15 @@
   "definitions": {
     "BuildActionIdentifier": {
       "type": "string",
-      "pattern": "^aws/build@1?(.0){0,2}"
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "aws\\/build@v1(\\.0){0,2}"
+        },
+        {
+          "const": "aws/build@v1"
+        }
+      ]
     },
     "BuildActionConfiguration": {
       "type": "object",
@@ -102,7 +110,7 @@
     "BuildActionOutput": {
       "type": "object",
       "properties": {
-        "OutputVariables": {
+        "Variables": {
           "$ref": "../interfaces/OutputVariables.json"
         },
         "AutoDiscoverReports": {
@@ -111,7 +119,7 @@
         "Reports": {
           "$ref": "../interfaces/Reports.json"
         },
-        "OutputArtifacts": {
+        "Artifacts": {
           "$ref": "../interfaces/OutputArtifacts.json"
         }
       },
@@ -121,13 +129,13 @@
     "BuildActionInputs": {
       "type": "object",
       "properties": {
-        "InputArtifacts": {
+        "Artifacts": {
           "$ref": "../interfaces/InputArtifacts.json"
         },
-        "InputSources": {
+        "Sources": {
           "$ref": "../interfaces/InputSources.json"
         },
-        "InputVariables": {
+        "Variables": {
           "$ref": "../interfaces/InputVariables.json"
         }
       },

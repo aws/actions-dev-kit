@@ -41,7 +41,15 @@
   "definitions": {
     "ManagedTestActionIdentifier": {
       "type": "string",
-      "pattern": "^aws/managed-test@1?(.0){0,2}"
+      "anyOf": [
+        {
+          "const": "aws/github-actions-runner@v1"
+        },
+        {
+          "type": "string",
+          "pattern": "^aws\\/managed-test@v1(\\.0){0,2}"
+        }
+      ]
     },
     "ManagedTestActionConfiguration": {
       "type": "object",
@@ -98,7 +106,7 @@
     "ManagedTestActionOutputs": {
       "type": "object",
       "properties": {
-        "OutputVariables": {
+        "Variables": {
           "$ref": "../interfaces/OutputVariables.json"
         },
         "AutoDiscoverReports": {
@@ -107,7 +115,7 @@
         "Reports": {
           "$ref": "../interfaces/Reports.json"
         },
-        "OutputArtifacts": {
+        "Artifacts": {
           "$ref": "../interfaces/OutputArtifacts.json"
         }
       },
@@ -117,13 +125,13 @@
     "ManagedTestActionInputs": {
       "type": "object",
       "properties": {
-        "InputArtifacts": {
+        "Artifacts": {
           "$ref": "../interfaces/InputArtifacts.json"
         },
-        "InputSources": {
+        "Sources": {
           "$ref": "../interfaces/InputSources.json"
         },
-        "InputVariables": {
+        "Variables": {
           "$ref": "../interfaces/InputVariables.json"
         }
       },

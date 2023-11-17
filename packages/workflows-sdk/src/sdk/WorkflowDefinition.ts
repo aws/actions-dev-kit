@@ -73,6 +73,10 @@ export class WorkflowDefinition {
   ) {
     this.definition[name] = action;
   }
+
+  setCompute<T extends types.WorkflowCompute>(compute: T, _options?: {}) {
+    this.definition.Compute = compute;
+  }
 }
 
 export function fetchSchema(pathloc: string) {

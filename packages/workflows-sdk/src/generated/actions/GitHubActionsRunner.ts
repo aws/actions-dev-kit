@@ -5,7 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type GitHubActionIdentifier = string;
+export type GitHubActionIdentifier = "aws/github-actions-runner@v1" | string;
+export type GitHubActionIdentifier1 = string;
 /**
  * List of Github action steps to run
  *
@@ -147,7 +148,7 @@ export type InputVariables =
  * Add a GitHub Action to your workflow. You can use any action in the GitHub Marketplace.
  */
 export interface GitHubActionRunner {
-  Identifier: GitHubActionIdentifier;
+  Identifier: GitHubActionIdentifier & GitHubActionIdentifier1;
   Configuration: GitHubActionRunnerConfiguration;
   DependsOn?: DependsOn;
   Environment?: Environment;
@@ -220,10 +221,10 @@ export interface FileCaching {
   };
 }
 export interface GitHubActionOutputs {
-  OutputVariables?: OutputVariables;
+  Variables?: OutputVariables;
   AutoDiscoverReports?: AutoDiscoveryReports;
   Reports?: Reports;
-  OutputArtifacts?: OutputArtifacts;
+  Artifacts?: OutputArtifacts;
 }
 /**
  * Automatically discover outputs of various tools, such as JUnit test reports, and generate relevant CodeCatalyst reports from them. Auto-discovery helps ensure that reports continue to be generated even if names or paths to discovered outputs change. When new files are added, CodeCatalyst automatically discovers them and produces relevant reports
@@ -322,7 +323,7 @@ export interface ReportSeverityCounter {
   Number?: number;
 }
 export interface GitHubActionInputs {
-  InputArtifacts?: InputArtifacts;
-  InputSources?: InputSources;
-  InputVariables?: InputVariables;
+  Artifacts?: InputArtifacts;
+  Sources?: InputSources;
+  Variables?: InputVariables;
 }

@@ -27,12 +27,16 @@
     },
     "Actions": {
       "$ref": "#/definitions/Actions"
+    },
+    "Compute": {
+      "$ref": "#/definitions/WorkflowCompute"
     }
   },
   "required": ["Name", "SchemaVersion", "Actions"],
+  "additionalProperties": false,
   "definitions": {
     "SchemaVersion": {
-      "oneOf": [
+      "anyOf": [
         {
           "type": "string",
           "const": "1.0"
@@ -40,6 +44,9 @@
         {
           "type": "number",
           "const": 1.0
+        },
+        {
+          "type": "string"
         }
       ]
     },
@@ -47,7 +54,11 @@
       "description": "The run mode the workflow uses",
       "type": "string",
       "default": "QUEUED",
-      "enum": ["PARALLEL", "QUEUED", "SUPERSEDED"]
+      "enum": [
+        "PARALLEL",
+        "QUEUED",
+        "SUPERSEDED"
+      ]
     },
     "Actions": {
       "description": "The actions for the workflow",
@@ -83,7 +94,8 @@
           },
           "additionalProperties": false
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Action": {
       "description": "An action is the main building block of a workflow, and defines a logical unit of work to perform during a workflow run.",
@@ -91,6 +103,9 @@
       "oneOf": [
         {
           "$ref": "../actions/Build.json"
+        },
+        {
+          "$ref": "../actions/GenericAction.json"
         },
         {
           "$ref": "../actions/GitHubActionsRunner.json"
@@ -113,6 +128,85 @@
           "$ref": "../triggers/Schedule.json"
         }
       ]
+    },
+    "WorkflowCompute": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/EC2Compute"
+        },
+        {
+          "$ref": "#/definitions/LambdaCompute"
+        }
+      ]
+    },
+    "EC2Compute": {
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": "string",
+          "enum": [
+            "EC2",
+            "ec2"
+          ]
+        },
+        "Fleet": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "Provisioned fleet name",
+              "minLength": 2,
+              "maxLength": 128
+            },
+            {
+              "type": "string",
+              "description": "On-demand fleet",
+              "enum": [
+                "Linux.x86-64.Large",
+                "Linux.x86-64.XLarge",
+                "Linux.x86-64.2XLarge",
+                "Linux.Arm64.Large",
+                "Linux.Arm64.XLarge",
+                "Linux.Arm64.2XLarge",
+                "Windows.x86-64.XLarge",
+                "Windows.x86-64.2XLarge"
+              ]
+            }
+          ]
+        },
+        "SharedInstance": {
+          "type": "string",
+          "enum": [
+            "TRUE",
+            "FALSE"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": ["Type"]
+    },
+    "LambdaCompute": {
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": "string",
+          "enum": [
+            "LAMBDA",
+            "Lambda"
+          ]
+        },
+        "Fleet": {
+          "type": "string",
+          "description": "On-demand fleet",
+          "enum": [
+            "Linux.x86-64.Large",
+            "Linux.x86-64.XLarge",
+            "Linux.Arm64.Large",
+            "Linux.Arm64.XLarge"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": ["Type"]
     }
   }
 }

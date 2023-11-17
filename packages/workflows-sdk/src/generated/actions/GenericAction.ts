@@ -5,20 +5,7 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type ManagedTestActionIdentifier = "aws/github-actions-runner@v1" | string;
-export type ManagedTestActionIdentifier1 = string;
-/**
- * Commands for the build action
- *
- * @minItems 0
- * @maxItems 256
- */
-export type ManagedTestSteps = {
-  /**
-   * Command string
-   */
-  Run?: string;
-}[];
+export type GenericActionIdentifier = string;
 /**
  * Refers to the actions or action groups this action depends on.
  *
@@ -155,36 +142,22 @@ export type InputVariables =
     };
 
 /**
- * Run integration and system tests against your application or artifacts.
+ * This is a Generic Action. This can be used for validation prior to all actions being modelled.
  */
-export interface ManagedTestAction {
-  Identifier: ManagedTestActionIdentifier & ManagedTestActionIdentifier1;
-  Configuration: ManagedTestActionConfiguration;
+export interface GenericAction {
+  Identifier: GenericActionIdentifier;
+  Configuration?: GenericActionConfiguration;
   DependsOn?: DependsOn;
   Environment?: EnvironmentWithoutConnection;
   Compute?: Compute;
   Timeout?: Timeout;
-  Caching?: TestActionCaching;
+  Caching?: GenericActionCaching;
   Packages?: Packages;
-  Outputs?: ManagedTestActionOutputs;
-  Inputs?: ManagedTestActionInputs;
+  Outputs?: GenericActionOutput;
+  Inputs?: GenericActionInputs;
 }
-export interface ManagedTestActionConfiguration {
-  Container?: ManagedTestContainer;
-  Steps: ManagedTestSteps;
-}
-/**
- * The container to run the build
- */
-export interface ManagedTestContainer {
-  /**
-   * Image to run in the container
-   */
-  Image?: string;
-  /**
-   * Source of the Image
-   */
-  Registry?: string;
+export interface GenericActionConfiguration {
+  [k: string]: unknown;
 }
 /**
  * The location to the code is run in, or deployed to, depending on the action type. This version of environment does not require a connection
@@ -205,7 +178,7 @@ export interface EnvironmentWithoutConnection {
   }[];
   [k: string]: unknown;
 }
-export interface TestActionCaching {
+export interface GenericActionCaching {
   FileCaching?: FileCaching;
 }
 /**
@@ -241,7 +214,7 @@ export interface PackagesRegistry {
   PackagesRepository: string;
   Scopes?: Scopes;
 }
-export interface ManagedTestActionOutputs {
+export interface GenericActionOutput {
   Variables?: OutputVariables;
   AutoDiscoverReports?: AutoDiscoveryReports;
   Reports?: Reports;
@@ -343,7 +316,7 @@ export interface ReportSeverityCounter {
   Severity: "CRITICAL" | "HIGH" | "MEDIUM" | "LOW" | "INFORMATIONAL";
   Number?: number;
 }
-export interface ManagedTestActionInputs {
+export interface GenericActionInputs {
   Artifacts?: InputArtifacts;
   Sources?: InputSources;
   Variables?: InputVariables;

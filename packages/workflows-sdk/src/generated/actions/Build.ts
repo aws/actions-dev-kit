@@ -5,7 +5,8 @@
  * and run json-schema-to-typescript to regenerate this file.
  */
 
-export type BuildActionIdentifier = string;
+export type BuildActionIdentifier = string | "aws/build@v1";
+export type BuildActionIdentifier1 = string;
 /**
  * Image to run in the container
  */
@@ -160,7 +161,7 @@ export type InputVariables =
  * The Build action compiles your source code, validates code quality by running unit tests, checking code coverage, and produces artifacts that are ready to be deployed or published.
  */
 export interface BuildAction {
-  Identifier: BuildActionIdentifier;
+  Identifier: BuildActionIdentifier & BuildActionIdentifier1;
   Configuration: BuildConfiguration;
   DependsOn?: DependsOn;
   Environment?: EnvironmentWithoutConnection;
@@ -247,10 +248,10 @@ export interface PackagesRegistry {
   Scopes?: Scopes;
 }
 export interface BuildActionOutput {
-  OutputVariables?: OutputVariables;
+  Variables?: OutputVariables;
   AutoDiscoverReports?: AutoDiscoveryReports;
   Reports?: Reports;
-  OutputArtifacts?: OutputArtifacts;
+  Artifacts?: OutputArtifacts;
 }
 /**
  * Automatically discover outputs of various tools, such as JUnit test reports, and generate relevant CodeCatalyst reports from them. Auto-discovery helps ensure that reports continue to be generated even if names or paths to discovered outputs change. When new files are added, CodeCatalyst automatically discovers them and produces relevant reports
@@ -349,7 +350,7 @@ export interface ReportSeverityCounter {
   Number?: number;
 }
 export interface BuildActionInputs {
-  InputArtifacts?: InputArtifacts;
-  InputSources?: InputSources;
-  InputVariables?: InputVariables;
+  Artifacts?: InputArtifacts;
+  Sources?: InputSources;
+  Variables?: InputVariables;
 }
