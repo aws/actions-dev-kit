@@ -252,7 +252,7 @@ export interface BuildAction {
   Identifier: string;
   Configuration: BuildConfiguration;
   DependsOn?: DependsOn;
-  Environment?: Environment;
+  Environment?: EnvironmentWithoutConnection;
   Compute?: Compute;
   Timeout?: Timeout;
   Caching?: BuildActionCaching;
@@ -281,9 +281,9 @@ export interface BuildStep {
   Run?: string;
 }
 /**
- * The location to the code is run in, or deployed to, depending on the action type
+ * The location to the code is run in, or deployed to, depending on the action type. This version of environment does not require a connection
  */
-export interface Environment {
+export interface EnvironmentWithoutConnection {
   /**
    * Name of the environment
    */
@@ -292,7 +292,7 @@ export interface Environment {
    * @minItems 1
    * @maxItems 1
    */
-  Connections: {
+  Connections?: {
     Name: string | number;
     Role: string;
     [k: string]: unknown;
@@ -449,7 +449,7 @@ export interface GitHubActionRunner {
   Identifier: string;
   Configuration: GitHubActionRunnerConfiguration;
   DependsOn?: DependsOn;
-  Environment?: EnvironmentWithoutConnection;
+  Environment?: Environment;
   Compute?: Compute;
   Timeout?: Timeout;
   Caching?: Caching;
@@ -480,9 +480,9 @@ export interface GitHubActionRunnerStep {
   shell?: string;
 }
 /**
- * The location to the code is run in, or deployed to, depending on the action type. This version of environment does not require a connection
+ * The location to the code is run in, or deployed to, depending on the action type
  */
-export interface EnvironmentWithoutConnection {
+export interface Environment {
   /**
    * Name of the environment
    */
@@ -491,7 +491,7 @@ export interface EnvironmentWithoutConnection {
    * @minItems 1
    * @maxItems 1
    */
-  Connections?: {
+  Connections: {
     Name: string | number;
     Role: string;
     [k: string]: unknown;
