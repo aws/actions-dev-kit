@@ -42,7 +42,7 @@
   "devDependencies": {
     "@types/js-yaml": "^4.0.5",
     "@types/yargs": "^17.0.24",
-    "chalk": "^4",
+    "chalk": "^5",
     "fs-extra": "^11.1.1",
     "graceful-fs": "^4.2.11"
   },
