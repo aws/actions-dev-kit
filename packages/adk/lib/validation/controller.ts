@@ -9,6 +9,7 @@ export class ValidationController {
 
     validateAction(props: ValidationProps) {
         if (this.actionValidationRules.apply(props)) {
+            Logger.log('Validation Passed');
             return 0;
         } else {
             Logger.error('Validation Failed');
