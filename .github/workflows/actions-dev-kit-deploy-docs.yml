@@ -1,6 +1,7 @@
 name: adk-deploy-docs
 
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,7 +41,7 @@ jobs:
       # Checkout main branch
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.base_ref }}
+          ref: ${{ github.ref }}
           # Checkout with ssh key to be able to push changes back to the branch
           ssh-key: ${{ env.SSH_PRIVATE_KEY }}
       # Install dependencies
@@ -51,8 +52,8 @@ jobs:
 
       - run: yarn install # install dependencies
       - run: yarn run all #build
-      - run: yarn run api-ref #generate /docs
-      # Commit /docs folder back to the main branch. GitHub then deploys it automatically to GitHub pages
-      - run: git status && git add . && git add -f docs
-      - run: 'git commit -m "chore(docs): - update API reference"'
+      - run: yarn run api-ref-pre-release #generate /pre-release-docs
+      # Commit /pre-release-docs folder back to the main branch. GitHub then deploys it automatically to GitHub pages
+      - run: git status && git add . && git add -f pre-release-docs
+      - run: git commit -m "chore(docs) - update /pre-release-docs"
       - run: git push

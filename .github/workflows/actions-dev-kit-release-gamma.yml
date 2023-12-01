@@ -1,7 +1,8 @@
-# This workflow is a stub just to appear in the Actions UI.
-# It must be executed on the gamma branch where the real definition is.
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
 name: adk-release-to-gamma
+
 on: [workflow_dispatch]
 
 env:
@@ -9,10 +10,42 @@ env:
   GIT_COMMITTER_EMAIL: cawsactionextensions+adk-release@amazon.com
 
 jobs:
-  release-to-gamma:
+  publish-update-gamma:
     runs-on: ubuntu-latest
     permissions: write-all
-
     steps:
-      - name: Log warning
-        run: 'echo "Gamma release workflow. Must be run on the gamma branch."'
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          registry-url: ${{ secrets.CODEARTIFACT_NPM_REGISTRY_GAMMA }}
+          scope: '@aws'
+      # Install dependencies
+      - run: npm install --global lerna@5.0.0 yarn@1.22.18
+      - run: lerna --version
+      - run: yarn --version
+      - run: npm --version
+      # Runs `yarn install` and prepare all the packages in this monorepo for the build
+      - run: yarn install
+      # Builds and tests all the packages
+      - run: yarn run all
+      # Upgrades patch version for all the packages even if there's no changes in some of them
+      - run: lerna version --conventional-commits --no-changelog --no-git-tag-version --force-publish --yes
+      # Commit package.json files with version bump
+      - run: git status && git add . && git commit --amend --no-edit
+      # Configures AWS credentials to access ADK CodeArtifact Gamma repository
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2.0.0
+        with:
+          role-to-assume: ${{ secrets.PUBLISH_ROLE_TO_ASSUME }}
+          aws-region: us-west-2
+          role-session-name: adk-githubworkflow
+      - run: aws sts get-caller-identity
+      - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODEARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODEARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackage
+      - run: npm config list
+      - run: git status
+      # Publishes ADK packages to CodeArtifact
+      - run: lerna publish from-package --yes

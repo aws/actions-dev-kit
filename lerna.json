@@ -8,7 +8,7 @@
   "version": "1.0.15",
   "command": {
     "version": {
-      "allowBranch": "main",
+      "allowBranch": "gamma",
       "conventionalCommits": true,
       "exact": true,
       "message": "chore(release): %s"
