@@ -27,7 +27,7 @@ export function getInputParam(inputVar: string) {
 
 export function setOutputParam(varName: string, varValue: string) {
     if (!isValidOutputVariableName(varName)) {
-        const errorMessage = `Invalid output parameter name. Should match the following pattern ${outputVariableNamePattern}`;
+        const errorMessage = `Invalid output parameter name, it must match the following pattern ${outputVariableNamePattern}`;
         const command_output = <ICommandOutput>{};
         command_output.code = 1;
         command_output.stdout = errorMessage;

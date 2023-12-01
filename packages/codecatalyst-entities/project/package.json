@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-project",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "CodeCatalyst project entity",
   "homepage": "",
   "license": "Apache-2.0",
@@ -23,7 +23,7 @@
     "api-ref": "typedoc"
   },
   "devDependencies": {
-    "@aws/codecatalyst-adk-core": "1.0.14"
+    "@aws/codecatalyst-adk-core": "1.0.15"
   },
   "typedoc": {
     "entryPoint": "lib/index.ts"
