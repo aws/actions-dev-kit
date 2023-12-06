@@ -43,9 +43,9 @@ jobs:
       #- run: npm unpublish @aws/codecatalyst-adk-model-parser@${{ vars.UNPUBLISH_NPM_VERSION }}
       # env:
       #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm unpublish @aws/codecatalyst-adk-utils@${{ vars.UNPUBLISH_NPM_VERSION }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      #- run: npm unpublish @aws/codecatalyst-adk-utils@${{ vars.UNPUBLISH_NPM_VERSION }}
+      #  env:
+      #    NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - run: npm unpublish @aws/codecatalyst-space@${{ vars.UNPUBLISH_NPM_VERSION }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
