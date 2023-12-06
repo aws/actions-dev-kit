@@ -1,0 +1,48 @@
+# This workflow will build and run tests using node and then publish a package to the public NPM repository
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: adk-release-delete
+
+on: [workflow_dispatch]
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  GIT_COMMITTER_NAME: ActionsDevKitRelease
+  GIT_COMMITTER_EMAIL: cawsactionextensions+adk-release@amazon.com
+
+jobs:
+  release-to-prod:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 16
+          registry-url: 'https://registry.npmjs.org/'
+          scope: '@aws'
+      # Install dependencies
+      - run: npm install --global lerna@5.0.0 yarn@1.22.18
+      - run: lerna --version
+      - run: yarn --version
+      - run: npm --version
+
+      # Un-Publishes ADK package from NPM (order matters)
+      # https://docs.npmjs.com/policies/unpublish
+      - run: npm unpublish codecatalyst-adk@$UNPUBLISH_NPM_VERSION
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm unpublish codecatalyst-adk-core@$UNPUBLISH_NPM_VERSION
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm unpublish codecatalyst-project@$UNPUBLISH_NPM_VERSION
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm unpublish codecatalyst-adk-model-parser@$UNPUBLISH_NPM_VERSION
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm unpublish codecatalyst-adk-utils@$UNPUBLISH_NPM_VERSION
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
