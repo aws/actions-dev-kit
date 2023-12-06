@@ -31,18 +31,18 @@ jobs:
 
       # Un-Publishes ADK package from NPM (order matters)
       # https://docs.npmjs.com/policies/unpublish
-      - run: npm unpublish codecatalyst-adk@$UNPUBLISH_NPM_VERSION
+      - run: npm unpublish codecatalyst-adk@${{ vars.UNPUBLISH_NPM_VERSION }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm unpublish codecatalyst-adk-core@$UNPUBLISH_NPM_VERSION
+      - run: npm unpublish codecatalyst-adk-core@${{ vars.UNPUBLISH_NPM_VERSION }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm unpublish codecatalyst-project@$UNPUBLISH_NPM_VERSION
+      - run: npm unpublish codecatalyst-project@${{ vars.UNPUBLISH_NPM_VERSION }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm unpublish codecatalyst-adk-model-parser@$UNPUBLISH_NPM_VERSION
+      - run: npm unpublish codecatalyst-adk-model-parser@${{ vars.UNPUBLISH_NPM_VERSION }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: npm unpublish codecatalyst-adk-utils@$UNPUBLISH_NPM_VERSION
+      - run: npm unpublish codecatalyst-adk-utils@${{ vars.UNPUBLISH_NPM_VERSION }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
