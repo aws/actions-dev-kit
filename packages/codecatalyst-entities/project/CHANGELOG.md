@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.0.17 (2024-01-11)
+
+
+### Bug Fixes
+
+* Revert "fix: update output variable validation ([#264](https://github.com/aws/actions-dev-kit/issues/264))" and "docs: update API ref for the setOutput API ([#265](https://github.com/aws/actions-dev-kit/issues/265))" ([#279](https://github.com/aws/actions-dev-kit/issues/279)) ([f62916a](https://github.com/aws/actions-dev-kit/commit/f62916a91c052b910de8406cc15e7ea124675191))
+
+
+
+
+
 ## 1.0.16 (2023-12-11)
 
 **Note:** Version bump only for package @aws/codecatalyst-project

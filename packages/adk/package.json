@@ -1,6 +1,6 @@
 {
   "name": "@aws/codecatalyst-adk",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "description": "ADK CLI",
   "homepage": "",
   "license": "Apache-2.0",
@@ -29,8 +29,8 @@
     "templates/**/*"
   ],
   "dependencies": {
-    "@aws/codecatalyst-adk-model-parser": "1.0.16",
-    "@aws/codecatalyst-adk-utils": "1.0.16",
+    "@aws/codecatalyst-adk-model-parser": "1.0.17",
+    "@aws/codecatalyst-adk-utils": "1.0.17",
     "@nestjs/common": "^10.0.0",
     "@nestjs/core": "^10.0.3",
     "js-yaml": "^4.1.0",
