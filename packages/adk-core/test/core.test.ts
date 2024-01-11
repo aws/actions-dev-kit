@@ -78,6 +78,8 @@ describe('@aws/codecatalyst-adk-core', () => {
         const errorMessage = `Invalid output parameter name, it must match the following pattern ${outputVariableNamePattern}`;
         const outputParamValue = 'outputParamValue';
         const validInput30Chars = 'Stack_ID_12345678910111213145';
+        const validInput50Chars = 'Stack_ID_12345678910111213145123456789112345678911';
+        const validInput255Chars = 'longer_than_255_chars_12345678910111213141516171848761235784576892956289257645823476528749562849568241234567891011121314151617184876123578457689295628925764582347652874956284956824123456789101112131415161718487612357845768929562892576458234765287495628495';
 
         const emptyInput = '';
         const invalidInput = 'Stack ID';
@@ -86,6 +88,8 @@ describe('@aws/codecatalyst-adk-core', () => {
         const endsWithInvalidChar = 'Stack_ID-';
 
         expect(adkCore.setOutput(validInput30Chars, outputParamValue).code === undefined).toBeTruthy();
+        expect(adkCore.setOutput(validInput50Chars, outputParamValue).code === undefined).toBeTruthy();
+        expect(adkCore.setOutput(validInput255Chars, outputParamValue).code === undefined).toBeTruthy();
 
         expect(adkCore.setOutput(emptyInput, outputParamValue).code === 1).toBeTruthy();
         expect(adkCore.setOutput(emptyInput, outputParamValue).stdout === errorMessage).toBeTruthy();

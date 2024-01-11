@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export const outputVariableNamePattern = new RegExp(/^[A-Za-z0-9@\\-_]+$/);
+export const outputVariableNamePattern = new RegExp(/^[A-Za-z0-9][A-Za-z0-9\-_]{1,253}[A-Za-z0-9]$/);
 
 /**
  * Sanitizes (escapes) special characters in the command and its arguments.

@@ -130,6 +130,9 @@ describe('ADK-Util test', () => {
     it('test validateOutputVariableName', async () => {
         const validInput = 'Stack_ID';
         const validInput30Chars = 'Stack_ID_12345678910111213145';
+        const validInput50Chars = 'Stack_ID_12345678910111213145123456789112345678911';
+        const validInput255Chars = 'longer_than_255_chars_12345678910111213141516171848761235784576892956289257645823476528749562849568241234567891011121314151617184876123578457689295628925764582347652874956284956824123456789101112131415161718487612357845768929562892576458234765287495628495';
+
         const emptyInput = '';
         const invalidInput = 'Stack ID';
         const tooLongInput = 'longer_than_255_chars_123456789101112131415161718487612357845768929562892576458234765287495628495682412345678910111213141516171848761235784576892956289257645823476528749562849568241234567891011121314151617184876123578457689295628925764582347652874956284959';
@@ -138,6 +141,8 @@ describe('ADK-Util test', () => {
 
         expect(isValidOutputVariableName(validInput)).toBeTruthy();
         expect(isValidOutputVariableName(validInput30Chars)).toBeTruthy();
+        expect(isValidOutputVariableName(validInput50Chars)).toBeTruthy();
+        expect(isValidOutputVariableName(validInput255Chars)).toBeTruthy();
         expect(isValidOutputVariableName(emptyInput)).toBeFalsy();
         expect(isValidOutputVariableName(invalidInput)).toBeFalsy();
         expect(isValidOutputVariableName(tooLongInput)).toBeFalsy();
