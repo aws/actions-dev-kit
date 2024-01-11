@@ -81,7 +81,7 @@ describe('@aws/codecatalyst-adk-core', () => {
 
         const emptyInput = '';
         const invalidInput = 'Stack ID';
-        const tooLongInput = 'longer_than_255_chars_123456789101112131415161718487612357845768929562892576458234765287495628495682412345678910111213141516171848761235784576892956289257645823476528749562849568241234567891011121314151617184876123578457689295628925764582347652874956284959';
+        const tooLongInput = 'longer_than_30_chars_123456789101112131415161718';
         const startsWithInvalidChar = '-Stack_ID';
         const endsWithInvalidChar = 'Stack_ID-';
 
