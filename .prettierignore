@@ -1,0 +1,8 @@
+*.js
+*.json
+*.yaml
+*.yml
+.eslintrc
+
+coverage
+dist
