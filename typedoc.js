@@ -5,8 +5,8 @@ module.exports = {
         "packages/adk-core",
         "packages/adk-model-parser",
         "packages/adk-utils",
-        "packages/codecatalyst-entities/run-summaries",
-        "packages/codecatalyst-entities/project",
-        "packages/codecatalyst-entities/space",
+        "packages/run-summaries",
+        "packages/project",
+        "packages/space",
    ]
 }
