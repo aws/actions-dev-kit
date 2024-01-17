@@ -17,6 +17,8 @@ const project = new TypescriptConstruct({
     '@aws/adk-typescript-construct',
     'pino',
     'pino-pretty',
+    'pretty-quick',
+    'prettier',
   ],
   tsconfigDev: {
     include: ['generators/**/*.ts'],
@@ -44,7 +46,7 @@ const project = new TypescriptConstruct({
 project.package.addField('files', ['models', 'lib']);
 
 // set custom scripts
-project.setScript('generate', 'npx ts-node ./generators/ts-codegen-driver.ts');
+project.setScript('generate', 'npx ts-node ./generators/ts-codegen-driver.ts && pretty-quick');
 project.setScript('build', ['yarn projen', 'yarn generate', 'npx projen build'].join(' && '));
 
 project.synth();
