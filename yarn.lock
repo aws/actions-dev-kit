@@ -22,10 +22,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@aws/codecatalyst-adk-core@*, @aws/codecatalyst-adk-core@workspace:^, @aws/codecatalyst-adk-core@workspace:packages/adk-core":
+"@aws/adk-typescript-construct@*, @aws/adk-typescript-construct@workspace:packages/utils/typescript-construct":
   version: 0.0.0-use.local
-  resolution: "@aws/codecatalyst-adk-core@workspace:packages/adk-core"
+  resolution: "@aws/adk-typescript-construct@workspace:packages/utils/typescript-construct"
   dependencies:
+    "@types/jest": "*"
+    "@types/node": ^18
+    "@typescript-eslint/eslint-plugin": ^5
+    "@typescript-eslint/parser": ^5
+    eslint: ^8
+    eslint-import-resolver-node: "*"
+    eslint-import-resolver-typescript: "*"
+    eslint-plugin-import: "*"
+    jest: "*"
+    jest-junit: ^15
+    npm-check-updates: ^16
+    projen: "*"
+    standard-version: ^9
+    ts-jest: "*"
+    ts-node: "*"
+    typescript: "*"
+  languageName: unknown
+  linkType: soft
+
+"@aws/codecatalyst-adk-core@*, @aws/codecatalyst-adk-core@workspace:packages/adk/adk-core":
+  version: 0.0.0-use.local
+  resolution: "@aws/codecatalyst-adk-core@workspace:packages/adk/adk-core"
+  dependencies:
+    "@aws/adk-typescript-construct": "*"
     "@aws/codecatalyst-adk-utils": 1.0.17
     "@types/jest": "*"
     "@types/node": ^18
@@ -47,10 +71,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws/codecatalyst-adk-model-parser@*, @aws/codecatalyst-adk-model-parser@workspace:packages/adk-model-parser":
+"@aws/codecatalyst-adk-model-parser@*, @aws/codecatalyst-adk-model-parser@workspace:packages/adk/adk-model-parser":
   version: 0.0.0-use.local
-  resolution: "@aws/codecatalyst-adk-model-parser@workspace:packages/adk-model-parser"
+  resolution: "@aws/codecatalyst-adk-model-parser@workspace:packages/adk/adk-model-parser"
   dependencies:
+    "@aws/adk-typescript-construct": "*"
     "@aws/codecatalyst-adk-utils": "*"
     "@types/jest": "*"
     "@types/node": ^18
@@ -72,10 +97,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws/codecatalyst-adk-utils@*, @aws/codecatalyst-adk-utils@1.0.17, @aws/codecatalyst-adk-utils@workspace:packages/adk-utils":
+"@aws/codecatalyst-adk-utils@*, @aws/codecatalyst-adk-utils@1.0.17, @aws/codecatalyst-adk-utils@workspace:packages/adk/adk-utils":
   version: 0.0.0-use.local
-  resolution: "@aws/codecatalyst-adk-utils@workspace:packages/adk-utils"
+  resolution: "@aws/codecatalyst-adk-utils@workspace:packages/adk/adk-utils"
   dependencies:
+    "@aws/adk-typescript-construct": "*"
     "@types/jest": "*"
     "@types/node": ^18
     "@typescript-eslint/eslint-plugin": ^5
@@ -95,10 +121,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws/codecatalyst-adk@workspace:packages/adk":
+"@aws/codecatalyst-adk@workspace:packages/adk/adk":
   version: 0.0.0-use.local
-  resolution: "@aws/codecatalyst-adk@workspace:packages/adk"
+  resolution: "@aws/codecatalyst-adk@workspace:packages/adk/adk"
   dependencies:
+    "@aws/adk-typescript-construct": "*"
     "@aws/codecatalyst-adk-model-parser": "*"
     "@aws/codecatalyst-adk-utils": "*"
     "@nestjs/common": ^10.0.0
@@ -130,34 +157,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws/codecatalyst-project@workspace:packages/project":
+"@aws/codecatalyst-project@workspace:packages/entities/project":
   version: 0.0.0-use.local
-  resolution: "@aws/codecatalyst-project@workspace:packages/project"
+  resolution: "@aws/codecatalyst-project@workspace:packages/entities/project"
   dependencies:
-    "@aws/codecatalyst-adk-core": "workspace:^"
-    "@types/jest": "*"
-    "@types/node": ^18
-    "@typescript-eslint/eslint-plugin": ^5
-    "@typescript-eslint/parser": ^5
-    eslint: ^8
-    eslint-import-resolver-node: "*"
-    eslint-import-resolver-typescript: "*"
-    eslint-plugin-import: "*"
-    jest: "*"
-    jest-junit: ^15
-    npm-check-updates: ^16
-    projen: "*"
-    standard-version: ^9
-    ts-jest: "*"
-    ts-node: "*"
-    typescript: "*"
-  languageName: unknown
-  linkType: soft
-
-"@aws/codecatalyst-run-summaries@workspace:packages/run-summaries":
-  version: 0.0.0-use.local
-  resolution: "@aws/codecatalyst-run-summaries@workspace:packages/run-summaries"
-  dependencies:
+    "@aws/adk-typescript-construct": "*"
     "@aws/codecatalyst-adk-core": "*"
     "@types/jest": "*"
     "@types/node": ^18
@@ -178,11 +182,36 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws/codecatalyst-space@workspace:packages/space":
+"@aws/codecatalyst-run-summaries@workspace:packages/entities/run-summaries":
   version: 0.0.0-use.local
-  resolution: "@aws/codecatalyst-space@workspace:packages/space"
+  resolution: "@aws/codecatalyst-run-summaries@workspace:packages/entities/run-summaries"
   dependencies:
+    "@aws/adk-typescript-construct": "*"
     "@aws/codecatalyst-adk-core": "*"
+    "@types/jest": "*"
+    "@types/node": ^18
+    "@typescript-eslint/eslint-plugin": ^5
+    "@typescript-eslint/parser": ^5
+    eslint: ^8
+    eslint-import-resolver-node: "*"
+    eslint-import-resolver-typescript: "*"
+    eslint-plugin-import: "*"
+    jest: "*"
+    jest-junit: ^15
+    npm-check-updates: ^16
+    projen: "*"
+    standard-version: ^9
+    ts-jest: "*"
+    ts-node: "*"
+    typescript: "*"
+  languageName: unknown
+  linkType: soft
+
+"@aws/codecatalyst-space@workspace:packages/entities/space":
+  version: 0.0.0-use.local
+  resolution: "@aws/codecatalyst-space@workspace:packages/entities/space"
+  dependencies:
+    "@aws/adk-typescript-construct": "*"
     "@types/jest": "*"
     "@types/node": ^18
     "@typescript-eslint/eslint-plugin": ^5
