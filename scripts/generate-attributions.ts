@@ -77,7 +77,6 @@ function getSingleAttribution(packageName: string, version: string, licenseId: s
   // If an Apache-2.0 licensed project includes a NOTICE, it must be included
   // in the attribution file after the license
   const noticeText = noticePath && licenseId === 'Apache-2.0' ? fs.readFileSync(noticePath, 'utf-8') : '';
-
   const noticeAttribution = noticeText ? `* For ${packageName}@${version} see also this required NOTICE:\n${indent(noticeText)}` : '';
 
   return [`** ${packageName}@${version} - https://npmjs.com/package/${packageName}`, licenseText, noticeAttribution, '----------------\n\n']
