@@ -36,6 +36,7 @@
   },
   "scripts": {
     "build": "PROJEN_DISABLE_POST=1 yarn workspaces foreach --topological-dev -v run build",
+    "projen": "PROJEN_DISABLE_POST=1 yarn workspaces foreach --topological-dev -v run projen",
     "test-all": "lerna run test",
     "all": "lerna run build --stream && lerna run test --stream",
     "lint": "eslint **/*.ts",
@@ -53,8 +54,7 @@
   },
   "workspaces": {
     "packages": [
-      "packages/adk-packages/*",
-      "packages/codecatalyst-entities/*"
+      "packages/*"
     ]
   },
   "repository": {
