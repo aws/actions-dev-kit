@@ -46,6 +46,13 @@ export class TypescriptConstruct extends typescript.TypeScriptProject {
       exec: 'npm version patch -no-git-tag-version --no-workspaces-update',
     });
 
+    // modify bumping tasks
+    this.package.addField('preferGlobal', true);
+
+    this.addTask('bump:preview', {
+      exec: 'npm version prerelease --preid preview -no-git-tag-version --no-workspaces-update',
+    });
+
     this.package.addField('preferGlobal', true);
 
     // set custom scripts
