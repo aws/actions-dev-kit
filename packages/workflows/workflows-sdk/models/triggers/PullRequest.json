@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/triggers/PullRequest/1",
+  "type": "object",
+  "title": "Pull Request Trigger",
+  "description": "A pull request trigger causes a workflow run to start whenever a pull request is either created, revised, or closed.",
+  "properties": {
+    "Type": {
+      "type": "string",
+      "const": "PULLREQUEST"
+    },
+    "Events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/PullRequestEventType"
+      }
+    },
+    "Branches": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "FilesChanged": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["Type", "Events"],
+  "additionalProperties": false,
+  "definitions": {
+    "PullRequestEventType": {
+      "type": "string",
+      "title": "PullRequestEventType",
+      "enum": ["DRAFT", "OPEN", "CLOSED", "MERGED", "REVISION"]
+    }
+  }
+}

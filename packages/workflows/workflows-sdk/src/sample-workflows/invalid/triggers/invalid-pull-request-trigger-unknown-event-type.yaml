@@ -1,0 +1,20 @@
+Name: PullRequestWorkflow
+SchemaVersion: 1.0
+Triggers:
+  - Type: PULLREQUEST
+    Events:
+      - UNKNOWN
+Actions:
+  BackendBuildAndPackage:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      Artifacts:
+        - Name: backend
+          Files:
+            - "**/*"
+    Configuration:
+      Steps:
+        - Run: echo "Building Backend Artifacts..."

@@ -1,0 +1,21 @@
+Name: PushWorkflow
+SchemaVersion: 1.0
+Triggers:
+  - Type: PUSH
+    Branches:
+      - feature/branch_1
+      - feature/branch_2
+Actions:
+  BackendBuildAndPackage:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      Artifacts:
+        - Name: backend
+          Files:
+            - "**/*"
+    Configuration:
+      Steps:
+        - Run: echo "Building Backend Artifacts..."

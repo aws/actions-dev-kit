@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/interface/InputVariables/1",
+  "title": "InputVariables",
+  "description": "A variable is a key-value pair that contains information that you can reference in your CodeCatalyst workflow. When configured the action will have access to the variables set.",
+  "oneOf": [
+    {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9-_]+$",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "Value": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "maxItems": 256
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "maxProperties": 256,
+      "patternProperties": {
+        "^[A-Za-z0-9-_]+$": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      }
+    }
+  ]
+}
