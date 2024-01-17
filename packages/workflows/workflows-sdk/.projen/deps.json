@@ -64,6 +64,14 @@
       "type": "build"
     },
     {
+      "name": "pino",
+      "type": "build"
+    },
+    {
+      "name": "pino-pretty",
+      "type": "build"
+    },
+    {
       "name": "projen",
       "type": "build"
     },

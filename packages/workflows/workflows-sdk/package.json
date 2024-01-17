@@ -40,6 +40,8 @@
     "json-schema-to-typescript": "^13.1.1",
     "npm-check-updates": "^16",
     "old-model-baseline": "file:./old-model-baseline-sdk-0.1.5-preview.7.tgz",
+    "pino": "*",
+    "pino-pretty": "*",
     "projen": "0.71.112",
     "standard-version": "^9",
     "ts-jest": "^29.1.1",

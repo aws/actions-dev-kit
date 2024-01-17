@@ -15,6 +15,8 @@ const project = new TypescriptConstruct({
     'projen',
     'ts-node@^10',
     '@aws/adk-typescript-construct',
+    'pino',
+    'pino-pretty',
   ],
   tsconfigDev: {
     include: ['generators/**/*.ts'],
