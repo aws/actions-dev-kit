@@ -1,0 +1,9 @@
+Name: main_fullstack_workflow
+SchemaVersion: "1.0"
+Triggers:
+  - Type: PUSH
+    Branches:
+      - main
+Actions:
+  BackendBuildAndPackage:
+    Identifier: aws/managed-test@v1

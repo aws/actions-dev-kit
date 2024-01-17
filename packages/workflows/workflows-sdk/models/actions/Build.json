@@ -1,0 +1,146 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/action/Build.0.0",
+  "type": "object",
+  "title": "Build action",
+  "description": "The Build action compiles your source code, validates code quality by running unit tests, checking code coverage, and produces artifacts that are ready to be deployed or published.",
+  "properties": {
+    "Identifier": {
+      "$ref": "#/definitions/BuildActionIdentifier"
+    },
+    "Configuration": {
+      "$ref": "#/definitions/BuildActionConfiguration"
+    },
+    "DependsOn": {
+      "$ref": "../interfaces/DependsOn.json"
+    },
+    "Environment": {
+      "$ref": "../interfaces/EnvironmentWithoutConnection.json"
+    },
+    "Compute": {
+      "$ref": "../interfaces/Compute.json"
+    },
+    "Timeout": {
+      "$ref": "../interfaces/Timeout.json"
+    },
+    "Caching": {
+      "$ref": "#/definitions/BuildActionCaching"
+    },
+    "Packages": {
+      "$ref": "../interfaces/Packages.json"
+    },
+    "Outputs": {
+      "$ref": "#/definitions/BuildActionOutput"
+    },
+    "Inputs": {
+      "$ref": "#/definitions/BuildActionInputs"
+    }
+  },
+  "required": ["Configuration", "Identifier"],
+  "additionalProperties": false,
+  "definitions": {
+    "BuildActionIdentifier": {
+      "type": "string",
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "aws\\/build@v1(\\.0){0,2}"
+        },
+        {
+          "const": "aws/build@v1"
+        }
+      ]
+    },
+    "BuildActionConfiguration": {
+      "type": "object",
+      "title": "BuildConfiguration",
+      "additionalProperties": false,
+      "required": ["Steps"],
+      "properties": {
+        "Container": {
+          "description": "The container to run the build",
+          "type": "object",
+          "title": "BuildContainer",
+          "additionalProperties": false,
+          "properties": {
+            "Image": {
+              "description": "Image to run in the container",
+              "type": "string",
+              "title": "BuildImage"
+            },
+            "Registry": {
+              "description": "Source of the Image",
+              "type": "string",
+              "title": "BuildRegistry"
+            }
+          }
+        },
+        "Steps": {
+          "description": "Commands for the build action",
+          "items": {
+            "additionalProperties": false,
+            "description": "Command for the build action",
+            "properties": {
+              "Run": {
+                "description": "Command string",
+                "type": "string"
+              }
+            },
+            "type": "object",
+            "title": "BuildStep"
+          },
+          "maxItems": 256,
+          "minItems": 0,
+          "type": "array",
+          "title": "BuildSteps"
+        }
+      }
+    },
+    "BuildActionCaching": {
+      "title": "BuildActionCaching",
+      "type": "object",
+      "properties": {
+        "FileCaching": {
+          "$ref": "../interfaces/FileCaching.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "BuildActionOutput": {
+      "type": "object",
+      "properties": {
+        "Variables": {
+          "$ref": "../interfaces/OutputVariables.json"
+        },
+        "AutoDiscoverReports": {
+          "$ref": "../interfaces/AutoDiscoverReports.json"
+        },
+        "Reports": {
+          "$ref": "../interfaces/Reports.json"
+        },
+        "Artifacts": {
+          "$ref": "../interfaces/OutputArtifacts.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "BuildActionInputs": {
+      "type": "object",
+      "properties": {
+        "Artifacts": {
+          "$ref": "../interfaces/InputArtifacts.json"
+        },
+        "Sources": {
+          "$ref": "../interfaces/InputSources.json"
+        },
+        "Variables": {
+          "$ref": "../interfaces/InputVariables.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    }
+  }
+}

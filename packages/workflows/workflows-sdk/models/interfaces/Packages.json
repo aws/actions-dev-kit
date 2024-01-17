@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/interface/Packages/1",
+  "type": "object",
+  "title": "Packages",
+  "description": "The artifact repository to be used when running the action",
+  "propertyNames": {
+    "type": "string",
+    "minLength": 1,
+    "maxLength": 255
+  },
+  "maxProperties": 50,
+  "definitions": {
+    "Scopes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[@][a-zA-Z0-9_-]+$"
+      },
+      "minItems": 1,
+      "maxItems": 15
+    },
+    "PackagesRegistry": {
+      "type": "object",
+      "properties": {
+        "PackagesRepository": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9._\\-]{1,99}$"
+        },
+        "Scopes": {
+          "$ref": "#/definitions/Scopes"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["PackagesRepository"]
+    }
+  },
+  "properties": {
+    "NpmConfiguration": {
+      "type": "object",
+      "properties": {
+        "PackageRegistries": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "anyOf": [
+              {
+                "$ref": "#/definitions/PackagesRegistry"
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
