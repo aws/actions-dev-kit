@@ -1,0 +1,50 @@
+SchemaVersion: "1.0"
+Name: 'AWS Lambda Invoke Action'
+Version: '1.0.0'
+Description: 'This Action invokes an AWS Lambda Function'
+Configuration:
+  Function:
+    Description: 'Name or ARN of the AWS Lambda function'
+    Required: true
+    DisplayName: 'Function'
+    Type: string
+  AWSRegion:
+    Description: 'AWS Region of the Lambda function'
+    Required: true
+    DisplayName: 'Aws Region'
+    Type: string
+  RequestPayload:
+    Description: 'The JSON that you want to provide to your Lambda function as input.'
+    Required: false
+    DisplayName: 'Request Payload'
+    Type: string
+    Default: ''
+  RequestPayloadFile:
+    Description: 'Name of the file that has the JSON payload.'
+    Required: false
+    DisplayName: 'Request Payload File'
+    Type: string
+    Default: ''
+  ContinueOnError:
+    Description: 'This flag decides if the action should succeed when the Lambda function executed returns an error. Would default to false'
+    Required: false
+    DisplayName: 'Continue On Error'
+    Type: boolean
+    Default: false
+  LogType:
+    Description: 'Set to "Tail" to return the tail logs of the executed Lambda function. Set it to None otherwise.'
+    Required: false
+    DisplayName: 'Log Type'
+    Type: string
+    Default: 'Tail'
+  ResponseFilters:
+    Description: 'Hashmap of key-value pairs where the key is the name of the output variable that the user wants to export from this action.'
+    Required: false
+    DisplayName: 'Response Filters'
+    Type: string
+    Default: ''
+Environment:
+  Required: true
+Runs:
+  Using: 'node12'
+  Main: 'dist/index.js'

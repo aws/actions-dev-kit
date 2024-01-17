@@ -1,0 +1,8 @@
+SchemaVersion: '1.0'
+Configuration:
+  ResponseFilters:
+    Description: "Description"
+    Required: false
+Runs:
+  Using: 'node16'
+  Main: 'index.js'
