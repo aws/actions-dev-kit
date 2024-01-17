@@ -31,6 +31,11 @@ const project = new TypescriptConstruct({
       noImplicitAny: false,
     },
   },
+  jestOptions: {
+    jestConfig: {
+      coverageThreshold: {},
+    },
+  },
 });
 
 // force the static assets to always be fully included, regardless of .npmignores

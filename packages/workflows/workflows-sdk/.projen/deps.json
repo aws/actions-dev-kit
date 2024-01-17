@@ -1,6 +1,10 @@
 {
   "dependencies": [
     {
+      "name": "@aws/adk-typescript-construct",
+      "type": "build"
+    },
+    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -37,10 +41,6 @@
       "type": "build"
     },
     {
-      "name": "husky",
-      "type": "build"
-    },
-    {
       "name": "jest",
       "type": "build"
     },
@@ -60,22 +60,7 @@
     },
     {
       "name": "old-model-baseline",
-      "type": "build"
-    },
-    {
-      "name": "pino",
-      "type": "build"
-    },
-    {
-      "name": "pino-pretty",
-      "type": "build"
-    },
-    {
-      "name": "prettier",
-      "type": "build"
-    },
-    {
-      "name": "pretty-quick",
+      "version": "file:./old-model-baseline-sdk-0.1.5-preview.7.tgz",
       "type": "build"
     },
     {
@@ -98,10 +83,6 @@
     {
       "name": "typescript",
       "type": "build"
-    },
-    {
-      "name": "projen",
-      "type": "peer"
     },
     {
       "name": "globule",
