@@ -24,7 +24,7 @@
 # To ignore a file with a literal ':' character, escape it with
 # a backslash, e.g. "\:foo".
 
-packages/adk/adk/src/util/template.ts
+/packages/adk/adk/src/util/template.ts
 /docs/index.html
 /scripts/generate-attributions.ts
-/packages/workflows/workflows-sdk/src
+/packages/workflows/workflows-sdk/**.ts
