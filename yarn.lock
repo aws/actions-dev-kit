@@ -50,7 +50,7 @@ __metadata:
   resolution: "@aws/codecatalyst-adk-core@workspace:packages/adk/adk-core"
   dependencies:
     "@aws/adk-typescript-construct": "*"
-    "@aws/codecatalyst-adk-utils": 1.0.17
+    "@aws/codecatalyst-adk-utils": "*"
     "@types/jest": "*"
     "@types/node": ^18
     "@typescript-eslint/eslint-plugin": ^5
@@ -97,7 +97,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@aws/codecatalyst-adk-utils@*, @aws/codecatalyst-adk-utils@1.0.17, @aws/codecatalyst-adk-utils@workspace:packages/adk/adk-utils":
+"@aws/codecatalyst-adk-utils@*, @aws/codecatalyst-adk-utils@workspace:packages/adk/adk-utils":
   version: 0.0.0-use.local
   resolution: "@aws/codecatalyst-adk-utils@workspace:packages/adk/adk-utils"
   dependencies:
@@ -112,6 +112,7 @@ __metadata:
     eslint-plugin-import: "*"
     jest: "*"
     jest-junit: ^15
+    js-yaml: "*"
     npm-check-updates: ^16
     projen: "*"
     standard-version: ^9
@@ -212,6 +213,7 @@ __metadata:
   resolution: "@aws/codecatalyst-space@workspace:packages/entities/space"
   dependencies:
     "@aws/adk-typescript-construct": "*"
+    "@aws/codecatalyst-adk-core": "*"
     "@types/jest": "*"
     "@types/node": ^18
     "@typescript-eslint/eslint-plugin": ^5
@@ -6583,6 +6585,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-yaml@npm:*, js-yaml@npm:^4.0.5, js-yaml@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "js-yaml@npm:4.1.0"
+  dependencies:
+    argparse: ^2.0.1
+  bin:
+    js-yaml: bin/js-yaml.js
+  checksum: c7830dfd456c3ef2c6e355cc5a92e6700ceafa1d14bba54497b34a99f0376cecbb3e9ac14d3e5849b426d5a5140709a66237a8c991c675431271c4ce5504151a
+  languageName: node
+  linkType: hard
+
 "js-yaml@npm:3.14.1, js-yaml@npm:^3.13.1":
   version: 3.14.1
   resolution: "js-yaml@npm:3.14.1"
@@ -6592,17 +6605,6 @@ __metadata:
   bin:
     js-yaml: bin/js-yaml.js
   checksum: bef146085f472d44dee30ec34e5cf36bf89164f5d585435a3d3da89e52622dff0b188a580e4ad091c3341889e14cb88cac6e4deb16dc5b1e9623bb0601fc255c
-  languageName: node
-  linkType: hard
-
-"js-yaml@npm:^4.0.5, js-yaml@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "js-yaml@npm:4.1.0"
-  dependencies:
-    argparse: ^2.0.1
-  bin:
-    js-yaml: bin/js-yaml.js
-  checksum: c7830dfd456c3ef2c6e355cc5a92e6700ceafa1d14bba54497b34a99f0376cecbb3e9ac14d3e5849b426d5a5140709a66237a8c991c675431271c4ce5504151a
   languageName: node
   linkType: hard
 

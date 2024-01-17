@@ -43,8 +43,8 @@
     "typescript": "*"
   },
   "dependencies": {
-    "@aws/codecatalyst-adk-utils": "1.0.17",
-    "shelljs": "*"
+    "@aws/codecatalyst-adk-utils": "*",
+    "shelljs": "^0.8.5"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",

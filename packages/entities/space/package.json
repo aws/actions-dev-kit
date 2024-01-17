@@ -42,6 +42,9 @@
     "ts-node": "*",
     "typescript": "*"
   },
+  "dependencies": {
+    "@aws/codecatalyst-adk-core": "*"
+  },
   "main": "lib/index.js",
   "license": "Apache-2.0",
   "version": "1.0.17",

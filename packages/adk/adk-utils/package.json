@@ -43,8 +43,7 @@
     "typescript": "*"
   },
   "dependencies": {
-    "@aws/codecatalyst-adk-utils": "*",
-    "js-yaml": "*"
+    "js-yaml": "^4.0.5"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",

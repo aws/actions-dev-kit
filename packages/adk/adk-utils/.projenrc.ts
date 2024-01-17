@@ -8,7 +8,7 @@ const project = new TypescriptConstruct({
   description: existingPackage.description,
   name: existingPackage.name,
   version: existingPackage.version || '0.0.0',
-  deps: ['@aws/codecatalyst-adk-utils', 'js-yaml'],
+  deps: ['js-yaml'],
   devDeps: ['projen', 'ts-node@^10', '@aws/adk-typescript-construct'],
 });
 project.synth();

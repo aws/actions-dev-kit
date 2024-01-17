@@ -76,10 +76,6 @@
       "type": "build"
     },
     {
-      "name": "@aws/codecatalyst-adk-utils",
-      "type": "runtime"
-    },
-    {
       "name": "js-yaml",
       "type": "runtime"
     }
