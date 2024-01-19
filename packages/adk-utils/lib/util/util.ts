@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-export const outputVariableNamePattern = new RegExp(/^[A-Za-z0-9][A-Za-z0-9\-_]{1,30}[A-Za-z0-9]$/);
+export const outputVariableNamePattern = new RegExp(/^[A-Za-z0-9@\-_]+$/);
 
 /**
  * Sanitizes (escapes) special characters in the command and its arguments.
@@ -91,5 +91,8 @@ export function writeContentToFileSync(dest: string, content: string, overrideDe
  * @param varName The destination file.
  */
 export function isValidOutputVariableName(varName: string): boolean {
+    if (!varName || varName.length < 1 || varName.length > 255) {
+        return false;
+    }
     return outputVariableNamePattern.test(varName);
 }

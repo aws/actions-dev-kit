@@ -129,19 +129,21 @@ describe('ADK-Util test', () => {
 
     it('test validateOutputVariableName', async () => {
         const validInput = 'Stack_ID';
-        const validInput30Chars = 'Stack_ID_12345678910111213145';
+        const validInput40Chars = 'Stack_ID-1234567891011121314512345678911';
         const emptyInput = '';
         const invalidInput = 'Stack ID';
-        const tooLongInput = 'longer_than_30_chars_123456789101112131415161718';
-        const startsWithInvalidChar = '-Stack_ID';
-        const endsWithInvalidChar = 'Stack_ID-';
+        const maxInput = 'max_input_255_chars_1234567891011121314151617184876123578457689295628925764582347652874956284956824123456789101112131415161718487612357845768929562892576458234765287495628495682412345678910111213141516171848761235784576892956289257645823476528749562849591';
+        const tooLongInput = 'longer_than_255_chars_123456789101112131415161718487612357845768929562892576458234765287495628495682412345678910111213141516171848761235784576892956289257645823476528749562849568241234567891011121314151617184876123578457689295628925764582347652874956284959';
+        const validInputSpecialChar = '-StackA_a-@_ID';
+        const invalidInputWithInvalidSpecialChar = 'Stack/$#:ID';
 
         expect(isValidOutputVariableName(validInput)).toBeTruthy();
-        expect(isValidOutputVariableName(validInput30Chars)).toBeTruthy();
+        expect(isValidOutputVariableName(validInput40Chars)).toBeTruthy();
         expect(isValidOutputVariableName(emptyInput)).toBeFalsy();
         expect(isValidOutputVariableName(invalidInput)).toBeFalsy();
+        expect(isValidOutputVariableName(maxInput)).toBeTruthy();
         expect(isValidOutputVariableName(tooLongInput)).toBeFalsy();
-        expect(isValidOutputVariableName(startsWithInvalidChar)).toBeFalsy();
-        expect(isValidOutputVariableName(endsWithInvalidChar)).toBeFalsy();
+        expect(isValidOutputVariableName(validInputSpecialChar)).toBeTruthy();
+        expect(isValidOutputVariableName(invalidInputWithInvalidSpecialChar)).toBeFalsy();
     });
 });
