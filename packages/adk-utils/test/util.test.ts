@@ -132,6 +132,7 @@ describe('ADK-Util test', () => {
         const validInput40Chars = 'Stack_ID-1234567891011121314512345678911';
         const emptyInput = '';
         const invalidInput = 'Stack ID';
+        const maxInput = 'max_input_255_chars_1234567891011121314151617184876123578457689295628925764582347652874956284956824123456789101112131415161718487612357845768929562892576458234765287495628495682412345678910111213141516171848761235784576892956289257645823476528749562849591';
         const tooLongInput = 'longer_than_255_chars_123456789101112131415161718487612357845768929562892576458234765287495628495682412345678910111213141516171848761235784576892956289257645823476528749562849568241234567891011121314151617184876123578457689295628925764582347652874956284959';
         const validInputSpecialChar = '-StackA_a-@_ID';
         const invalidInputWithInvalidSpecialChar = 'Stack/$#:ID';
@@ -140,6 +141,7 @@ describe('ADK-Util test', () => {
         expect(isValidOutputVariableName(validInput40Chars)).toBeTruthy();
         expect(isValidOutputVariableName(emptyInput)).toBeFalsy();
         expect(isValidOutputVariableName(invalidInput)).toBeFalsy();
+        expect(isValidOutputVariableName(maxInput)).toBeTruthy();
         expect(isValidOutputVariableName(tooLongInput)).toBeFalsy();
         expect(isValidOutputVariableName(validInputSpecialChar)).toBeTruthy();
         expect(isValidOutputVariableName(invalidInputWithInvalidSpecialChar)).toBeFalsy();
