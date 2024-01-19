@@ -77,15 +77,18 @@ describe('@aws/codecatalyst-adk-core', () => {
     it('test setOutput validation', () => {
         const errorMessage = `Invalid output parameter name, it must match the following pattern ${outputVariableNamePattern}`;
         const outputParamValue = 'outputParamValue';
-        const validInput30Chars = 'Stack_ID_12345678910111213145';
+        const validInput40Chars = 'Stack_ID-1234567891011121314512345678911';
 
+        const validInput = 'Stack_ID';
         const emptyInput = '';
         const invalidInput = 'Stack ID';
-        const tooLongInput = 'longer_than_30_chars_123456789101112131415161718';
-        const startsWithInvalidChar = '-Stack_ID';
-        const endsWithInvalidChar = 'Stack_ID-';
+        const tooLongInput = 'longer_than_255_chars_123456789101112131415161718487612357845768929562892576458234765287495628495682412345678910111213141516171848761235784576892956289257645823476528749562849568241234567891011121314151617184876123578457689295628925764582347652874956284959';
+        const validInputSpecialChar = '-StackA_a-@_ID';
+        const invalidInputWithInvalidSpecialChar = 'Stack$#:ID';
 
-        expect(adkCore.setOutput(validInput30Chars, outputParamValue).code === undefined).toBeTruthy();
+        expect(adkCore.setOutput(validInput40Chars, outputParamValue).code === undefined).toBeTruthy();
+        expect(adkCore.setOutput(validInput, outputParamValue).code === undefined).toBeTruthy();
+        expect(adkCore.setOutput(validInputSpecialChar, outputParamValue).code === undefined).toBeTruthy();
 
         expect(adkCore.setOutput(emptyInput, outputParamValue).code === 1).toBeTruthy();
         expect(adkCore.setOutput(emptyInput, outputParamValue).stdout === errorMessage).toBeTruthy();
@@ -96,11 +99,8 @@ describe('@aws/codecatalyst-adk-core', () => {
         expect(adkCore.setOutput(tooLongInput, outputParamValue).code === 1).toBeTruthy();
         expect(adkCore.setOutput(tooLongInput, outputParamValue).stdout === errorMessage).toBeTruthy();
 
-        expect(adkCore.setOutput(startsWithInvalidChar, outputParamValue).code === 1).toBeTruthy();
-        expect(adkCore.setOutput(startsWithInvalidChar, outputParamValue).stdout === errorMessage).toBeTruthy();
-
-        expect(adkCore.setOutput(endsWithInvalidChar, outputParamValue).code === 1).toBeTruthy();
-        expect(adkCore.setOutput(endsWithInvalidChar, outputParamValue).stdout === errorMessage).toBeTruthy();
+        expect(adkCore.setOutput(invalidInputWithInvalidSpecialChar, outputParamValue).code === 1).toBeTruthy();
+        expect(adkCore.setOutput(invalidInputWithInvalidSpecialChar, outputParamValue).stdout === errorMessage).toBeTruthy();
     });
 
 });
