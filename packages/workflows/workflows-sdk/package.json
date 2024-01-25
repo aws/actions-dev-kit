@@ -26,7 +26,7 @@
     "generate": "npx ts-node ./generators/ts-codegen-driver.ts && pretty-quick"
   },
   "devDependencies": {
-    "@aws/adk-typescript-construct": "^1.0.18",
+    "@aws/adk-typescript-construct": "*",
     "@types/jest": "^29.5.8",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^5",
@@ -40,8 +40,8 @@
     "json-schema-to-typescript": "^13.1.1",
     "npm-check-updates": "^16",
     "old-model-baseline": "file:./old-model-baseline-sdk-0.1.5-preview.7.tgz",
-    "pino": "^8.17.2",
-    "pino-pretty": "^10.3.1",
+    "pino": "*",
+    "pino-pretty": "*",
     "prettier": "^2.6.0",
     "pretty-quick": "^3.1.3",
     "projen": "0.71.112",
