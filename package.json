@@ -47,7 +47,8 @@
     "packages": [
       "packages/adk/*",
       "packages/entities/*",
-      "packages/utils/*"
+      "packages/utils/*",
+      "packages/workflows/*"
     ]
   },
   "repository": {
