@@ -35,7 +35,7 @@
     "api-ref": "typedoc",
     "api-ref-pre-release": "typedoc --out pre-release-docs",
     "generate-attributions": "ts-node ./scripts/generate-attributions",
-    "delete-remote-tags": "ts-node ./scripts/delete-remote-tags.sh"
+    "set-version": "lerna version --no-push --no-git-tag-version"
   },
   "husky": {
     "hooks": {
