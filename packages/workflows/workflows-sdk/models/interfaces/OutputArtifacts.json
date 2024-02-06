@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/interface/OutputArtifacts/1",
+  "title": "OutputArtifacts",
+  "description": "An artifact is the output of a workflow action, and typically consists of a folder or archive of files",
+  "oneOf": [
+    {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_]+$",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "Files": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "minItems": 1,
+            "maxItems": 256
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 5
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "maxProperties": 5,
+      "patternProperties": {
+        "^[A-Za-z0-9_]+$": {
+          "type": "object",
+          "properties": {
+            "Files": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "minItems": 1,
+              "maxItems": 256
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    }
+  ]
+}

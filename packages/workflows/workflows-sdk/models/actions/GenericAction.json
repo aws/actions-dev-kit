@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/action/GenericAction",
+  "type": "object",
+  "title": "Generic action",
+  "description": "This is a Generic Action. This can be used for validation prior to all actions being modelled.",
+  "properties": {
+    "Identifier": {
+      "$ref": "#/definitions/GenericActionIdentifier"
+    },
+    "Configuration": {
+      "$ref": "#/definitions/GenericActionConfiguration"
+    },
+    "DependsOn": {
+      "$ref": "../interfaces/DependsOn.json"
+    },
+    "Environment": {
+      "$ref": "../interfaces/EnvironmentWithoutConnection.json"
+    },
+    "Compute": {
+      "$ref": "../interfaces/Compute.json"
+    },
+    "Timeout": {
+      "$ref": "../interfaces/Timeout.json"
+    },
+    "Caching": {
+      "$ref": "#/definitions/FileCaching"
+    },
+    "Packages": {
+      "$ref": "../interfaces/Packages.json"
+    },
+    "Outputs": {
+      "$ref": "#/definitions/GenericActionOutput"
+    },
+    "Inputs": {
+      "$ref": "#/definitions/GenericActionInputs"
+    }
+  },
+  "required": ["Identifier"],
+  "additionalProperties": false,
+  "definitions": {
+    "GenericActionIdentifier": {
+      "type": "string",
+      "not": {
+        "type": "string",
+        "pattern": "((aws\\/((build)|(github-actions-runner)|(managed-test))@v1(\\.0){0,2}))"
+      }
+    },
+    "GenericActionConfiguration": {
+      "type": "object",
+      "title": "GenericActionConfiguration",
+      "additionalProperties": true
+    },
+    "FileCaching": {
+      "title": "GenericActionCaching",
+      "type": "object",
+      "properties": {
+        "FileCaching": {
+          "$ref": "../interfaces/FileCaching.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "GenericActionOutput": {
+      "type": "object",
+      "properties": {
+        "Variables": {
+          "$ref": "../interfaces/OutputVariables.json"
+        },
+        "AutoDiscoverReports": {
+          "$ref": "../interfaces/AutoDiscoverReports.json"
+        },
+        "Reports": {
+          "$ref": "../interfaces/Reports.json"
+        },
+        "Artifacts": {
+          "$ref": "../interfaces/OutputArtifacts.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "GenericActionInputs": {
+      "type": "object",
+      "properties": {
+        "Artifacts": {
+          "$ref": "../interfaces/InputArtifacts.json"
+        },
+        "Sources": {
+          "$ref": "../interfaces/InputSources.json"
+        },
+        "Variables": {
+          "$ref": "../interfaces/InputVariables.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    }
+  }
+}

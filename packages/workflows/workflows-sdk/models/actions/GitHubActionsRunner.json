@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/action/GitHubActionsRunner.json.0.0",
+  "type": "object",
+  "title": "GitHub Action Runner",
+  "description": "Add a GitHub Action to your workflow. You can use any action in the GitHub Marketplace.",
+  "properties": {
+    "Identifier": {
+      "$ref": "#/definitions/GitHubActionIdentifier"
+    },
+    "Configuration": {
+      "$ref": "#/definitions/GitHubActionConfiguration"
+    },
+    "DependsOn": {
+      "$ref": "../interfaces/DependsOn.json"
+    },
+    "Environment": {
+      "$ref": "../interfaces/Environment.json"
+    },
+    "Compute": {
+      "$ref": "../interfaces/Compute.json"
+    },
+    "Timeout": {
+      "$ref": "../interfaces/Timeout.json"
+    },
+    "Caching": {
+      "$ref": "#/definitions/GitHubActionCaching"
+    },
+    "Outputs": {
+      "$ref": "#/definitions/GitHubActionOutputs"
+    },
+    "Inputs": {
+      "$ref": "#/definitions/GitHubActionInputs"
+    }
+  },
+  "required": ["Configuration", "Identifier"],
+  "additionalProperties": false,
+  "definitions": {
+    "GitHubActionIdentifier": {
+      "type": "string",
+      "anyOf": [
+        {
+          "const": "aws/github-actions-runner@v1"
+        },
+        {
+          "type": "string",
+          "pattern": "^aws\\/github-actions-runner@v1(\\.0){0,2}"
+        }
+      ]
+    },
+    "GitHubActionConfiguration": {
+      "title": "GitHubActionRunnerConfiguration",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["Steps"],
+      "properties": {
+        "Steps": {
+          "title": "GitHubActionRunnerSteps",
+          "description": "List of Github action steps to run",
+          "type": "array",
+          "minItems": 0,
+          "maxItems": 256,
+          "items": {
+            "description": "Definition of a Github action step",
+            "title": "GitHubActionRunnerStep",
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "if": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "uses": {
+                "type": "string"
+              },
+              "with": {
+                "type": "object"
+              },
+              "run": {
+                "type": "string"
+              },
+              "env": {
+                "type": "object",
+                "additionalProperties": {
+                  "anyOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "number"
+                    }
+                  ]
+                }
+              },
+              "continue-on-error": {
+                "type": "boolean"
+              },
+              "timeout-minutes": {
+                "type": "integer"
+              },
+              "working-directory": {
+                "type": "string"
+              },
+              "shell": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "GitHubActionCaching": {
+      "title": "Caching",
+      "type": "object",
+      "properties": {
+        "FileCaching": {
+          "$ref": "../interfaces/FileCaching.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "GitHubActionOutputs": {
+      "type": "object",
+      "properties": {
+        "Variables": {
+          "$ref": "../interfaces/OutputVariables.json"
+        },
+        "AutoDiscoverReports": {
+          "$ref": "../interfaces/AutoDiscoverReports.json"
+        },
+        "Reports": {
+          "$ref": "../interfaces/Reports.json"
+        },
+        "Artifacts": {
+          "$ref": "../interfaces/OutputArtifacts.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "GitHubActionInputs": {
+      "type": "object",
+      "properties": {
+        "Artifacts": {
+          "$ref": "../interfaces/InputArtifacts.json"
+        },
+        "Sources": {
+          "$ref": "../interfaces/InputSources.json"
+        },
+        "Variables": {
+          "$ref": "../interfaces/InputVariables.json"
+        }
+      },
+      "additionalProperties": false,
+      "minProperties": 1
+    }
+  }
+}

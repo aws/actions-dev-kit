@@ -20,22 +20,33 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
           registry-url: ${{ secrets.CODEARTIFACT_NPM_REGISTRY_GAMMA }}
           scope: '@aws'
       # Install dependencies
-      - run: npm install --global lerna@5.0.0 yarn@1.22.18
-      - run: lerna --version
+      - run: npm install -g npm@6.14.13
       - run: yarn --version
       - run: npm --version
-      # Runs `yarn install` and prepare all the packages in this monorepo for the build
-      - run: yarn install
-      # Builds and tests all the packages
-      - run: yarn run all
-      # Upgrades patch version for all the packages even if there's no changes in some of them
-      - run: lerna version --conventional-commits --no-changelog --no-git-tag-version --force-publish --yes
-      # Commit package.json files with version bump
-      - run: git status && git add . && git commit --amend --no-edit
+
+      # Yarn Install
+      - run: yarn --immutable-cache
+
+      # Build project (also runs tests and packages dist) See packages/adk/adk-utils/.projen/tasks.json
+      - run: yarn build
+
+      # Bump all package versions
+      - run: yarn projen bump
+      - run: NEW_ADK_RELEASE_VERSION=`jq -r .version packages/adk/adk/package.json`
+      - run: NEW_WORKFLOWS_SDK_RELEASE_VERSION=`jq -r .version packages/workflows/workflows-sdk/package.json`
+
+      # Add and show changes
+      - run: git add .
+      - run: git status
+
+      # Commit changes
+      - run: RELEASE_COMMIT_MESSAGE="chore(release) release ADK v$NEW_ADK_RELEASE_VERSION and workflows-sdk v$NEW_WORKFLOWS_SDK_RELEASE_VERSION"
+      - run: git commit -m "$RELEASE_COMMIT_MESSAGE"
+      
       # Configures AWS credentials to access ADK CodeArtifact Gamma repository
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2.0.0
@@ -48,4 +59,4 @@ jobs:
       - run: npm config list
       - run: git status
       # Publishes ADK packages to CodeArtifact
-      - run: lerna publish from-package --yes
+      - run: yarn projen npm:publish

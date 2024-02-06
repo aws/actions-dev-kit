@@ -1,0 +1,51 @@
+Name: build-and-release
+SchemaVersion: "1.0"
+Triggers:
+  - Type: PUSH
+    Branches:
+      - main
+Compute:
+  Type: Lambda
+  Fleet: Linux.x86-64.Large
+Actions:
+  build_for_default_environment:
+    Identifier: aws/build@v1
+    Inputs:
+      Sources:
+        - WorkflowSource
+    Outputs:
+      AutoDiscoverReports:
+        Enabled: true
+        ReportNamePrefix: rpt
+      Artifacts:
+        - Name: build_result
+          Files:
+            - "**/*"
+    Configuration:
+      Steps:
+        - Run: . ./.codecatalyst/scripts/run-tests.sh
+        - Run: sam build --template-file template.yaml
+        - Run: cd .aws-sam/build/
+        - Run: sam package --output-template-file packaged.yaml --resolve-s3 --template-file template.yaml --region us-west-2
+    Environment:
+      Name: default_environment
+      Connections:
+        - Name: canary-target
+          Role: canary-admin
+  deploy_to_default_environment:
+    Identifier: aws/cfn-deploy@v1
+    Inputs:
+      Artifacts:
+        - build_result
+    Environment:
+      Name: default_environment
+      Connections:
+        - Name: canary-target
+          Role: canary-admin
+    Configuration:
+      Parameters:
+        region: us-west-2
+        name: sam-stack-wi3yc
+        template: .aws-sam/build/packaged.yaml
+        no-fail-on-empty-changeset: "1"
+        capabilities: CAPABILITY_IAM,CAPABILITY_NAMED_IAM,CAPABILITY_AUTO_EXPAND
