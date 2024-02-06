@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit
 guidelines.
 
+## 1.0.18 (2024-01-19)
+
+### Bug Fixes
+
+- update output variable validation regex and limit ([#286](https://github.com/aws/actions-dev-kit/issues/286))
+  ([33c7f48](https://github.com/aws/actions-dev-kit/commit/33c7f48be9f42949267b0aae73d92e21dd8b7cfa))
+
 ## 1.0.17 (2024-01-11)
 
 ### Bug Fixes

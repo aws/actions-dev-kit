@@ -1,12 +1,12 @@
 module.exports = {
     entryPointStrategy: "packages",
     entryPoints: [
-        "packages/adk",
-        "packages/adk-core",
-        "packages/adk-model-parser",
-        "packages/adk-utils",
-        "packages/run-summaries",
-        "packages/project",
-        "packages/space",
+        "packages/adk/adk",
+        "packages/adk/adk-core",
+        "packages/adk/adk-model-parser",
+        "packages/adk/adk-utils",
+        "packages/entities/run-summaries",
+        "packages/entities/project",
+        "packages/entities/space",
    ]
 }
