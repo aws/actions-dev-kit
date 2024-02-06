@@ -78,7 +78,7 @@ jobs:
 
 
       # Commit changes and create new version tag
-      - run: RELEASE_COMMIT_MESSAGE="chore(release): release ADK v$NEW_ADK_RELEASE_VERSION and workflows-sdk v$NEW_WORKFLOWS_SDK_RELEASE_VERSION"
+      - run: RELEASE_COMMIT_MESSAGE="chore(release) release ADK v$NEW_ADK_RELEASE_VERSION and workflows-sdk v$NEW_WORKFLOWS_SDK_RELEASE_VERSION"
       - run: git commit -m "$RELEASE_COMMIT_MESSAGE"
       - run: git tag -a v$NEW_ADK_RELEASE_VERSION HEAD -m "$RELEASE_COMMIT_MESSAGE"
 
