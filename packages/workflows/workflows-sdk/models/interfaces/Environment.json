@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/interface/Environment/1",
+  "type": "object",
+  "title": "Environment",
+  "description": "The location to the code is run in, or deployed to, depending on the action type",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "description": "Name of the environment",
+      "minLength": 1,
+      "maxLength": 2500
+    },
+    "Connections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Connection associated with the Environment",
+        "properties": {
+          "Name": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9\\-_]+$",
+                "minLength": 3,
+                "maxLength": 63
+              },
+              {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 999999999999
+              }
+            ]
+          },
+          "Role": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_+=,.@-]+$",
+            "minLength": 1,
+            "maxLength": 64
+          }
+        },
+        "required": ["Name", "Role"]
+      },
+      "minItems": 1,
+      "maxItems": 1
+    }
+  },
+  "required": ["Name", "Connections"]
+}

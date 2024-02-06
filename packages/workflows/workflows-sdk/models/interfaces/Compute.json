@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "/interface/Compute/1",
+  "title": "Compute",
+  "description": "Compute refers to the computing engine (the CPU, memory, and operating system) managed and maintained by CodeCatalyst to run your workflows",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": "string",
+          "enum": ["EC2"]
+        },
+        "Fleet": {
+          "anyOf": [
+            {
+              "type": "string",
+              "description": "Provisioned fleet name",
+              "minLength": 2,
+              "maxLength": 128
+            },
+            {
+              "type": "string",
+              "description": "On-demand fleet",
+              "enum": [
+                "Linux.x86-64.Large",
+                "Linux.x86-64.XLarge",
+                "Linux.x86-64.2XLarge",
+                "Linux.Arm64.Large",
+                "Linux.Arm64.XLarge",
+                "Linux.Arm64.2XLarge",
+                "Windows.x86-64.XLarge",
+                "Windows.x86-64.2XLarge"
+              ]
+            }
+          ]
+        }
+      },
+      "required": ["Type"]
+    },
+    {
+      "type": "object",
+      "properties": {
+        "Type": {
+          "type": "string",
+          "enum": ["LAMBDA"]
+        },
+        "Fleet": {
+          "type": "string",
+          "description": "On-demand fleet",
+          "enum": [
+            "Linux.x86-64.Large",
+            "Linux.x86-64.XLarge",
+            "Linux.Arm64.Large",
+            "Linux.Arm64.XLarge"
+          ]
+        }
+      },
+      "required": ["Type"]
+    }
+  ]
+}
