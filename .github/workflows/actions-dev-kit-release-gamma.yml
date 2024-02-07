@@ -35,7 +35,7 @@ jobs:
       - run: yarn build
 
       # Bump all package versions
-      - run: yarn projen bump
+      - run: yarn bump
       - run: echo "NEW_ADK_RELEASE_VERSION=`jq -r .version packages/adk/adk/package.json`" >> "$GITHUB_ENV"
       - run: echo "NEW_WORKFLOWS_SDK_RELEASE_VERSION=`jq -r .version packages/workflows/workflows-sdk/package.json`" >> "$GITHUB_ENV"
       - run: echo New ADK version - $NEW_ADK_RELEASE_VERSION
@@ -63,4 +63,4 @@ jobs:
       - run: npm config list
       - run: git status
       # Publishes ADK packages to CodeArtifact
-      - run: yarn projen npm:publish
+      - run: yarn npm:publish
