@@ -36,8 +36,8 @@ jobs:
 
       # Bump all package versions
       - run: yarn projen bump
-      - run: export NEW_ADK_RELEASE_VERSION=`jq -r .version packages/adk/adk/package.json`
-      - run: export NEW_WORKFLOWS_SDK_RELEASE_VERSION=`jq -r .version packages/workflows/workflows-sdk/package.json`
+      - run: echo "NEW_ADK_RELEASE_VERSION=`jq -r .version packages/adk/adk/package.json`" >> "$GITHUB_ENV"
+      - run: echo "NEW_WORKFLOWS_SDK_RELEASE_VERSION=`jq -r .version packages/workflows/workflows-sdk/package.json`" >> "$GITHUB_ENV"
       - run: echo New ADK version - $NEW_ADK_RELEASE_VERSION
       - run: echo New Workflows SDK version - $NEW_WORKFLOWS_SDK_RELEASE_VERSION
 
@@ -48,7 +48,7 @@ jobs:
       # Commit changes
       - run: git config --global user.email $GIT_COMMITTER_EMAIL
       - run: git config --global user.name $GIT_COMMITTER_NAME
-      - run: export RELEASE_COMMIT_MESSAGE="chore(release) release ADK v$NEW_ADK_RELEASE_VERSION and workflows-sdk v$NEW_WORKFLOWS_SDK_RELEASE_VERSION"
+      - run: echo "RELEASE_COMMIT_MESSAGE='chore(release) release ADK v$NEW_ADK_RELEASE_VERSION and workflows-sdk v$NEW_WORKFLOWS_SDK_RELEASE_VERSION'" >> "$GITHUB_ENV"
       - run: git commit -m "$RELEASE_COMMIT_MESSAGE"
       
       # Configures AWS credentials to access ADK CodeArtifact Gamma repository
