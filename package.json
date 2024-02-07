@@ -32,6 +32,8 @@
   "scripts": {
     "build": "PROJEN_DISABLE_POST=1 yarn workspaces foreach --topological-dev -v run build",
     "projen": "PROJEN_DISABLE_POST=1 yarn workspaces foreach --topological-dev -v run projen",
+    "bump": "PROJEN_DISABLE_POST=1 yarn workspaces foreach run bump $*",
+    "npm:publish": "PROJEN_DISABLE_POST=1 yarn workspaces foreach run npm:publish $*",
     "api-ref": "typedoc",
     "api-ref-pre-release": "typedoc --out pre-release-docs",
     "generate-attributions": "ts-node ./scripts/generate-attributions",
