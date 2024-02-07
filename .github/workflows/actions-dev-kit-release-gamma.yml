@@ -62,5 +62,9 @@ jobs:
       - run: aws codeartifact login --region us-west-2 --tool npm --domain ${{ secrets.CODEARTIFACT_DOMAIN }} --domain-owner ${{ secrets.CODEARTIFACT_AWS_ACCOUNT }} --repository ActionsDevKitPackage
       - run: npm config list
       - run: git status
+
+      # Re-build and generate new dist after version bump
+      - run: yarn build
+      
       # Publishes ADK packages to CodeArtifact
       - run: yarn npm:publish
