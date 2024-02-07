@@ -38,8 +38,8 @@ jobs:
       - run: yarn projen bump
       - run: export NEW_ADK_RELEASE_VERSION=`jq -r .version packages/adk/adk/package.json`
       - run: export NEW_WORKFLOWS_SDK_RELEASE_VERSION=`jq -r .version packages/workflows/workflows-sdk/package.json`
-      - run: echo New ADK version -> $NEW_ADK_RELEASE_VERSION
-      - run: echo New Workflows SDK version -> $NEW_WORKFLOWS_SDK_RELEASE_VERSION
+      - run: echo New ADK version - $NEW_ADK_RELEASE_VERSION
+      - run: echo New Workflows SDK version - $NEW_WORKFLOWS_SDK_RELEASE_VERSION
 
       # Add and show changes
       - run: git add .
