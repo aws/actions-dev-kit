@@ -44,6 +44,8 @@ jobs:
       - run: git status
 
       # Commit changes
+      - run: git config --global user.email $GIT_COMMITTER_EMAIL
+      - run: git config --global user.name $GIT_COMMITTER_NAME
       - run: RELEASE_COMMIT_MESSAGE="chore(release) release ADK v$NEW_ADK_RELEASE_VERSION and workflows-sdk v$NEW_WORKFLOWS_SDK_RELEASE_VERSION"
       - run: git commit -m "$RELEASE_COMMIT_MESSAGE"
       
