@@ -64,7 +64,7 @@ jobs:
       - run: git status
       
       # Push code back into Gamma branch
-      - run: git push
+      - run: git push -f
       
       # Publishes ADK packages to CodeArtifact
       - run: yarn npm:publish
