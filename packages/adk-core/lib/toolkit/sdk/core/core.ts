@@ -61,7 +61,7 @@ export function command(cmd: string,
     sanitizeInput: boolean = true,
     disableStdInput: boolean = true,
     args?: string[]) {
-    return runCommand(cmd, sanitizeInput, disableStdInput, args);
+    return runCommand(cmd, sanitizeInput, disableStdInput && !cmd.includes(' | '), args);
 }
 
 /**
