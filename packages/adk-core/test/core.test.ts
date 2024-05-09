@@ -59,6 +59,16 @@ describe('@aws/codecatalyst-adk-core', () => {
         expect(process.exitCode === 1).toBeTruthy();
     });
 
+    it('test command with pipe', () => {
+        const output = adkCore.command('echo "Hello" | grep "lo"');
+        expect(output.code === 0).toBeTruthy();
+    });
+
+    it('test command with and', () => {
+        const output = adkCore.command('echo "Hello" && echo "World"');
+        expect(output.code === 0).toBeTruthy();
+    });
+
     it('test command with stdin', () => {
         const output = adkCore.command('read test');
         expect(output.code === 1).toBeTruthy();
