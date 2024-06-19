@@ -3,6 +3,7 @@ node_modules/
 .vscode/
 lerna-debug.log
 dist/
+docs/
 pre-release-docs/
 **/coverage/
 .DS_Store

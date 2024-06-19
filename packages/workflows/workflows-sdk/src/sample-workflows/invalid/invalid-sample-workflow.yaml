@@ -1,5 +1,0 @@
-SchemaVersion: "1.0"
-DFGHJK:
-  - Type: PUSH
-    Branches:
-      - main

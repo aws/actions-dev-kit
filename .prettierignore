@@ -1,8 +1,0 @@
-*.js
-*.json
-*.yaml
-*.yml
-.eslintrc
-**/templates/**
-coverage
-dist
