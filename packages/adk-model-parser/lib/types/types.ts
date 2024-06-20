@@ -37,6 +37,15 @@ export interface Input {
  */
 export interface Environment {
     Required: boolean;
+    Connection?: Connection;
+}
+
+/**
+ * A boolean to indicate the action requires an AWS Account Connection and a default role to be associated to the CI/CD Environment to be configured to run successfully.
+ * To learn more about environments, see https://docs.aws.amazon.com/codecatalyst/latest/userguide/deploy-environments.html.
+ */
+export interface Connection {
+    Required: boolean;
 }
 
 /**
