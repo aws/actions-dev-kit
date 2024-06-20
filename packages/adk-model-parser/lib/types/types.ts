@@ -37,7 +37,7 @@ export interface Input {
  */
 export interface Environment {
     Required: boolean;
-    Connection: Connection;
+    Connection?: Connection;
 }
 
 /**
