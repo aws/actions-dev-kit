@@ -20,7 +20,7 @@ jobs:
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 16.x
           registry-url: ${{ secrets.CODEARTIFACT_NPM_REGISTRY_GAMMA }}
           scope: '@aws'
       # Install dependencies
