@@ -56,5 +56,8 @@
     "json5": "^2.2.2",
     "jsonwebtoken": "^9.0.0",
     "tsconfig-paths": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
