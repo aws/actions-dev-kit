@@ -9,39 +9,49 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/adk-client"
     schedule:
       interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/adk-core"
     schedule:
       interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/adk-model-parser"
     schedule:
       interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/adk-utils"
     schedule:
       interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/adk"
     schedule:
       interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/codecatalyst-entities/issue"
     schedule:
-      interval: "daily"      
+      interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/codecatalyst-entities/space"
     schedule:
-      interval: "daily"      
+      interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/codecatalyst-entities/project"
     schedule:
       interval: "daily"
+    target-branch: "gamma"
   - package-ecosystem: "npm"
     directory: "packages/codecatalyst-entities/run-summaries"
     schedule:
       interval: "daily"
+    target-branch: "gamma"
