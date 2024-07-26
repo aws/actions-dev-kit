@@ -169,6 +169,19 @@
         "Required": {
           "description": "A boolean to indicate whether the action requires Environment Connection Set to true when the parameter is required.",
           "type": "boolean"
+        },
+        "Connection": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "Required": {
+              "description": "A boolean to indicate whether the action requires AWS Account Connection. Set to true when the parameter is required.",
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "Required"
+          ]
         }
       },
       "required": [
