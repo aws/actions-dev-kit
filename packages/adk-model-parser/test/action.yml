@@ -45,6 +45,8 @@ Configuration:
     Default: ''
 Environment:
   Required: true
+  Connection:
+    Required: true
 Runs:
   Using: 'node12'
   Main: 'dist/index.js'
