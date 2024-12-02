@@ -3,7 +3,10 @@
 
 name: adk-release-to-prod
 
-on: [workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

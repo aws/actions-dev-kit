@@ -17,6 +17,7 @@
     "typescript": "^4.9.5"
   },
   "scripts": {
+    "publish-adk": "./scripts/publish-adk-to-npm.sh",
     "prebuild": "./cleanup.sh",
     "prebuild-all": "./cleanup.sh",
     "build": "./build.sh",

@@ -1,6 +1,9 @@
 name: adk-deploy-docs
 
-on: [workflow_dispatch]
+on:
+  push:
+    branches:
+      - main
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

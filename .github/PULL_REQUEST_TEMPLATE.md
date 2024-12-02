@@ -9,6 +9,7 @@ _Steps taken to verify the changes_
 ## Checklist
 
 I have:
+* [ ] Structured my commit message to adhere to [Conventional Commits Specification](https://www.conventionalcommits.org/)
 * [ ] Added new automated tests for any new functionality
 * [ ] Run `npm run build`
 
